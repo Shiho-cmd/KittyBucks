@@ -1,6 +1,6 @@
 function onCreate()
-    min = getJsonContent("data/"..songName..'/stuff.json', 'minbuck')
-    sec = getJsonContent("data/"..songName..'/stuff.json', 'secbuck')
+    min = getTextFromFile("data/"..songName..'min-'..difficultyName..'.txt')
+    sec = getTextFromFile("data/"..songName..'min-'..difficultyName..'.txt')
     
     makeLuaText("socorro")
     addLuaText("socorro")
