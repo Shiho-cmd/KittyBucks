@@ -1,10 +1,26 @@
+local kittyjamBuck = {
+    '1',
+    '33'
+}
+
+local kittyjamErect = {
+    '2',
+    '54'
+}
+
 function onCreate()
-    min = getTextFromFile("data/"..songName..'min-'..difficultyName..'.txt')
-    sec = getTextFromFile("data/"..songName..'min-'..difficultyName..'.txt')
+
+    if songName == 'KittyJam' and difficultyName == 'buck' then
+        min = kittyjamBuck[1]
+        sec = kittyjamBuck[2]
+    else
+        min = kittyjamErect[1]
+        sec = kittyjamErect[2]
+    end
     
     makeLuaText("socorro")
     addLuaText("socorro")
-    setProperty("socorro.visible", true)
+    setProperty("socorro.visible", false)
 
     if botPlay then
         makeLuaText("presence", 'Playing: '..songName..' '..'('..difficultyName..')'..' With BotPlay on (skill issue)')
