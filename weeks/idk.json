@@ -1,0 +1,32 @@
+{
+	"songs": [
+		[
+			"KittyJam",
+			"gataemodoidabruh",
+			[
+				209,
+				1,
+				142
+			]
+		]
+	],
+	"hiddenUntilUnlocked": false,
+	"hideFreeplay": false,
+	"weekBackground": "stage",
+	"difficulties": "buck, erect",
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"storyName": "KittyBucks",
+	"weekName": "KittyJam yayyy B)",
+	"freeplayColor": [
+		209,
+		1,
+		142
+	],
+	"hideStoryMode": true,
+	"weekBefore": "tutorial",
+	"startUnlocked": true
+}

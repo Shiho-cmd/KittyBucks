@@ -1,0 +1,9 @@
+{
+	"name": "KittyBucks",
+	"description": "Hello Kitty banger mod",
+	"restart":false,
+	"runsGlobally": false,
+	"color": [206, 62, 90],
+	"discordRPC": "863222024192262205",
+	"iconFramerate": 10
+}

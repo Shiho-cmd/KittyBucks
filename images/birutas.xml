@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+-->
+<TextureAtlas imagePath="birutas.png" width="1936" height="1104">
+  <SubTexture name="boing0001" x="0" y="0"  width="682" height="506" frameX="-344" frameY="-161" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="boing0002" x="682" y="0"  width="640" height="538" frameX="-364" frameY="-130" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="boing0004" x="1322" y="0"  width="614" height="574" frameX="-361" frameY="-102" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="boing0003" x="0" y="506"  width="584" height="598" frameX="-371" frameY="-81" frameWidth="1280" frameHeight="720"/>
+</TextureAtlas>

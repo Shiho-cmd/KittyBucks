@@ -1,0 +1,5 @@
+bagulho das batidas ai
+
+0 = desliga
+1 = batida a todo tempo
+2 = batidas a cada 2 batidas
