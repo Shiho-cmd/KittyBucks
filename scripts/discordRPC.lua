@@ -1,21 +1,17 @@
-local kittyjamBuck = {
-    '1',
-    '33'
-}
+function parseJson(file)
+    return callMethodFromClass('tjson.TJSON', 'parse', {getTextFromFile(file)})
+end
 
-local kittyjamErect = {
-    '2',
-    '54'
-}
+local parsed = parseJson('data/stuff.json')
 
 function onCreate()
 
     if songName == 'KittyJam' and difficultyName == 'buck' then
-        min = kittyjamBuck[1]
-        sec = kittyjamBuck[2]
+        min = parsed.minKitty
+        sec = parsed.secKitty
     else
-        min = kittyjamErect[1]
-        sec = kittyjamErect[2]
+        min = parsed.minErectos
+        sec = parsed.secErectos
     end
     
     makeLuaText("socorro")
