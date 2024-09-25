@@ -1,0 +1,5 @@
+coisa irada da camera seguir as notas oh yeah radical B)
+
+value 1: on liga off desliga
+value 2: offset, x opp, y opp, x player, y player
+(lembra que é tudo separado por , caba)

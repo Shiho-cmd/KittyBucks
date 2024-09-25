@@ -1,5 +1,5 @@
-bagulho das batidas ai
+barras iradas
 
-0 = desliga
-1 = batida a todo tempo
-2 = batidas a cada 2 batidas
+value 1: on pra ativar off pra desativar
+value 2: velocidade, ease (tem que ser separado com
+uma virgula exemplo: "1, linear")

@@ -7,6 +7,24 @@ local del = 0;
 local del2 = 0;
 local sim = false;
 
+function onEvent(eventName, value1, value2, strumTime)
+
+    cum = stringSplit(value2, ", ")
+    
+    if eventName == 'followNotes' then
+        if value1 == 'on' then
+            sim = true
+            ofs = cum[1]
+            xx = cum[2]
+            yy = cum[3]
+            xx2 = cum[4]
+            yy2 = cum[5]
+        elseif value1 == 'off' then
+            sim = false
+        end
+    end
+end
+
 function onUpdate()
 	if del > 0 then
 		del = del - 1
@@ -14,16 +32,6 @@ function onUpdate()
 	if del2 > 0 then
 		del2 = del2 - 1
 	end
-
-    if curSection == 24 then
-        sim = true
-    elseif curSection == 32 then
-        sim = false
-    elseif curStep == 768 then
-        sim = true
-    elseif curStep == 1024 then
-        sim = false
-end
 
         if mustHitSection == false and sim == true then
             if getProperty('dad.animation.curAnim.name') == 'singLEFT' then

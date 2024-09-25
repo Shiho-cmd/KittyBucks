@@ -1,0 +1,5 @@
+fade de apenas os elementos da hud
+
+value 1: valor, duracao, ease
+value 2: posicao do texto de botplay
+(escreve "centro" pra fazer o texto voltar a posicao original)

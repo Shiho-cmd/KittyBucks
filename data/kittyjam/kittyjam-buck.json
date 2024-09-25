@@ -2910,6 +2910,16 @@
 						"bitch",
 						"2",
 						""
+					],
+					[
+						"Camera Follow Pos",
+						"",
+						""
+					],
+					[
+						"doTween",
+						"alpha",
+						"oi, camHUD, 1, 1, linear"
 					]
 				]
 			],
@@ -2935,6 +2945,21 @@
 						"Set Property",
 						"cameraSpeed",
 						"3"
+					]
+				]
+			],
+			[
+				31135.1351351351,
+				[
+					[
+						"bars",
+						"on",
+						"0.5, quartOut"
+					],
+					[
+						"followNotes",
+						"on",
+						"20, 340, 520, 900, 490"
 					]
 				]
 			],
@@ -2959,12 +2984,52 @@
 				]
 			],
 			[
+				41513.5135135135,
+				[
+					[
+						"bars",
+						"off",
+						"0.5, quartOut"
+					],
+					[
+						"followNotes",
+						"off",
+						""
+					]
+				]
+			],
+			[
 				51891.8918918919,
 				[
 					[
 						"Set Cam Zoom",
 						"1.3",
 						"20"
+					]
+				]
+			],
+			[
+				51891.8918918919,
+				[
+					[
+						"byeHudStuff",
+						"0, 0.5, linear",
+						"-999"
+					]
+				]
+			],
+			[
+				61540.5405405406,
+				[
+					[
+						"bars",
+						"on",
+						"0.5, quartOut"
+					],
+					[
+						"byeHudStuff",
+						"1, 0.5, linear",
+						"centro"
 					]
 				]
 			],
@@ -2980,6 +3045,16 @@
 						"Set Property",
 						"cameraSpeed",
 						"3"
+					]
+				]
+			],
+			[
+				62270.2702702703,
+				[
+					[
+						"followNotes",
+						"on",
+						"20, 340, 520, 900, 490"
 					]
 				]
 			],
@@ -3000,6 +3075,26 @@
 						"Set Property",
 						"defaultCamZoom",
 						"1.1"
+					],
+					[
+						"bars",
+						"off",
+						"0.5, quartOut"
+					],
+					[
+						"followNotes",
+						"off",
+						""
+					],
+					[
+						"Camera Follow Pos",
+						"",
+						""
+					],
+					[
+						"",
+						"",
+						""
 					]
 				]
 			]
