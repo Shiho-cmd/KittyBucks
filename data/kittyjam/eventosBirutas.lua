@@ -14,24 +14,10 @@ function onCreate()
     setScrollFactor('barraixo',0,0)
     setObjectCamera('barraixo','hud')
     
-    makeAnimatedLuaSprite('explo', 'kaboom', 0, 0)
-    addAnimationByPrefix('explo', 'bah', 'boom', 12, false)
-    setObjectCamera('explo', 'other')
-    addLuaSprite('explo', false)
-    scaleObject('explo', 2.2, 2.2)
-    setProperty('explo.visible', false)
-    
     makeLuaSprite('escuro', '', 0, 0)
     makeGraphic('escuro', screenWidth, screenHeight, '000000')
     setObjectCamera('escuro', 'other')
     addLuaSprite('escuro', false)
-    
-    makeAnimatedLuaSprite('gif', 'speedlol')
-    addAnimationByPrefix('gif', 'lesgo', 'yo', 12, true)
-    screenCenter('gif')
-    setObjectCamera('gif', 'hud')
-    addLuaSprite('gif', true)
-    setProperty('gif.visible', false)
     
     makeLuaSprite('celula', 'galaxy_pocket', 330, 420)
     addLuaSprite('celula', false)
@@ -39,6 +25,24 @@ function onCreate()
     setProperty('celula.alpha', 0)
     
     setProperty('camHUD.alpha', 0)
+
+    if not lowQuality then
+        makeAnimatedLuaSprite('gif', 'speedlol')
+        addAnimationByPrefix('gif', 'lesgo', 'yo', 12, true)
+        screenCenter('gif')
+        setObjectCamera('gif', 'hud')
+        addLuaSprite('gif', true)
+        setProperty('gif.alpha', 0.01)
+        precacheImage("speedlol")
+
+        makeAnimatedLuaSprite('explo', 'kaboom', 0, 0)
+        addAnimationByPrefix('explo', 'bah', 'boom', 12, false)
+        setObjectCamera('explo', 'other')
+        addLuaSprite('explo', false)
+        scaleObject('explo', 2.2, 2.2)
+        setProperty('explo.visible', false)
+        precacheImage("kaboom")
+    end
 end
 
 function onSongStart()
@@ -70,7 +74,6 @@ function onStepHit()
         barras = false
         setProperty('gif.alpha', 0)
     elseif curStep == 640 then
-        setProperty('gif.visible', true)
         doTweenAlpha('f', 'gif', 1, 20, 'linear')
         triggerEvent('Camera Follow Pos', getProperty('dad.x') + 1000, 500)
         doTweenAlpha('a', 'healthBar', 0, 0.5, 'linear')
@@ -124,5 +127,6 @@ function onStepHit()
     elseif curStep == 1153 then
         setProperty('explo.visible', true)
         objectPlayAnimation('explo', 'bah')
+        setProperty("camGame.alpha", 0)
     end
 end
