@@ -1,5 +1,0 @@
-texture = "noteSkins/NOTE_assets"
-rgbShader.r = 0x52465E
-rgbShader.g = 0xFFFFFF
-rgbShader.b = 0x2D1C3F
-hitsound = "confirmMenu"
