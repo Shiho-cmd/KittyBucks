@@ -13,6 +13,11 @@ function onCreate()
         min = parsed.minErectos
         sec = parsed.secErectos
     end
+
+    if songName == 'SuperNova' then
+        min = parsed.minNova
+        sec = parsed.secNova
+    end
     
     makeLuaText("socorro")
     addLuaText("socorro")
@@ -33,10 +38,6 @@ function onUpdate(elapsed)
 
     changeDiscordClientID('1246615253203288165')
     changeDiscordPresence(getTextString("presence"), getTextString("socorro")..' Left', "mini-icon-kitty")
-
-    if getTextString("socorro") == '0:-1' then
-        endSong()
-    end
 end
 
 function onSongStart()

@@ -3,5 +3,8 @@
     "secKitty": "33",
 
     "minErectos": "2",
-    "secErectos": "54"
+    "secErectos": "54",
+
+    "minNova": "1",
+    "secNova": "2"
 }
