@@ -14,69 +14,58 @@ local the = {
 }
 
 local pos = 0
-
 local divi = 100
 
--- discord rpc stuff --
-
-function parseJson(file)
-    return callMethodFromClass('tjson.TJSON', 'parse', {getTextFromFile(file)})
-end
-
-local parsed = parseJson('data/stuff.json')
+local frases = {
+    {'"I CAN\'T STOP EATING SUSHI MAN!!!"', 34}, -- 1 -- sugestões do Ukiyo
+    {'"Are you two the same?"', 23}, -- 2
+    {'"The water\'s broken :["', 23}, -- 3
+    {'"If you want to rob a bank, you gotta do some planning before you rob a bank"', 77}, -- 4
+    {'"Don\'t be a coconut"', 20}, -- 5
+    {'"Hello i\'m the EVIL pause menu message! MUAHAHA!!"', 50}, -- 6
+    {'"There\'s only one beer left"', 28}, -- 7
+    {'"Rollin\' marijuana, that\'s a cheap vacation"', 44}, -- 8
+    {'"Don\'t drop the blunt and disrespect the weed"', 56}, -- 9
+    {'"Livin\' off borrowed time, the clock ticks faster"', 60}, -- 10
+    {'"More cheese than Doritos, Cheetos or Fritos"', 45}, -- 11
+    {'"This mod has a Snoop Dogg Seal of Approval™"', 45}, -- 12
+    {'𓀖𓀗 𓀘 𓀙 𓀚 𓀛 𓀜 𓀝 𓀞 𓀟 𓀠 𓀡 𓀢 𓀣 𓀤 𓀥 𓀦 𓀧 𓀨 𓀩 𓀪 𓀫 𓀬𓀭 𓀮 𓀯 𓀰', 52}, -- 13 -- isso nem funciona lol -- amigos do Ukiyo mandaram essas
+    {'"Also try Terraria!"', 20}, -- 14
+    {'"Also try Minecraft!"', 22}, -- 15
+    {'"28 STABS!"', 11}, -- 16
+    {'"For real life??"', 17}, -- 17 -- eu que escrevi essas B) (Shiho)
+    {'"Oh biscuits..."', 16}, -- 18
+    {'"I FUCKING LOVE AIR-CONDITIONING!!!"', 36}, -- 19
+    {'"This mod is sponsored by Raid Shadow Legends!"', 47}, -- 20
+    {'"DAMN DANIEL BACK AT IT AGAIN WITH THE WHITE VANS!!!"', 53}, -- 21
+    {'ma balls itch.', 14}, -- 22
+    {'"Lemonade... Lemonade... Lemonade... Lemonade... Le-"', 53}, -- 23
+    {'"God I love the limited 3D they use for this game. It\'s so charming"', 67}, -- 24
+    {'"I\'m kind of a Pokemon!"', 25}, -- 25
+    {'"Tornado penis."', 16}, -- 26
+    {'"Hello Kitty banger mod"', 24}, -- 27
+    {'"num seio"', 10}, -- 28 -- amigos meus (Shiho) mandaram essas
+    {'"Aos oprimidos é permitido uma vez a cada poucos anos decidir quais representantes específicos da classe opressora devem representá-los e reprimi-los."', 151}, -- 29
+    {'Are you going to play seriously now?', 36}, -- 30 -- sugestões da Liz
+    {'I love eating grass', 19}, -- 31
+    {'Did the pizza arrive?? :D', 25}, -- 32
+    {'WHY DID YOU PAUSE?!?! THIS IS THE BEST PART!!!!', 47} -- 33
+}
 
 function onCreate()
 
-    if songName == 'KittyJam' and difficultyName == 'buck' then
-        min = parsed.kittyjam[1]
-        sec = parsed.kittyjam[2]
+    --[[initSaveData("morteMorrida")
+    deathCounter = getDataFromSave("morteMorrida", "atumalaca")]]
+
+    local var ShaderName = 'gray'
+    if shadersEnabled then  
+        initLuaShader(ShaderName)
+        makeLuaSprite('camShader', nil)
+        makeGraphic('camShader', screenWidth, screenHeight)
+        setSpriteShader('camShader', ShaderName)
     else
-        min = parsed.kittyjamErect[1]
-        sec = parsed.kittyjamErect[2]
+        ShaderName = 'none'
     end
-
-    if songName == 'SuperNova' then
-        min = parsed.supernova[1]
-        sec = parsed.supernova[2]
-    end
-
-        makeLuaText("socorro")
-        addLuaText("socorro")
-        setProperty("socorro.visible", false)
-
-        initSaveData("morteMorrida")
-        deathCounter = getDataFromSave("morteMorrida", "atumalaca")
-
-        local var ShaderName = 'gray'
-        if shadersEnabled then  
-            initLuaShader(ShaderName)
-            makeLuaSprite('camShader', nil)
-            makeGraphic('camShader', screenWidth, screenHeight)
-            setSpriteShader('camShader', ShaderName)
-        else
-            ShaderName = 'none'
-        end
-
-    if botPlay then
-        makeLuaText("presence", 'Playing: '..songName..' '..'('..difficultyName..')'..' With BotPlay on (skill issue)')
-        addLuaText("presence")
-        setProperty("presence.visible", false)
-    else
-        makeLuaText("presence", 'Playing: '..songName..' '..'('..difficultyName..')')
-        addLuaText("presence")
-        setProperty("presence.visible", false)
-    end
-end
-
-function onUpdate(elapsed)
-
-    changeDiscordClientID('1246615253203288165')
-    changeDiscordPresence(getTextString("presence"), getTextString("socorro"), "mini-icon-kitty")
-end
-
-function onSongStart()
-
-    runTimer('countdown', 1, 9999)
 end
 
 function onTimerCompleted(tag)
@@ -88,36 +77,14 @@ function onTimerCompleted(tag)
         doTweenZoom("zoo", "camGame", 1, 0.8, "quartOut")
     end]]
 
-    if tag == 'countdown' then
-        if sec ~= -1 then
-            sec = sec - 1
-        end
-
-        if sec == -1 then
-            if min ~= 0 then
-                min = min - 1
-                sec = 59
-            end
-            
-            if min == 0 and sec == 0 then
-                return
-            end
-        end
+    if tag == 'boom' then
+        doTweenAlpha("a", "noWay", 0, 0.6, "linear")
+        runTimer("moob", 0.6)
+    elseif tag == 'moob' then
+        doTweenAlpha("a", "noWay", 1, 0.6, "linear")
+        runTimer("boom", 0.6)
     end
 end
-
-function onEndSong()
-    
-    changeDiscordClientID('863222024192262205')
-    setDataFromSave("morteMorrida", "atumalaca", 0)
-end
-
-function onUpdatePost()
-
-    setTextString('socorro', min .. ':' .. sec..' Left')
-end
-
--- pause stuff --
 
 function onPause()
     
@@ -129,8 +96,10 @@ function onCustomSubstateCreatePost(name)
     
     if name == 'pauseShit' then
 
-        playSound("placeholder", 0, 'bah')
-        soundFadeIn("bah", 3, 0, 1)
+        local curFrase = frases[getRandomInt(0, #frases)][1]
+
+        playSound("pause-theme", 0, 'bah')
+        soundFadeIn("bah", 5, 0, 0.2)
         characterPlayAnim("boyfriend", "singDOWNmiss", true)
 
         makeLuaSprite("escu")
@@ -166,17 +135,24 @@ function onCustomSubstateCreatePost(name)
         screenCenter("exit", 'x')
         setProperty("exit.y", getGraphicMidpointY("escu") + divi - 50)
 
-        makeLuaText("compo", songName..' ('..difficultyName..')'.." by: "..getTextFromFile('data/'..songName..'/composer-'..difficultyName..'.txt')..' | Art by: '..getTextFromFile('data/'..songName..'/artist-'..difficultyName..'.txt')..' | Chart and Coding by: '..getTextFromFile('data/'..songName..'/charter-coder-'..difficultyName..'.txt'), 0, -1300, -20)
+        makeLuaText("compo", songName..' ('..difficultyName..')'.." by: "..getTextFromFile('data/'..songName..'/composer-'..difficultyName..'.txt')..' | Pause Theme by: LizNaithy'..' | Art by: '..getTextFromFile('data/'..songName..'/artist-'..difficultyName..'.txt')..' | Chart and Coding by: '..getTextFromFile('data/'..songName..'/charter-coder-'..difficultyName..'.txt'), 0, -1800, -20)
         setObjectCamera("compo", 'other')
         addLuaText("compo")
         setTextSize("compo", 25)
         doTweenY("lol", "compo", 0, 0.5, "quartOut")
 
-        makeLuaText("morri", 'Blueballed: '..getDataFromSave("morteMorrida", "atumalaca"), 0, 1300, 740)
+        makeLuaText("morri", curFrase, 0, 1300, 740)
         setObjectCamera("morri", 'other')
         addLuaText("morri")
         setTextSize("morri", 25)
         doTweenY("lololol", "morri", 694.6, 0.5, "quartOut")
+
+        makeLuaText("noWay", "- PAUSED -", 0, 0.0, 100)
+        setObjectCamera("noWay", 'other')
+        addLuaText("noWay")
+        setTextSize("noWay", 70)
+        screenCenter("noWay", 'x')
+        setTextAlignment("noWay", 'center')
 
         makeLuaSprite("barr", '', 0, -20)
         makeGraphic("barr", screenWidth, 25, '000000')
@@ -191,6 +167,7 @@ function onCustomSubstateCreatePost(name)
         doTweenY("xdd", "balls", 694.6, 0.5, "quartOut")
 
         --runTimer("beat", 0.85, 0)
+        runTimer("boom", 0.5)
     end
 end
 
@@ -209,15 +186,24 @@ function onCustomSubstateUpdatePost(name, elapsed)
         setProperty("barr.visible", true)
         setProperty("balls.visible", true)
         setProperty("balls.visible", true)
+        setProperty("noWay.visible", true)
 
         setProperty("compo.x", getProperty("compo.x") + 1)
         setProperty("morri.x", getProperty("morri.x") - 1)
         
         if getProperty("compo.x") == screenWidth then
-            setProperty("compo.x", -1300)
+            setProperty("compo.x", -1800)
         end
         
-        if getProperty("morri.x") == -200 then
+        if getProperty("morri.x") == -450 and getTextString("morri") == frases[2][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[3][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[5][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[7][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[14][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[15][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[16][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[17][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[18][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[22][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[25][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[26][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[28][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[27][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[31][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[32][1] then -- 🤮
+            setProperty("morri.x", 1300)
+        elseif getProperty("morri.x") == -1100 and getTextString("morri") == frases[24][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[6][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[7][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[8][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[9][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[10][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[11][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[12][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[13][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[20][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[21][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[23][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[33][1] then -- 🤮🤮
+            setProperty("morri.x", 1300)
+        elseif getProperty("morri.x") == -570 and getTextString("morri") == frases[30][1] or getProperty("morri.x") == -570 and getTextString("morri") == frases[19][1] then
+            setProperty("morri.x", 1300)
+        elseif getProperty("morri.x") == -1200 and getTextString("morri") == frases[4][1] then
+            setProperty("morri.x", 1300)
+        elseif getProperty("morri.x") == -2280 and getTextString("morri") == frases[29][1] then
             setProperty("morri.x", 1300)
         end
 
@@ -280,6 +266,7 @@ function onCustomSubstateUpdatePost(name, elapsed)
             setProperty("barr.visible", false)
             setProperty("balls.visible", false)
             setProperty("morri.visible", false)
+            setProperty("noWay.visible", false)
             runHaxeCode([[
                 FlxG.game.setFilters([]);
             ]])
@@ -295,7 +282,7 @@ end
 function onSoundFinished(tag)
     
     if tag == 'bah' then
-        playSound("placeholder", 1, 'bah')
+        playSound("pause-theme", 1, 'bah')
     end
 end
 
@@ -306,9 +293,4 @@ function onDestroy()
             FlxG.game.setFilters([]);
         ]])
     end
-end
-
-function onGameOverStart()
-    
-    setDataFromSave("morteMorrida", "atumalaca", deathCounter + 1)
 end
