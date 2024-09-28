@@ -1,20 +1,10 @@
 {
     // minutos e segundos das músicas pro rpc do discord
-    "minKitty": "1",
-    "secKitty": "33",
-
-    "minErectos": "2",
-    "secErectos": "54",
-
-    "minNova": "1",
-    "secNova": "2",
+    "kittyjam": ["1", "33"],
+    "kittyjamErect": ["2", "54"],
+    "supernova": ["1", "2"],
 
     // rgb das notas
-    "noteOrpleR": "F634B5",
-    "noteOrpleG": "FFFFFF",
-    "noteOrpleB": "7A255C",
-
-    "noteBlackR": "52465E",
-    "noteBlackG": "FFFFFF",
-    "noteBlackB": "2D1C3F"
+    "purple": ["F634B5", "FFFFFF", "7A255C"],
+    "black": ["52465E", "FFFFFF", "2D1C3F"]
 }

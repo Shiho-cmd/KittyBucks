@@ -1,3 +1,5 @@
+-- THANKS TO JoaoVictor742 ON GITHUB FOR HELPING ME WITH THIS SCRIPT HOLY SHIT
+
 function parseJson(file)
     return callMethodFromClass('tjson.TJSON', 'parse', {getTextFromFile(file)})
 end
@@ -5,13 +7,13 @@ end
 local parsed = parseJson('data/stuff.json')
 
 --bf rgb
-local bfRGBNr = { parsed.noteOrpleR, parsed.noteBlackR, parsed.noteOrpleR, parsed.noteBlackR }
-local bfRGBNg = { parsed.noteOrpleG, parsed.noteBlackG, parsed.noteOrpleG, parsed.noteBlackG }
-local bfRGBNb = { parsed.noteOrpleB, parsed.noteBlackB, parsed.noteOrpleB, parsed.noteBlackB }
+local bfRGBNr = { parsed.purple[1], parsed.black[1], parsed.purple[1], parsed.black[1] }
+local bfRGBNg = { parsed.purple[2], parsed.black[2], parsed.purple[2], parsed.black[2] }
+local bfRGBNb = { parsed.purple[3], parsed.black[3], parsed.purple[3], parsed.black[3] }
 -- dad rgb
-local dadRGBNr = { parsed.noteOrpleR, parsed.noteBlackR, parsed.noteOrpleR, parsed.noteBlackR }
-local dadRGBNg = { parsed.noteOrpleG, parsed.noteBlackG, parsed.noteOrpleG, parsed.noteBlackG }
-local dadRGBNb = { parsed.noteOrpleB, parsed.noteBlackB, parsed.noteOrpleB, parsed.noteBlackB }
+local dadRGBNr = { parsed.purple[1], parsed.black[1], parsed.purple[1], parsed.black[1] }
+local dadRGBNg = { parsed.purple[2], parsed.black[2], parsed.purple[2], parsed.black[2] }
+local dadRGBNb = { parsed.purple[3], parsed.black[3], parsed.purple[3], parsed.black[3] }
 
 -- note   
 function onSpawnNote(id, nd, nt, sus)

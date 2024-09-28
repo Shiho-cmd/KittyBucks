@@ -7,16 +7,16 @@ local parsed = parseJson('data/stuff.json')
 function onCreate()
 
     if songName == 'KittyJam' and difficultyName == 'buck' then
-        min = parsed.minKitty
-        sec = parsed.secKitty
+        min = parsed.kittyjam[1]
+        sec = parsed.kittyjam[2]
     else
-        min = parsed.minErectos
-        sec = parsed.secErectos
+        min = parsed.kittyjamErect[1]
+        sec = parsed.kittyjamErect[2]
     end
 
     if songName == 'SuperNova' then
-        min = parsed.minNova
-        sec = parsed.secNova
+        min = parsed.supernova[1]
+        sec = parsed.supernova[2]
     end
     
     makeLuaText("socorro")
