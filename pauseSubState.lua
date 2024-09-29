@@ -71,11 +71,6 @@ function onCreate()
     end
 end
 
-function onCountdownStarted()
-    
-    setPropertyFromClass("flixel.FlxG", "mouse.visible", false)
-end
-
 function onTimerCompleted(tag)
 
     --[[if tag == 'beat' then
@@ -91,9 +86,6 @@ function onTimerCompleted(tag)
     elseif tag == 'moob' then
         doTweenAlpha("a", "noWay", 1, 0.6, "linear")
         runTimer("boom", 0.6)
-    elseif tag == 'reset' then
-        objectPlayAnimation("buttonD", "idle")
-        objectPlayAnimation("buttonU", "idle")
     end
 end
 
@@ -117,8 +109,6 @@ end
 function onCustomSubstateCreate(name)
     
     if name == 'pauseShit' then
-
-        setPropertyFromClass("flixel.FlxG", "mouse.visible", true)
 
         if special or misses == 1 or relax > 20 then
             curFrase = frases[spc][1]
@@ -196,27 +186,6 @@ function onCustomSubstateCreate(name)
 
         --runTimer("beat", 0.85, 0)
         runTimer("boom", 0.5)
-
-        makeAnimatedLuaSprite("buttonD", 'virtualpad', 0, 560)
-        addAnimationByPrefix("buttonD", "pressed", "downPress", 0, false)
-        addAnimationByPrefix("buttonD", "idle", "down", 0, false)
-        setObjectCamera("buttonD", 'other')
-        addLuaSprite("buttonD", true)
-        setProperty("buttonD.alpha", 0.5)
-
-        makeAnimatedLuaSprite("buttonU", 'virtualpad', 0, 430)
-        addAnimationByPrefix("buttonU", "pressed", "upPress", 0, false)
-        addAnimationByPrefix("buttonU", "idle", "up", 0, false)
-        setObjectCamera("buttonU", 'other')
-        addLuaSprite("buttonU", true)
-        setProperty("buttonU.alpha", 0.5)
-
-        makeAnimatedLuaSprite("buttonA", 'virtualpad', 1155, 560)
-        addAnimationByPrefix("buttonA", "pressed", "aPress", 10, false)
-        addAnimationByPrefix("buttonA", "idle", "a", 0, false)
-        setObjectCamera("buttonA", 'other')
-        addLuaSprite("buttonA", true)
-        setProperty("buttonA.alpha", 0.5)
     end
 end
 
@@ -234,10 +203,8 @@ function onCustomSubstateUpdatePost(name, elapsed)
         setProperty("compo.visible", true)
         setProperty("barr.visible", true)
         setProperty("balls.visible", true)
+        setProperty("balls.visible", true)
         setProperty("noWay.visible", true)
-        setProperty("buttonD.visible", true)
-        setProperty("buttonU.visible", true)
-        setProperty("buttonA.visible", true)
 
         setProperty("compo.x", getProperty("compo.x") + 1)
         setProperty("morri.x", getProperty("morri.x") - 1)
@@ -288,16 +255,12 @@ function onCustomSubstateUpdatePost(name, elapsed)
             pos = 2
         end
 
-        if getMouseX('camOther') > getProperty('buttonD.x') and getMouseY('camOther') > getProperty('buttonD.y') and getMouseX('camOther') < getProperty('buttonD.x') + getProperty('buttonD.width') and getMouseY('camOther') < getProperty('buttonD.y') + getProperty('buttonD.height') and mouseReleased() then
+        if keyboardJustPressed("S") or keyboardJustPressed("DOWN") then
             pos = pos + 1
             playSound("Metronome_Tick", 0.5, 'tick')
-            objectPlayAnimation("buttonD", "pressed")
-            runTimer("reset", 0.1)
-        elseif getMouseX('camOther') > getProperty('buttonU.x') and getMouseY('camOther') > getProperty('buttonU.y') and getMouseX('camOther') < getProperty('buttonU.x') + getProperty('buttonU.width') and getMouseY('camOther') < getProperty('buttonU.y') + getProperty('buttonU.height') and mouseReleased() then
+        elseif keyboardJustPressed("W") or keyboardJustPressed("UP") then
             pos = pos - 1
             playSound("Metronome_Tick", 0.5, 'tick')
-            objectPlayAnimation("buttonU", "pressed")
-            runTimer("reset", 0.1)
         end
 
         if shadersEnabled then
@@ -308,7 +271,7 @@ function onCustomSubstateUpdatePost(name, elapsed)
         setShaderFloat('camShader', 'iTime', os.clock())
     end
 
-        if getMouseX('camOther') > getProperty('buttonA.x') and getMouseY('camOther') > getProperty('buttonA.y') and getMouseX('camOther') < getProperty('buttonA.x') + getProperty('buttonA.width') and getMouseY('camOther') < getProperty('buttonA.y') + getProperty('buttonA.height') and mouseReleased() and pos == 0 then
+        if keyJustPressed("accept") and pos == 0 then
             closeCustomSubstate()
             stopSound("bah")
             setProperty("escu.visible", false)
@@ -322,20 +285,13 @@ function onCustomSubstateUpdatePost(name, elapsed)
             setProperty("balls.visible", false)
             setProperty("morri.visible", false)
             setProperty("noWay.visible", false)
-            setProperty("buttonD.visible", false)
-            setProperty("buttonU.visible", false)
-            setProperty("buttonA.visible", false)
-            setPropertyFromClass("flixel.FlxG", "mouse.visible", false)
-            objectPlayAnimation("buttonA", "pressed")
             runHaxeCode([[
                 FlxG.game.setFilters([]);
             ]])
-        elseif getMouseX('camOther') > getProperty('buttonA.x') and getMouseY('camOther') > getProperty('buttonA.y') and getMouseX('camOther') < getProperty('buttonA.x') + getProperty('buttonA.width') and getMouseY('camOther') < getProperty('buttonA.y') + getProperty('buttonA.height') and mouseReleased() and pos == 1 then
+        elseif keyJustPressed('accept') and pos == 1 then
             restartSong(false)
-            objectPlayAnimation("buttonA", "pressed")
-        elseif getMouseX('camOther') > getProperty('buttonA.x') and getMouseY('camOther') > getProperty('buttonA.y') and getMouseX('camOther') < getProperty('buttonA.x') + getProperty('buttonA.width') and getMouseY('camOther') < getProperty('buttonA.y') + getProperty('buttonA.height') and mouseReleased() and pos == 2 then
+        elseif keyJustPressed('accept') and pos == 2 then
             exitSong(false)
-            objectPlayAnimation("buttonA", "pressed")
         end
     end
 end
