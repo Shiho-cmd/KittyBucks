@@ -49,13 +49,16 @@ local frases = {
     {'Are you going to play seriously now?', 36}, -- 30 -- sugestões da Liz
     {'I love eating grass', 19}, -- 31
     {'Did the pizza arrive?? :D', 25}, -- 32
-    {'WHY DID YOU PAUSE?!?! THIS IS THE BEST PART!!!!', 47} -- 33
+    {'It\'s ok to give up man, just relax and come back later ;)', 57}, -- 33 -- sugestões da Natzy
+    {'WHY DID YOU PAUSE?!?! THIS IS THE BEST PART!!!!', 47}, -- 34 -- frases especiais
+    {'Seriously? You\'re going to restart because you missed one note??? -_-', 69} -- 35
 }
 
-function onCreate()
+local special = false
+local relax = 0 -- um dia eu descubro como fazer isso funfar
+local spc = 0
 
-    --[[initSaveData("morteMorrida")
-    deathCounter = getDataFromSave("morteMorrida", "atumalaca")]]
+function onCreate()
 
     local var ShaderName = 'gray'
     if shadersEnabled then  
@@ -86,18 +89,33 @@ function onTimerCompleted(tag)
     end
 end
 
+function onUpdate(elapsed)
+    
+    if misses == 1 then
+        spc = 35
+    elseif special == true then
+        spc = 34
+    elseif relax > 20 then
+        spc = 33
+    end
+end
+
 function onPause()
     
     openCustomSubstate('pauseShit', true);
     return Function_Stop;
 end
 
-function onCustomSubstateCreatePost(name)
+function onCustomSubstateCreate(name)
     
     if name == 'pauseShit' then
 
-        local curFrase = frases[getRandomInt(0, #frases)][1]
-
+        if special or misses == 1 or relax > 20 then
+            curFrase = frases[spc][1]
+        else
+            curFrase = frases[getRandomInt(0, 33)][1]
+        end
+        
         playSound("pause-theme", 0, 'bah')
         soundFadeIn("bah", 5, 0, 0.2)
         characterPlayAnim("boyfriend", "singDOWNmiss", true)
@@ -197,11 +215,11 @@ function onCustomSubstateUpdatePost(name, elapsed)
         
         if getProperty("morri.x") == -450 and getTextString("morri") == frases[2][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[3][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[5][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[7][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[14][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[15][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[16][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[17][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[18][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[22][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[25][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[26][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[28][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[27][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[31][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[32][1] then -- 🤮
             setProperty("morri.x", 1300)
-        elseif getProperty("morri.x") == -1100 and getTextString("morri") == frases[24][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[6][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[7][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[8][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[9][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[10][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[11][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[12][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[13][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[20][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[21][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[23][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[33][1] then -- 🤮🤮
+        elseif getProperty("morri.x") == -1100 and getTextString("morri") == frases[33][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[24][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[6][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[7][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[8][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[9][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[10][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[11][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[12][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[13][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[20][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[21][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[23][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[34][1] then -- 🤮🤮
             setProperty("morri.x", 1300)
         elseif getProperty("morri.x") == -570 and getTextString("morri") == frases[30][1] or getProperty("morri.x") == -570 and getTextString("morri") == frases[19][1] then
             setProperty("morri.x", 1300)
-        elseif getProperty("morri.x") == -1200 and getTextString("morri") == frases[4][1] then
+        elseif getProperty("morri.x") == -1200 and getTextString("morri") == frases[4][1] or getProperty("morri.x") == -1200 and getTextString("morri") == frases[35][1] then
             setProperty("morri.x", 1300)
         elseif getProperty("morri.x") == -2280 and getTextString("morri") == frases[29][1] then
             setProperty("morri.x", 1300)
@@ -270,7 +288,6 @@ function onCustomSubstateUpdatePost(name, elapsed)
             runHaxeCode([[
                 FlxG.game.setFilters([]);
             ]])
-            paused = false
         elseif keyJustPressed('accept') and pos == 1 then
             restartSong(false)
         elseif keyJustPressed('accept') and pos == 2 then
@@ -282,15 +299,34 @@ end
 function onSoundFinished(tag)
     
     if tag == 'bah' then
-        playSound("pause-theme", 1, 'bah')
+        playSound("pause-theme", 0.2, 'bah')
     end
 end
 
 function onDestroy()
-    --setDataFromSave("morteMorrida", "atumalaca", 0)
+    setDataFromSave("giveUp", "relax", 0)
     if shadersEnabled then
         runHaxeCode([[
             FlxG.game.setFilters([]);
         ]])
+    end
+end
+
+function onSectionHit()
+
+    if curSection == 24 and songName == 'KittyJam' and difficultyName == 'buck' then
+        special = true
+    elseif curSection == 32 and songName == 'KittyJam' and difficultyName == 'buck' then
+        special = false
+    elseif curSection == 48 and songName == 'KittyJam' and difficultyName == 'buck' then
+        special = true
+    elseif curSection == 64 and songName == 'KittyJam' and difficultyName == 'buck' then
+        special = false
+    elseif curSection == 36 and songName == 'KittyJam' and difficultyName == 'erect' then
+        special = true
+    elseif curSection == 54 and songName == 'KittyJam' and difficultyName == 'erect' then
+        special = false
+    elseif curSection == 117 and songName == 'KittyJam' and difficultyName == 'erect' then
+        special = true
     end
 end
