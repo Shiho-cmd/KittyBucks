@@ -1,12 +1,5 @@
 -- this code is shit but idc
 
---[[
-    makeLuaText("", "", 0, 0.0, 0.0)
-    setObjectCamera("", '')
-    addLuaText("")
-    setTextSize("", )
-]]
-
 local the = {
     'Resume',
     'Restart song',
@@ -57,6 +50,111 @@ local frases = {
 local special = false
 local relax = 0 -- um dia eu descubro como fazer isso funfar
 local spc = 0
+						    
+-- I DIDN'T CODE THE DARK MODE WINDOW THING IT WAS MADE BY: T-Bar: https://www.youtube.com/@tbar7460 GO SUBSCRIBE TO THEM NOW!!!!!11
+
+local ffi = require("ffi");
+local dwmapi = ffi.load("dwmapi");
+local addr = ffi.load("mods" ..((currentModDirectory == nil or currentModDirectory == "") and "/" or tostring("/" ..currentModDirectory.. "/")).. "include/AddressParser"); --Had to make a whole new libary to grab a variable's address...
+
+ffi.cdef([[
+	typedef void* CONST;
+    typedef void* HWND;
+    typedef unsigned long DWORD;
+	typedef const void *LPCVOID;
+	typedef int BOOL;
+	
+	typedef long LONG;
+	typedef LONG HRESULT;
+	
+	HWND GetActiveWindow();
+	HRESULT DwmSetWindowAttribute(HWND hwnd, DWORD dwAttribute, LPCVOID pvAttribute, DWORD cbAttribute);
+	void UpdateWindow(HWND hWnd);
+	int* get_address(int& var);
+]])
+
+local S_OK = 0x00000000;
+
+---Internal function used to parse the weird BBGGRR format into a normal hexidecimal
+---Made by Ghostglowdev
+function _rgbHexToBGR(rgb)
+	-- conv int hex to string hex
+	if type(rgb) == 'number' then rgb = runHaxeCode('return StringTools.hex('.. rgb ..');') end
+	-- discard if hex isn't string
+	if type(rgb) ~= 'string' then 
+		debugPrint('ERROR on loading: '.. scriptName ..': _rgbHexToBGR: Failed to parse into BGR format.') 
+		return rgb
+	end
+	-- discard extras
+	rgb = stringStartsWith(rgb, '0x') and rgb:sub(3,8) or stringStartsWith(rgb, '#') and rgb:sub(2,7) or rgb
+	rgb = #rgb > 6 and rgb:sub(1,6) or rgb
+
+	-- parse
+	local b, g, r = rgb:sub(5,6), rgb:sub(3,4), rgb:sub(1,2)
+	return b..g..r 
+end
+
+---Sets the window to dark mode
+function setDarkMode()
+	local window = ffi.C.GetActiveWindow();
+	local isDark = dwmapi.DwmSetWindowAttribute(window, 19, addr.get_address(ffi.new("int[1]", 1)), ffi.sizeof(ffi.cast("DWORD", 1)));
+
+	if isDark == 0 or isDark ~= S_OK then
+		dwmapi.DwmSetWindowAttribute(window, 20, addr.get_address(ffi.new("int[1]", 1)), ffi.sizeof(ffi.cast("DWORD", 1)));
+	end
+	
+	ffi.C.UpdateWindow(window);
+end
+
+---Sets the window to light mode
+function setLightMode()
+	local window = ffi.C.GetActiveWindow();
+	local isLight = dwmapi.DwmSetWindowAttribute(window, 19, addr.get_address(ffi.new("int[1]", 0)), ffi.sizeof(ffi.cast("DWORD", 0)));
+
+	if isLight == 0 or isLight ~= S_OK then
+		dwmapi.DwmSetWindowAttribute(window, 20, addr.get_address(ffi.new("int[1]", 0)), ffi.sizeof(ffi.cast("DWORD", 0)));
+	end
+	
+	ffi.C.UpdateWindow(window);
+end
+
+---Shortcut to both "setDarkMode" and "setLightMode", as one function
+---@param isDark boolean Is the window dark mode?
+function setWindowColorMode(isDark)
+	local window = ffi.C.GetActiveWindow();
+	local isDarkMode = (isDark and 1 or 0);
+	local isColorMode = dwmapi.DwmSetWindowAttribute(window, 19, addr.get_address(ffi.new("int[1]", isDarkMode)), ffi.sizeof(ffi.cast("DWORD", isDarkMode)));
+
+	if isColorMode == 0 or isColorMode ~= S_OK then
+		dwmapi.DwmSetWindowAttribute(window, 20, addr.get_address(ffi.new("int[1]", isDarkMode)), ffi.sizeof(ffi.cast("DWORD", isDarkMode)));
+	end
+	
+	ffi.C.UpdateWindow(window);
+end
+
+---(Windows 11 ONLY) Sets the window border and header to a color of your choosing
+---@param colorHex string The hexidecimal for the color. (The hex should be 0xRRGGBB, '0xRRGGBB', '#RRGGBB', 'RRGGBB')
+---@param setHeader boolean Do you want to set the header's color?
+---@param setBorder boolean Do you want to set the window border's color?
+function setWindowBorderColor(colorHex, setHeader, setBorder)
+	local window = ffi.C.GetActiveWindow();
+	local strHex = (colorHex == nil or (type(colorHex) ~= 'number' and #colorHex < 6 or false)) and '0xFFFFFF' or _rgbHexToBGR(colorHex)
+	local hex = tonumber('0x'..strHex)
+	
+	if setHeader == nil then setHeader = true end
+	if setBorder == nil then setBorder = true end
+	
+	if setHeader then dwmapi.DwmSetWindowAttribute(window, 35, addr.get_address(ffi.new("int[1]", (hex))), ffi.sizeof(ffi.cast("DWORD", (hex)))); end
+	if setBorder then dwmapi.DwmSetWindowAttribute(window, 34, addr.get_address(ffi.new("int[1]", (hex))), ffi.sizeof(ffi.cast("DWORD", (hex)))); end
+
+	ffi.C.UpdateWindow(window);
+end
+
+---Resets the window. Be sure to run this after using "setDarkMode" to force the effect immediately
+function redrawWindowHeader()
+	setPropertyFromClass('flixel.FlxG', 'stage.window.borderless', true);
+	setPropertyFromClass('flixel.FlxG', 'stage.window.borderless', false);
+end
 
 function onCreate()
 
@@ -69,11 +167,6 @@ function onCreate()
     else
         ShaderName = 'none'
     end
-end
-
-function onCountdownStarted()
-    
-    setPropertyFromClass("flixel.FlxG", "mouse.visible", false)
 end
 
 function onTimerCompleted(tag)
@@ -91,9 +184,6 @@ function onTimerCompleted(tag)
     elseif tag == 'moob' then
         doTweenAlpha("a", "noWay", 1, 0.6, "linear")
         runTimer("boom", 0.6)
-    elseif tag == 'reset' then
-        objectPlayAnimation("buttonD", "idle")
-        objectPlayAnimation("buttonU", "idle")
     end
 end
 
@@ -118,13 +208,14 @@ function onCustomSubstateCreate(name)
     
     if name == 'pauseShit' then
 
-        setPropertyFromClass("flixel.FlxG", "mouse.visible", true)
-
         if special or misses == 1 or relax > 20 then
             curFrase = frases[spc][1]
         else
             curFrase = frases[getRandomInt(0, 33)][1]
         end
+
+        setWindowColorMode(true)
+        redrawWindowHeader();
         
         playSound("pause-theme", 0, 'bah')
         soundFadeIn("bah", 5, 0, 0.2)
@@ -196,27 +287,6 @@ function onCustomSubstateCreate(name)
 
         --runTimer("beat", 0.85, 0)
         runTimer("boom", 0.5)
-
-        makeAnimatedLuaSprite("buttonD", 'virtualpad', 0, 560)
-        addAnimationByPrefix("buttonD", "pressed", "downPress", 0, false)
-        addAnimationByPrefix("buttonD", "idle", "down", 0, false)
-        setObjectCamera("buttonD", 'other')
-        addLuaSprite("buttonD", true)
-        setProperty("buttonD.alpha", 0.5)
-
-        makeAnimatedLuaSprite("buttonU", 'virtualpad', 0, 430)
-        addAnimationByPrefix("buttonU", "pressed", "upPress", 0, false)
-        addAnimationByPrefix("buttonU", "idle", "up", 0, false)
-        setObjectCamera("buttonU", 'other')
-        addLuaSprite("buttonU", true)
-        setProperty("buttonU.alpha", 0.5)
-
-        makeAnimatedLuaSprite("buttonA", 'virtualpad', 1155, 560)
-        addAnimationByPrefix("buttonA", "pressed", "aPress", 10, false)
-        addAnimationByPrefix("buttonA", "idle", "a", 0, false)
-        setObjectCamera("buttonA", 'other')
-        addLuaSprite("buttonA", true)
-        setProperty("buttonA.alpha", 0.5)
     end
 end
 
@@ -234,10 +304,8 @@ function onCustomSubstateUpdatePost(name, elapsed)
         setProperty("compo.visible", true)
         setProperty("barr.visible", true)
         setProperty("balls.visible", true)
+        setProperty("balls.visible", true)
         setProperty("noWay.visible", true)
-        setProperty("buttonD.visible", true)
-        setProperty("buttonU.visible", true)
-        setProperty("buttonA.visible", true)
 
         setProperty("compo.x", getProperty("compo.x") + 1)
         setProperty("morri.x", getProperty("morri.x") - 1)
@@ -288,16 +356,12 @@ function onCustomSubstateUpdatePost(name, elapsed)
             pos = 2
         end
 
-        if getMouseX('camOther') > getProperty('buttonD.x') and getMouseY('camOther') > getProperty('buttonD.y') and getMouseX('camOther') < getProperty('buttonD.x') + getProperty('buttonD.width') and getMouseY('camOther') < getProperty('buttonD.y') + getProperty('buttonD.height') and mouseReleased() then
+        if keyboardJustPressed("S") or keyboardJustPressed("DOWN") then
             pos = pos + 1
             playSound("Metronome_Tick", 0.5, 'tick')
-            objectPlayAnimation("buttonD", "pressed")
-            runTimer("reset", 0.1)
-        elseif getMouseX('camOther') > getProperty('buttonU.x') and getMouseY('camOther') > getProperty('buttonU.y') and getMouseX('camOther') < getProperty('buttonU.x') + getProperty('buttonU.width') and getMouseY('camOther') < getProperty('buttonU.y') + getProperty('buttonU.height') and mouseReleased() then
+        elseif keyboardJustPressed("W") or keyboardJustPressed("UP") then
             pos = pos - 1
             playSound("Metronome_Tick", 0.5, 'tick')
-            objectPlayAnimation("buttonU", "pressed")
-            runTimer("reset", 0.1)
         end
 
         if shadersEnabled then
@@ -308,7 +372,7 @@ function onCustomSubstateUpdatePost(name, elapsed)
         setShaderFloat('camShader', 'iTime', os.clock())
     end
 
-        if getMouseX('camOther') > getProperty('buttonA.x') and getMouseY('camOther') > getProperty('buttonA.y') and getMouseX('camOther') < getProperty('buttonA.x') + getProperty('buttonA.width') and getMouseY('camOther') < getProperty('buttonA.y') + getProperty('buttonA.height') and mouseReleased() and pos == 0 then
+        if keyJustPressed("accept") and pos == 0 then
             closeCustomSubstate()
             stopSound("bah")
             setProperty("escu.visible", false)
@@ -322,20 +386,15 @@ function onCustomSubstateUpdatePost(name, elapsed)
             setProperty("balls.visible", false)
             setProperty("morri.visible", false)
             setProperty("noWay.visible", false)
-            setProperty("buttonD.visible", false)
-            setProperty("buttonU.visible", false)
-            setProperty("buttonA.visible", false)
-            setPropertyFromClass("flixel.FlxG", "mouse.visible", false)
-            objectPlayAnimation("buttonA", "pressed")
             runHaxeCode([[
                 FlxG.game.setFilters([]);
             ]])
-        elseif getMouseX('camOther') > getProperty('buttonA.x') and getMouseY('camOther') > getProperty('buttonA.y') and getMouseX('camOther') < getProperty('buttonA.x') + getProperty('buttonA.width') and getMouseY('camOther') < getProperty('buttonA.y') + getProperty('buttonA.height') and mouseReleased() and pos == 1 then
+            setWindowColorMode(false)
+            redrawWindowHeader();
+        elseif keyJustPressed('accept') and pos == 1 then
             restartSong(false)
-            objectPlayAnimation("buttonA", "pressed")
-        elseif getMouseX('camOther') > getProperty('buttonA.x') and getMouseY('camOther') > getProperty('buttonA.y') and getMouseX('camOther') < getProperty('buttonA.x') + getProperty('buttonA.width') and getMouseY('camOther') < getProperty('buttonA.y') + getProperty('buttonA.height') and mouseReleased() and pos == 2 then
+        elseif keyJustPressed('accept') and pos == 2 then
             exitSong(false)
-            objectPlayAnimation("buttonA", "pressed")
         end
     end
 end
@@ -348,12 +407,25 @@ function onSoundFinished(tag)
 end
 
 function onDestroy()
-    setDataFromSave("giveUp", "relax", 0)
+    setWindowColorMode(false)
+	redrawWindowHeader();
     if shadersEnabled then
         runHaxeCode([[
             FlxG.game.setFilters([]);
         ]])
     end
+end
+
+function onCountdownStarted()
+    
+    setWindowColorMode(false)
+	redrawWindowHeader();
+end
+
+function onGameOver()
+    
+    setWindowColorMode(true)
+	redrawWindowHeader();
 end
 
 function onSectionHit()

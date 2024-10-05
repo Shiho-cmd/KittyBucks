@@ -3,8 +3,16 @@
     "kittyjam": ["1", "33"],
     "kittyjamErect": ["2", "54"],
     "supernova": ["1", "2"],
+    "credits": ["0", "45"],
 
     // rgb das notas
     "purple": ["F634B5", "FFFFFF", "7A255C"],
-    "black": ["52465E", "FFFFFF", "2D1C3F"]
+    "black": ["52465E", "FFFFFF", "2D1C3F"],
+
+    // coisos dos créditos
+    // Nome, texto pituco, texto grande, cor, links(pode ser mais de 1)
+    "shihoCre": ["Shiho", "\"ma balls itch.\"", "Programei e chartei guys é isso \n socorro eu num sei o que escrever", "49AFE6", "https://xdshiho.tumblr.com"],
+    "lizCre": ["LizNaithy", "lorem ipsum dolor sit amet", "lorem ipsum dolor sit amet", "6A2727", "https://linktr.ee/LizNaithy"],
+    "ukiyoCre": ["UKiYO", "\"o golpe ta aí, cai quem quer\"", "lorem ipsum dolor sit amet", "FFFFFF", "https://linktr.ee/ukiyoestrela"],
+    "natzyCre": ["Natzy", "lorem ipsum dolor sit amet", "lorem ipsum dolor sit amet", "6844AF", "https://bsky.app/profile/n4tzy69.bsky.social"]
 }

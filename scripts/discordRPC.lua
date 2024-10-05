@@ -18,6 +18,11 @@ function onCreate()
         min = parsed.supernova[1]
         sec = parsed.supernova[2]
     end
+
+    if songName == 'credits' then
+        min = parsed.credits[1]
+        sec = parsed.credits[2]
+    end
     
     makeLuaText("socorro")
     addLuaText("socorro")
