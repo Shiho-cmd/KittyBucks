@@ -356,17 +356,16 @@ function onCustomSubstateUpdatePost(name, elapsed)
             pos = 2
         end
 
-        if keyboardJustPressed("S") or keyboardJustPressed("DOWN") then
+        if keyboardJustPressed("S") or keyboardJustPressed("DOWN") or gamepadJustPressed(1, "DPAD_DOWN") or gamepadJustPressed(1, "LEFT_STICK_DIGITAL_DOWN") then
             pos = pos + 1
             playSound("Metronome_Tick", 0.5, 'tick')
-        elseif keyboardJustPressed("W") or keyboardJustPressed("UP") then
+        elseif keyboardJustPressed("W") or keyboardJustPressed("UP") or gamepadJustPressed(1, "DPAD_UP") or gamepadJustPressed(1, "LEFT_STICK_DIGITAL_UP") then
             pos = pos - 1
             playSound("Metronome_Tick", 0.5, 'tick')
         end
 
         if shadersEnabled then
-            runHaxeCode([[
-                trace(game.getLuaObject('camShader').shader + ' Has Been Loaded!');                      
+            runHaxeCode([[                    
                 FlxG.game.setFilters([new ShaderFilter(game.getLuaObject('camShader').shader)]);
             ]])
         setShaderFloat('camShader', 'iTime', os.clock())

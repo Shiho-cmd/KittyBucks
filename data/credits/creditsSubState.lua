@@ -153,9 +153,9 @@ function onUpdate(elapsed)
         pos = 3
     end
 
-    if keyboardJustPressed("D") or keyboardJustPressed("RIGHT") then
+    if keyboardJustPressed("D") or keyboardJustPressed("RIGHT") or gamepadJustPressed(1, "DPAD_RIGHT") or gamepadJustPressed(1, "LEFT_STICK_DIGITAL_RIGHT") then
         pos = pos + 1
-    elseif keyboardJustPressed("A") or keyboardJustPressed("LEFT") then
+    elseif keyboardJustPressed("A") or keyboardJustPressed("LEFT") or gamepadJustPressed(1, "DPAD_LEFT") or gamepadJustPressed(1, "LEFT_STICK_DIGITAL_LEFT") then
         pos = pos - 1
     end
     
