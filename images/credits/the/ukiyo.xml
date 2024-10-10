@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="ukiyo.png">
+<SubTexture name="nom0000" x="155" y="0" width="168" height="215" frameX="-12" frameY="-40" frameWidth="180" frameHeight="284" />
+<SubTexture name="nom0001" x="323" y="0" width="168" height="215" frameX="-12" frameY="-40" frameWidth="180" frameHeight="284" />
+<SubTexture name="idle0000" x="0" y="0" width="155" height="216" frameX="-10" frameY="-40" frameWidth="181" frameHeight="284" />
+</TextureAtlas>

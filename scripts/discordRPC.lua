@@ -4,6 +4,8 @@ end
 
 local parsed = parseJson('data/stuff.json')
 
+local miniIcon = 'mini-icon-kitty'
+
 function onCreate()
 
     if songName == 'KittyJam' and difficultyName == 'buck' then
@@ -28,8 +30,8 @@ function onCreate()
     addLuaText("socorro")
     setProperty("socorro.visible", false)
 
-    if botPlay then
-        makeLuaText("presence", 'Playing: '..songName..' '..'('..difficultyName..')'..' With BotPlay on (skill issue)')
+    if songName == 'credits' then
+        makeLuaText("presence", 'In the credits menu')
         addLuaText("presence")
         setProperty("presence.visible", false)
     else
@@ -42,7 +44,7 @@ end
 function onUpdate(elapsed)
 
     changeDiscordClientID('1246615253203288165')
-    changeDiscordPresence(getTextString("presence"), getTextString("socorro")..' Left', "mini-icon-kitty")
+    changeDiscordPresence(getTextString("presence"), getTextString("socorro"), miniIcon)
 end
 
 function onSongStart()
@@ -77,5 +79,10 @@ end
 
 function onUpdatePost()
 
-    setTextString('socorro', min .. ':' .. sec)
+    if songName == 'credits' then
+        setTextString("socorro", "")
+        miniIcon = 'mini-icon-pog'
+    else
+        setTextString('socorro', min .. ':' .. sec..' Left')
+    end
 end
