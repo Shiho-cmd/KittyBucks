@@ -1,9 +1,4 @@
-Sets Camera Zoom
+zooooooooooooom jruvdu
 
-Value 1: Cam zoom
-
-Value 2: if blank, it will smoothly zoom regularly,
-otherwise it will do an instant zoom
-
-(eu roubei esse script de algum lugar num sei onde
-desculpa individuo do script original...)
+value 1: valor, câmera
+value 2: velocidade, ease

@@ -1,17 +1,16 @@
 function onEvent(name,value1,value2)
 
     if name == "Set Cam Zoom" then
+
+	split = stringSplit(value2, ", ")
+	split2 = stringSplit(value1, ", ")
         
-        if value2 == '' then
-      	  setProperty("defaultCamZoom",value1)
-	debugPrint(value2 )
+    if value2 == '' then
+		setProperty("defaultCamZoom", value1)
 	else
-            doTweenZoom('camz','camGame',tonumber(value1),tonumber(value2),'sineInOut')
+		doTweenZoom('camz', split2[2], tonumber(split2[1]), tonumber(split[1]), split[2])
+		end
 	end
-            
-    end
-
-
 end
 
 function onTweenCompleted(name)
@@ -19,9 +18,6 @@ function onTweenCompleted(name)
 if name == 'camz' then
 
 
-      	 setProperty("defaultCamZoom",getProperty('camGame.zoom')) 
-
-end
-
-
+	setProperty("defaultCamZoom",getProperty('camGame.zoom')) 
+	end
 end

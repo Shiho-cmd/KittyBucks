@@ -1,0 +1,6 @@
+foca a câmera num personagem especifico ou 
+centralizar a câmera
+
+value 1: quem deve focar (bf, dad, center)
+value 2: velocidade (deixe vazio pra usar/voltar 
+a velocidade padrão)

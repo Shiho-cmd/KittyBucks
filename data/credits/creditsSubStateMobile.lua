@@ -26,8 +26,14 @@ local slctPos = 0
 
 local customStep = 0
 
+local stickerTag = 'shi'
+local curSticker = 'stickerPro'
+local stickerScale = 1.2
+local stickerScaleOg = 1
+
 function onCreate()
         
+    --textos
     makeLuaText("name", creditsName, 0, 0.0, 69)
     makeLuaText("shortTxt", creditsShortTxt, 0, 0.0, 0.0)
     makeLuaText("longTxt", creditsLongTxt, 0, 700, 0.0)
@@ -62,6 +68,7 @@ function onCreate()
     setTextSize("placeholder", 20)
     setTextBorder("placeholder", 100, "000000")]]
 
+    --bg
     makeLuaSprite("back", 'menuDesat', 0, 0)
     setObjectCamera("back", 'hud')
     addLuaSprite("back", false)
@@ -77,6 +84,7 @@ function onCreate()
     addLuaSprite("liz", false)
     setProperty("liz.visible", false)]]
 
+    --os cabas
     makeAnimatedLuaSprite("liz", 'credits/the/liz', 100, 180)
     addAnimationByPrefix("liz", "idle", "idle", 5, true)
     setObjectCamera("liz", 'other')
@@ -101,6 +109,7 @@ function onCreate()
     setProperty('shi.antialiasing', false)
     addLuaSprite("shi", false)
 
+    --elementos doidos
     makeLuaSprite("cut")
     makeGraphic("cut", screenWidth, screenHeight, '000000')
     setObjectCamera("cut", 'other')
@@ -125,6 +134,7 @@ function onCreate()
     setScrollFactor('barraixo', 0, 0)
     setObjectCamera('barraixo', 'other')
 
+    --logos links shits bitches idk man i'm tired it's almost 2am
     makeLuaSprite("stuff", 'credits/thing', -50, 599)
     setObjectCamera("stuff", 'other')
     addLuaSprite("stuff", false)
@@ -147,35 +157,38 @@ function onCreate()
     setProperty("sky.visible", false)
     addLuaSprite("sky", false)
 
-    
-    makeLuaSprite("stickerCom", 'credits/stickers/composer', 0, 77)
+    -- stickers
+    makeLuaSprite("stickerCom", 'credits/stickers/composer', 980, 77)
     setObjectCamera("stickerCom", 'other')
     scaleObject("stickerCom", 0.8, 0.8)
     addLuaSprite("stickerCom", false)
     setProperty("stickerCom.visible", false)
 
-    makeLuaSprite("stickerPro", 'credits/stickers/programmer', 0, 100)
+    makeLuaSprite("stickerPro", 'credits/stickers/programmer', 850, 100)
     setObjectCamera("stickerPro", 'other')
     addLuaSprite("stickerPro", false)
-    setProperty("stickerPro.visible", fasle)
+    setProperty("stickerPro.visible", false)
 
-    makeLuaSprite("stickerArt", 'credits/stickers/artist', 320, 80)
+    makeLuaSprite("stickerArt", 'credits/stickers/artist', 1180, 80)
     setObjectCamera("stickerArt", 'other')
     scaleObject("stickerArt", 0.9, 0.9)
     addLuaSprite("stickerArt", false)
     setProperty("stickerArt.visible", false)
 
-    makeLuaSprite("stickerCha", 'credits/stickers/charter', 120, 80)
+    makeLuaSprite("stickerCha", 'credits/stickers/charter', 970, 80)
     setObjectCamera("stickerCha", 'other')
     scaleObject("stickerCha", 0.5, 0.5)
     addLuaSprite("stickerCha", false)
     setProperty("stickerCha.visible", false)
 
+    --mouse
     setPropertyFromClass("flixel.FlxG", "mouse.visible", true)
 
+    --timers
     runTimer("resetarMeuPau", 0.3)
     runTimer("ui", 1)
 
+    --MORRAM!!!!!!!!!!!!!!!!1111111111
     setProperty("botplayTxt.visible", false)
     setProperty("iconP1.visible", false)
     setProperty("iconP2.visible", false)
@@ -183,8 +196,10 @@ function onCreate()
     setProperty("healthBar.visible", false)
     setProperty("camGame.visible", false)
 
+    --i'm going to hit my box till i kill myself today at 11pm
     onCreateHitbox()
 
+    --precacheeeeeeeeee
     precacheImage("credits/stickers/charter", false)
     precacheImage("credits/stickers/artist", false)
     precacheImage("credits/stickers/programmer", false)
@@ -197,18 +212,21 @@ end
 
 function onCreateHitbox() -- só pra ser bonitnho
 
+    --hitbox shiho
     makeLuaSprite("box", '', 170, 260)
     makeGraphic("box", 223, 200, 'FFFFFF')
     setProperty("box.alpha", 0)
     setObjectCamera("box", 'other')
     addLuaSprite("box", true)
 
+    --hitbox logo
     makeLuaSprite("boxLogo", '', 10, 601)
     makeGraphic("boxLogo", 50, 50, 'FFFFFF')
     setProperty("boxLogo.alpha", 0)
     setObjectCamera("boxLogo", 'other')
     addLuaSprite("boxLogo", true)
 
+    --selection box
     makeLuaSprite("select", 'credits/selectionBox')
     setObjectCamera("select", 'other')
     addLuaSprite("select", true)
@@ -229,12 +247,16 @@ function onUpdate(elapsed)
     setShaderFloat('back', 'frequency', 8)
     setShaderFloat('back', 'wamplitude', 0.05)
 
-    if pos == 0 then
+    if pos == 0 then -- shiho
         creditsName = parsed.shihoCre[1]
         creditsShortTxt = parsed.shihoCre[2]
         creditsLongTxt = parsed.shihoCre[3]
         color = parsed.shihoCre[4]
         link = parsed.shihoCre[5]
+        stickerTag = 'shi'
+        curSticker = 'stickerPro'
+        stickerScale = 1.2
+        stickerScaleOg = 1
         setProperty("shi.visible", true)
         setProperty("ukiyo.visible", false)
         setProperty("liz.visible", false)
@@ -243,11 +265,10 @@ function onUpdate(elapsed)
         setProperty("tumb.visible", true)
         setProperty("tree.visible", false)
         setProperty("sky.visible", false)
-        --[[setProperty("stickerPro.visible", true)
-        setProperty("stickerCha.visible", false)
-        setProperty("stickerArt.visible", false)
+        setProperty("stickerPro.visible", true)
+        --[[setProperty("stickerCha.visible", true)
+        setProperty("stickerArt.visible", true)
         setProperty("stickerCom.visible", false)]]
-        setProperty("stickerArt.x", 320)
         doTweenColor("corYay", "back", color, 0.5, "linear")
         setTextString("name", creditsName)
         setTextString("shortTxt", creditsShortTxt)
@@ -255,12 +276,16 @@ function onUpdate(elapsed)
         screenCenter("name", 'x')
         screenCenter("shortTxt", 'x')
         setProperty("longTxt.x", 570)
-    elseif pos == 1 then
+    elseif pos == 1 then -- liz
         creditsName = parsed.lizCre[1]
         creditsShortTxt = parsed.lizCre[2]
         creditsLongTxt = parsed.lizCre[3]
         color = parsed.lizCre[4]
         link = parsed.lizCre[5]
+        stickerTag = 'liz'
+        curSticker = 'stickerCom'
+        stickerScale = 1.2
+        stickerScaleOg = 0.8
         setProperty("shi.visible", false)
         setProperty("ukiyo.visible", false)
         setProperty("liz.visible", true)
@@ -272,8 +297,7 @@ function onUpdate(elapsed)
         --[[setProperty("stickerPro.visible", false)
         setProperty("stickerCha.visible", false)
         setProperty("stickerCom.visible", true)
-        setProperty("stickerArt.visible", false)]]
-        setProperty("stickerArt.x", 190)
+        setProperty("stickerArt.visible", true)]]
         doTweenColor("corYay", "back", color, 0.5, "linear")
         setTextString("name", creditsName)
         setTextString("shortTxt", creditsShortTxt)
@@ -281,12 +305,16 @@ function onUpdate(elapsed)
         screenCenter("name", 'x')
         screenCenter("shortTxt", 'x')
         setProperty("longTxt.x", 770)
-    elseif pos == 2 then
+    elseif pos == 2 then -- ukiyo
         creditsName = parsed.ukiyoCre[1]
         creditsShortTxt = parsed.ukiyoCre[2]
         creditsLongTxt = parsed.ukiyoCre[3]
         color = parsed.ukiyoCre[4]
         link = parsed.ukiyoCre[5]
+        stickerTag = 'uki'
+        curSticker = 'stickerCom'
+        stickerScale = 1.2
+        stickerScaleOg = 0.8
         setProperty("shi.visible", false)
         setProperty("ukiyo.visible", true)
         setProperty("liz.visible", false)
@@ -297,9 +325,8 @@ function onUpdate(elapsed)
         setProperty("sky.visible", false)
         --[[setProperty("stickerPro.visible", false)
         setProperty("stickerCha.visible", false)
-        setProperty("stickerCom.visible", true)]]
-        setProperty("stickerArt.visible", false)
-        setProperty("stickerArt.x", 190)
+        setProperty("stickerCom.visible", true)
+        setProperty("stickerArt.visible", true)]]
         doTweenColor("corYay", "back", color, 0.5, "linear")
         setTextString("name", creditsName)
         setTextString("shortTxt", creditsShortTxt)
@@ -307,12 +334,16 @@ function onUpdate(elapsed)
         screenCenter("name", 'x')
         screenCenter("shortTxt", 'x')
         setProperty("longTxt.x", 770)
-    elseif pos == 3 then
+    elseif pos == 3 then -- natzy
         creditsName = parsed.natzyCre[1]
         creditsShortTxt = parsed.natzyCre[2]
         creditsLongTxt = parsed.natzyCre[3]
         color = parsed.natzyCre[4]
         link = parsed.natzyCre[5]
+        stickerTag = 'nat'
+        curSticker = 'stickerArt'
+        stickerScale = 1.1
+        stickerScaleOg = 0.9
         setProperty("shi.visible", false)
         setProperty("ukiyo.visible", false)
         setProperty("liz.visible", false)
@@ -323,8 +354,8 @@ function onUpdate(elapsed)
         setProperty("sky.visible", true)
         --[[setProperty("stickerPro.visible", false)
         setProperty("stickerCha.visible", false)
-        setProperty("stickerCom.visible", false)]]
-        setProperty("stickerArt.x", 0)
+        setProperty("stickerCom.visible", false)
+        setProperty("stickerArt.visible", true)]]
         doTweenColor("corYay", "back", color, 0.5, "linear")
         setTextString("name", creditsName)
         setTextString("shortTxt", creditsShortTxt)
@@ -359,45 +390,21 @@ function onUpdate(elapsed)
     if keyboardJustPressed("D") or keyboardJustPressed("RIGHT") then
         pos = pos + 1
         stopSound("rag")
-        playSound("credits/stickers/keyClick"..math.random(1, 9), 1, 'clicker')
         objectPlayAnimation("ukiyo", "idle", true)
-        setProperty("stickerPro.scale.x", 1.2)
-        setProperty("stickerPro.scale.y", 1.2)
-        doTweenX("x", "stickerPro.scale", 1, 0.5, "sineOut")
-        doTweenY("y", "stickerPro.scale", 1, 0.5, "sineOut")
-        --[[setProperty("stickerArt.scale.x", 1.2)
-        setProperty("stickerArt.scale.y", 1.2)
-        doTweenX("x3", "stickerArt.scale", 0.9, 0.5, "sineOut")
-        doTweenY("y3", "stickerArt.scale", 0.9, 0.5, "sineOut")
-        setProperty("stickerCha.scale.x", 0.7)
-        setProperty("stickerCha.scale.y", 0.7)
-        doTweenX("x2", "stickerCha.scale", 0.5, 0.5, "sineOut")
-        doTweenY("y2", "stickerCha.scale", 0.5, 0.5, "sineOut")
-        setProperty("stickerPro.scale.x", 1.2)
-        setProperty("stickerPro.scale.y", 1.2)
-        doTweenX("x", "stickerPro.scale", 1, 0.5, "sineOut")
-        doTweenY("y", "stickerPro.scale", 1, 0.5, "sineOut")]]
+        playSound("credits/stickers/keyClick1", 1, stickerTag)
+        setProperty(curSticker..".scale.x", stickerScale)
+        setProperty(curSticker..".scale.y", stickerScale)
+        doTweenX("x", curSticker..".scale", stickerScaleOg, 0.5, "sineOut")
+        doTweenY("y", curSticker..".scale", stickerScaleOg, 0.5, "sineOut")
     elseif keyboardJustPressed("A") or keyboardJustPressed("LEFT") then
         pos = pos - 1
         stopSound("rag")
-        playSound("credits/stickers/keyClick"..math.random(1, 9), 1, 'clicker')
-        setProperty("stickerPro.scale.x", 1.2)
-        setProperty("stickerPro.scale.y", 1.2)
-        doTweenX("x", "stickerPro.scale", 1, 0.5, "sineOut")
-        doTweenY("y", "stickerPro.scale", 1, 0.5, "sineOut")
         objectPlayAnimation("ukiyo", "idle", true)
-        --[[setProperty("stickerArt.scale.x", 1.2)
-        setProperty("stickerArt.scale.y", 1.2)
-        doTweenX("x3", "stickerArt.scale", 0.9, 0.5, "sineOut")
-        doTweenY("y3", "stickerArt.scale", 0.9, 0.5, "sineOut")
-        setProperty("stickerCha.scale.x", 0.6)
-        setProperty("stickerCha.scale.y", 0.6)
-        doTweenX("x2", "stickerCha.scale", 0.5, 0.5, "sineOut")
-        doTweenY("y2", "stickerCha.scale", 0.5, 0.5, "sineOut")
-        setProperty("stickerPro.scale.x", 1.2)
-        setProperty("stickerPro.scale.y", 1.2)
-        doTweenX("x", "stickerPro.scale", 1, 0.5, "sineOut")
-        doTweenY("y", "stickerPro.scale", 1, 0.5, "sineOut")]]
+        playSound("credits/stickers/keyClick1", 1, stickerTag)
+        setProperty(curSticker..".scale.x", stickerScale)
+        setProperty(curSticker..".scale.y", stickerScale)
+        doTweenX("x", curSticker..".scale", stickerScalOg, 0.5, "sineOut")
+        doTweenY("y", curSticker..".scale", stickerScaleOg, 0.5, "sineOut")
     end
         
     if keyJustPressed('back') then
@@ -434,18 +441,18 @@ function onTimerCompleted(tag, loops, loopsLeft)
         runTimer("ain", 1.8)
         debugPrint(getTextString("coisi"))
     elseif tag == 'ain' then
-        playSound("credits/light_turn_on", 1)
-        setProperty("stickerPro.visible", true)
+        playSound("credits/light_turn_on", 0)
+        --[[setProperty("stickerPro.visible", true)
         setProperty("stickerPro.scale.x", 1.2)
         setProperty("stickerPro.scale.y", 1.2)
         doTweenX("x", "stickerPro.scale", 1, 0.5, "sineOut")
         doTweenY("y", "stickerPro.scale", 1, 0.5, "sineOut")
-        playSound("credits/stickers/keyClick"..math.random(1, 9), 1, 'click')
+        playSound("credits/stickers/keyClick1", 1, 'click')]]
         cameraFlash("other", "FFFFFF", 1, true)
         setObjectCamera("cut", 'hud')
         setProperty("cut.alpha", 0.3)
         playSound("credits/thank_you_for_playing", 0, 'music')
-        soundFadeIn("music", 2, 0, 1)
+        soundFadeIn("music", 2, 0, 0)
         removeLuaText("coisi", true)
     end
 end
@@ -467,34 +474,34 @@ end
 function onSoundFinished(tag)
         
     if tag == 'music' then
-        playSound("credits/thank_you_for_playing", 1, 'music')
-    elseif tag == 'click' then
+        playSound("credits/thank_you_for_playing", 0, 'music')
+    elseif tag == 'shi' then
         setProperty("stickerCha.visible", true)
         setProperty("stickerCha.scale.x", 0.6)
         setProperty("stickerCha.scale.y", 0.6)
         doTweenX("x2", "stickerCha.scale", 0.5, 0.5, "sineOut")
         doTweenY("y2", "stickerCha.scale", 0.5, 0.5, "sineOut")
-        playSound("credits/stickers/keyClick"..math.random(1, 9), 1, 'click2')
-    elseif tag == 'click2' then
-        playSound("credits/stickers/keyClick"..math.random(1, 9), 1, 'click3')
+        playSound("credits/stickers/keyClick1", 1, 'shi2')
+    elseif tag == 'shi2' then
+        playSound("credits/stickers/keyClick1", 1, 'shi3')
         setProperty("stickerArt.visible", true)
-        setProperty("stickerArt.scale.x", 1.2)
-        setProperty("stickerArt.scale.y", 1.2)
+        setProperty("stickerArt.scale.x", 1.1)
+        setProperty("stickerArt.scale.y", 1.1)
         doTweenX("x3", "stickerArt.scale", 0.9, 0.5, "sineOut")
         doTweenY("y3", "stickerArt.scale", 0.9, 0.5, "sineOut")
     elseif tag == 'rag' then
         objectPlayAnimation("ukiyo", "idle", true)
     end 
 
-    if tag == 'clicker' and pos == 0 then
-        playSound("credits/stickers/keyClick"..math.random(1, 9), 1, 'clicker2')
+    if tag == 'kms' and pos == 0 then
+        playSound("credits/stickers/keyClick1", 1, 'kys')
         setProperty("stickerCha.visible", true)
         setProperty("stickerCha.scale.x", 0.6)
         setProperty("stickerCha.scale.y", 0.6)
         doTweenX("x2", "stickerCha.scale", 0.5, 0.5, "sineOut")
         doTweenY("y2", "stickerCha.scale", 0.5, 0.5, "sineOut")
-    elseif tag == 'clicker2' then
-        playSound("credits/stickers/keyClick"..math.random(1, 9), 1, 'click3')
+    elseif tag == 'kys' then
+        playSound("credits/stickers/keyClick1", 1, 'clicker')
         setProperty("stickerArt.visible", true)
         setProperty("stickerArt.scale.x", 1.2)
         setProperty("stickerArt.scale.y", 1.2)
