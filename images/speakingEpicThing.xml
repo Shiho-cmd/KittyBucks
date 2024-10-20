@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+-->
+<TextureAtlas imagePath="speakingEpicThing.png" width="392" height="190">
+  <SubTexture name="funny0001" x="0" y="0"  width="227" height="190" frameX="-223" frameY="-39" frameWidth="640" frameHeight="480"/>
+  <SubTexture name="funny0002" x="227" y="0"  width="165" height="154" frameX="-223" frameY="-79" frameWidth="640" frameHeight="480"/>
+</TextureAtlas>

@@ -1,103 +1,103 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 12,
-			"name": "idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-11,
 				1
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singUP",
-			"loop": false,
-			"name": "up0"
+			"fps": 12,
+			"name": "up0",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-1,
 				0
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "right0"
+			"fps": 12,
+			"name": "right0",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				2
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "left0"
+			"fps": 12,
+			"name": "left0",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-6,
 				4
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "down0"
+			"fps": 12,
+			"name": "down0",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				20,
 				-39
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singUPmiss",
-			"loop": false,
-			"name": "upmiss"
+			"fps": 12,
+			"name": "upmiss",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-111,
 				-68
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singRIGHTmiss",
-			"loop": false,
-			"name": "rightmiss"
+			"fps": 12,
+			"name": "rightmiss",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				60,
 				-90
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singLEFTmiss",
-			"loop": false,
-			"name": "leftmiss"
+			"fps": 12,
+			"name": "leftmiss",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-10,
 				-80
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singDOWNmiss",
-			"loop": false,
-			"name": "downmiss"
+			"fps": 12,
+			"name": "downmiss",
+			"indices": []
 		}
 	],
 	"vocals_file": "kuromi",
@@ -115,7 +115,7 @@
 		80
 	],
 	"camera_position": [
-		10,
+		0,
 		60
 	],
 	"sing_duration": 4,

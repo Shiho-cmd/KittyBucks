@@ -53,14 +53,14 @@
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singLEFT",
 			"indices": [
 				2,
 				3,
 				4
 			],
-			"fps": 12,
-			"anim": "singLEFT",
-			"loop": false,
 			"name": "left"
 		}
 	],
@@ -68,8 +68,8 @@
 	"no_antialiasing": false,
 	"image": "characters/OlaGata",
 	"position": [
-		-450,
-		180
+		-490,
+		160
 	],
 	"healthicon": "gataemodoidabruh",
 	"flip_x": true,
@@ -79,10 +79,10 @@
 		142
 	],
 	"camera_position": [
-		-80,
-		-20
+		-200,
+		-90
 	],
 	"sing_duration": 4,
-	"scale": 1,
+	"scale": 1.2,
 	"_editor_isPlayer": false
 }

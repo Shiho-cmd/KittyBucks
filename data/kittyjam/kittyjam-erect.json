@@ -4,6 +4,26 @@
 		"player2": "hello-kitty-erect",
 		"events": [
 			[
+				0,
+				[
+					[
+						"fuck",
+						"dad",
+						""
+					]
+				]
+			],
+			[
+				1363.63636363636,
+				[
+					[
+						"fuck",
+						"MORRA",
+						""
+					]
+				]
+			],
+			[
 				1454.54545454545,
 				[
 					[
@@ -444,12 +464,12 @@
 					[
 						"followNotes",
 						"on",
-						"20, 340, 520, 900, 490"
+						"20, 330, 475, 870, 410"
 					],
 					[
 						"Set Property",
 						"cameraSpeed",
-						"1.8"
+						"2"
 					],
 					[
 						"Set Cam Zoom",
@@ -879,7 +899,7 @@
 					[
 						"Set Property",
 						"defaultCamZoom",
-						"0.79"
+						"0.7"
 					],
 					[
 						"Set Property",
@@ -932,6 +952,11 @@
 				59636.3636363637,
 				[
 					[
+						"Set Cam Zoom",
+						"0.8, camGame",
+						"0.5, circOut"
+					],
+					[
 						"Add Camera Zoom",
 						"",
 						""
@@ -945,6 +970,11 @@
 						"Add Camera Zoom",
 						"",
 						""
+					],
+					[
+						"Set Cam Zoom",
+						"0.7, camGame",
+						"0.5, circOut"
 					]
 				]
 			],
@@ -1035,6 +1065,11 @@
 						"Add Camera Zoom",
 						"",
 						""
+					],
+					[
+						"Set Cam Zoom",
+						"0.8, camGame",
+						"0.5, circOut"
 					]
 				]
 			],
@@ -1045,6 +1080,11 @@
 						"Add Camera Zoom",
 						"",
 						""
+					],
+					[
+						"Set Cam Zoom",
+						"0.7, camGame",
+						"0.5, circOut"
 					]
 				]
 			],
@@ -1135,6 +1175,11 @@
 						"Add Camera Zoom",
 						"",
 						""
+					],
+					[
+						"Set Cam Zoom",
+						"0.8, camGame",
+						"0.5, circOut"
 					]
 				]
 			],
@@ -1145,6 +1190,11 @@
 						"Add Camera Zoom",
 						"",
 						""
+					],
+					[
+						"Set Cam Zoom",
+						"0.7, camGame",
+						"0.5, circOut"
 					]
 				]
 			],
@@ -1235,6 +1285,11 @@
 						"Add Camera Zoom",
 						"",
 						""
+					],
+					[
+						"Set Cam Zoom",
+						"0.8, camGame",
+						"0.5, circOut"
 					]
 				]
 			],
@@ -1245,6 +1300,11 @@
 						"Add Camera Zoom",
 						"",
 						""
+					],
+					[
+						"Set Cam Zoom",
+						"0.7, camGame",
+						"0.5, circOut"
 					]
 				]
 			],
@@ -1263,18 +1323,23 @@
 				[
 					[
 						"Set Cam Zoom",
-						"1, camGame",
+						"0.88, camGame",
 						"0.8, quartOut"
 					],
 					[
 						"followNotes",
 						"on",
-						"15, 340, 520, 900, 490"
+						"15, 330, 475, 870, 410"
 					],
 					[
 						"Set Property",
 						"cameraSpeed",
 						"1.8"
+					],
+					[
+						"fuck",
+						"dad",
+						""
 					]
 				]
 			],
@@ -1675,6 +1740,11 @@
 						"Add Camera Zoom",
 						"",
 						""
+					],
+					[
+						"fuck",
+						"bf",
+						""
 					]
 				]
 			],
@@ -2054,12 +2124,37 @@
 					[
 						"Set Property",
 						"defaultCamZoom",
-						"1.2"
+						"1"
 					],
 					[
 						"Set Property",
 						"cameraSpeed",
 						"2"
+					]
+				]
+			],
+			[
+				93090.9090909091,
+				[
+					[
+						"fuck",
+						"MORRA",
+						""
+					]
+				]
+			],
+			[
+				93090.9090909091,
+				[
+					[
+						"cum",
+						"on",
+						"pode :3"
+					],
+					[
+						"bars",
+						"on",
+						"0.5, quartOut"
 					]
 				]
 			],
@@ -2473,8 +2568,23 @@
 					],
 					[
 						"Set Cam Zoom",
-						"0.95, camGame",
-						"0.6, sineInOut"
+						"0.9, camGame",
+						"2.5, quartOut"
+					]
+				]
+			],
+			[
+				116363.636363636,
+				[
+					[
+						"cum",
+						"off",
+						"num pode mais >:("
+					],
+					[
+						"bars",
+						"off",
+						"0.5, quartOut"
 					]
 				]
 			],
@@ -2654,12 +2764,27 @@
 				]
 			],
 			[
+				127090.909090909,
+				[
+					[
+						"Set Cam Zoom",
+						"1.2 camGame",
+						"0.5, circOut"
+					]
+				]
+			],
+			[
 				127272.727272727,
 				[
 					[
 						"Add Camera Zoom",
 						"",
 						""
+					],
+					[
+						"Set Cam Zoom",
+						"1, camGame",
+						"0.5, circOut"
 					]
 				]
 			],
@@ -2668,7 +2793,17 @@
 				[
 					[
 						"Set Cam Zoom",
-						"0.95, camGame",
+						"1.1, camGame",
+						"0.5, circOut"
+					]
+				]
+			],
+			[
+				127636.363636364,
+				[
+					[
+						"Set Cam Zoom",
+						"0.9, camGame",
 						"0.5, circOut"
 					]
 				]
@@ -2678,7 +2813,7 @@
 				[
 					[
 						"Set Cam Zoom",
-						"1, camGame",
+						"1.1, camGame",
 						"0.5, circOut"
 					]
 				]
@@ -2699,7 +2834,7 @@
 					[
 						"followNotes",
 						"on",
-						"20, 340, 520, 900, 490"
+						"20, 330, 475, 870, 410"
 					],
 					[
 						"bars",
@@ -2898,8 +3033,13 @@
 				[
 					[
 						"Set Cam Zoom",
-						"0.79, camGame",
+						"0.7, camGame",
 						"0.5, expoOut"
+					],
+					[
+						"bitch",
+						"0",
+						""
 					]
 				]
 			],
@@ -8458,6 +8598,12 @@
 						166757.575757576,
 						2,
 						0
+					],
+					[
+						167181.818181818,
+						1,
+						0,
+						"No Animation"
 					]
 				],
 				"sectionBeats": 4,
@@ -8473,6 +8619,60 @@
 						168045.454545454,
 						1,
 						0
+					],
+					[
+						167340.909090909,
+						3,
+						0,
+						"No Animation"
+					],
+					[
+						167507.575757576,
+						0,
+						0,
+						"No Animation"
+					],
+					[
+						167621.212121212,
+						2,
+						0,
+						"No Animation"
+					],
+					[
+						167757.575757576,
+						3,
+						0,
+						"No Animation"
+					],
+					[
+						167878.787878788,
+						0,
+						0,
+						"No Animation"
+					],
+					[
+						168068.181818182,
+						2,
+						0,
+						"No Animation"
+					],
+					[
+						168295.454545454,
+						0,
+						0,
+						"No Animation"
+					],
+					[
+						168492.424242424,
+						2,
+						0,
+						"No Animation"
+					],
+					[
+						168704.545454545,
+						1,
+						0,
+						"No Animation"
 					]
 				],
 				"sectionBeats": 4,
@@ -8503,6 +8703,60 @@
 						169795.454545454,
 						2,
 						0
+					],
+					[
+						168856.06060606,
+						3,
+						0,
+						"No Animation"
+					],
+					[
+						168992.424242424,
+						0,
+						0,
+						"No Animation"
+					],
+					[
+						169166.666666666,
+						2,
+						0,
+						"No Animation"
+					],
+					[
+						169310.606060606,
+						1,
+						0,
+						"No Animation"
+					],
+					[
+						169477.272727272,
+						3,
+						0,
+						"No Animation"
+					],
+					[
+						169598.484848485,
+						0,
+						0,
+						"No Animation"
+					],
+					[
+						169795.454545454,
+						1,
+						0,
+						"No Animation"
+					],
+					[
+						169984.848484848,
+						3,
+						0,
+						"No Animation"
+					],
+					[
+						170159.090909091,
+						0,
+						0,
+						"No Animation"
 					]
 				],
 				"sectionBeats": 4,
@@ -8533,6 +8787,54 @@
 						171393.939393939,
 						3,
 						0
+					],
+					[
+						170325.757575757,
+						2,
+						0,
+						"No Animation"
+					],
+					[
+						170454.545454545,
+						3,
+						0,
+						"No Animation"
+					],
+					[
+						170590.909090909,
+						1,
+						0,
+						"No Animation"
+					],
+					[
+						170772.727272727,
+						2,
+						0,
+						"No Animation"
+					],
+					[
+						170962.121212121,
+						0,
+						0,
+						"No Animation"
+					],
+					[
+						171106.06060606,
+						1,
+						0,
+						"No Animation"
+					],
+					[
+						171287.878787879,
+						2,
+						0,
+						"No Animation"
+					],
+					[
+						171484.848484848,
+						0,
+						0,
+						"No Animation"
 					]
 				],
 				"sectionBeats": 4,
@@ -8568,6 +8870,60 @@
 						172856.06060606,
 						1,
 						0
+					],
+					[
+						171696.969696969,
+						2,
+						0,
+						"No Animation"
+					],
+					[
+						171909.090909091,
+						3,
+						0,
+						"No Animation"
+					],
+					[
+						172045.454545454,
+						1,
+						0,
+						"No Animation"
+					],
+					[
+						172121.212121212,
+						2,
+						0,
+						"No Animation"
+					],
+					[
+						172295.454545454,
+						0,
+						0,
+						"No Animation"
+					],
+					[
+						172537.878787878,
+						3,
+						0,
+						"No Animation"
+					],
+					[
+						172727.272727272,
+						1,
+						0,
+						"No Animation"
+					],
+					[
+						172886.363636363,
+						0,
+						0,
+						"No Animation"
+					],
+					[
+						172962.121212121,
+						2,
+						0,
+						"No Animation"
 					]
 				],
 				"sectionBeats": 4,
@@ -8918,6 +9274,30 @@
 						174172.727272727,
 						3,
 						0
+					],
+					[
+						173219.696969697,
+						0,
+						0,
+						"No Animation"
+					],
+					[
+						173401.515151515,
+						2,
+						0,
+						"No Animation"
+					],
+					[
+						173568.181818182,
+						1,
+						0,
+						"No Animation"
+					],
+					[
+						173765.151515151,
+						3,
+						0,
+						"No Animation"
 					]
 				],
 				"sectionBeats": 4,
@@ -8942,7 +9322,7 @@
 		"song": "KittyJam",
 		"arrowSkin": "",
 		"needsVoices": true,
-		"stage": "bg",
+		"stage": "bg-erect",
 		"bpm": 165,
 		"speed": 3.1,
 		"artist": null
