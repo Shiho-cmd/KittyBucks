@@ -72,7 +72,7 @@ function onTimerCompleted(tag)
     end
 end
 
-function onEndSong()
+function onDestroy()
     
     changeDiscordClientID('863222024192262205')
 end

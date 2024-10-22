@@ -80,9 +80,11 @@ function onCreate()
     addLuaSprite("back", false)
 
     --os cabas
-    makeAnimatedLuaSprite("liz", 'credits/the/liz', 100, 180)
-    addAnimationByPrefix("liz", "idle", "idle", 5, true)
+    makeLuaSprite("liz", '', -30, 140)
+    loadGraphic("liz", "credits/the/liz", 864, 648)
+    addAnimation("liz", "idle", {0, 1}, 5, true)
     setObjectCamera("liz", 'other')
+    scaleObject("liz", 0.7, 0.7)
     addLuaSprite("liz", false)
 
     makeAnimatedLuaSprite("ukiyo", 'credits/the/ukiyo', 150, 200)
@@ -475,7 +477,7 @@ function onTimerCompleted(tag, loops, loopsLeft)
         cameraFlash("other", "FFFFFF", 1, true)
         setObjectCamera("cut", 'hud')
         setProperty("cut.alpha", 0.3)
-        playSound("credits/thank_you_for_playing", 0, 'music')
+        playMusic("credits/thank_you_for_playing", 1)
         soundFadeIn("music", 2, 0, 1)
         removeLuaText("coisi", true)
         cut = false

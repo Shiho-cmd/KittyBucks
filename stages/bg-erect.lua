@@ -1,5 +1,3 @@
-local podeSim = true
-
 function onCreate()
 
     precacheImage("backgrounds/erect/clouds", false)
@@ -37,39 +35,9 @@ function onUpdate(elapsed)
     
     setProperty("timeBar.visible", false)
     setProperty("timeTxt.visible", false)
-
-    local hueValue = -5;
-    local saturationValue = -40;
-    local contrastValue = -25;
-    local brightnessValue = -20;
-
-    if podeSim == true then
-    setSpriteShader('dad', 'adjustColor')
-    setShaderFloat('dad', 'hue', hueValue)
-    setShaderFloat('dad', 'saturation', saturationValue)
-    setShaderFloat('dad', 'contrast', contrastValue)
-    setShaderFloat('dad', 'brightness', brightnessValue)
-    setSpriteShader('boyfriend', 'adjustColor')
-    setShaderFloat('boyfriend', 'hue', hueValue)
-    setShaderFloat('boyfriend', 'saturation', saturationValue)
-    setShaderFloat('boyfriend', 'contrast', contrastValue)
-    setShaderFloat('boyfriend', 'brightness', brightnessValue)
-    else
-        removeSpriteShader("boyfriend")
-        removeSpriteShader("dad")
-    end
 end
 
 function onBeatHit()
     
     objectPlayAnimation("the", "idle", true)
-end
-
-function onSectionHit()
-    
-    if curSection == 64 then
-        podeSim = false
-    elseif curSection == 80 then
-        podeSim = true
-    end
 end

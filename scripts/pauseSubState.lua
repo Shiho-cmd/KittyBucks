@@ -50,6 +50,8 @@ local frases = {
 local special = false
 local relax = 0 -- um dia eu descubro como fazer isso funfar
 local spc = 0
+
+local ogX = -1550
 						    
 -- I DIDN'T CODE THE DARK MODE WINDOW THING IT WAS MADE BY: T-Bar: https://www.youtube.com/@tbar7460 GO SUBSCRIBE TO THEM NOW!!!!!11
 
@@ -157,6 +159,21 @@ function redrawWindowHeader()
 end
 
 function onCreate()
+    
+    if songName == 'credits' then
+        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Credits Menu')
+    else
+        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
+    end
+
+    if difficultyName == 'erect' then
+        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName..' Erect')
+    else
+        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
+    end
+end
+
+function onCreatePost()
 
     local var ShaderName = 'gray'
     if shadersEnabled then  
@@ -166,6 +183,69 @@ function onCreate()
         setSpriteShader('camShader', ShaderName)
     else
         ShaderName = 'none'
+    end
+    
+    makeLuaSprite("escu")
+    makeGraphic("escu", screenWidth, screenHeight, '000000')
+    setObjectCamera("escu", 'other')
+    addLuaSprite("escu")
+    setProperty("escu.alpha", 0)
+    setProperty("escu.visible", false)
+
+    makeLuaText("resu", the[1], 0, 0.0, 0.0)
+    makeLuaText("resta", the[2], 0, 0.0, 0.0)
+    makeLuaText("exit", the[3], 0, 0.0, 0.0)
+    makeLuaText("seta", ">", 0, 0.0, 0.0)
+    makeLuaText("setaa", "<", 0, 0.0, 0.0)
+    setObjectCamera("resu", 'other')
+    setObjectCamera("resta", 'other')
+    setObjectCamera("exit", 'other')
+    setObjectCamera("seta", 'other')
+    setObjectCamera("setaa", 'other')
+    addLuaText("resu")
+    addLuaText("resta")
+    addLuaText("exit")
+    addLuaText("seta")
+    addLuaText("setaa")
+    setTextSize("resu", 50)
+    setTextSize("resta", 50)
+    setTextSize("exit", 50)
+    setTextSize("seta", 50)
+    setTextSize("setaa", 50)
+    screenCenter("resu", 'x')
+    setProperty("resu.y", getGraphicMidpointY("escu") - divi)
+    screenCenter("resta")
+    screenCenter("exit", 'x')
+    setProperty("exit.y", getGraphicMidpointY("escu") + divi - 50)
+
+    makeLuaText("noWay", "- PAUSED -", 0, 0.0, 100)
+    setObjectCamera("noWay", 'other')
+    setTextSize("noWay", 70)
+    screenCenter("noWay", 'x')
+    addLuaText("noWay")
+
+    makeLuaSprite("barr", '', 0, -20)
+    makeGraphic("barr", screenWidth, 25, '000000')
+    setObjectCamera("barr", 'other')
+    addLuaSprite("barr", false)
+
+    makeLuaSprite("balls", '', 0, 740)
+    makeGraphic("balls", screenWidth, 25, '000000')
+    setObjectCamera("balls", 'other')
+    addLuaSprite("balls", false)
+
+    if songName == 'KittyJam' and difficultyName == 'erect' then
+        makeLuaText("compo", songName..' ('..difficultyName..')'.." by: "..getTextFromFile('data/'..songName..'/composer-'..difficultyName..'.txt')..' | Pause Theme by: LizNaithy'..' | Art by: '..getTextFromFile('data/'..songName..'/artist-'..difficultyName..'.txt')..' | Chart and Coding by: '..getTextFromFile('data/'..songName..'/charter-coder-'..difficultyName..'.txt'), 0, -1965, -20)
+        setObjectCamera("compo", 'other')
+        addLuaText("compo")
+        setTextSize("compo", 25)
+        ogX = -1965
+    else
+        makeLuaText("compo", songName..' ('..difficultyName..')'.." by: "..getTextFromFile('data/'..songName..'/composer-'..difficultyName..'.txt')..' | Pause Theme by: LizNaithy'..' | Art by: '..getTextFromFile('data/'..songName..'/artist-'..difficultyName..'.txt')..' | Chart and Coding by: '..getTextFromFile('data/'..songName..'/charter-coder-'..difficultyName..'.txt'), 0, -1550, -20)
+        setObjectCamera("compo", 'other')
+        addLuaText("compo")
+        setTextSize("compo", 25)
+        ogX = -1550
     end
 end
 
@@ -188,6 +268,23 @@ function onTimerCompleted(tag)
 end
 
 function onUpdate(elapsed)
+
+    setProperty("escu.visible", false)
+    setProperty("resu.visible", false)
+    setProperty("resta.visible", false)
+    setProperty("exit.visible", false)
+    setProperty("seta.visible", false)
+    setProperty("setaa.visible", false)
+    setProperty("compo.visible", false)
+    setProperty("barr.visible", false)
+    setProperty("balls.visible", false)
+    setProperty("morri.visible", false)
+    setProperty("noWay.visible", false)
+
+    if songName == 'credits' then
+        setWindowColorMode(true)
+        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Credits Menu')
+    end
     
     if misses == 1 then
         spc = 35
@@ -208,57 +305,12 @@ function onCustomSubstateCreate(name)
     
     if name == 'pauseShit' then
 
-        if special or misses == 1 or relax > 20 then
-            curFrase = frases[spc][1]
-        else
-            curFrase = frases[getRandomInt(0, 33)][1]
-        end
-
         setWindowColorMode(true)
-        redrawWindowHeader();
-        
+        --redrawWindowHeader();
+
         playSound("pause/pause-theme", 0, 'bah')
         soundFadeIn("bah", 5, 0, 0.2)
         characterPlayAnim("boyfriend", "singDOWNmiss", true)
-
-        makeLuaSprite("escu")
-        makeGraphic("escu", screenWidth, screenHeight, '000000')
-        setObjectCamera("escu", 'other')
-        addLuaSprite("escu")
-        setProperty("escu.alpha", 0)
-        setProperty("escu.visible", false)
-
-        makeLuaText("resu", the[1], 0, 0.0, 0.0)
-        makeLuaText("resta", the[2], 0, 0.0, 0.0)
-        makeLuaText("exit", the[3], 0, 0.0, 0.0)
-        makeLuaText("seta", ">", 0, 0.0, 0.0)
-        makeLuaText("setaa", "<", 0, 0.0, 0.0)
-        setObjectCamera("resu", 'other')
-        setObjectCamera("resta", 'other')
-        setObjectCamera("exit", 'other')
-        setObjectCamera("seta", 'other')
-        setObjectCamera("setaa", 'other')
-        addLuaText("resu")
-        addLuaText("resta")
-        addLuaText("exit")
-        addLuaText("seta")
-        addLuaText("setaa")
-        setTextSize("resu", 50)
-        setTextSize("resta", 50)
-        setTextSize("exit", 50)
-        setTextSize("seta", 50)
-        setTextSize("setaa", 50)
-        screenCenter("resu", 'x')
-        setProperty("resu.y", getGraphicMidpointY("escu") - divi)
-        screenCenter("resta")
-        screenCenter("exit", 'x')
-        setProperty("exit.y", getGraphicMidpointY("escu") + divi - 50)
-
-        makeLuaText("compo", songName..' ('..difficultyName..')'.." by: "..getTextFromFile('data/'..songName..'/composer-'..difficultyName..'.txt')..' | Pause Theme by: LizNaithy'..' | Art by: '..getTextFromFile('data/'..songName..'/artist-'..difficultyName..'.txt')..' | Chart and Coding by: '..getTextFromFile('data/'..songName..'/charter-coder-'..difficultyName..'.txt'), 0, -1800, -20)
-        setObjectCamera("compo", 'other')
-        addLuaText("compo")
-        setTextSize("compo", 25)
-        doTweenY("lol", "compo", 0, 0.5, "quartOut")
 
         makeLuaText("morri", curFrase, 0, 1300, 740)
         setObjectCamera("morri", 'other')
@@ -266,26 +318,24 @@ function onCustomSubstateCreate(name)
         setTextSize("morri", 25)
         doTweenY("lololol", "morri", 694.6, 0.5, "quartOut")
 
-        makeLuaText("noWay", "- PAUSED -", 0, 0.0, 100)
-        setObjectCamera("noWay", 'other')
-        setTextSize("noWay", 70)
-        screenCenter("noWay", 'x')
-        addLuaText("noWay")
-
-        makeLuaSprite("barr", '', 0, -20)
-        makeGraphic("barr", screenWidth, 25, '000000')
-        setObjectCamera("barr", 'other')
-        addLuaSprite("barr", false)
-        doTweenY("xd", "barr", 0, 0.5, "quartOut")
-
-        makeLuaSprite("balls", '', 0, 740)
-        makeGraphic("balls", screenWidth, 25, '000000')
-        setObjectCamera("balls", 'other')
-        addLuaSprite("balls", false)
+        doTweenY("lol", "compo", 0, 0.5, "quartOut")
         doTweenY("xdd", "balls", 694.6, 0.5, "quartOut")
+        doTweenY("xd", "barr", 0, 0.5, "quartOut")
 
         --runTimer("beat", 0.85, 0)
         runTimer("boom", 0.5)
+
+        if special or misses == 1 or relax > 20 then
+            curFrase = frases[spc][1]
+        else
+            curFrase = frases[getRandomInt(0, 33)][1]
+        end
+
+        if difficultyName == 'erect' then
+            setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName..' Erect (PAUSED)')
+        else
+            setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName..' (PAUSED)')
+        end
     end
 end
 
@@ -310,7 +360,7 @@ function onCustomSubstateUpdatePost(name, elapsed)
         setProperty("morri.x", getProperty("morri.x") - 1)
         
         if getProperty("compo.x") == screenWidth then
-            setProperty("compo.x", -1800)
+            setProperty("compo.x", ogX)
         end
         
         if getProperty("morri.x") == -450 and getTextString("morri") == frases[2][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[3][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[5][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[7][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[14][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[15][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[16][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[17][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[18][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[22][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[25][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[26][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[28][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[27][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[31][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[32][1] then -- 🤮
@@ -370,7 +420,7 @@ function onCustomSubstateUpdatePost(name, elapsed)
         setShaderFloat('camShader', 'iTime', os.clock())
     end
 
-        if keyJustPressed("accept") and pos == 0 then
+        if keyJustPressed("accept") and pos == 0 and difficultyName == 'erect' then
             closeCustomSubstate()
             stopSound("bah")
             setProperty("escu.visible", false)
@@ -387,8 +437,35 @@ function onCustomSubstateUpdatePost(name, elapsed)
             runHaxeCode([[
                 FlxG.game.setFilters([]);
             ]])
+            setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName..' Erect')
             setWindowColorMode(false)
-            redrawWindowHeader();
+            setProperty("barr.y", -20)
+            setProperty("compo.y", -20)
+            setProperty("balls.y", 740)
+            setProperty("morri.y", 740)
+        elseif keyJustPressed("accept") and pos == 0 then
+            closeCustomSubstate()
+            stopSound("bah")
+            setProperty("escu.visible", false)
+            setProperty("resu.visible", false)
+            setProperty("resta.visible", false)
+            setProperty("exit.visible", false)
+            setProperty("seta.visible", false)
+            setProperty("setaa.visible", false)
+            setProperty("compo.visible", false)
+            setProperty("barr.visible", false)
+            setProperty("balls.visible", false)
+            setProperty("morri.visible", false)
+            setProperty("noWay.visible", false)
+            runHaxeCode([[
+                FlxG.game.setFilters([]);
+            ]])
+            setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
+            setWindowColorMode(false)
+            setProperty("barr.y", -20)
+            setProperty("compo.y", -20)
+            setProperty("balls.y", 740)
+            setProperty("morri.y", 740)
         elseif keyJustPressed('accept') and pos == 1 then
             restartSong(false)
         elseif keyJustPressed('accept') and pos == 2 then
@@ -406,7 +483,7 @@ end
 
 function onDestroy()
     setWindowColorMode(false)
-	redrawWindowHeader();
+    setPropertyFromClass("openfl.Lib", "application.window.title", 'Friday Night Funkin\': Psych Engine')
     if shadersEnabled then
         runHaxeCode([[
             FlxG.game.setFilters([]);
@@ -415,22 +492,26 @@ function onDestroy()
 end
 
 function onCountdownStarted()
-    
-    --[[if songName == 'KittyJam' and difficultyName == 'erect' then
-        setWindowColorMode(true)
-        redrawWindowHeader();
-    else
-        setWindowColorMode(false)
-        redrawWindowHeader();
-    end]]
+
     setWindowColorMode(false)
-    redrawWindowHeader();
+
+    if songName == 'credits' then
+        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Credits Menu')
+    else
+        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
+    end
+
+    if difficultyName == 'erect' then
+        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName..' Erect')
+    else
+        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
+    end
 end
 
 function onGameOver()
     
     setWindowColorMode(true)
-	redrawWindowHeader();
+    setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Game Over')
 end
 
 function onSectionHit()

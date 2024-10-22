@@ -1,9 +1,9 @@
 {
     // minutos e segundos das músicas pro rpc do discord
-    "kittyjam": ["1", "33"],
-    "kittyjamErect": ["2", "54"],
-    "supernova": ["1", "2"],
-    "credits": ["0", "45"],
+    "kittyjam": [1, 33],
+    "kittyjamErect": [2, 54],
+    "supernova": [2, 32],
+    "credits": [0, 45],
 
     // rgb das notas
     "purple": ["F634B5", "FFFFFF", "7A255C"],
@@ -14,5 +14,9 @@
     "shihoCre": ["Shiho", "\"WATCH FRIENDLOCKE\"", "I charted and coded that's it B) \n y'all can't let me have much free time \n or else i'll end up making this type of stuff \n (sick ass menus)", "B4E3FD", "https://xdshiho.tumblr.com", "https://x.com/xdShiho"],
     "lizCre": ["LizNaithy", "\"Is The Queen\"", "lorem ipsum dolor sit amet", "902C2B", "https://linktr.ee/LizNaithy"],
     "ukiyoCre": ["UKiYO", "\"o golpe ta aí, cai quem quer\"", "lorem ipsum dolor sit amet", "00FF03", "https://linktr.ee/ukiyoestrela", "https://open.spotify.com/intl-pt/artist/6xT42SxRBhAtsFcjSDCBz1?si=KLHFo4BHRkq71YAzNTffew&nd=1&dlsi=e919bdf67504435e"],
-    "natzyCre": ["Natzy", "lorem ipsum dolor sit amet", "lorem ipsum dolor sit amet", "6844AF", "https://bsky.app/profile/n4tzy69.bsky.social"]
+    "natzyCre": ["Natzy", "lorem ipsum dolor sit amet", "lorem ipsum dolor sit amet", "6844AF", "https://bsky.app/profile/n4tzy69.bsky.social"],
+
+    // bpm de músicas que não são jogaveis pra efeitos especiais envolvendo ritmo nessas areas
+    "creditsBPM": 128,
+    "pauseBPM": 85
 }
