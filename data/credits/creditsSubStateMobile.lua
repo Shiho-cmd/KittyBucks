@@ -477,7 +477,7 @@ function onTimerCompleted(tag, loops, loopsLeft)
         cameraFlash("other", "FFFFFF", 1, true)
         setObjectCamera("cut", 'hud')
         setProperty("cut.alpha", 0.3)
-        playMusic("credits/thank_you_for_playing", 1)
+        playSound("credits/thank_you_for_playing", 0, 'music')
         soundFadeIn("music", 2, 0, 1)
         removeLuaText("coisi", true)
         cut = false

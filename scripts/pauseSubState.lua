@@ -162,6 +162,8 @@ function onCreate()
     
     if songName == 'credits' then
         setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Credits Menu')
+        setWindowColorMode(true)
+        redrawWindowHeader();
     else
         setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
     end
@@ -282,7 +284,6 @@ function onUpdate(elapsed)
     setProperty("noWay.visible", false)
 
     if songName == 'credits' then
-        setWindowColorMode(true)
         setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Credits Menu')
     end
     
@@ -306,7 +307,7 @@ function onCustomSubstateCreate(name)
     if name == 'pauseShit' then
 
         setWindowColorMode(true)
-        --redrawWindowHeader();
+        redrawWindowHeader();
 
         playSound("pause/pause-theme", 0, 'bah')
         soundFadeIn("bah", 5, 0, 0.2)
@@ -439,6 +440,7 @@ function onCustomSubstateUpdatePost(name, elapsed)
             ]])
             setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName..' Erect')
             setWindowColorMode(false)
+            redrawWindowHeader();
             setProperty("barr.y", -20)
             setProperty("compo.y", -20)
             setProperty("balls.y", 740)
@@ -462,6 +464,7 @@ function onCustomSubstateUpdatePost(name, elapsed)
             ]])
             setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
             setWindowColorMode(false)
+            redrawWindowHeader();
             setProperty("barr.y", -20)
             setProperty("compo.y", -20)
             setProperty("balls.y", 740)
@@ -483,6 +486,7 @@ end
 
 function onDestroy()
     setWindowColorMode(false)
+    redrawWindowHeader();
     setPropertyFromClass("openfl.Lib", "application.window.title", 'Friday Night Funkin\': Psych Engine')
     if shadersEnabled then
         runHaxeCode([[
@@ -511,6 +515,7 @@ end
 function onGameOver()
     
     setWindowColorMode(true)
+    redrawWindowHeader();
     setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Game Over')
 end
 
