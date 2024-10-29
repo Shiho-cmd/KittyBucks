@@ -1,3 +1,6 @@
+luaDebugMode = getModSetting("debug")
+luaDeprecatedWarnings = getModSetting("deprecated")
+
 function parseJson(file)
     return callMethodFromClass('tjson.TJSON', 'parse', {getTextFromFile(file)})
 end

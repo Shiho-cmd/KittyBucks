@@ -1,3 +1,6 @@
+luaDebugMode = getModSetting("debug")
+luaDeprecatedWarnings = getModSetting("deprecated")
+
 function onCreate()
     
     makeLuaSprite('barrama', '', 0, -120)

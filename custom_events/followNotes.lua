@@ -1,3 +1,6 @@
+luaDebugMode = getModSetting("debug")
+luaDeprecatedWarnings = getModSetting("deprecated")
+
 local xx = 340;
 local yy = 520;
 local xx2 = 900;

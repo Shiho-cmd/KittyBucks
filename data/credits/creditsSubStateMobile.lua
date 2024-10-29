@@ -1,3 +1,6 @@
+luaDebugMode = getModSetting("debug")
+luaDeprecatedWarnings = getModSetting("deprecated")
+
 math.randomseed(os.time())
 
 function onStartCountdown() 
@@ -421,11 +424,11 @@ function onUpdate(elapsed)
     if keyboardJustPressed("D") and cut == false or keyboardJustPressed("RIGHT") and cut == false then
         pos = pos + 1
         stopSound("rag")
-        objectPlayAnimation("ukiyo", "idle", true)
+        playAnim("ukiyo", "idle", true)
     elseif keyboardJustPressed("A") and cut == false or keyboardJustPressed("LEFT") and cut == false then
         pos = pos - 1
         stopSound("rag")
-        objectPlayAnimation("ukiyo", "idle", true)
+        playAnim("ukiyo", "idle", true)
     end
         
     if keyJustPressed('back') then
@@ -440,7 +443,7 @@ function onUpdate(elapsed)
         runTimer("xd", 0.1)
     elseif getMouseX('camOther') > getProperty('ukiyo.x') and getMouseY('camOther') > getProperty('ukiyo.y') and getMouseX('camOther') < getProperty('ukiyo.x') + getProperty('ukiyo.width') and getMouseY('camOther') < getProperty('ukiyo.y') + getProperty('ukiyo.height') and mouseReleased() and getProperty("ukiyo.visible", true) and cut == false then
         playSound("credits/ragdoll", 1, 'rag')
-        objectPlayAnimation("ukiyo", "eat", true)
+        playAnim("ukiyo", "eat", true)
     elseif getMouseX('camOther') > getProperty('boxLogo.x') and getMouseY('camOther') > getProperty('boxLogo.y') and getMouseX('camOther') < getProperty('boxLogo.x') + getProperty('boxLogo.width') and getMouseY('camOther') < getProperty('boxLogo.y') + getProperty('boxLogo.height') and mouseReleased() and cut == false then
         local function open_link()
             os.execute("start "..link)
@@ -504,6 +507,6 @@ function onSoundFinished(tag)
     if tag == 'music' then
         playSound("credits/thank_you_for_playing", 1, 'music')
     elseif tag == 'rag' then
-        objectPlayAnimation("ukiyo", "idle", true)
+        playAnim("ukiyo", "idle", true)
     end
 end

@@ -1,3 +1,6 @@
+luaDebugMode = getModSetting("debug")
+luaDeprecatedWarnings = getModSetting("deprecated")
+
 function onEvent(eventName, value1, value2, strumTime)
 	
 	coiso = stringSplit(value2, ', ')

@@ -1,4 +1,5 @@
-local stuff = {'healthBar', 'iconP1', 'iconP2', 'scoreTxt'}
+luaDebugMode = getModSetting("debug")
+luaDeprecatedWarnings = getModSetting("deprecated")
 
 function onCreate()
 

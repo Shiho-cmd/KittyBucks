@@ -1,0 +1,23 @@
+[
+	// All types:
+	// bool - Has a checkbox only, meaning it can only be 'true' or 'false'.
+	// int - Numbers with no decimals (ex. 1, 3, 9, -1)
+	// float - Similar to int, but numbers can have decimals (ex. 1.5, 2.75)
+	// percent - Similar to float, but the displayed value is multiplied by 100 (ex. 1.1 will be displayed as "110%")
+	// string - A text instead of numbers/false and true, you gotta set up "options" variable to it
+	// key - TO BE IMPLEMENTED
+	{
+		"save": "debug",
+		"name": "Lua Debug Mode", //Name shown on the mod settings menu
+		"type": "bool",
+		"description": "mostra erros em lua scripts na tela do jogo caso não apareça pop-ups", //Description shown on the mod settings menu
+		"value": true //This is the default value
+	},
+	{
+		"save": "deprecated",
+		"name": "Lua Depracated Warnings", //Name shown on the mod settings menu
+		"type": "bool",
+		"description": "avisa caso exista alguma função nos scripts que são obsoletas e podem ser trocadas por alguma função melhor", //Description shown on the mod settings menu
+		"value": true //This is the default value
+	}
+]

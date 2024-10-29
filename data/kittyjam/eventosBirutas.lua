@@ -1,4 +1,6 @@
 lastNote = {0, ""}
+luaDebugMode = getModSetting("debug")
+luaDeprecatedWarnings = getModSetting("deprecated")
 
 function onCreate()
 
@@ -104,7 +106,7 @@ function onUpdate(elapsed)
             setProperty("spek.visible", false)
         elseif curStep == 1153 then
             setProperty('explo.visible', true)
-            objectPlayAnimation('explo', 'bah')
+            playAnim('explo', 'bah')
             setProperty("camGame.alpha", 0)
         end
     end
@@ -122,7 +124,7 @@ function onStepHit()
             setProperty("spek.visible", false)
         elseif curStep == 1917 then
             setProperty('explo.visible', true)
-            objectPlayAnimation('explo', 'bah')
+            playAnim('explo', 'bah')
             setProperty("camGame.alpha", 0)
         end      
     end

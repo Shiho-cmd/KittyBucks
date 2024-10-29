@@ -1,3 +1,6 @@
+luaDebugMode = getModSetting("debug")
+luaDeprecatedWarnings = getModSetting("deprecated")
+
 function onCreate()
 
     setProperty('camGame.bgColor', getColorFromHex('FFFFFF'))
@@ -9,7 +12,7 @@ end
 
 function onGameOver()
     
-    setProperty('camGame.bgColor', getColorFromHex('000000'))
+    --setProperty('camGame.bgColor', getColorFromHex('000000'))
 end
 
 function onUpdate(elapsed)
@@ -20,5 +23,5 @@ end
 
 function onBeatHit()
     
-    objectPlayAnimation("doidas", "idle-loop", true)
+    playAnim("doidas", "idle-loop", true)
 end

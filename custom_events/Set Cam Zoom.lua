@@ -1,3 +1,6 @@
+luaDebugMode = getModSetting("debug")
+luaDeprecatedWarnings = getModSetting("deprecated")
+
 function onEvent(name,value1,value2)
 
     if name == "Set Cam Zoom" then
@@ -15,9 +18,7 @@ end
 
 function onTweenCompleted(name)
 
-if name == 'camz' then
-
-
-	setProperty("defaultCamZoom",getProperty('camGame.zoom')) 
+	if name == 'camz' then
+		setProperty("defaultCamZoom",getProperty('camGame.zoom')) 
 	end
 end

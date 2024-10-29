@@ -1,3 +1,6 @@
+luaDebugMode = getModSetting("debug")
+luaDeprecatedWarnings = getModSetting("deprecated")
+
 function onCountdownStarted()
     
     playMusic('instrumentals/'..songName..'/Inst-'..difficultyName, 0, false)

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+-->
+<TextureAtlas imagePath="Explosion.png" width="1099" height="1986">
+  <SubTexture name="boom0006" x="0" y="0"  width="437" height="498" frameX="-42" frameY="-0" frameWidth="498" frameHeight="498"/>
+  <SubTexture name="boom0005" x="0" y="498"  width="405" height="498" frameX="-46" frameY="-0" frameWidth="498" frameHeight="498"/>
+  <SubTexture name="boom0004" x="0" y="996"  width="394" height="498" frameX="-59" frameY="-0" frameWidth="498" frameHeight="498"/>
+  <SubTexture name="boom0003" x="0" y="1494"  width="419" height="492" frameX="-53" frameY="-6" frameWidth="498" frameHeight="498"/>
+  <SubTexture name="boom0007" x="394" y="996"  width="372" height="479" frameX="-50" frameY="-0" frameWidth="498" frameHeight="498"/>
+  <SubTexture name="boom00011" x="394" y="1475"  width="9" height="9" frameX="-413" frameY="-76" frameWidth="498" frameHeight="498"/>
+  <SubTexture name="boom0008" x="405" y="498"  width="357" height="418" frameX="-52" frameY="-33" frameWidth="498" frameHeight="498"/>
+  <SubTexture name="boom0009" x="762" y="498"  width="337" height="392" frameX="-54" frameY="-22" frameWidth="498" frameHeight="498"/>
+  <SubTexture name="boom0002" x="437" y="0"  width="304" height="360" frameX="-69" frameY="-138" frameWidth="498" frameHeight="498"/>
+  <SubTexture name="boom00010" x="741" y="0"  width="305" height="242" frameX="-83" frameY="-11" frameWidth="498" frameHeight="498"/>
+  <SubTexture name="boom0001" x="741" y="242"  width="259" height="234" frameX="-86" frameY="-249" frameWidth="498" frameHeight="498"/>
+</TextureAtlas>

@@ -1,3 +1,6 @@
+luaDebugMode = getModSetting("debug")
+luaDeprecatedWarnings = getModSetting("deprecated")
+
 function onCreate()
 
     precacheImage("backgrounds/erect/clouds", false)
@@ -26,11 +29,6 @@ function onCreate()
     addLuaSprite("the", false)
 end
 
-function onGameOver()
-    
-    setProperty('camGame.bgColor', getColorFromHex('000000'))
-end
-
 function onUpdate(elapsed)
     
     setProperty("timeBar.visible", false)
@@ -39,5 +37,5 @@ end
 
 function onBeatHit()
     
-    objectPlayAnimation("the", "idle", true)
+    playAnim("the", "idle", true)
 end

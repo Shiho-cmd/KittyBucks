@@ -1,4 +1,6 @@
 -- this code is held by glue and tape (sorry for the nightmares code experts)
+luaDebugMode = getModSetting("debug")
+luaDeprecatedWarnings = getModSetting("deprecated")
 
 local the = {
     'Resume',
@@ -311,7 +313,7 @@ function onCustomSubstateCreate(name)
 
         playSound("pause/pause-theme", 0, 'bah')
         soundFadeIn("bah", 5, 0, 0.2)
-        characterPlayAnim("boyfriend", "singDOWNmiss", true)
+        playAnim("boyfriend", "singDOWNmiss", true)
 
         makeLuaText("morri", curFrase, 0, 1300, 740)
         setObjectCamera("morri", 'other')
