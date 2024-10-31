@@ -2,6 +2,7 @@ luaDebugMode = getModSetting("debug")
 luaDeprecatedWarnings = getModSetting("deprecated")
 
 local curYear = os.date ("%Y")
+local canRestart = false
 
 function onCreate()
     
@@ -17,11 +18,17 @@ function onCreate()
     setProperty("lol.alpha", 0)
     addLuaSprite("lol", true)
 
-    makeLuaSprite("kurodead", 'kuromi_rip', 30, 440)
+    makeLuaSprite("kurodead", 'kuromi_rip', 270, 420)
     setObjectCamera("kurodead", 'other')
     setProperty("kurodead.alpha", 0)
     scaleObject("kurodead", 1.7, 1.7)
     addLuaSprite("kurodead", true)
+
+    makeLuaSprite("skipBar", '', 100, 650)
+    makeGraphic("skipBar", 1, 20, 'FFFFFF')
+    setObjectCamera("skipBar", 'other')
+    setProperty("skipBar.alpha", 0)
+    addLuaSprite("skipBar", true)
 
     makeLuaText("ano", "2024 - "..curYear, 0, 700, 600)
     makeLuaText("piss", "Rest In Piss", 0, 670, 470)
@@ -79,20 +86,38 @@ function onCustomSubstateCreatePost(name)
     end
 end
 
-ultimaNota = 0
+local getBack = false
 function onCustomSubstateUpdate(name, elapsed)
     
     if name == 'gayover' then
 
-        ultimaNota = ultimaNota + (elapsed * 20)
-        
-        setProperty('boyfriend.animation.curAnim.curFrame', ultimaNota)
-
-        if keyJustPressed('accept') then
+        if getProperty("skipBar.scale.x") > 200 then
             restartSong(false)
-        elseif keyJustPressed('back') then
+        elseif getProperty("skipBar.scale.x") < 1 then
+            setProperty("skipBar.scale.x", 1)
+        elseif getProperty("skipBar.scale.x") < 0 then
+            setProperty("skipBar.alpha", 0)
+        end
+
+        if keyboardPressed('ENTER') and not canRestart or keyboardPressed("SPACE") and not canRestart then
+            setProperty("skipBar.scale.x", getProperty("skipBar.scale.x") + 5)
+            setProperty("skipBar.alpha", getProperty("skipBar.alpha") + 0.03)
+            getBack = false
+        elseif keyboardReleased("ENTER") and not canRestart or keyboardReleased("ENTER") and not canRestart then
+            getBack = true
+        elseif keyJustPressed('accept') and canRestart then
+            restartSong(false)
+        elseif keyJustPressed('back') and canRestart then
             exitSong(false)
         end
+    end
+end
+
+function onCustomSubstateUpdatePost(name, elapsed)
+    
+    if getBack then
+        setProperty("skipBar.scale.x", getProperty("skipBar.scale.x") - 5)
+        setProperty("skipBar.alpha", getProperty("skipBar.alpha") - 0.03)
     end
 end
 
@@ -134,5 +159,6 @@ function onSoundFinished(tag)
         doTweenAlpha("rumbora", "retry", 1, 0.5, "linear")
         soundFadeIn("", 10, 0, 1)
         runTimer("brilho", 0.5)
+        canRestart = true
     end
 end

@@ -494,8 +494,11 @@ function onUpdatePost(elapsed)
     setProperty("box.angle", getProperty("box.angle") + 0.5)
     setShaderFloat('back', 'iTime', os.clock())
     setProperty("coiso.x", getProperty("coiso.x") + 1)
-    customStep = customStep + 1
-    setTextString("coisi", customStep)
+
+    if cut then
+        customStep = customStep + 1
+        setTextString("coisi", customStep)
+    end
 
     if getProperty("coiso.x") == screenWidth then
         setProperty("coiso.x", -430)

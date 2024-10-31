@@ -18,5 +18,11 @@
 
     // bpm de músicas que não são jogaveis pra efeitos especiais envolvendo ritmo nessas areas
     "creditsBPM": 128,
-    "pauseBPM": 85
+    "pauseBPM": 85,
+
+    // créditos pro menu de pausa
+    "composer": ["LizNaithy", "UKiYO (Feat. LizNaithy)"], // kittyjam normal e kittyjam erect
+    "artist": ["Natzy", "Natzy and LizNaithy"], // kittyjam normal e kittyjam erect
+    "coder": "Shiho",
+    "charter": "Shiho"
 }

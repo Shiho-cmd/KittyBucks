@@ -160,6 +160,12 @@ function redrawWindowHeader()
 	setPropertyFromClass('flixel.FlxG', 'stage.window.borderless', false);
 end
 
+function parseJson(file)
+    return callMethodFromClass('tjson.TJSON', 'parse', {getTextFromFile(file)})
+end
+
+local parsed = parseJson('data/stuff.json')
+
 function onCreate()
     
     if songName == 'credits' then
@@ -175,9 +181,6 @@ function onCreate()
     else
         setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
     end
-end
-
-function onCreatePost()
 
     local var ShaderName = 'gray'
     if shadersEnabled then  
@@ -239,13 +242,13 @@ function onCreatePost()
     addLuaSprite("balls", false)
 
     if songName == 'KittyJam' and difficultyName == 'erect' then
-        makeLuaText("compo", songName..' ('..difficultyName..')'.." by: "..getTextFromFile('data/'..songName..'/composer-'..difficultyName..'.txt')..' | Pause Theme by: LizNaithy'..' | Art by: '..getTextFromFile('data/'..songName..'/artist-'..difficultyName..'.txt')..' | Chart and Coding by: '..getTextFromFile('data/'..songName..'/charter-coder-'..difficultyName..'.txt'), 0, -1965, -20)
+        makeLuaText("compo", songName..' ('..difficultyName..')'.." by: "..parsed.composer[2]..' | Pause Theme by: LizNaithy'..' | Art by: '..parsed.artist[2]..' | Chart and Coding by: '..parsed.coder, 0, -1965, -20)
         setObjectCamera("compo", 'other')
         addLuaText("compo")
         setTextSize("compo", 25)
         ogX = -1965
     else
-        makeLuaText("compo", songName..' ('..difficultyName..')'.." by: "..getTextFromFile('data/'..songName..'/composer-'..difficultyName..'.txt')..' | Pause Theme by: LizNaithy'..' | Art by: '..getTextFromFile('data/'..songName..'/artist-'..difficultyName..'.txt')..' | Chart and Coding by: '..getTextFromFile('data/'..songName..'/charter-coder-'..difficultyName..'.txt'), 0, -1550, -20)
+        makeLuaText("compo", songName..' ('..difficultyName..')'.." by: "..parsed.composer[1]..' | Pause Theme by: LizNaithy'..' | Art by: '..parsed.artist[1]..' | Chart and Coding by: '..parsed.coder, 0, -1550, -20)
         setObjectCamera("compo", 'other')
         addLuaText("compo")
         setTextSize("compo", 25)
@@ -304,7 +307,7 @@ function onPause()
     return Function_Stop;
 end
 
-function onCustomSubstateCreate(name)
+function onCustomSubstateCreatePost(name)
     
     if name == 'pauseShit' then
 

@@ -9,6 +9,11 @@ function onCreate()
     setObjectCamera('escuro', 'other')
     addLuaSprite('escuro', false)
 
+    makeLuaSprite('celula', 'galaxy_pocket', 330, 420) --330 420
+    addLuaSprite('celula', false)
+    scaleObject('celula', 0.2, 0.2) --0.2
+    setProperty('celula.alpha', 0)
+
     makeAnimatedLuaSprite("spek", 'speakingEpicThing', 270, 360) -- 270 360
     addAnimationByPrefix("spek", "speaking", "funny", 7, true)
     scaleObject("spek", 0.6, 0.6)
@@ -33,19 +38,6 @@ function onCreate()
         scaleObject('explo', 2.2, 2.2)
         setProperty('explo.visible', false)
         precacheImage("kaboom")
-    end
-
-    if difficultyName == 'erect' then
-        makeLuaSprite('celula', 'galaxy_pocket', 330, 420) --330 420
-        addLuaSprite('celula', false)
-        scaleObject('celula', 0.2, 0.2) --0.2
-        setObjectOrder("celula", 7)
-        setProperty('celula.alpha', 0)
-    else
-        makeLuaSprite('celula', 'galaxy_pocket', 330, 420) --330 420
-        addLuaSprite('celula', false)
-        scaleObject('celula', 0.2, 0.2) --0.2
-        setProperty('celula.alpha', 0)
     end
 end
 

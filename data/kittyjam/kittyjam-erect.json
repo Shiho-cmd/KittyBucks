@@ -2112,8 +2112,8 @@
 				93090.9090909091,
 				[
 					[
-						"Add Camera Zoom",
-						"",
+						"fuck",
+						"MORRA",
 						""
 					]
 				]
@@ -2121,6 +2121,11 @@
 			[
 				93090.9090909091,
 				[
+					[
+						"cum",
+						"on",
+						"dad"
+					],
 					[
 						"Set Property",
 						"defaultCamZoom",
@@ -2137,24 +2142,9 @@
 				93090.9090909091,
 				[
 					[
-						"fuck",
-						"MORRA",
-						""
-					]
-				]
-			],
-			[
-				93090.9090909091,
-				[
-					[
-						"cum",
-						"on",
-						"pode :3"
-					],
-					[
-						"bars",
-						"on",
-						"0.5, quartOut"
+						"Set Property",
+						"cameraSpeed",
+						"2"
 					]
 				]
 			],
@@ -2195,6 +2185,11 @@
 						"Add Camera Zoom",
 						"",
 						""
+					],
+					[
+						"cum",
+						"",
+						"bf"
 					]
 				]
 			],
@@ -2255,6 +2250,11 @@
 						"Add Camera Zoom",
 						"",
 						""
+					],
+					[
+						"cum",
+						"",
+						"dad"
 					]
 				]
 			],
@@ -2295,6 +2295,11 @@
 						"Add Camera Zoom",
 						"",
 						""
+					],
+					[
+						"cum",
+						"",
+						"bf"
 					]
 				]
 			],
@@ -2355,6 +2360,11 @@
 						"Add Camera Zoom",
 						"",
 						""
+					],
+					[
+						"cum",
+						"",
+						"dad"
 					]
 				]
 			],
@@ -2395,6 +2405,11 @@
 						"Add Camera Zoom",
 						"",
 						""
+					],
+					[
+						"cum",
+						"",
+						"bf"
 					]
 				]
 			],
@@ -2455,6 +2470,11 @@
 						"Add Camera Zoom",
 						"",
 						""
+					],
+					[
+						"cum",
+						"",
+						"dad"
 					]
 				]
 			],
@@ -2495,6 +2515,11 @@
 						"Add Camera Zoom",
 						"",
 						""
+					],
+					[
+						"cum",
+						"",
+						"bf"
 					]
 				]
 			],
@@ -2552,39 +2577,24 @@
 				116363.636363636,
 				[
 					[
+						"cum",
+						"off",
+						"fudido morra agora"
+					],
+					[
 						"Add Camera Zoom",
 						"",
 						""
-					]
-				]
-			],
-			[
-				116363.636363636,
-				[
-					[
-						"Set Property",
-						"cameraSpeed",
-						"1"
 					],
 					[
 						"Set Cam Zoom",
 						"0.9, camGame",
 						"2.5, quartOut"
-					]
-				]
-			],
-			[
-				116363.636363636,
-				[
-					[
-						"cum",
-						"off",
-						"num pode mais >:("
 					],
 					[
-						"bars",
-						"off",
-						"0.5, quartOut"
+						"Set Property",
+						"cameraSpeed",
+						"1"
 					]
 				]
 			],
@@ -2768,7 +2778,7 @@
 				[
 					[
 						"Set Cam Zoom",
-						"1.2 camGame",
+						"1.2, camGame",
 						"0.5, circOut"
 					]
 				]
