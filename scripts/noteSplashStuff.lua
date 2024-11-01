@@ -5,10 +5,10 @@ function onCreate()
     makeAnimatedLuaSprite("splash-down", 'noteSplashes/noteSplashes-sparkles-black', 140, -25)
     makeAnimatedLuaSprite("splash-up", 'noteSplashes/noteSplashes-sparkles-pink', 253, -25)
     
-    addAnimationByPrefix("splash-right", "splashed", "splash sparkles red 1", 22, false)
-    addAnimationByPrefix("splash-left", "splashed", "splash sparkles purple 1", 22, false)
-    addAnimationByPrefix("splash-down", "splashed", "splash sparkles blue 1", 22, false)
-    addAnimationByPrefix("splash-up", "splashed", "splash sparkles green 1", 22, false)
+    addAnimationByPrefix("splash-right", "splashed", "splash sparkles red ", 22, false)
+    addAnimationByPrefix("splash-left", "splashed", "splash sparkles purple ", 22, false)
+    addAnimationByPrefix("splash-down", "splashed", "splash sparkles blue ", 22, false)
+    addAnimationByPrefix("splash-up", "splashed", "splash sparkles green ", 22, false)
 
     setObjectCamera("splash-right", 'hud')
     setObjectCamera("splash-left", 'hud')
@@ -29,14 +29,28 @@ function onCreate()
     addLuaSprite("splash-left", true)
     addLuaSprite("splash-down", true)
     addLuaSprite("splash-up", true)
+
+    if middlescroll then
+        setProperty("splash-up.x", 905)
+        setProperty("splash-right.x", 1020)
+        setProperty("splash-left.x", 14)
+        setProperty("splash-down.x", 127)
+        setProperty("splash-up.alpha", splashAlpha / 2)
+        setProperty("splash-right.alpha", splashAlpha / 2)
+        setProperty("splash-down.alpha", splashAlpha / 2)
+        setProperty("splash-left.alpha", splashAlpha / 2)
+    end
 end
 
 function onSongStart()
     
-    setProperty("splash-right.visible", true)
-    setProperty("splash-left.visible", true)
-    setProperty("splash-down.visible", true)
-    setProperty("splash-up.visible", true)
+    -- the splashes glitch when the y position becomes a postive number for some weird reason so the splashes are disabled for downscroll sorry downscroll users
+    if not downscroll then
+        setProperty("splash-right.visible", true)
+        setProperty("splash-left.visible", true)
+        setProperty("splash-down.visible", true)
+        setProperty("splash-up.visible", true)
+    end
 end
 
 function opponentNoteHit(membersIndex, noteData, noteType, isSustainNote)
