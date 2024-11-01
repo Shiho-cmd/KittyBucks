@@ -1,10 +1,10 @@
 {
 	"name": "KittyBucks (Dev Build)",
-	"description": "Hello Kitty banger mod\n\n\n\n\n\n\n\n\n\n\n\n\n\nv2.4",
+	"description": "Hello Kitty banger mod\n\n\n\n\n\n\n\n\n\n\n\n\n\nv2.5",
 	"restart":false,
 	"runsGlobally": false,
 	"color": [206, 62, 90],
 	"discordRPC": "863222024192262205",
 	"iconFramerate": 10,
-	"buildVersion": "Dev Build v2.4"
+	"buildVersion": "Dev Build v2.5"
 }
