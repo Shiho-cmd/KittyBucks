@@ -53,11 +53,30 @@ function onCreate()
     scaleObject("kurodead", 1.7, 1.7)
     addLuaSprite("kurodead", true)
 
-    makeLuaSprite("skipBar", '', 100, 650)
+    makeLuaSprite("skipBack", '', 200, 620)
+    makeGraphic("skipBack", 1, 20, '000000')
+    setProperty("skipBack.scale.x", 307)
+    setObjectCamera("skipBack", 'other')
+    setProperty("skipBack.alpha", 0)
+    addLuaSprite("skipBack", true)
+
+    makeLuaSprite("skipBar", '', 200, 620)
     makeGraphic("skipBar", 1, 20, 'FFFFFF')
     setObjectCamera("skipBar", 'other')
     setProperty("skipBar.alpha", 0)
     addLuaSprite("skipBar", true)
+
+    makeLuaText("res", "Restarting", 0, 100, 580)
+    setTextSize("res", 25)
+    setObjectCamera("res", 'other')
+    setProperty("res.alpha", 0)
+    addLuaText("res")
+
+    makeLuaText("ex", "Exiting", 0, 120, 580)
+    setTextSize("ex", 25)
+    setObjectCamera("ex", 'other')
+    setProperty("ex.alpha", 0)
+    addLuaText("ex")
 
     --[[makeLuaSprite('cool')
     loadGraphic('cool', 'reallyCool', 1136, 640)
@@ -109,6 +128,8 @@ function onCustomSubstateCreatePost(name)
         doTweenAlpha("morraHUD", "camHUD", 0, 2, "linear")
         doTweenAlpha("bruhmoment", "bruh", 0.8, 3, "linear")
         doTweenZoom('camz', 'camGame', 1.3, 3, 'quadOut')
+        runTimer("tart", 0.1)
+        runTimer("it", 0.1)
 
         if buildTarget == 'android' then
             doTweenAlpha("rumbor", "buttonA", 0.5, 0.5, "linear")
@@ -129,6 +150,7 @@ function onCustomSubstateCreatePost(name)
 end
 
 local getBack = false
+local exit = false
 local aJustPressed = nil
 local bJustPressed = nil
 local aPressed = nil
@@ -148,8 +170,10 @@ function onCustomSubstateUpdate(name, elapsed)
     
     if name == 'gayover' then
 
-        if getProperty("skipBar.scale.x") > 200 then
+        if getProperty("skipBar.scale.x") > 300 and not exit then
             restartSong(false)
+        elseif getProperty("skipBar.scale.x") > 299 and exit then
+            exitSong(false)
         elseif getProperty("skipBar.scale.x") < 1 then
             setProperty("skipBar.scale.x", 1)
         elseif getProperty("skipBar.scale.x") < 0 then
@@ -159,17 +183,53 @@ function onCustomSubstateUpdate(name, elapsed)
         if keyboardPressed('ENTER') and not canRestart or keyboardPressed("SPACE") and not canRestart or gamepadPressed(1, "A") and not canRestart or gamepadPressed(1, "START") and not canRestart then
             setProperty("skipBar.scale.x", getProperty("skipBar.scale.x") + 5)
             setProperty("skipBar.alpha", getProperty("skipBar.alpha") + 0.03)
+            setProperty("res.alpha", getProperty("res.alpha") + 0.03)
+            setProperty("res.visible", true)
+            setProperty("ex.visible", false)
+            doTweenAlpha("bah", "skipBack", 0.5, 0.5, "linear")
             getBack = false
+            exit = false
         elseif aPressed and not canRestart and buildTarget == 'android' then
             setProperty("skipBar.scale.x", getProperty("skipBar.scale.x") + 5)
             setProperty("skipBar.alpha", getProperty("skipBar.alpha") + 0.03)
+            setProperty("res.alpha", getProperty("res.alpha") + 0.03)
             playAnim("buttonA", "pressed", true)
+            doTweenAlpha("bah", "skipBack", 0.5, 0.5, "linear")
             getBack = false
+            exit = false
         elseif keyboardReleased("ENTER") and not canRestart or keyboardReleased("SPACE") and not canRestart or gamepadReleased(1, "A") and not canRestart or gamepadReleased(1, "START") and not canRestart then
             getBack = true
+            doTweenAlpha("bah", "skipBack", 0, 0.5, "linear")
         elseif aReleased and not canRestart and buildTarget == 'android' then
             getBack = true
             playAnim("buttonA", "idle", true)
+            doTweenAlpha("bah", "skipBack", 0, 0.5, "linear")
+
+        elseif keyboardPressed('BACKSPACE') and not canRestart or keyboardPressed("ESCAPE") and not canRestart or gamepadPressed(1, "B") and not canRestart or gamepadPressed(1, "SELECT") and not canRestart then
+            setProperty("skipBar.scale.x", getProperty("skipBar.scale.x") + 5)
+            setProperty("skipBar.alpha", getProperty("skipBar.alpha") + 0.03)
+            setProperty("ex.alpha", getProperty("ex.alpha") + 0.03)
+            setProperty("res.visible", false)
+            setProperty("ex.visible", true)
+            doTweenAlpha("bah", "skipBack", 0.5, 0.5, "linear")
+            getBack = false
+            exit = true
+        elseif bPressed and not canRestart and buildTarget == 'android' then
+            setProperty("skipBar.scale.x", getProperty("skipBar.scale.x") + 5)
+            setProperty("skipBar.alpha", getProperty("skipBar.alpha") + 0.03)
+            setProperty("ex.alpha", getProperty("ex.alpha") + 0.03)
+            playAnim("buttonB", "pressed", true)
+            doTweenAlpha("bah", "skipBack", 0.5, 0.5, "linear")
+            getBack = false
+            exit = true
+        elseif keyboardReleased("BACKSPACE") and not canRestart or keyboardReleased("ESCAPE") and not canRestart or gamepadReleased(1, "B") and not canRestart or gamepadReleased(1, "SELECT") and not canRestart then
+            getBack = true
+            doTweenAlpha("bah", "skipBack", 0, 0.5, "linear")
+        elseif aReleased and not canRestart and buildTarget == 'android' then
+            getBack = true
+            playAnim("buttonA", "idle", true)
+            doTweenAlpha("bah", "skipBack", 0, 0.5, "linear")
+
         elseif keyJustPressed('accept') and canRestart then
             restartSong(false)
         elseif aJustPressed and canRestart and buildTarget == 'android' then
@@ -186,9 +246,18 @@ end
 
 function onCustomSubstateUpdatePost(name, elapsed)
     
-    if getBack then
-        setProperty("skipBar.scale.x", getProperty("skipBar.scale.x") - 5)
-        setProperty("skipBar.alpha", getProperty("skipBar.alpha") - 0.03)
+    if name == 'gayover' then
+        if getBack then
+            setProperty("skipBar.scale.x", getProperty("skipBar.scale.x") - 5)
+            setProperty("skipBar.alpha", getProperty("skipBar.alpha") - 0.03)
+            setProperty("res.alpha", getProperty("res.alpha") - 0.03)
+            setProperty("ex.alpha", getProperty("ex.alpha") - 0.03)
+        elseif canRestart then
+            setProperty("skipBar.scale.x", getProperty("skipBar.scale.x") - 5)
+            setProperty("skipBar.alpha", getProperty("skipBar.alpha") - 0.03)
+            setProperty("res.alpha", getProperty("res.alpha") - 0.03)
+            setProperty("ex.alpha", getProperty("ex.alpha") - 0.03)
+        end
     end
 end
 
@@ -211,6 +280,31 @@ function onTimerCompleted(tag, loops, loopsLeft)
     elseif tag == 'bri' then
         doTweenColor("iu", "retry", "FFFFFF", 0.5, "linear")
         runTimer("brilho", 0.5)
+    elseif tag == 'tart' then
+        setTextString("res", "Restarting.")
+        runTimer("rese", 0.1)
+    elseif tag == 'rese' then
+        setTextString("res", "Restarting..")
+        runTimer("t", 0.1)
+    elseif tag == 't' then
+        setTextString("res", "Restarting...")
+        runTimer("buceta", 0.1)
+    elseif tag == 'buceta' then
+        setTextString("res", "Restarting")
+        runTimer("tart", 0.1)
+
+    elseif tag == 'it' then
+        setTextString("ex", "Exiting.")
+        runTimer("br", 0.1)
+    elseif tag == 'br' then
+        setTextString("ex", "Exiting..")
+        runTimer("tp", 0.1)
+    elseif tag == 'tp' then
+        setTextString("ex", "Exiting...")
+        runTimer("penis", 0.1)
+    elseif tag == 'penis' then
+        setTextString("ex", "Exiting")
+        runTimer("it", 0.1)
     end
 end
 
@@ -231,7 +325,5 @@ function onSoundFinished(tag)
         soundFadeIn("", 10, 0, 1)
         runTimer("brilho", 0.5)
         canRestart = true
-    elseif tag == 'trans' then
-        restartSong(false)
     end
 end

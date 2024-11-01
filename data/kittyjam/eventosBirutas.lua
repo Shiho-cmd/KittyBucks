@@ -92,6 +92,7 @@ function onUpdate(elapsed)
         elseif curStep == 1040 then
             doTweenAlpha('fhdh', 'celula', 1, 0.7, 'linear')
             doTweenY('fknc', 'celula', 490, 0.7, 'quartOut')
+            setProperty("camHUD.alpha", 0)
         elseif curStep == 1065 then
             setProperty("spek.visible", true)
         elseif curStep == 1148 then

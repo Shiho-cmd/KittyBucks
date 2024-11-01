@@ -38,6 +38,40 @@ local stickerScaleOg = 1
 
 function onCreate()
 
+    if buildTarget == 'android' then
+        precacheImage("virtualpad")
+
+        makeLuaSprite("buttonB", '', 855, 570)
+        loadGraphic("buttonB", "virtualPad", 132, 127)
+        addAnimation("buttonB", "pressed", {16, 17}, 10, false)
+        addAnimation("buttonB", "idle", {16}, 0, true)
+        setObjectCamera("buttonB", 'other')
+        setProperty("buttonB.alpha", 0.5)
+        setProperty("buttonB.color", FlxColor("YELLOW"))
+        setProperty("buttonB.alpha", 0.5)
+        addLuaSprite("buttonB", true)
+
+        makeLuaSprite("buttonL", '', 1000, 570)
+        loadGraphic("buttonL", "virtualPad", 132, 127)
+        addAnimation("buttonL", "pressed", {2, 1}, 10, false)
+        addAnimation("buttonL", "idle", {1}, 0, true)
+        setObjectCamera("buttonL", 'other')
+        setProperty("buttonL.alpha", 0.5)
+        setProperty("buttonL.color", 0xF634B5)
+        setProperty("buttonL.alpha", 0.5)
+        addLuaSprite("buttonL", true)
+
+        makeLuaSprite("buttonR", '', 1145, 570)
+        loadGraphic("buttonR", "virtualPad", 132, 127)
+        addAnimation("buttonR", "pressed", {11, 10}, 10, false)
+        addAnimation("buttonR", "idle", {10}, 0, true)
+        setObjectCamera("buttonR", 'other')
+        setProperty("buttonR.alpha", 0.5)
+        setProperty("buttonR.color", 0x52465E)
+        setProperty("buttonR.alpha", 0.5)
+        addLuaSprite("buttonR", true)
+    end
+
     --precacheeeeeeeeee
     precacheImage("credits/stickers/charter", false)
     precacheImage("credits/stickers/artist", false)
@@ -253,10 +287,25 @@ function onCreatePost()
     end
 end
 
+local leftJustPressed = nil
+local rightJustPressed = nil
+local bJustPressed = nil
+local leftPressed = nil
+local rightPressed = nil
+local bPressed = nil
+local leftReleased = nil
+local rightReleased = nil
+local bReleased = nil
 function onUpdate(elapsed)
 
     setShaderFloat('back', 'frequency', 8)
     setShaderFloat('back', 'wamplitude', 0.05)
+
+    if buildTarget == 'android' then
+    leftJustPressed = getMouseX('camOther') > getProperty('buttonL.x') and getMouseY('camOther') > getProperty('buttonL.y') and getMouseX('camOther') < getProperty('buttonL.x') + getProperty('buttonL.width') and getMouseY('camOther') < getProperty('buttonL.y') + getProperty('buttonL.height') and mouseClicked()
+    rightJustPressed = getMouseX('camOther') > getProperty('buttonR.x') and getMouseY('camOther') > getProperty('buttonR.y') and getMouseX('camOther') < getProperty('buttonR.x') + getProperty('buttonR.width') and getMouseY('camOther') < getProperty('buttonR.y') + getProperty('buttonR.height') and mouseClicked()
+    bJustPressed = getMouseX('camOther') > getProperty('buttonB.x') and getMouseY('camOther') > getProperty('buttonB.y') and getMouseX('camOther') < getProperty('buttonB.x') + getProperty('buttonB.width') and getMouseY('camOther') < getProperty('buttonB.y') + getProperty('buttonB.height') and mouseClicked()
+    end
 
     if pos == 3 then -- shiho
         creditsName = parsed.shihoCre[1]
@@ -273,10 +322,11 @@ function onUpdate(elapsed)
         setProperty("boxLogo2.visible", true)
         setProperty("tumb.visible", true)
         setProperty("tree.visible", false)
-        setProperty("sky.visible", false)
-        setProperty("twi.visible", true)
+        setProperty("sky.visible", true)
+        setProperty("twi.visible", false)
         setProperty("spo.visible", false)
         setProperty("stuff.x", 0)
+        setProperty("sky.x", 70)
         setProperty("stuff.scale.x", 1.2)
         setProperty("stickerPro.visible", true)
         setProperty("stickerCha.visible", true)
@@ -371,6 +421,7 @@ function onUpdate(elapsed)
         setProperty("spo.visible", false)
         setProperty("stuff.x", -50)
         setProperty("stuff.scale.x", 1)
+        setProperty("sky.x", 9)
         setProperty("stickerPro.visible", false)
         setProperty("stickerCha.visible", false)
         setProperty("stickerCom.visible", false)
@@ -392,13 +443,33 @@ function onUpdate(elapsed)
         setProperty("select.y", 593)
         setProperty("select.x", 0)
         scaleObject("select", 0.5, 0.5)
-    elseif slctPos == 0 then
+    elseif slctPos == 1 and pos == 3 then
+        setProperty("select.y", 593)
+        setProperty("select.x", 0)
+        scaleObject("select", 0.5, 0.5)
+    elseif slctPos == 2 and pos == 3 then
+        setProperty("select.y", 593)
+        setProperty("select.x", 63)
+        scaleObject("select", 0.5, 0.5)
+    elseif slctPos == 2 and pos == 2 then
+        setProperty("select.y", 593)
+        setProperty("select.x", 63)
+        scaleObject("select", 0.5, 0.5)
+    elseif slctPos == 0 and pos == 3 then
         scaleObject("select", 2.05, 2.1)
         setProperty("select.x", 145)
         setProperty("select.y", 245)
-    elseif slctPos > 1 and getProperty("box.visible", true) then
+    elseif slctPos == 1 and pos == 2 then
+        setProperty("select.y", 593)
+        setProperty("select.x", 0)
+        scaleObject("select", 0.5, 0.5)
+    elseif slctPos == 0 and pos == 2 then
+        scaleObject("select", 1.9, 2.28)
+        setProperty("select.x", 145)
+        setProperty("select.y", 240)
+    elseif slctPos > 2 and pos == 3 or slctPos > 1 and pos == 2 then
         slctPos = 0
-    elseif slctPos < 0 and getProperty("box.visible", true) then
+    elseif slctPos < 0 and pos == 3 or slctPos > 1 and pos == 2 or pos == 1 or pos == 0 then
         slctPos = 1
     end
 
@@ -425,37 +496,69 @@ function onUpdate(elapsed)
         pos = pos + 1
         stopSound("rag")
         playAnim("ukiyo", "idle", true)
+        setProperty("select.visible", false)
+        setPropertyFromClass("flixel.FlxG", "mouse.visible", true)
     elseif keyboardJustPressed("A") and cut == false or keyboardJustPressed("LEFT") and cut == false then
         pos = pos - 1
         stopSound("rag")
         playAnim("ukiyo", "idle", true)
+        setProperty("select.visible", false)
+        setPropertyFromClass("flixel.FlxG", "mouse.visible", true)
+        
+    elseif rightJustPressed and cut == false and buildTarget == 'android' then
+        pos = pos + 1
+        stopSound("rag")
+        playAnim("ukiyo", "idle", true)
+        setProperty("select.visible", false)
+        playAnim("buttonR", "pressed", true)
+    elseif leftJustPressed and cut == false and buildTarget == 'android' then
+        pos = pos - 1
+        stopSound("rag")
+        playAnim("ukiyo", "idle", true)
+        setProperty("select.visible", false)
+        playAnim("buttonL", "pressed", true)
+
+    elseif gamepadJustPressed(1, "DPAD_RIGHT") and cut == false or gamepadJustPressed(1, "LEFT_STICK_DIGITAL_RIGHT") and cut == false then
+        pos = pos + 1
+        stopSound("rag")
+        playAnim("ukiyo", "idle", true)
+        setPropertyFromClass("flixel.FlxG", "mouse.visible", false)
+    elseif gamepadJustPressed(1, "DPAD_LEFT") and cut == false or gamepadJustPressed(1, "LEFT_STICK_DIGITAL_LEFT") and cut == false then
+        pos = pos - 1
+        stopSound("rag")
+        playAnim("ukiyo", "idle", true)
+        setPropertyFromClass("flixel.FlxG", "mouse.visible", false)
+    elseif gamepadJustPressed(1, "DPAD_DOWN") and cut == false or gamepadJustPressed(1, "LEFT_STICK_DIGITAL_DOWN") and cut == false then
+        setProperty("select.visible", true)
+        slctPos = slctPos + 1
+        setPropertyFromClass("flixel.FlxG", "mouse.visible", false)
+    elseif gamepadJustPressed(1, "DPAD_UP") and cut == false and pos == 3 or gamepadJustPressed(1, "LEFT_STICK_DIGITAL_UP") and cut == false and pos == 3 or gamepadJustPressed(1, "DPAD_UP") and cut == false and pos == 2 or gamepadJustPressed(1, "LEFT_STICK_DIGITAL_UP") and cut == false and pos == 2 then
+        slctPos = slctPos - 1
+        setPropertyFromClass("flixel.FlxG", "mouse.visible", false)
     end
         
     if keyJustPressed('back') then
         exitSong(false)
         setPropertyFromClass("flixel.FlxG", "mouse.visible", false)
+    elseif bJustPressed and cut == false and buildTarget == 'android' then
+        exitSong(false)
+        playAnim("buttonB", "pressed", true)
     end
 
-    if getMouseX('camOther') > getProperty('box.x') and getMouseY('camOther') > getProperty('box.y') and getMouseX('camOther') < getProperty('box.x') + getProperty('box.width') and getMouseY('camOther') < getProperty('box.y') + getProperty('box.height') and mouseReleased() and getProperty("box.visible", true) and cut == false then
+    if getMouseX('camOther') > getProperty('box.x') and getMouseY('camOther') > getProperty('box.y') and getMouseX('camOther') < getProperty('box.x') + getProperty('box.width') and getMouseY('camOther') < getProperty('box.y') + getProperty('box.height') and mouseReleased() and getProperty("box.visible", true) and cut == false or slctPos == 0 and getProperty("box.visible") and getProperty("select.visible") and gamepadJustPressed(1, "A") and cut == false then
         playSound("credits/honk", 1, 'honk')
         doTweenX("boom", "shi.scale", 1.3, 0.5, "elasticOut")
         doTweenY("moob", "shi.scale", 0.8, 0.5, "elasticOut")
         runTimer("xd", 0.1)
-    elseif getMouseX('camOther') > getProperty('ukiyo.x') and getMouseY('camOther') > getProperty('ukiyo.y') and getMouseX('camOther') < getProperty('ukiyo.x') + getProperty('ukiyo.width') and getMouseY('camOther') < getProperty('ukiyo.y') + getProperty('ukiyo.height') and mouseReleased() and getProperty("ukiyo.visible", true) and cut == false then
+    elseif getMouseX('camOther') > getProperty('ukiyo.x') and getMouseY('camOther') > getProperty('ukiyo.y') and getMouseX('camOther') < getProperty('ukiyo.x') + getProperty('ukiyo.width') and getMouseY('camOther') < getProperty('ukiyo.y') + getProperty('ukiyo.height') and mouseReleased() and getProperty("ukiyo.visible", true) and cut == false or slctPos == 0 and not getProperty("box.visible") and getProperty("select.visible") and gamepadJustPressed(1, "A") and cut == false then
         playSound("credits/ragdoll", 1, 'rag')
         playAnim("ukiyo", "eat", true)
-    elseif getMouseX('camOther') > getProperty('boxLogo.x') and getMouseY('camOther') > getProperty('boxLogo.y') and getMouseX('camOther') < getProperty('boxLogo.x') + getProperty('boxLogo.width') and getMouseY('camOther') < getProperty('boxLogo.y') + getProperty('boxLogo.height') and mouseReleased() and cut == false then
-        local function open_link()
-            os.execute("start "..link)
-        end
-        open_link()
+    elseif getMouseX('camOther') > getProperty('boxLogo.x') and getMouseY('camOther') > getProperty('boxLogo.y') and getMouseX('camOther') < getProperty('boxLogo.x') + getProperty('boxLogo.width') and getMouseY('camOther') < getProperty('boxLogo.y') + getProperty('boxLogo.height') and mouseReleased() and cut == false or slctPos == 1 and getProperty("select.visible", true) and gamepadJustPressed(1, "A") and cut == false then
+        callMethodFromClass('backend.CoolUtil', 'browserLoad', {link})
     end
     
-    if getMouseX('camOther') > getProperty('boxLogo2.x') and getMouseY('camOther') > getProperty('boxLogo2.y') and getMouseX('camOther') < getProperty('boxLogo2.x') + getProperty('boxLogo2.width') and getMouseY('camOther') < getProperty('boxLogo2.y') + getProperty('boxLogo2.height') and mouseReleased() and getProperty("boxLogo2.visible", false) then
-        local function open_link()
-            os.execute("start "..link2)
-        end
-        open_link()
+    if getMouseX('camOther') > getProperty('boxLogo2.x') and getMouseY('camOther') > getProperty('boxLogo2.y') and getMouseX('camOther') < getProperty('boxLogo2.x') + getProperty('boxLogo2.width') and getMouseY('camOther') < getProperty('boxLogo2.y') + getProperty('boxLogo2.height') and mouseReleased() and getProperty("boxLogo2.visible", false) or slctPos == 2 and getProperty("select.visible", true) and gamepadJustPressed(1, "A") and cut == false then
+        callMethodFromClass('backend.CoolUtil', 'browserLoad', {link2})
     end
 end
 
@@ -473,7 +576,20 @@ function onTimerCompleted(tag, loops, loopsLeft)
     elseif tag == 'ui' then
         playSound("credits/flicker", 1)
         runTimer("ain", 1.8)
-    elseif tag == 'ain' then
+    end
+
+    if tag == 'ain' and buildTarget == 'android' then
+        playSound("credits/light_turn_on", 1)
+        setProperty("luz.alpha", 0.3)
+        setObjectOrder("luz", getObjectOrder("shi") + 1)
+        cameraFlash("other", "FFFFFF", 1, true)
+        setObjectCamera("cut", 'hud')
+        setProperty("cut.alpha", 0.3)
+        playSound("credits/thank_you_for_playing", 0, 'music')
+        soundFadeIn("music", 2, 0, 1)
+        removeLuaText("coisi", true)
+        cut = false
+    elseif tag == 'ain' and buildTarget ~= 'android' then
         playSound("credits/light_turn_on", 1)
         setProperty("luz.alpha", 0.3)
         setObjectOrder("luz", getObjectOrder("shi") + 1)
