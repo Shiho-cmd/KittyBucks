@@ -57,27 +57,27 @@ local ogX = -1550
 						    
 -- I DIDN'T CODE THE DARK MODE WINDOW THING IT WAS MADE BY: T-Bar: https://www.youtube.com/@tbar7460 GO SUBSCRIBE TO THEM NOW!!!!!11
 
-local ffi = require("ffi");
-local dwmapi = ffi.load("dwmapi");
-local addr = ffi.load("mods" ..((currentModDirectory == nil or currentModDirectory == "") and "/" or tostring("/" ..currentModDirectory.. "/")).. "include/AddressParser"); --Had to make a whole new libary to grab a variable's address...
-
-ffi.cdef([[
-	typedef void* CONST;
+local ffi = nil
+local dwmapi = nil
+local addr = nil --Had to make a whole new libary to grab a variable's address...
+    
+--[=[ffi.cdef([[
+    typedef void* CONST;
     typedef void* HWND;
     typedef unsigned long DWORD;
-	typedef const void *LPCVOID;
-	typedef int BOOL;
-	
-	typedef long LONG;
-	typedef LONG HRESULT;
-	
-	HWND GetActiveWindow();
-	HRESULT DwmSetWindowAttribute(HWND hwnd, DWORD dwAttribute, LPCVOID pvAttribute, DWORD cbAttribute);
-	void UpdateWindow(HWND hWnd);
-	int* get_address(int& var);
-]])
-
-local S_OK = 0x00000000;
+    typedef const void *LPCVOID;
+    typedef int BOOL;
+        
+    typedef long LONG;
+    typedef LONG HRESULT;
+        
+    HWND GetActiveWindow();
+    HRESULT DwmSetWindowAttribute(HWND hwnd, DWORD dwAttribute, LPCVOID pvAttribute, DWORD cbAttribute);
+    void UpdateWindow(HWND hWnd);
+    int* get_address(int& var);
+]])]=]
+    
+    local S_OK = nil;
 
 ---Internal function used to parse the weird BBGGRR format into a normal hexidecimal
 ---Made by Ghostglowdev
@@ -203,6 +203,28 @@ function onCreate()
         setObjectCamera("buttonA", 'other')
         addLuaSprite("buttonA", true)
         setProperty("buttonA.alpha", 0)
+    elseif buildTarget ~= 'andorid' then
+        ffi = require("ffi");
+        dwmapi = ffi.load("dwmapi");
+        addr = ffi.load("mods" ..((currentModDirectory == nil or currentModDirectory == "") and "/" or tostring("/" ..currentModDirectory.. "/")).. "include/AddressParser"); --Had to make a whole new libary to grab a variable's address...
+        
+        ffi.cdef([[
+            typedef void* CONST;
+            typedef void* HWND;
+            typedef unsigned long DWORD;
+            typedef const void *LPCVOID;
+            typedef int BOOL;
+            
+            typedef long LONG;
+            typedef LONG HRESULT;
+            
+            HWND GetActiveWindow();
+            HRESULT DwmSetWindowAttribute(HWND hwnd, DWORD dwAttribute, LPCVOID pvAttribute, DWORD cbAttribute);
+            void UpdateWindow(HWND hWnd);
+            int* get_address(int& var);
+        ]])
+        
+        S_OK = 0x00000000;
     end
     
     if songName == 'credits' then
