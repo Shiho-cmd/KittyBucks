@@ -132,10 +132,14 @@ function onCreate()
     setProperty('ukiyo.antialiasing', false)
     addLuaSprite("ukiyo", false)
 
-    makeLuaSprite("natzy", 'credits/n4tzy', 200, 300)
+    makeLuaSprite("natzy", 'credits/the/natzy', 115, 140)
     setObjectCamera("natzy", 'other')
     addLuaSprite("natzy", false)
+    scaleObject("natzy", 0.7, 0.7)
     setProperty("natzy.visible", false)
+    doTweenY("1", "natzy.scale", 0.6, 1, "quadInOut")
+    doTweenX("2", "natzy.scale", 0.8, 1, "quadInOut")
+    doTweenY("11", "natzy", 145, 1, "quadInOut")
 
     makeAnimatedLuaSprite("shi", 'credits/placeholders/Shilito', -100, 0)
     addAnimationByPrefix("shi", "idle", "idle", 12, true)
@@ -406,6 +410,7 @@ function onUpdate(elapsed)
         creditsLongTxt = parsed.natzyCre[3]
         color = parsed.natzyCre[4]
         link = parsed.natzyCre[5]
+        link2 = parsed.natzyCre[6]
         stickerTag = 'nat'
         curSticker = 'stickerArt'
         setProperty("shi.visible", false)
@@ -413,14 +418,14 @@ function onUpdate(elapsed)
         setProperty("liz.visible", false)
         setProperty("natzy.visible", true)
         setProperty("box.visible", false)
-        setProperty("boxLogo2.visible", false)
+        setProperty("boxLogo2.visible", true)
         setProperty("tumb.visible", false)
         setProperty("tree.visible", false)
         setProperty("sky.visible", true)
-        setProperty("twi.visible", false)
+        setProperty("twi.visible", true)
         setProperty("spo.visible", false)
-        setProperty("stuff.x", -50)
-        setProperty("stuff.scale.x", 1)
+        setProperty("stuff.x", 0)
+        setProperty("stuff.scale.x", 1.2)
         setProperty("sky.x", 9)
         setProperty("stickerPro.visible", false)
         setProperty("stickerCha.visible", false)
@@ -455,6 +460,10 @@ function onUpdate(elapsed)
         setProperty("select.y", 593)
         setProperty("select.x", 63)
         scaleObject("select", 0.5, 0.5)
+    elseif slctPos == 2 and pos == 0 then
+        setProperty("select.y", 593)
+        setProperty("select.x", 63)
+        scaleObject("select", 0.5, 0.5)
     elseif slctPos == 0 and pos == 3 then
         scaleObject("select", 2.05, 2.1)
         setProperty("select.x", 145)
@@ -467,9 +476,9 @@ function onUpdate(elapsed)
         scaleObject("select", 1.9, 2.28)
         setProperty("select.x", 145)
         setProperty("select.y", 240)
-    elseif slctPos > 2 and pos == 3 or slctPos > 1 and pos == 2 then
+    elseif slctPos > 2 and pos == 3 or slctPos > 2 and pos == 2 then
         slctPos = 0
-    elseif slctPos < 0 and pos == 3 or slctPos > 1 and pos == 2 or pos == 1 or pos == 0 then
+    elseif slctPos < 0 and pos == 3 or slctPos < 0 and pos == 2 or slctPos > 1 and pos == 2 or pos == 1 or pos == 0 then
         slctPos = 1
     end
 
@@ -608,7 +617,9 @@ function onUpdatePost(elapsed)
         
     setProperty("shi.angle", getProperty("shi.angle") + 0.5)
     setProperty("box.angle", getProperty("box.angle") + 0.5)
+
     setShaderFloat('back', 'iTime', os.clock())
+
     setProperty("coiso.x", getProperty("coiso.x") + 1)
 
     if cut then
@@ -627,5 +638,18 @@ function onSoundFinished(tag)
         playSound("credits/thank_you_for_playing", 1, 'music')
     elseif tag == 'rag' then
         playAnim("ukiyo", "idle", true)
+    end
+end
+
+function onTweenCompleted(tag, vars)
+    
+    if tag == '1' then
+        doTweenY("33", "natzy", 140, 0.85, "quadInOut")
+        doTweenY("3", "natzy.scale", 0.7, 0.85, "quadInOut")
+        doTweenX("4", "natzy.scale", 0.7, 0.85, "quadInOut")
+    elseif tag == '4' then
+        doTweenY("1", "natzy.scale", 0.65, 0.85, "quadInOut")
+        doTweenX("2", "natzy.scale", 0.83, 0.85, "quadInOut")
+        doTweenY("11", "natzy", 153, 0.85, "quadInOut")
     end
 end

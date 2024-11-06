@@ -167,6 +167,31 @@ end
 local parsed = parseJson('data/stuff.json')
 
 function onCreate()
+
+    if buildTarget == 'android' then
+        precacheImage("virtualpad")
+
+        makeAnimatedLuaSprite("buttonD", 'virtualpad', 0, 560)
+        addAnimationByPrefix("buttonD", "pressed", "downPress", 0, false)
+        addAnimationByPrefix("buttonD", "idle", "down", 0, false)
+        setObjectCamera("buttonD", 'other')
+        addLuaSprite("buttonD", true)
+        setProperty("buttonD.alpha", 0)
+
+        makeAnimatedLuaSprite("buttonU", 'virtualpad', 0, 430)
+        addAnimationByPrefix("buttonU", "pressed", "upPress", 0, false)
+        addAnimationByPrefix("buttonU", "idle", "up", 0, false)
+        setObjectCamera("buttonU", 'other')
+        addLuaSprite("buttonU", true)
+        setProperty("buttonU.alpha", 0)
+
+        makeAnimatedLuaSprite("buttonA", 'virtualpad', 1155, 560)
+        addAnimationByPrefix("buttonA", "pressed", "aPress", 10, false)
+        addAnimationByPrefix("buttonA", "idle", "a", 0, false)
+        setObjectCamera("buttonA", 'other')
+        addLuaSprite("buttonA", true)
+        setProperty("buttonA.alpha", 0)
+    end
     
     if songName == 'credits' then
         setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Credits Menu')
@@ -271,6 +296,9 @@ function onTimerCompleted(tag)
     elseif tag == 'moob' then
         doTweenAlpha("a", "noWay", 1, 0.6, "linear")
         runTimer("boom", 0.6)
+    elseif tag == 'reset' and buildTarget == 'android' then
+        playAnim("buttonD", "idle")
+        playAnim("buttonU", "idle")
     end
 end
 
@@ -318,12 +346,6 @@ function onCustomSubstateCreatePost(name)
         soundFadeIn("bah", 5, 0, 0.2)
         playAnim("boyfriend", "singDOWNmiss", true)
 
-        makeLuaText("morri", curFrase, 0, 1300, 740)
-        setObjectCamera("morri", 'other')
-        addLuaText("morri")
-        setTextSize("morri", 25)
-        doTweenY("lololol", "morri", 694.6, 0.5, "quartOut")
-
         doTweenY("lol", "compo", 0, 0.5, "quartOut")
         doTweenY("xdd", "balls", 694.6, 0.5, "quartOut")
         doTweenY("xd", "barr", 0, 0.5, "quartOut")
@@ -337,6 +359,12 @@ function onCustomSubstateCreatePost(name)
             curFrase = frases[getRandomInt(0, 33)][1]
         end
 
+        makeLuaText("morri", curFrase, 0, 1300, 740)
+        setObjectCamera("morri", 'other')
+        addLuaText("morri")
+        setTextSize("morri", 25)
+        doTweenY("lololol", "morri", 694.6, 0.5, "quartOut")
+
         if difficultyName == 'erect' then
             setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName..' Erect (PAUSED)')
         else
@@ -345,9 +373,18 @@ function onCustomSubstateCreatePost(name)
     end
 end
 
+local aJustPressed = nil
+local upJustPressed = nil
+local downJustPressed = nil
 function onCustomSubstateUpdatePost(name, elapsed)
     
     if name == 'pauseShit' then
+
+        if buildTarget == 'android' then
+            aJustPressed = getMouseX('camOther') > getProperty('buttonA.x') and getMouseY('camOther') > getProperty('buttonA.y') and getMouseX('camOther') < getProperty('buttonA.x') + getProperty('buttonA.width') and getMouseY('camOther') < getProperty('buttonA.y') + getProperty('buttonA.height') and mouseClicked()
+            downJustPressed = getMouseX('camOther') > getProperty('buttonD.x') and getMouseY('camOther') > getProperty('buttonD.y') and getMouseX('camOther') < getProperty('buttonD.x') + getProperty('buttonD.width') and getMouseY('camOther') < getProperty('buttonD.y') + getProperty('buttonD.height') and mouseClicked()
+            upJustPressed = getMouseX('camOther') > getProperty('buttonU.x') and getMouseY('camOther') > getProperty('buttonU.y') and getMouseX('camOther') < getProperty('buttonU.x') + getProperty('buttonU.width') and getMouseY('camOther') < getProperty('buttonU.y') + getProperty('buttonU.height') and mouseClicked()
+        end
 
         doTweenAlpha("ven", "escu", 0.5, 0.5, "linear")
         setProperty("escu.visible", true)
@@ -361,6 +398,9 @@ function onCustomSubstateUpdatePost(name, elapsed)
         setProperty("balls.visible", true)
         setProperty("balls.visible", true)
         setProperty("noWay.visible", true)
+        setProperty("buttonA.alpha", 0.5)
+        setProperty("buttonD.alpha", 0.5)
+        setProperty("buttonU.alpha", 0.5)
 
         setProperty("compo.x", getProperty("compo.x") + 1)
         setProperty("morri.x", getProperty("morri.x") - 1)
@@ -411,12 +451,14 @@ function onCustomSubstateUpdatePost(name, elapsed)
             pos = 2
         end
 
-        if keyboardJustPressed("S") or keyboardJustPressed("DOWN") or gamepadJustPressed(1, "DPAD_DOWN") or gamepadJustPressed(1, "LEFT_STICK_DIGITAL_DOWN") then
+        if keyboardJustPressed("S") or keyboardJustPressed("DOWN") or gamepadJustPressed(1, "DPAD_DOWN") or gamepadJustPressed(1, "LEFT_STICK_DIGITAL_DOWN") or downJustPressed and buildTarget == 'android' then
             pos = pos + 1
-            playSound("Metronome_Tick", 0.5, 'tick')
-        elseif keyboardJustPressed("W") or keyboardJustPressed("UP") or gamepadJustPressed(1, "DPAD_UP") or gamepadJustPressed(1, "LEFT_STICK_DIGITAL_UP") then
+            playSound("scrollMenu", 0.5, 'tick')
+            runTimer("reset", 0.1)
+        elseif keyboardJustPressed("W") or keyboardJustPressed("UP") or gamepadJustPressed(1, "DPAD_UP") or gamepadJustPressed(1, "LEFT_STICK_DIGITAL_UP") or upJustPressed and buildTarget == 'android' then
             pos = pos - 1
-            playSound("Metronome_Tick", 0.5, 'tick')
+            playSound("scrollMenu", 0.5, 'tick')
+            runTimer("reset", 0.1)
         end
 
         if shadersEnabled then
@@ -426,7 +468,7 @@ function onCustomSubstateUpdatePost(name, elapsed)
         setShaderFloat('camShader', 'iTime', os.clock())
     end
 
-        if keyJustPressed("accept") and pos == 0 and difficultyName == 'erect' then
+        if keyboardJustPressed("ENTER") and pos == 0 and difficultyName == 'erect' or keyboardJustPressed("SPACE") and pos == 0 and difficultyName == 'erect' or gamepadJustPressed(1, "A") and pos == 0 and difficultyName == 'erect' or aJustPressed and pos == 0 and buildTarget == 'android' and difficultyName == 'erect' then
             closeCustomSubstate()
             stopSound("bah")
             setProperty("escu.visible", false)
@@ -450,7 +492,10 @@ function onCustomSubstateUpdatePost(name, elapsed)
             setProperty("compo.y", -20)
             setProperty("balls.y", 740)
             setProperty("morri.y", 740)
-        elseif keyJustPressed("accept") and pos == 0 then
+            setProperty("buttonA.alpha", 0)
+            setProperty("buttonD.alpha", 0)
+            setProperty("buttonU.alpha", 0)
+        elseif keyboardJustPressed("ENTER") and pos == 0 or keyboardJustPressed("SPACE") and pos == 0 or gamepadJustPressed(1, "A") and pos == 0 or aJustPressed and pos == 0 and buildTarget == 'android' then
             closeCustomSubstate()
             stopSound("bah")
             setProperty("escu.visible", false)
@@ -474,10 +519,15 @@ function onCustomSubstateUpdatePost(name, elapsed)
             setProperty("compo.y", -20)
             setProperty("balls.y", 740)
             setProperty("morri.y", 740)
-        elseif keyJustPressed('accept') and pos == 1 then
+            setProperty("buttonA.alpha", 0)
+            setProperty("buttonD.alpha", 0)
+            setProperty("buttonU.alpha", 0)
+        elseif keyJustPressed('accept') and pos == 1 or aJustPressed and pos == 1 and buildTarget == 'android' then
             restartSong(false)
-        elseif keyJustPressed('accept') and pos == 2 then
+            playAnim("buttonA", "pressed")
+        elseif keyJustPressed('accept') and pos == 2 or aJustPressed and pos == 2 and buildTarget == 'android' then
             exitSong(false)
+            playAnim("buttonA", "pressed")
         end
     end
 end

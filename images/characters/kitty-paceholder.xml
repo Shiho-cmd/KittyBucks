@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="kitty-paceholder.png">
+<SubTexture name="up0000" x="431" y="0" width="246" height="413" frameX="-57" frameY="-28" frameWidth="366" frameHeight="498" />
+<SubTexture name="down0000" x="0" y="431" width="231" height="384" frameX="-67" frameY="-50" frameWidth="344" frameHeight="459" />
+<SubTexture name="left0000" x="0" y="0" width="214" height="431" frameX="-150" frameY="-81" frameWidth="496" frameHeight="623" />
+<SubTexture name="right0000" x="677" y="0" width="237" height="391" frameX="-82" frameY="-90" frameWidth="380" frameHeight="541" />
+<SubTexture name="idle0000" x="214" y="0" width="217" height="416" frameX="-151" frameY="-99" frameWidth="496" frameHeight="623" />
+</TextureAtlas>

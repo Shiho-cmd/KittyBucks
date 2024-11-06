@@ -4,7 +4,7 @@ local mais = 0.1
 function onCreate()
 
     -- esse script num vai ficar na versão final do mod (ou será que vai?)
-    precacheImage("socks", false)
+    precacheImage("socks")
     
     makeAnimatedLuaSprite("sock", 'socks', 0, 550)
     addAnimationByPrefix("sock", "idle", "dance", 24, true)
@@ -20,7 +20,7 @@ end
 
 function onSongStart()
     
-    objectPlayAnimation("sock", "idle", true)
+    playAnim("sock", "idle", true)
 end
 
 function onUpdate(elapsed)

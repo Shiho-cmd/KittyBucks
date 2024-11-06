@@ -1,52 +1,26 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 10,
 			"anim": "idle",
-			"fps": 13,
-			"name": "idle",
-			"indices": []
+			"indices": [],
+			"name": "idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				-6,
-				3
+				-90,
+				-91
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 12,
-			"name": "down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-9,
-				4
-			],
-			"anim": "singUP",
-			"fps": 12,
-			"name": "up",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-5,
-				2
-			],
-			"anim": "singRIGHT",
-			"fps": 12,
-			"name": "right",
-			"indices": [
-				2,
-				3,
-				4
-			]
+			"indices": [],
+			"name": "down"
 		},
 		{
 			"offsets": [
@@ -54,33 +28,51 @@
 				0
 			],
 			"loop": false,
-			"fps": 12,
+			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [
-				2,
-				3,
-				4
-			],
+			"indices": [],
 			"name": "left"
+		},
+		{
+			"offsets": [
+				-80,
+				-41
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"offsets": [
+				-92,
+				-70
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
 		}
 	],
 	"vocals_file": "hello-kitty-erect",
 	"no_antialiasing": false,
-	"image": "characters/OlaGata",
+	"image": "characters/kitty-paceholder",
 	"position": [
-		-490,
-		160
+		-110,
+		210
 	],
 	"healthicon": "gataemodoidabruh",
-	"flip_x": true,
+	"flip_x": false,
 	"healthbar_colors": [
 		209,
 		1,
 		142
 	],
 	"camera_position": [
-		-200,
-		-90
+		10,
+		-30
 	],
 	"sing_duration": 4,
 	"scale": 1.2,
