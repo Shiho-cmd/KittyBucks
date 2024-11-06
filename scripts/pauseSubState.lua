@@ -82,6 +82,7 @@ local S_OK = 0x00000000;
 ---Internal function used to parse the weird BBGGRR format into a normal hexidecimal
 ---Made by Ghostglowdev
 function _rgbHexToBGR(rgb)
+    if buildTarget ~= 'andorid' then
 	-- conv int hex to string hex
 	if type(rgb) == 'number' then rgb = runHaxeCode('return StringTools.hex('.. rgb ..');') end
 	-- discard if hex isn't string
@@ -97,9 +98,11 @@ function _rgbHexToBGR(rgb)
 	local b, g, r = rgb:sub(5,6), rgb:sub(3,4), rgb:sub(1,2)
 	return b..g..r 
 end
+end
 
 ---Sets the window to dark mode
 function setDarkMode()
+    if buildTarget ~= 'andorid' then
 	local window = ffi.C.GetActiveWindow();
 	local isDark = dwmapi.DwmSetWindowAttribute(window, 19, addr.get_address(ffi.new("int[1]", 1)), ffi.sizeof(ffi.cast("DWORD", 1)));
 
@@ -109,9 +112,11 @@ function setDarkMode()
 	
 	ffi.C.UpdateWindow(window);
 end
+end
 
 ---Sets the window to light mode
 function setLightMode()
+    if buildTarget ~= 'andorid' then
 	local window = ffi.C.GetActiveWindow();
 	local isLight = dwmapi.DwmSetWindowAttribute(window, 19, addr.get_address(ffi.new("int[1]", 0)), ffi.sizeof(ffi.cast("DWORD", 0)));
 
@@ -121,10 +126,12 @@ function setLightMode()
 	
 	ffi.C.UpdateWindow(window);
 end
+end
 
 ---Shortcut to both "setDarkMode" and "setLightMode", as one function
 ---@param isDark boolean Is the window dark mode?
 function setWindowColorMode(isDark)
+    if buildTarget ~= 'andorid' then
 	local window = ffi.C.GetActiveWindow();
 	local isDarkMode = (isDark and 1 or 0);
 	local isColorMode = dwmapi.DwmSetWindowAttribute(window, 19, addr.get_address(ffi.new("int[1]", isDarkMode)), ffi.sizeof(ffi.cast("DWORD", isDarkMode)));
@@ -135,12 +142,14 @@ function setWindowColorMode(isDark)
 	
 	ffi.C.UpdateWindow(window);
 end
+end
 
 ---(Windows 11 ONLY) Sets the window border and header to a color of your choosing
 ---@param colorHex string The hexidecimal for the color. (The hex should be 0xRRGGBB, '0xRRGGBB', '#RRGGBB', 'RRGGBB')
 ---@param setHeader boolean Do you want to set the header's color?
 ---@param setBorder boolean Do you want to set the window border's color?
 function setWindowBorderColor(colorHex, setHeader, setBorder)
+    if buildTarget ~= 'andorid' then
 	local window = ffi.C.GetActiveWindow();
 	local strHex = (colorHex == nil or (type(colorHex) ~= 'number' and #colorHex < 6 or false)) and '0xFFFFFF' or _rgbHexToBGR(colorHex)
 	local hex = tonumber('0x'..strHex)
@@ -153,11 +162,14 @@ function setWindowBorderColor(colorHex, setHeader, setBorder)
 
 	ffi.C.UpdateWindow(window);
 end
+end
 
 ---Resets the window. Be sure to run this after using "setDarkMode" to force the effect immediately
 function redrawWindowHeader()
+    if buildTarget ~= 'andorid' then
 	setPropertyFromClass('flixel.FlxG', 'stage.window.borderless', true);
 	setPropertyFromClass('flixel.FlxG', 'stage.window.borderless', false);
+end
 end
 
 function parseJson(file)
