@@ -54,14 +54,6 @@ local relax = 0 -- um dia eu descubro como fazer isso funfar
 local spc = 0
 
 local ogX = -1550
-						    
--- I DIDN'T CODE THE DARK MODE WINDOW THING IT WAS MADE BY: T-Bar: https://www.youtube.com/@tbar7460 GO SUBSCRIBE TO THEM NOW!!!!!11
-
-local ffi = nil
-local dwmapi = nil
-local addr = nil --Had to make a whole new libary to grab a variable's address...
-
-local S_OK = nil;
 
 function parseJson(file)
     return callMethodFromClass('tjson.TJSON', 'parse', {getTextFromFile(file)})
@@ -71,34 +63,8 @@ local parsed = parseJson('data/stuff.json')
 
 function onCreate()
 
-    if buildTarget ~= 'android' then
-        ffi = require("ffi");
-dwmapi = ffi.load("dwmapi");
-addr = ffi.load("mods" ..((currentModDirectory == nil or currentModDirectory == "") and "/" or tostring("/" ..currentModDirectory.. "/")).. "include/AddressParser"); --Had to make a whole new libary to grab a variable's address...
-
-ffi.cdef([[
-	typedef void* CONST;
-    typedef void* HWND;
-    typedef unsigned long DWORD;
-	typedef const void *LPCVOID;
-	typedef int BOOL;
-	
-	typedef long LONG;
-	typedef LONG HRESULT;
-	
-	HWND GetActiveWindow();
-	HRESULT DwmSetWindowAttribute(HWND hwnd, DWORD dwAttribute, LPCVOID pvAttribute, DWORD cbAttribute);
-	void UpdateWindow(HWND hWnd);
-	int* get_address(int& var);
-]])
-
-local S_OK = 0x00000000;
-end
-
     if songName == 'credits' then
         setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Credits Menu')
-        setWindowColorMode(true)
-        redrawWindowHeader();
     else
         setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
     end
@@ -183,87 +149,6 @@ end
     end
 end
 
----Internal function used to parse the weird BBGGRR format into a normal hexidecimal
----Made by Ghostglowdev
-function _rgbHexToBGR(rgb)
-	-- conv int hex to string hex
-	if type(rgb) == 'number' then rgb = runHaxeCode('return StringTools.hex('.. rgb ..');') end
-	-- discard if hex isn't string
-	if type(rgb) ~= 'string' then 
-		debugPrint('ERROR on loading: '.. scriptName ..': _rgbHexToBGR: Failed to parse into BGR format.') 
-		return rgb
-	end
-	-- discard extras
-	rgb = stringStartsWith(rgb, '0x') and rgb:sub(3,8) or stringStartsWith(rgb, '#') and rgb:sub(2,7) or rgb
-	rgb = #rgb > 6 and rgb:sub(1,6) or rgb
-
-	-- parse
-	local b, g, r = rgb:sub(5,6), rgb:sub(3,4), rgb:sub(1,2)
-	return b..g..r 
-end
-
----Sets the window to dark mode
-function setDarkMode()
-	local window = ffi.C.GetActiveWindow();
-	local isDark = dwmapi.DwmSetWindowAttribute(window, 19, addr.get_address(ffi.new("int[1]", 1)), ffi.sizeof(ffi.cast("DWORD", 1)));
-
-	if isDark == 0 or isDark ~= S_OK then
-		dwmapi.DwmSetWindowAttribute(window, 20, addr.get_address(ffi.new("int[1]", 1)), ffi.sizeof(ffi.cast("DWORD", 1)));
-	end
-	
-	ffi.C.UpdateWindow(window);
-end
-
----Sets the window to light mode
-function setLightMode()
-	local window = ffi.C.GetActiveWindow();
-	local isLight = dwmapi.DwmSetWindowAttribute(window, 19, addr.get_address(ffi.new("int[1]", 0)), ffi.sizeof(ffi.cast("DWORD", 0)));
-
-	if isLight == 0 or isLight ~= S_OK then
-		dwmapi.DwmSetWindowAttribute(window, 20, addr.get_address(ffi.new("int[1]", 0)), ffi.sizeof(ffi.cast("DWORD", 0)));
-	end
-	
-	ffi.C.UpdateWindow(window);
-end
-
----Shortcut to both "setDarkMode" and "setLightMode", as one function
----@param isDark boolean Is the window dark mode?
-function setWindowColorMode(isDark)
-	local window = ffi.C.GetActiveWindow();
-	local isDarkMode = (isDark and 1 or 0);
-	local isColorMode = dwmapi.DwmSetWindowAttribute(window, 19, addr.get_address(ffi.new("int[1]", isDarkMode)), ffi.sizeof(ffi.cast("DWORD", isDarkMode)));
-
-	if isColorMode == 0 or isColorMode ~= S_OK then
-		dwmapi.DwmSetWindowAttribute(window, 20, addr.get_address(ffi.new("int[1]", isDarkMode)), ffi.sizeof(ffi.cast("DWORD", isDarkMode)));
-	end
-	
-	ffi.C.UpdateWindow(window);
-end
-
----(Windows 11 ONLY) Sets the window border and header to a color of your choosing
----@param colorHex string The hexidecimal for the color. (The hex should be 0xRRGGBB, '0xRRGGBB', '#RRGGBB', 'RRGGBB')
----@param setHeader boolean Do you want to set the header's color?
----@param setBorder boolean Do you want to set the window border's color?
-function setWindowBorderColor(colorHex, setHeader, setBorder)
-	local window = ffi.C.GetActiveWindow();
-	local strHex = (colorHex == nil or (type(colorHex) ~= 'number' and #colorHex < 6 or false)) and '0xFFFFFF' or _rgbHexToBGR(colorHex)
-	local hex = tonumber('0x'..strHex)
-	
-	if setHeader == nil then setHeader = true end
-	if setBorder == nil then setBorder = true end
-	
-	if setHeader then dwmapi.DwmSetWindowAttribute(window, 35, addr.get_address(ffi.new("int[1]", (hex))), ffi.sizeof(ffi.cast("DWORD", (hex)))); end
-	if setBorder then dwmapi.DwmSetWindowAttribute(window, 34, addr.get_address(ffi.new("int[1]", (hex))), ffi.sizeof(ffi.cast("DWORD", (hex)))); end
-
-	ffi.C.UpdateWindow(window);
-end
-
----Resets the window. Be sure to run this after using "setDarkMode" to force the effect immediately
-function redrawWindowHeader()
-	setPropertyFromClass('flixel.FlxG', 'stage.window.borderless', true);
-	setPropertyFromClass('flixel.FlxG', 'stage.window.borderless', false);
-end
-
 function onTimerCompleted(tag)
 
     --[[if tag == 'beat' then
@@ -318,9 +203,6 @@ end
 function onCustomSubstateCreatePost(name)
     
     if name == 'pauseShit' then
-
-        setWindowColorMode(true)
-        redrawWindowHeader();
 
         playSound("pause/pause-theme", 0, 'bah')
         soundFadeIn("bah", 5, 0, 0.2)
@@ -457,8 +339,6 @@ function onCustomSubstateUpdatePost(name, elapsed)
                 FlxG.game.setFilters([]);
             ]])
             setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName..' Erect')
-            setWindowColorMode(false)
-            redrawWindowHeader();
             setProperty("barr.y", -20)
             setProperty("compo.y", -20)
             setProperty("balls.y", 740)
@@ -481,8 +361,6 @@ function onCustomSubstateUpdatePost(name, elapsed)
                 FlxG.game.setFilters([]);
             ]])
             setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
-            setWindowColorMode(false)
-            redrawWindowHeader();
             setProperty("barr.y", -20)
             setProperty("compo.y", -20)
             setProperty("balls.y", 740)
@@ -503,8 +381,6 @@ function onSoundFinished(tag)
 end
 
 function onDestroy()
-    setWindowColorMode(false)
-    redrawWindowHeader();
     setPropertyFromClass("openfl.Lib", "application.window.title", 'Friday Night Funkin\': Psych Engine')
     if shadersEnabled then
         runHaxeCode([[
@@ -514,8 +390,6 @@ function onDestroy()
 end
 
 function onCountdownStarted()
-
-    setWindowColorMode(false)
 
     if songName == 'credits' then
         setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Credits Menu')
@@ -532,8 +406,6 @@ end
 
 function onGameOver()
     
-    setWindowColorMode(true)
-    redrawWindowHeader();
     setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Game Over')
 end
 
