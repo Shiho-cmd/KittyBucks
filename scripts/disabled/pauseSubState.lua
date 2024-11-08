@@ -57,32 +57,31 @@ local ogX = -1550
 						    
 -- I DIDN'T CODE THE DARK MODE WINDOW THING IT WAS MADE BY: T-Bar: https://www.youtube.com/@tbar7460 GO SUBSCRIBE TO THEM NOW!!!!!11
 
-local ffi = nil
-local dwmapi = nil
-local addr = nil --Had to make a whole new libary to grab a variable's address...
-    
---[=[ffi.cdef([[
-    typedef void* CONST;
+local ffi = require("ffi");
+local dwmapi = ffi.load("dwmapi");
+local addr = ffi.load("mods" ..((currentModDirectory == nil or currentModDirectory == "") and "/" or tostring("/" ..currentModDirectory.. "/")).. "include/AddressParser"); --Had to make a whole new libary to grab a variable's address...
+
+ffi.cdef([[
+	typedef void* CONST;
     typedef void* HWND;
     typedef unsigned long DWORD;
-    typedef const void *LPCVOID;
-    typedef int BOOL;
-        
-    typedef long LONG;
-    typedef LONG HRESULT;
-        
-    HWND GetActiveWindow();
-    HRESULT DwmSetWindowAttribute(HWND hwnd, DWORD dwAttribute, LPCVOID pvAttribute, DWORD cbAttribute);
-    void UpdateWindow(HWND hWnd);
-    int* get_address(int& var);
-]])]=]
-    
-    local S_OK = nil;
+	typedef const void *LPCVOID;
+	typedef int BOOL;
+	
+	typedef long LONG;
+	typedef LONG HRESULT;
+	
+	HWND GetActiveWindow();
+	HRESULT DwmSetWindowAttribute(HWND hwnd, DWORD dwAttribute, LPCVOID pvAttribute, DWORD cbAttribute);
+	void UpdateWindow(HWND hWnd);
+	int* get_address(int& var);
+]])
+
+local S_OK = 0x00000000;
 
 ---Internal function used to parse the weird BBGGRR format into a normal hexidecimal
 ---Made by Ghostglowdev
 function _rgbHexToBGR(rgb)
-    if buildTarget ~= 'andorid' then
 	-- conv int hex to string hex
 	if type(rgb) == 'number' then rgb = runHaxeCode('return StringTools.hex('.. rgb ..');') end
 	-- discard if hex isn't string
@@ -98,11 +97,9 @@ function _rgbHexToBGR(rgb)
 	local b, g, r = rgb:sub(5,6), rgb:sub(3,4), rgb:sub(1,2)
 	return b..g..r 
 end
-end
 
 ---Sets the window to dark mode
 function setDarkMode()
-    if buildTarget ~= 'andorid' then
 	local window = ffi.C.GetActiveWindow();
 	local isDark = dwmapi.DwmSetWindowAttribute(window, 19, addr.get_address(ffi.new("int[1]", 1)), ffi.sizeof(ffi.cast("DWORD", 1)));
 
@@ -112,11 +109,9 @@ function setDarkMode()
 	
 	ffi.C.UpdateWindow(window);
 end
-end
 
 ---Sets the window to light mode
 function setLightMode()
-    if buildTarget ~= 'andorid' then
 	local window = ffi.C.GetActiveWindow();
 	local isLight = dwmapi.DwmSetWindowAttribute(window, 19, addr.get_address(ffi.new("int[1]", 0)), ffi.sizeof(ffi.cast("DWORD", 0)));
 
@@ -126,12 +121,10 @@ function setLightMode()
 	
 	ffi.C.UpdateWindow(window);
 end
-end
 
 ---Shortcut to both "setDarkMode" and "setLightMode", as one function
 ---@param isDark boolean Is the window dark mode?
 function setWindowColorMode(isDark)
-    if buildTarget ~= 'andorid' then
 	local window = ffi.C.GetActiveWindow();
 	local isDarkMode = (isDark and 1 or 0);
 	local isColorMode = dwmapi.DwmSetWindowAttribute(window, 19, addr.get_address(ffi.new("int[1]", isDarkMode)), ffi.sizeof(ffi.cast("DWORD", isDarkMode)));
@@ -142,14 +135,12 @@ function setWindowColorMode(isDark)
 	
 	ffi.C.UpdateWindow(window);
 end
-end
 
 ---(Windows 11 ONLY) Sets the window border and header to a color of your choosing
 ---@param colorHex string The hexidecimal for the color. (The hex should be 0xRRGGBB, '0xRRGGBB', '#RRGGBB', 'RRGGBB')
 ---@param setHeader boolean Do you want to set the header's color?
 ---@param setBorder boolean Do you want to set the window border's color?
 function setWindowBorderColor(colorHex, setHeader, setBorder)
-    if buildTarget ~= 'andorid' then
 	local window = ffi.C.GetActiveWindow();
 	local strHex = (colorHex == nil or (type(colorHex) ~= 'number' and #colorHex < 6 or false)) and '0xFFFFFF' or _rgbHexToBGR(colorHex)
 	local hex = tonumber('0x'..strHex)
@@ -162,14 +153,11 @@ function setWindowBorderColor(colorHex, setHeader, setBorder)
 
 	ffi.C.UpdateWindow(window);
 end
-end
 
 ---Resets the window. Be sure to run this after using "setDarkMode" to force the effect immediately
 function redrawWindowHeader()
-    if buildTarget ~= 'andorid' then
 	setPropertyFromClass('flixel.FlxG', 'stage.window.borderless', true);
 	setPropertyFromClass('flixel.FlxG', 'stage.window.borderless', false);
-end
 end
 
 function parseJson(file)
@@ -180,53 +168,6 @@ local parsed = parseJson('data/stuff.json')
 
 function onCreate()
 
-    if buildTarget == 'android' then
-        precacheImage("virtualpad")
-
-        makeAnimatedLuaSprite("buttonD", 'virtualpad', 0, 560)
-        addAnimationByPrefix("buttonD", "pressed", "downPress", 0, false)
-        addAnimationByPrefix("buttonD", "idle", "down", 0, false)
-        setObjectCamera("buttonD", 'other')
-        addLuaSprite("buttonD", true)
-        setProperty("buttonD.alpha", 0)
-
-        makeAnimatedLuaSprite("buttonU", 'virtualpad', 0, 430)
-        addAnimationByPrefix("buttonU", "pressed", "upPress", 0, false)
-        addAnimationByPrefix("buttonU", "idle", "up", 0, false)
-        setObjectCamera("buttonU", 'other')
-        addLuaSprite("buttonU", true)
-        setProperty("buttonU.alpha", 0)
-
-        makeAnimatedLuaSprite("buttonA", 'virtualpad', 1155, 560)
-        addAnimationByPrefix("buttonA", "pressed", "aPress", 10, false)
-        addAnimationByPrefix("buttonA", "idle", "a", 0, false)
-        setObjectCamera("buttonA", 'other')
-        addLuaSprite("buttonA", true)
-        setProperty("buttonA.alpha", 0)
-    elseif buildTarget ~= 'andorid' then
-        ffi = require("ffi");
-        dwmapi = ffi.load("dwmapi");
-        addr = ffi.load("mods" ..((currentModDirectory == nil or currentModDirectory == "") and "/" or tostring("/" ..currentModDirectory.. "/")).. "include/AddressParser"); --Had to make a whole new libary to grab a variable's address...
-        
-        ffi.cdef([[
-            typedef void* CONST;
-            typedef void* HWND;
-            typedef unsigned long DWORD;
-            typedef const void *LPCVOID;
-            typedef int BOOL;
-            
-            typedef long LONG;
-            typedef LONG HRESULT;
-            
-            HWND GetActiveWindow();
-            HRESULT DwmSetWindowAttribute(HWND hwnd, DWORD dwAttribute, LPCVOID pvAttribute, DWORD cbAttribute);
-            void UpdateWindow(HWND hWnd);
-            int* get_address(int& var);
-        ]])
-        
-        S_OK = 0x00000000;
-    end
-    
     if songName == 'credits' then
         setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Credits Menu')
         setWindowColorMode(true)
@@ -330,9 +271,6 @@ function onTimerCompleted(tag)
     elseif tag == 'moob' then
         doTweenAlpha("a", "noWay", 1, 0.6, "linear")
         runTimer("boom", 0.6)
-    elseif tag == 'reset' and buildTarget == 'android' then
-        playAnim("buttonD", "idle")
-        playAnim("buttonU", "idle")
     end
 end
 
@@ -407,18 +345,9 @@ function onCustomSubstateCreatePost(name)
     end
 end
 
-local aJustPressed = nil
-local upJustPressed = nil
-local downJustPressed = nil
 function onCustomSubstateUpdatePost(name, elapsed)
     
     if name == 'pauseShit' then
-
-        if buildTarget == 'android' then
-            aJustPressed = getMouseX('camOther') > getProperty('buttonA.x') and getMouseY('camOther') > getProperty('buttonA.y') and getMouseX('camOther') < getProperty('buttonA.x') + getProperty('buttonA.width') and getMouseY('camOther') < getProperty('buttonA.y') + getProperty('buttonA.height') and mouseClicked()
-            downJustPressed = getMouseX('camOther') > getProperty('buttonD.x') and getMouseY('camOther') > getProperty('buttonD.y') and getMouseX('camOther') < getProperty('buttonD.x') + getProperty('buttonD.width') and getMouseY('camOther') < getProperty('buttonD.y') + getProperty('buttonD.height') and mouseClicked()
-            upJustPressed = getMouseX('camOther') > getProperty('buttonU.x') and getMouseY('camOther') > getProperty('buttonU.y') and getMouseX('camOther') < getProperty('buttonU.x') + getProperty('buttonU.width') and getMouseY('camOther') < getProperty('buttonU.y') + getProperty('buttonU.height') and mouseClicked()
-        end
 
         doTweenAlpha("ven", "escu", 0.5, 0.5, "linear")
         setProperty("escu.visible", true)
@@ -485,11 +414,11 @@ function onCustomSubstateUpdatePost(name, elapsed)
             pos = 2
         end
 
-        if keyboardJustPressed("S") or keyboardJustPressed("DOWN") or gamepadJustPressed(1, "DPAD_DOWN") or gamepadJustPressed(1, "LEFT_STICK_DIGITAL_DOWN") or downJustPressed and buildTarget == 'android' then
+        if keyboardJustPressed("S") or keyboardJustPressed("DOWN") or gamepadJustPressed(1, "DPAD_DOWN") or gamepadJustPressed(1, "LEFT_STICK_DIGITAL_DOWN") or downJustPressed and buildTarget == 'windows' then
             pos = pos + 1
             playSound("scrollMenu", 0.5, 'tick')
             runTimer("reset", 0.1)
-        elseif keyboardJustPressed("W") or keyboardJustPressed("UP") or gamepadJustPressed(1, "DPAD_UP") or gamepadJustPressed(1, "LEFT_STICK_DIGITAL_UP") or upJustPressed and buildTarget == 'android' then
+        elseif keyboardJustPressed("W") or keyboardJustPressed("UP") or gamepadJustPressed(1, "DPAD_UP") or gamepadJustPressed(1, "LEFT_STICK_DIGITAL_UP") or upJustPressed and buildTarget == 'windows' then
             pos = pos - 1
             playSound("scrollMenu", 0.5, 'tick')
             runTimer("reset", 0.1)
@@ -502,7 +431,7 @@ function onCustomSubstateUpdatePost(name, elapsed)
         setShaderFloat('camShader', 'iTime', os.clock())
     end
 
-        if keyboardJustPressed("ENTER") and pos == 0 and difficultyName == 'erect' or keyboardJustPressed("SPACE") and pos == 0 and difficultyName == 'erect' or gamepadJustPressed(1, "A") and pos == 0 and difficultyName == 'erect' or aJustPressed and pos == 0 and buildTarget == 'android' and difficultyName == 'erect' then
+        if keyboardJustPressed("ENTER") and pos == 0 and difficultyName == 'erect' or keyboardJustPressed("SPACE") and pos == 0 and difficultyName == 'erect' or gamepadJustPressed(1, "A") and pos == 0 and difficultyName == 'erect' then
             closeCustomSubstate()
             stopSound("bah")
             setProperty("escu.visible", false)
@@ -526,10 +455,7 @@ function onCustomSubstateUpdatePost(name, elapsed)
             setProperty("compo.y", -20)
             setProperty("balls.y", 740)
             setProperty("morri.y", 740)
-            setProperty("buttonA.alpha", 0)
-            setProperty("buttonD.alpha", 0)
-            setProperty("buttonU.alpha", 0)
-        elseif keyboardJustPressed("ENTER") and pos == 0 or keyboardJustPressed("SPACE") and pos == 0 or gamepadJustPressed(1, "A") and pos == 0 or aJustPressed and pos == 0 and buildTarget == 'android' then
+        elseif keyboardJustPressed("ENTER") and pos == 0 or keyboardJustPressed("SPACE") and pos == 0 or gamepadJustPressed(1, "A") and pos == 0 then
             closeCustomSubstate()
             stopSound("bah")
             setProperty("escu.visible", false)
@@ -553,15 +479,10 @@ function onCustomSubstateUpdatePost(name, elapsed)
             setProperty("compo.y", -20)
             setProperty("balls.y", 740)
             setProperty("morri.y", 740)
-            setProperty("buttonA.alpha", 0)
-            setProperty("buttonD.alpha", 0)
-            setProperty("buttonU.alpha", 0)
-        elseif keyJustPressed('accept') and pos == 1 or aJustPressed and pos == 1 and buildTarget == 'android' then
+        elseif keyJustPressed('accept') and pos == 1 then
             restartSong(false)
-            playAnim("buttonA", "pressed")
-        elseif keyJustPressed('accept') and pos == 2 or aJustPressed and pos == 2 and buildTarget == 'android' then
+        elseif keyJustPressed('accept') and pos == 2 then
             exitSong(false)
-            playAnim("buttonA", "pressed")
         end
     end
 end

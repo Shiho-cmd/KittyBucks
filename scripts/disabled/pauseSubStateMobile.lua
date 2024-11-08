@@ -1,11 +1,6 @@
--- this code is shit but idc
-
---[[
-    makeLuaText("", "", 0, 0.0, 0.0)
-    setObjectCamera("", '')
-    addLuaText("")
-    setTextSize("", )
-]]
+-- this code is held by glue and tape (sorry for the nightmares code experts)
+luaDebugMode = getModSetting("debug")
+luaDeprecatedWarnings = getModSetting("deprecated")
 
 local the = {
     'Resume',
@@ -58,6 +53,12 @@ local special = false
 local relax = 0 -- um dia eu descubro como fazer isso funfar
 local spc = 0
 
+function parseJson(file)
+    return callMethodFromClass('tjson.TJSON', 'parse', {getTextFromFile(file)})
+end
+
+local parsed = parseJson('data/stuff.json')
+
 function onCreate()
 
     local var ShaderName = 'gray'
@@ -69,11 +70,90 @@ function onCreate()
     else
         ShaderName = 'none'
     end
-end
-
-function onCountdownStarted()
     
-    setPropertyFromClass("flixel.FlxG", "mouse.visible", false)
+    makeLuaSprite("escu")
+    makeGraphic("escu", screenWidth, screenHeight, '000000')
+    setObjectCamera("escu", 'other')
+    addLuaSprite("escu")
+    setProperty("escu.alpha", 0)
+    setProperty("escu.visible", false)
+
+    makeLuaText("resu", the[1], 0, 0.0, 0.0)
+    makeLuaText("resta", the[2], 0, 0.0, 0.0)
+    makeLuaText("exit", the[3], 0, 0.0, 0.0)
+    makeLuaText("seta", ">", 0, 0.0, 0.0)
+    makeLuaText("setaa", "<", 0, 0.0, 0.0)
+    setObjectCamera("resu", 'other')
+    setObjectCamera("resta", 'other')
+    setObjectCamera("exit", 'other')
+    setObjectCamera("seta", 'other')
+    setObjectCamera("setaa", 'other')
+    addLuaText("resu")
+    addLuaText("resta")
+    addLuaText("exit")
+    addLuaText("seta")
+    addLuaText("setaa")
+    setTextSize("resu", 50)
+    setTextSize("resta", 50)
+    setTextSize("exit", 50)
+    setTextSize("seta", 50)
+    setTextSize("setaa", 50)
+    screenCenter("resu", 'x')
+    setProperty("resu.y", getGraphicMidpointY("escu") - divi)
+    screenCenter("resta")
+    screenCenter("exit", 'x')
+    setProperty("exit.y", getGraphicMidpointY("escu") + divi - 50)
+
+    makeLuaText("noWay", "- PAUSED -", 0, 0.0, 100)
+    setObjectCamera("noWay", 'other')
+    setTextSize("noWay", 70)
+    screenCenter("noWay", 'x')
+    addLuaText("noWay")
+
+    makeLuaSprite("barr", '', 0, -20)
+    makeGraphic("barr", screenWidth, 25, '000000')
+    setObjectCamera("barr", 'other')
+    addLuaSprite("barr", false)
+
+    makeLuaSprite("balls", '', 0, 740)
+    makeGraphic("balls", screenWidth, 25, '000000')
+    setObjectCamera("balls", 'other')
+    addLuaSprite("balls", false)
+
+    makeAnimatedLuaSprite("buttonD", 'virtualpad', 0, 560)
+    addAnimationByPrefix("buttonD", "pressed", "downPress", 0, false)
+    addAnimationByPrefix("buttonD", "idle", "down", 0, false)
+    setObjectCamera("buttonD", 'other')
+    addLuaSprite("buttonD", true)
+    setProperty("buttonD.alpha", 0.5)
+
+    makeAnimatedLuaSprite("buttonU", 'virtualpad', 0, 430)
+    addAnimationByPrefix("buttonU", "pressed", "upPress", 0, false)
+    addAnimationByPrefix("buttonU", "idle", "up", 0, false)
+    setObjectCamera("buttonU", 'other')
+    addLuaSprite("buttonU", true)
+    setProperty("buttonU.alpha", 0.5)
+
+    makeAnimatedLuaSprite("buttonA", 'virtualpad', 1155, 560)
+    addAnimationByPrefix("buttonA", "pressed", "aPress", 10, false)
+    addAnimationByPrefix("buttonA", "idle", "a", 0, false)
+    setObjectCamera("buttonA", 'other')
+    addLuaSprite("buttonA", true)
+    setProperty("buttonA.alpha", 0.5)
+
+    if songName == 'KittyJam' and difficultyName == 'erect' then
+        makeLuaText("compo", songName..' ('..difficultyName..')'.." by: "..parsed.composer[2]..' | Pause Theme by: LizNaithy'..' | Art by: '..parsed.artist[2]..' | Chart and Coding by: '..parsed.coder, 0, -1965, -20)
+        setObjectCamera("compo", 'other')
+        addLuaText("compo")
+        setTextSize("compo", 25)
+        ogX = -1965
+    else
+        makeLuaText("compo", songName..' ('..difficultyName..')'.." by: "..parsed.composer[1]..' | Pause Theme by: LizNaithy'..' | Art by: '..parsed.artist[1]..' | Chart and Coding by: '..parsed.coder, 0, -1550, -20)
+        setObjectCamera("compo", 'other')
+        addLuaText("compo")
+        setTextSize("compo", 25)
+        ogX = -1550
+    end
 end
 
 function onTimerCompleted(tag)
@@ -92,12 +172,27 @@ function onTimerCompleted(tag)
         doTweenAlpha("a", "noWay", 1, 0.6, "linear")
         runTimer("boom", 0.6)
     elseif tag == 'reset' then
-        objectPlayAnimation("buttonD", "idle")
-        objectPlayAnimation("buttonU", "idle")
+        playAnim("buttonD", "idle")
+        playAnim("buttonU", "idle")
     end
 end
 
 function onUpdate(elapsed)
+
+    setProperty("escu.visible", false)
+    setProperty("resu.visible", false)
+    setProperty("resta.visible", false)
+    setProperty("exit.visible", false)
+    setProperty("seta.visible", false)
+    setProperty("setaa.visible", false)
+    setProperty("compo.visible", false)
+    setProperty("barr.visible", false)
+    setProperty("balls.visible", false)
+    setProperty("morri.visible", false)
+    setProperty("noWay.visible", false)
+    setProperty("buttonD.visible", false)
+    setProperty("buttonU.visible", false)
+    setProperty("buttonA.visible", false)
     
     if misses == 1 then
         spc = 35
@@ -114,109 +209,32 @@ function onPause()
     return Function_Stop;
 end
 
-function onCustomSubstateCreate(name)
+function onCustomSubstateCreatePost(name)
     
     if name == 'pauseShit' then
 
-        setPropertyFromClass("flixel.FlxG", "mouse.visible", true)
+        playSound("pause/pause-theme", 0, 'bah')
+        soundFadeIn("bah", 5, 0, 0.2)
+        playAnim("boyfriend", "singDOWNmiss", true)
+
+        doTweenY("lol", "compo", 0, 0.5, "quartOut")
+        doTweenY("xdd", "balls", 694.6, 0.5, "quartOut")
+        doTweenY("xd", "barr", 0, 0.5, "quartOut")
+
+        --runTimer("beat", 0.85, 0)
+        runTimer("boom", 0.5)
 
         if special or misses == 1 or relax > 20 then
             curFrase = frases[spc][1]
         else
             curFrase = frases[getRandomInt(0, 33)][1]
         end
-        
-        playSound("pause-theme", 0, 'bah')
-        soundFadeIn("bah", 5, 0, 0.2)
-        characterPlayAnim("boyfriend", "singDOWNmiss", true)
-
-        makeLuaSprite("escu")
-        makeGraphic("escu", screenWidth, screenHeight, '000000')
-        setObjectCamera("escu", 'other')
-        addLuaSprite("escu")
-        setProperty("escu.alpha", 0)
-        setProperty("escu.visible", false)
-
-        makeLuaText("resu", the[1], 0, 0.0, 0.0)
-        makeLuaText("resta", the[2], 0, 0.0, 0.0)
-        makeLuaText("exit", the[3], 0, 0.0, 0.0)
-        makeLuaText("seta", ">", 0, 0.0, 0.0)
-        makeLuaText("setaa", "<", 0, 0.0, 0.0)
-        setObjectCamera("resu", 'other')
-        setObjectCamera("resta", 'other')
-        setObjectCamera("exit", 'other')
-        setObjectCamera("seta", 'other')
-        setObjectCamera("setaa", 'other')
-        addLuaText("resu")
-        addLuaText("resta")
-        addLuaText("exit")
-        addLuaText("seta")
-        addLuaText("setaa")
-        setTextSize("resu", 50)
-        setTextSize("resta", 50)
-        setTextSize("exit", 50)
-        setTextSize("seta", 50)
-        setTextSize("setaa", 50)
-        screenCenter("resu", 'x')
-        setProperty("resu.y", getGraphicMidpointY("escu") - divi)
-        screenCenter("resta")
-        screenCenter("exit", 'x')
-        setProperty("exit.y", getGraphicMidpointY("escu") + divi - 50)
-
-        makeLuaText("compo", songName..' ('..difficultyName..')'.." by: "..getTextFromFile('data/'..songName..'/composer-'..difficultyName..'.txt')..' | Pause Theme by: LizNaithy'..' | Art by: '..getTextFromFile('data/'..songName..'/artist-'..difficultyName..'.txt')..' | Chart and Coding by: '..getTextFromFile('data/'..songName..'/charter-coder-'..difficultyName..'.txt'), 0, -1800, -20)
-        setObjectCamera("compo", 'other')
-        addLuaText("compo")
-        setTextSize("compo", 25)
-        doTweenY("lol", "compo", 0, 0.5, "quartOut")
 
         makeLuaText("morri", curFrase, 0, 1300, 740)
         setObjectCamera("morri", 'other')
         addLuaText("morri")
         setTextSize("morri", 25)
         doTweenY("lololol", "morri", 694.6, 0.5, "quartOut")
-
-        makeLuaText("noWay", "- PAUSED -", 0, 0.0, 100)
-        setObjectCamera("noWay", 'other')
-        addLuaText("noWay")
-        setTextSize("noWay", 70)
-        screenCenter("noWay", 'x')
-        setTextAlignment("noWay", 'center')
-
-        makeLuaSprite("barr", '', 0, -20)
-        makeGraphic("barr", screenWidth, 25, '000000')
-        setObjectCamera("barr", 'other')
-        addLuaSprite("barr", false)
-        doTweenY("xd", "barr", 0, 0.5, "quartOut")
-
-        makeLuaSprite("balls", '', 0, 740)
-        makeGraphic("balls", screenWidth, 25, '000000')
-        setObjectCamera("balls", 'other')
-        addLuaSprite("balls", false)
-        doTweenY("xdd", "balls", 694.6, 0.5, "quartOut")
-
-        --runTimer("beat", 0.85, 0)
-        runTimer("boom", 0.5)
-
-        makeAnimatedLuaSprite("buttonD", 'virtualpad', 0, 560)
-        addAnimationByPrefix("buttonD", "pressed", "downPress", 0, false)
-        addAnimationByPrefix("buttonD", "idle", "down", 0, false)
-        setObjectCamera("buttonD", 'other')
-        addLuaSprite("buttonD", true)
-        setProperty("buttonD.alpha", 0.5)
-
-        makeAnimatedLuaSprite("buttonU", 'virtualpad', 0, 430)
-        addAnimationByPrefix("buttonU", "pressed", "upPress", 0, false)
-        addAnimationByPrefix("buttonU", "idle", "up", 0, false)
-        setObjectCamera("buttonU", 'other')
-        addLuaSprite("buttonU", true)
-        setProperty("buttonU.alpha", 0.5)
-
-        makeAnimatedLuaSprite("buttonA", 'virtualpad', 1155, 560)
-        addAnimationByPrefix("buttonA", "pressed", "aPress", 10, false)
-        addAnimationByPrefix("buttonA", "idle", "a", 0, false)
-        setObjectCamera("buttonA", 'other')
-        addLuaSprite("buttonA", true)
-        setProperty("buttonA.alpha", 0.5)
     end
 end
 
@@ -288,15 +306,15 @@ function onCustomSubstateUpdatePost(name, elapsed)
             pos = 2
         end
 
-        if getMouseX('camOther') > getProperty('buttonD.x') and getMouseY('camOther') > getProperty('buttonD.y') and getMouseX('camOther') < getProperty('buttonD.x') + getProperty('buttonD.width') and getMouseY('camOther') < getProperty('buttonD.y') + getProperty('buttonD.height') and mouseReleased() then
+        if getMouseX('camOther') > getProperty('buttonD.x') and getMouseY('camOther') > getProperty('buttonD.y') and getMouseX('camOther') < getProperty('buttonD.x') + getProperty('buttonD.width') and getMouseY('camOther') < getProperty('buttonD.y') + getProperty('buttonD.height') and mouseClicked() then
             pos = pos + 1
-            playSound("Metronome_Tick", 0.5, 'tick')
-            objectPlayAnimation("buttonD", "pressed")
+            playSound("scrollMenu", 0.5, 'tick')
+            playAnim("buttonD", "pressed")
             runTimer("reset", 0.1)
-        elseif getMouseX('camOther') > getProperty('buttonU.x') and getMouseY('camOther') > getProperty('buttonU.y') and getMouseX('camOther') < getProperty('buttonU.x') + getProperty('buttonU.width') and getMouseY('camOther') < getProperty('buttonU.y') + getProperty('buttonU.height') and mouseReleased() then
+        elseif getMouseX('camOther') > getProperty('buttonU.x') and getMouseY('camOther') > getProperty('buttonU.y') and getMouseX('camOther') < getProperty('buttonU.x') + getProperty('buttonU.width') and getMouseY('camOther') < getProperty('buttonU.y') + getProperty('buttonU.height') and mouseClicked() then
             pos = pos - 1
-            playSound("Metronome_Tick", 0.5, 'tick')
-            objectPlayAnimation("buttonU", "pressed")
+            playSound("scrollMenu", 0.5, 'tick')
+            playAnim("buttonU", "pressed")
             runTimer("reset", 0.1)
         end
 
@@ -308,7 +326,7 @@ function onCustomSubstateUpdatePost(name, elapsed)
         setShaderFloat('camShader', 'iTime', os.clock())
     end
 
-        if getMouseX('camOther') > getProperty('buttonA.x') and getMouseY('camOther') > getProperty('buttonA.y') and getMouseX('camOther') < getProperty('buttonA.x') + getProperty('buttonA.width') and getMouseY('camOther') < getProperty('buttonA.y') + getProperty('buttonA.height') and mouseReleased() and pos == 0 then
+        if getMouseX('camOther') > getProperty('buttonA.x') and getMouseY('camOther') > getProperty('buttonA.y') and getMouseX('camOther') < getProperty('buttonA.x') + getProperty('buttonA.width') and getMouseY('camOther') < getProperty('buttonA.y') + getProperty('buttonA.height') and mouseClicked() and pos == 0 then
             closeCustomSubstate()
             stopSound("bah")
             setProperty("escu.visible", false)
@@ -325,19 +343,16 @@ function onCustomSubstateUpdatePost(name, elapsed)
             setProperty("buttonD.visible", false)
             setProperty("buttonU.visible", false)
             setProperty("buttonA.visible", false)
-            setPropertyFromClass("flixel.FlxG", "mouse.visible", false)
-            objectPlayAnimation("buttonA", "pressed")
+            playAnim("buttonA", "pressed")
             runHaxeCode([[
                 FlxG.game.setFilters([]);
             ]])
-        elseif getMouseX('camOther') > getProperty('buttonA.x') and getMouseY('camOther') > getProperty('buttonA.y') and getMouseX('camOther') < getProperty('buttonA.x') + getProperty('buttonA.width') and getMouseY('camOther') < getProperty('buttonA.y') + getProperty('buttonA.height') and mouseReleased() and pos == 1 then
+        elseif getMouseX('camOther') > getProperty('buttonA.x') and getMouseY('camOther') > getProperty('buttonA.y') and getMouseX('camOther') < getProperty('buttonA.x') + getProperty('buttonA.width') and getMouseY('camOther') < getProperty('buttonA.y') + getProperty('buttonA.height') and mouseClicked() and pos == 1 then
             restartSong(false)
-            objectPlayAnimation("buttonA", "pressed")
-            setPropertyFromClass("flixel.FlxG", "mouse.visible", false)
-        elseif getMouseX('camOther') > getProperty('buttonA.x') and getMouseY('camOther') > getProperty('buttonA.y') and getMouseX('camOther') < getProperty('buttonA.x') + getProperty('buttonA.width') and getMouseY('camOther') < getProperty('buttonA.y') + getProperty('buttonA.height') and mouseReleased() and pos == 2 then
+            playAnim("buttonA", "pressed")
+        elseif getMouseX('camOther') > getProperty('buttonA.x') and getMouseY('camOther') > getProperty('buttonA.y') and getMouseX('camOther') < getProperty('buttonA.x') + getProperty('buttonA.width') and getMouseY('camOther') < getProperty('buttonA.y') + getProperty('buttonA.height') and mouseClicked() and pos == 2 then
             exitSong(false)
-            objectPlayAnimation("buttonA", "pressed")
-            setPropertyFromClass("flixel.FlxG", "mouse.visible", false)
+            playAnim("buttonA", "pressed")
         end
     end
 end
@@ -350,7 +365,6 @@ function onSoundFinished(tag)
 end
 
 function onDestroy()
-    setDataFromSave("giveUp", "relax", 0)
     if shadersEnabled then
         runHaxeCode([[
             FlxG.game.setFilters([]);
