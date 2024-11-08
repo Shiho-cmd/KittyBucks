@@ -302,8 +302,10 @@ local rightReleased = nil
 local bReleased = nil
 function onUpdate(elapsed)
 
+    if shadersEnabled then
     setShaderFloat('back', 'frequency', 8)
     setShaderFloat('back', 'wamplitude', 0.05)
+    end
 
     if buildTarget == 'android' then
     leftJustPressed = getMouseX('camOther') > getProperty('buttonL.x') and getMouseY('camOther') > getProperty('buttonL.y') and getMouseX('camOther') < getProperty('buttonL.x') + getProperty('buttonL.width') and getMouseY('camOther') < getProperty('buttonL.y') + getProperty('buttonL.height') and mouseClicked()
@@ -618,9 +620,11 @@ function onUpdatePost(elapsed)
     setProperty("shi.angle", getProperty("shi.angle") + 0.5)
     setProperty("box.angle", getProperty("box.angle") + 0.5)
 
-    setShaderFloat('back', 'iTime', os.clock())
-
     setProperty("coiso.x", getProperty("coiso.x") + 1)
+
+    if shadersEnabled then
+        setShaderFloat('back', 'iTime', os.clock())
+    end
 
     if cut then
         customStep = customStep + 1
