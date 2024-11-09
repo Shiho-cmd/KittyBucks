@@ -612,6 +612,10 @@ function onTimerCompleted(tag, loops, loopsLeft)
         removeLuaText("coisi", true)
         cut = false
         setPropertyFromClass("flixel.FlxG", "mouse.visible", true)
+        runTimer("morse", 300)
+    elseif tag == 'morse' then
+        soundFadeOut("music", 0.5, 0)
+        playSound("credits/stickers/shhh/nada_pra_ver_aqui", 1, 'code')
     end
 end
 
@@ -642,6 +646,8 @@ function onSoundFinished(tag)
         playSound("credits/thank_you_for_playing", 1, 'music')
     elseif tag == 'rag' then
         playAnim("ukiyo", "idle", true)
+    elseif tag == 'code' then
+        soundFadeIn("music", 2, 0, 1)
     end
 end
 
