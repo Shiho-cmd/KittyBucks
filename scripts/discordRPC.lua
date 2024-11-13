@@ -14,19 +14,29 @@ function onCreate()
     if songName == 'KittyJam' and difficultyName == 'buck' then
         min = parsed.kittyjam[1]
         sec = parsed.kittyjam[2]
+        miniIcon = 'mini-icon-kitty'
     else
         min = parsed.kittyjamErect[1]
         sec = parsed.kittyjamErect[2]
+        miniIcon = 'mini-icon-kitty'
     end
 
     if songName == 'SuperNova' then
         min = parsed.supernova[1]
         sec = parsed.supernova[2]
+        miniIcon = 'mini-icon-pog'
     end
 
     if songName == 'credits' then
         min = parsed.credits[1]
         sec = parsed.credits[2]
+        miniIcon = 'mini-icon-pog'
+    end
+
+    if songName == 'SexoDURO' then
+        min = parsed.sexoduro[1]
+        sec = parsed.sexoduro[2]
+        miniIcon = 'mini-icon-pog'
     end
     
     makeLuaText("socorro")
@@ -84,7 +94,6 @@ function onUpdatePost()
 
     if songName == 'credits' then
         setTextString("socorro", "")
-        miniIcon = 'mini-icon-pog'
     else
         setTextString('socorro', min .. ':' .. sec..' Left')
     end
