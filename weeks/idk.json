@@ -1,5 +1,26 @@
 {
+	"storyName": "KittyBucks",
+	"difficulties": "buck, erect",
+	"hideFreeplay": false,
+	"weekBackground": "stage",
+	"weekBefore": "tutorial",
+	"freeplayColor": [
+		209,
+		1,
+		142
+	],
+	"startUnlocked": true,
+	"hideStoryMode": true,
 	"songs": [
+		[
+			"RANDOM",
+			"none",
+			[
+				255,
+				255,
+				255
+			]
+		],
 		[
 			"KittyJam",
 			"gataemodoidabruh",
@@ -10,23 +31,11 @@
 			]
 		]
 	],
-	"hiddenUntilUnlocked": false,
-	"hideFreeplay": false,
-	"weekBackground": "stage",
-	"difficulties": "buck, erect",
 	"weekCharacters": [
 		"dad",
 		"bf",
 		"gf"
 	],
-	"storyName": "KittyBucks",
-	"weekName": "KittyJam yayyy B)",
-	"freeplayColor": [
-		209,
-		1,
-		142
-	],
-	"hideStoryMode": true,
-	"weekBefore": "tutorial",
-	"startUnlocked": true
+	"hiddenUntilUnlocked": false,
+	"weekName": "KittyJam yayyy B)"
 }

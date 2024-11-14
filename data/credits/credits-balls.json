@@ -1670,7 +1670,7 @@
 		"player3": null,
 		"song": "credits",
 		"needsVoices": false,
-		"stage": "bg",
+		"stage": "none",
 		"bpm": 100,
 		"speed": 2.5
 	}
