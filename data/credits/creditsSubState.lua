@@ -600,6 +600,7 @@ function onTimerCompleted(tag, loops, loopsLeft)
         soundFadeIn("music", 2, 0, 1)
         removeLuaText("coisi", true)
         cut = false
+        runTimer("morse", 300)
     elseif tag == 'ain' and buildTarget ~= 'android' then
         playSound("credits/light_turn_on", 1)
         setProperty("luz.alpha", 0.3)

@@ -107,12 +107,12 @@
 		-430,
 		60
 	],
-	"healthicon": "kuromi",
+	"healthicon": "cu",
 	"flip_x": false,
 	"healthbar_colors": [
-		79,
-		51,
-		103
+		62,
+		44,
+		80
 	],
 	"camera_position": [
 		150,

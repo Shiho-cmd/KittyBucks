@@ -24,19 +24,19 @@ function onCreate()
     if songName == 'SuperNova' then
         min = parsed.supernova[1]
         sec = parsed.supernova[2]
-        miniIcon = 'mini-icon-pog'
+        miniIcon = 'mini-icon-placeholder'
     end
 
     if songName == 'credits' then
         min = parsed.credits[1]
         sec = parsed.credits[2]
-        miniIcon = 'mini-icon-pog'
+        miniIcon = 'mini-icon-placeholder'
     end
 
     if songName == 'SexoDURO' then
         min = parsed.sexoduro[1]
         sec = parsed.sexoduro[2]
-        miniIcon = 'mini-icon-pog'
+        miniIcon = 'mini-icon-placeholder'
     end
     
     makeLuaText("socorro")

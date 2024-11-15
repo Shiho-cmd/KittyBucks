@@ -1,59 +1,59 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 24,
-			"name": "cyc idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "cyc idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-8,
 				-62
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "cyc down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "cyc down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				107,
 				44
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "cyc up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "cyc up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				32,
 				-10
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 24,
-			"name": "cyc right",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "cyc right"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-20,
 				5
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "cyc left",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "cyc left"
 		}
 	],
 	"vocals_file": "cyc",
@@ -71,8 +71,8 @@
 		116
 	],
 	"camera_position": [
-		-100,
-		-90
+		-80,
+		-30
 	],
 	"sing_duration": 4,
 	"scale": 1,

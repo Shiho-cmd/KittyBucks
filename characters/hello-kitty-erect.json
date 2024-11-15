@@ -63,12 +63,12 @@
 		-110,
 		210
 	],
-	"healthicon": "gataemodoidabruh",
+	"healthicon": "kitty",
 	"flip_x": false,
 	"healthbar_colors": [
-		209,
-		1,
-		142
+		142,
+		101,
+		174
 	],
 	"camera_position": [
 		10,
