@@ -39,7 +39,7 @@ local stickerScaleOg = 1
 local shinyChance = 0.012
 local shinyCharm = false
 local modernShinyChance = false
-local shinyAnim = false
+local itsShiny = nil
 
 function onCreate()
 
@@ -58,6 +58,8 @@ function onCreate()
     elseif shinyCharm and modernShinyChance then
         shinyChance = 0.073
     end
+
+    itsShiny = getRandomBool(shinyChance)
 
     --debugPrint(shinyChance)
 
@@ -345,8 +347,6 @@ local bPressed = nil
 local leftReleased = nil
 local rightReleased = nil
 local bReleased = nil
-
-local itsShiny = getRandomBool(shinyChance)
 function onUpdate(elapsed)
 
     if shadersEnabled then
