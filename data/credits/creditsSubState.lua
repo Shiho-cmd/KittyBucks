@@ -43,6 +43,24 @@ local shinyAnim = false
 
 function onCreate()
 
+    if getTextFromFile("data/kittyjam/save.txt") == 'essa música foi passada?: sim' and getTextFromFile("data/kittyjam/save-erect.txt") == 'essa música foi passada?: sim' and getTextFromFile("data/supernova/save.txt") == 'essa música foi passada?: sim'  and getTextFromFile("data/sexoduro/save.txt") == 'essa música foi passada?: sim' then
+        modernShinyChance = true
+    end
+    
+    if getTextFromFile("data/kittyjam/save-perfect.txt") == 'foi feito 100% nessa música?: sim' then
+        shinyCharm = true
+    end
+
+    if modernShinyChance and not shinyCharm then
+        shinyChance = 0.024
+    elseif shinyCharm and not modernShinyChance then
+        shinyChance = 0.036
+    elseif shinyCharm and modernShinyChance then
+        shinyChance = 0.073
+    end
+
+    --debugPrint(shinyChance)
+
     if buildTarget == 'android' then
         precacheImage("virtualpad")
 
@@ -75,14 +93,6 @@ function onCreate()
         setProperty("buttonR.color", 0x52465E)
         setProperty("buttonR.alpha", 0.5)
         addLuaSprite("buttonR", true)
-    end
-
-    if modernShinyChance then
-        shinyChance = 0.024
-    elseif shinyCharm then
-        shinyChance = 0.036
-    elseif shinyCharm and modernShinyChance then
-        shinyChance = 0.073
     end
 
     --precacheeeeeeeeee
@@ -284,10 +294,6 @@ function onCreate()
 
     --i'm going to hit my box till i kill myself today at 11pm
     onCreateHitbox()
-
-    if getDataFromSave("charm", "pintos") == true then
-        playSound("credits/shiny", 1)
-    end
 end
 
 function onCreateHitbox() -- só pra ser bonitnho
