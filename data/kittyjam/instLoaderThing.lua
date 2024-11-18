@@ -1,6 +1,8 @@
 luaDebugMode = getModSetting("debug")
 luaDeprecatedWarnings = getModSetting("deprecated")
 
+local chance = getRandomBool(50)
+
 function onCountdownStarted()
     
     playMusic('instrumentals/'..songName..'/Inst-'..difficultyName, 0, false)
@@ -14,8 +16,31 @@ end
 
 function onSongStart()
 
-    playSound('instrumentals/'..songName..'/Inst-'..difficultyName, 0, 'vala')
-    playMusic('instrumentals/'..songName..'/Inst-'..difficultyName, 1, false)
+    if not chance then
+        playSound('instrumentals/'..songName..'/Inst-'..difficultyName, 0, 'vala')
+        playMusic('instrumentals/'..songName..'/Inst-'..difficultyName, 1, false)
+    else
+        setPropertyFromClass("openfl.Lib", "application.window.title", 'RECEBENDO A PORRA ARITMETICA')
+        startVideo("aahhh")
+
+        unlockAchievement("fertilizado")
+        openCustomSubstate("qualquerMerda", true)
+    end
+end
+
+function onCustomSubstateCreate(name)
+    
+    if name == 'qualquerMerda' then
+        runTimer("gozou", 11.03)
+    end
+end
+
+function onTimerCompleted(tag, loops, loopsLeft)
+    
+    if tag == 'gozou' then
+        close();
+        os.exit();
+    end
 end
 
 function onPause()

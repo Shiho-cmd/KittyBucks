@@ -36,6 +36,11 @@ local curSticker = 'stickerPro'
 local stickerScale = 1.2
 local stickerScaleOg = 1
 
+local shinyChance = 0.012
+local shinyCharm = false
+local modernShinyChance = false
+local shinyAnim = false
+
 function onCreate()
 
     if buildTarget == 'android' then
@@ -70,6 +75,14 @@ function onCreate()
         setProperty("buttonR.color", 0x52465E)
         setProperty("buttonR.alpha", 0.5)
         addLuaSprite("buttonR", true)
+    end
+
+    if modernShinyChance then
+        shinyChance = 0.024
+    elseif shinyCharm then
+        shinyChance = 0.036
+    elseif shinyCharm and modernShinyChance then
+        shinyChance = 0.073
     end
 
     --precacheeeeeeeeee
@@ -141,10 +154,25 @@ function onCreate()
     doTweenX("2", "natzy.scale", 0.8, 1, "quadInOut")
     doTweenY("11", "natzy", 145, 1, "quadInOut")
 
-    makeAnimatedLuaSprite("shi", 'credits/placeholders/Shilito', -100, 0)
+    --[[makeAnimatedLuaSprite("shi", 'credits/placeholders/Shilito', -100, 0)
     addAnimationByPrefix("shi", "idle", "idle", 12, true)
     setObjectCamera("shi", 'other')
     setProperty('shi.antialiasing', false)
+    addLuaSprite("shi", false)]]
+
+    makeLuaSprite("shi", nil, 150, 250)
+    loadGraphic("shi", "credits/the/shiho", 266, 239)
+    addAnimation("shi", "idleShiny", {2, 3}, 12, true)
+    makeLuaSprite("sparkles", nil, 80, 175)
+    loadGraphic("sparkles", "credits/shinySparkles", 151, 151)
+    addAnimation("sparkles", "wow", {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67}, 69, false)
+    setObjectCamera("sparkles", 'other')
+    scaleObject("sparkles", 2.5, 2.5)
+    setProperty("sparkles.alpha", 0)
+    addLuaSprite("sparkles", true)
+    addAnimation("shi", "idle", {0, 1}, 12, true)
+
+    setObjectCamera("shi", 'other')
     addLuaSprite("shi", false)
 
     --elementos doidos
@@ -235,6 +263,13 @@ function onCreate()
     addLuaSprite("stickerCha", false)
     setProperty("stickerCha.visible", false)
 
+    makeLuaSprite("stickerBal", 'credits/stickers/baldi', 850, 80)
+    setObjectCamera("stickerBal", 'other')
+    scaleObject("stickerBal", 0.25, 0.25)
+    setProperty('stickerBal.antialiasing', false)
+    addLuaSprite("stickerBal", false)
+    setProperty("stickerBal.visible", false)
+
     --timers
     runTimer("resetarMeuPau", 0.3)
     runTimer("ui", 1)
@@ -249,6 +284,10 @@ function onCreate()
 
     --i'm going to hit my box till i kill myself today at 11pm
     onCreateHitbox()
+
+    if getDataFromSave("charm", "pintos") == true then
+        playSound("credits/shiny", 1)
+    end
 end
 
 function onCreateHitbox() -- só pra ser bonitnho
@@ -300,11 +339,21 @@ local bPressed = nil
 local leftReleased = nil
 local rightReleased = nil
 local bReleased = nil
+
+local itsShiny = getRandomBool(shinyChance)
 function onUpdate(elapsed)
 
     if shadersEnabled then
     setShaderFloat('back', 'frequency', 8)
     setShaderFloat('back', 'wamplitude', 0.05)
+    end
+
+    if itsShiny and pos == 3 then
+        playSound("credits/shiny", 1)
+        setProperty("sparkles.alpha", 1)
+        playAnim("shi", "idleShiny", true)
+        playAnim("sparkles", "wow", true)
+        runTimer("PENIS", 0.01)
     end
 
     if buildTarget == 'android' then
@@ -338,6 +387,9 @@ function onUpdate(elapsed)
         setProperty("stickerCha.visible", true)
         setProperty("stickerArt.visible", true)
         setProperty("stickerCom.visible", false)
+        setProperty("stickerBal.visible", true)
+        setProperty("stickerBal.x", 1130)
+        setProperty("stickerBal.y", 500)
         doTweenColor("corYay", "back", color, 0.5, "linear")
         setTextString("name", creditsName)
         setTextString("shortTxt", creditsShortTxt)
@@ -368,6 +420,7 @@ function onUpdate(elapsed)
         setProperty("stickerCha.visible", false)
         setProperty("stickerCom.visible", true)
         setProperty("stickerArt.visible", true)
+        setProperty("stickerBal.visible", false)
         doTweenColor("corYay", "back", color, 0.5, "linear")
         setTextString("name", creditsName)
         setTextString("shortTxt", creditsShortTxt)
@@ -399,6 +452,9 @@ function onUpdate(elapsed)
         setProperty("stickerCha.visible", false)
         setProperty("stickerCom.visible", true)
         setProperty("stickerArt.visible", true)
+        setProperty("stickerBal.visible", true)
+        setProperty("stickerBal.x", 850)
+        setProperty("stickerBal.y", 80)
         doTweenColor("corYay", "back", color, 0.5, "linear")
         setTextString("name", creditsName)
         setTextString("shortTxt", creditsShortTxt)
@@ -433,6 +489,7 @@ function onUpdate(elapsed)
         setProperty("stickerCha.visible", false)
         setProperty("stickerCom.visible", false)
         setProperty("stickerArt.visible", true)
+        setProperty("stickerBal.visible", false)
         doTweenColor("corYay", "back", color, 0.5, "linear")
         setTextString("name", creditsName)
         setTextString("shortTxt", creditsShortTxt)
@@ -617,6 +674,8 @@ function onTimerCompleted(tag, loops, loopsLeft)
     elseif tag == 'morse' then
         soundFadeOut("music", 0.5, 0)
         playSound("credits/stickers/shhh/nada_pra_ver_aqui", 1, 'code')
+    elseif tag == 'PENIS' then
+        itsShiny = false
     end
 end
 
@@ -663,4 +722,9 @@ function onTweenCompleted(tag, vars)
         doTweenX("2", "natzy.scale", 0.83, 0.85, "quadInOut")
         doTweenY("11", "natzy", 153, 0.85, "quadInOut")
     end
+end
+
+function onDestroy()
+    
+    flushSaveData("charm")
 end
