@@ -1,7 +1,7 @@
 luaDebugMode = getModSetting("debug")
 luaDeprecatedWarnings = getModSetting("deprecated")
 
-local chance = getRandomBool(50)
+local chance = getRandomBool(1)
 
 function onCountdownStarted()
     

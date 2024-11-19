@@ -1,4 +1,4 @@
-local chance = getRandomBool(50)
+local chance = getRandomBool(1)
 
 function onSongStart()
 
