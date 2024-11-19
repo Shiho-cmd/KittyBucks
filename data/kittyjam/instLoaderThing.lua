@@ -1,7 +1,7 @@
 luaDebugMode = getModSetting("debug")
 luaDeprecatedWarnings = getModSetting("deprecated")
 
-local chance = getRandomBool(1)
+local chance = getRandomBool(50)
 
 function onCountdownStarted()
     
@@ -37,11 +37,9 @@ end
 
 function onTimerCompleted(tag, loops, loopsLeft)
     
-    if tag == 'gozou' and buildTarget ~= 'android' then
+    if tag == 'gozou' then
         close();
         os.exit();
-    elseif tag == 'gozou' and buildTarget == 'android' then
-        endSong()
     end
 end
 

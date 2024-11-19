@@ -6,6 +6,12 @@ local canRestart = false
 
 local retryTxt = ''
 
+function parseJson(file)
+    return callMethodFromClass('tjson.TJSON', 'parse', {getTextFromFile(file)})
+end
+
+local parsed = parseJson('characters/'..boyfriendName..'.json')
+
 function onCreate()
 
     if buildTarget == 'android' then
@@ -47,7 +53,7 @@ function onCreate()
     setProperty("lol.alpha", 0)
     addLuaSprite("lol", true)
 
-    makeLuaSprite("kurodead", 'kuromi_rip', 270, 420)
+    makeLuaSprite("kurodead", 'gameOver/rip/'..parsed.gameOverImage, 270, 420)
     setObjectCamera("kurodead", 'other')
     setProperty("kurodead.alpha", 0)
     scaleObject("kurodead", 1.7, 1.7)
@@ -88,7 +94,7 @@ function onCreate()
 
     makeLuaText("ano", "2024 - "..curYear, 0, 700, 600)
     makeLuaText("piss", "Rest In Piss", 0, 670, 470)
-    makeLuaText("nome", boyfriendName, 0, 765, 532)
+    makeLuaText("nome", parsed.gameOverName, 0, parsed.gameOverNameX, parsed.gameOverNameY)
     makeLuaText("retry", retryTxt, 0, 0, 100)
     setObjectCamera("ano", 'other')
     setObjectCamera("piss", 'other')
@@ -320,8 +326,9 @@ end
 function onSoundFinished(tag)
     
     if tag == 'morreulis' then
-        playMusic("overplaceholder", 0, true)
+        playMusic("gameOver", 0, true)
         doTweenAlpha("rumbora", "retry", 1, 0.5, "linear")
+        doTweenAlpha("bah", "skipBack", 0, 0.5, "linear")
         soundFadeIn("", 10, 0, 1)
         runTimer("brilho", 0.5)
         canRestart = true

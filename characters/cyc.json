@@ -13,8 +13,8 @@
 		},
 		{
 			"offsets": [
-				-8,
-				-62
+				63,
+				-50
 			],
 			"loop": false,
 			"fps": 24,
@@ -24,8 +24,8 @@
 		},
 		{
 			"offsets": [
-				107,
-				44
+				-37,
+				43
 			],
 			"loop": false,
 			"fps": 24,
@@ -35,24 +35,24 @@
 		},
 		{
 			"offsets": [
-				32,
-				-10
+				-90,
+				-11
 			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
 			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
 			"name": "cyc right"
 		},
 		{
 			"offsets": [
-				-20,
+				-62,
 				5
 			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
 			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
 			"name": "cyc left"
 		}
 	],
@@ -68,13 +68,17 @@
 	"healthbar_colors": [
 		72,
 		83,
-		116
+		136
 	],
 	"camera_position": [
-		-80,
+		-10,
 		-30
 	],
 	"sing_duration": 4,
 	"scale": 1,
-	"_editor_isPlayer": false
+	"_editor_isPlayer": true,
+	"gameOverName": "CYC",
+	"gameOverImage": "cyc_rip",
+	"gameOverNameX": 805,
+	"gameOverNameY": 535
 }
