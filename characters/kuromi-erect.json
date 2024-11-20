@@ -12,103 +12,103 @@
 			"indices": []
 		},
 		{
-			"offsets": [
-				-11,
-				1
-			],
 			"loop": false,
-			"fps": 12,
-			"anim": "singUP",
-			"indices": [],
-			"name": "up0"
-		},
-		{
 			"offsets": [
-				-1,
-				0
+				27,
+				-18
 			],
-			"loop": false,
-			"fps": 12,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right0"
-		},
-		{
-			"offsets": [
-				0,
-				2
-			],
-			"loop": false,
-			"fps": 12,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left0"
+			"fps": 12,
+			"name": "left0",
+			"indices": []
 		},
 		{
+			"loop": false,
+			"offsets": [
+				-8,
+				-22
+			],
+			"anim": "singDOWN",
+			"fps": 12,
+			"name": "down0",
+			"indices": []
+		},
+		{
+			"loop": false,
 			"offsets": [
 				-6,
-				4
+				-11
 			],
-			"loop": false,
+			"anim": "singUP",
 			"fps": 12,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "down0"
+			"name": "up0",
+			"indices": []
 		},
 		{
-			"offsets": [
-				20,
-				-39
-			],
 			"loop": false,
+			"offsets": [
+				1,
+				-14
+			],
+			"anim": "singRIGHT",
 			"fps": 12,
-			"anim": "singUPmiss",
-			"indices": [],
-			"name": "upmiss"
+			"name": "right0",
+			"indices": []
 		},
 		{
-			"offsets": [
-				-111,
-				-68
-			],
 			"loop": false,
-			"fps": 12,
-			"anim": "singRIGHTmiss",
-			"indices": [],
-			"name": "rightmiss"
-		},
-		{
 			"offsets": [
-				60,
-				-90
+				-102,
+				-124
 			],
-			"loop": false,
-			"fps": 12,
 			"anim": "singLEFTmiss",
-			"indices": [],
-			"name": "leftmiss"
+			"fps": 12,
+			"name": "leftMiss",
+			"indices": []
 		},
 		{
-			"offsets": [
-				-10,
-				-80
-			],
 			"loop": false,
-			"fps": 12,
+			"offsets": [
+				-70,
+				-146
+			],
 			"anim": "singDOWNmiss",
-			"indices": [],
-			"name": "downmiss"
+			"fps": 12,
+			"name": "downMiss",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-132,
+				-156
+			],
+			"anim": "singUPmiss",
+			"fps": 12,
+			"name": "upMiss",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-60,
+				-130
+			],
+			"anim": "singRIGHTmiss",
+			"fps": 12,
+			"name": "rightMiss",
+			"indices": []
 		}
 	],
 	"vocals_file": "kuromi-erect",
-	"no_antialiasing": false,
-	"image": "characters/CUromi",
+	"no_antialiasing": true,
+	"image": "characters/kuromi_new",
 	"position": [
-		-430,
-		60
+		-150,
+		30
 	],
 	"healthicon": "kuromi",
-	"flip_x": false,
+	"flip_x": true,
 	"healthbar_colors": [
 		79,
 		51,
@@ -116,10 +116,10 @@
 	],
 	"camera_position": [
 		150,
-		-10
+		-70
 	],
 	"sing_duration": 4,
-	"scale": 1.2,
+	"scale": 1.3,
 	"_editor_isPlayer": true,
 	"gameOverName": "Kuromi",
 	"gameOverImage": "kuromi_rip",

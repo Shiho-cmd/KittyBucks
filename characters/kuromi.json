@@ -1,43 +1,21 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 12,
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-11,
-				1
-			],
-			"anim": "singUP",
 			"fps": 12,
-			"name": "up0",
+			"name": "idle",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				-1,
-				0
-			],
-			"anim": "singRIGHT",
-			"fps": 12,
-			"name": "right0",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				0,
-				2
+				27,
+				-18
 			],
 			"anim": "singLEFT",
 			"fps": 12,
@@ -47,8 +25,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				-6,
-				4
+				-8,
+				-22
 			],
 			"anim": "singDOWN",
 			"fps": 12,
@@ -58,68 +36,90 @@
 		{
 			"loop": false,
 			"offsets": [
-				20,
-				-39
+				-6,
+				-11
 			],
-			"anim": "singUPmiss",
+			"anim": "singUP",
 			"fps": 12,
-			"name": "upmiss",
+			"name": "up0",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				-111,
-				-68
+				1,
+				-14
 			],
-			"anim": "singRIGHTmiss",
+			"anim": "singRIGHT",
 			"fps": 12,
-			"name": "rightmiss",
+			"name": "right0",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				60,
-				-90
+				-102,
+				-124
 			],
 			"anim": "singLEFTmiss",
 			"fps": 12,
-			"name": "leftmiss",
+			"name": "leftMiss",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				-10,
-				-80
+				-70,
+				-146
 			],
 			"anim": "singDOWNmiss",
 			"fps": 12,
-			"name": "downmiss",
+			"name": "downMiss",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-132,
+				-156
+			],
+			"anim": "singUPmiss",
+			"fps": 12,
+			"name": "upMiss",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-60,
+				-130
+			],
+			"anim": "singRIGHTmiss",
+			"fps": 12,
+			"name": "rightMiss",
 			"indices": []
 		}
 	],
 	"vocals_file": "kuromi",
 	"no_antialiasing": false,
-	"image": "characters/CUromi",
+	"image": "characters/kuromi_new",
 	"position": [
-		-430,
-		100
+		-150,
+		80
 	],
 	"healthicon": "kuromi",
-	"flip_x": false,
+	"flip_x": true,
 	"healthbar_colors": [
 		79,
 		51,
 		103
 	],
 	"camera_position": [
-		0,
-		60
+		60,
+		-20
 	],
 	"sing_duration": 4,
-	"scale": 1,
+	"scale": 1.1,
 	"_editor_isPlayer": true,
 	"gameOverName": "Kuromi",
 	"gameOverImage": "kuromi_rip",

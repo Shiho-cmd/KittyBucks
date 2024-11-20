@@ -120,5 +120,9 @@
 	],
 	"sing_duration": 4,
 	"scale": 1.2,
-	"_editor_isPlayer": true
+	"_editor_isPlayer": true,
+	"gameOverName": "Kuromi",
+	"gameOverImage": "kuromi_rip_old",
+	"gameOverNameX": 770,
+	"gameOverNameY": 535
 }
