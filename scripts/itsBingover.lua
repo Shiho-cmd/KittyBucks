@@ -92,7 +92,7 @@ function onCreate()
     setProperty("cool.alpha", 0)
     addLuaSprite('cool', true)]]
 
-    makeLuaText("ano", "2024 - "..curYear, 0, 700, 600)
+    makeLuaText("ano", parsed.yearThing.." - "..curYear, 0, 700, 600)
     makeLuaText("piss", "Rest In Piss", 0, 670, 470)
     makeLuaText("nome", parsed.gameOverName, 0, parsed.gameOverNameX, parsed.gameOverNameY)
     makeLuaText("retry", retryTxt, 0, 0, 100)
@@ -122,8 +122,12 @@ end
 
 function onUpdate(elapsed)
     
-    if getHealth() <= 0.0001 then
+    if getHealth() <= 0.0001 and not practice then
         openCustomSubstate('gayover', true)
+    end
+
+    if instakillOnMiss and misses == 1 then
+        setHealth(0.0001)
     end
 end
 
@@ -230,6 +234,10 @@ function onCustomSubstateUpdate(name, elapsed)
             exit = true
         elseif keyboardReleased("BACKSPACE") and not canRestart or keyboardReleased("ESCAPE") and not canRestart or gamepadReleased(1, "B") and not canRestart or gamepadReleased(1, "SELECT") and not canRestart then
             getBack = true
+            doTweenAlpha("bah", "skipBack", 0, 0.5, "linear")
+        elseif bReleased and not canRestart and buildTarget == 'android' then
+            getBack = true
+            playAnim("buttonB", "idle", true)
             doTweenAlpha("bah", "skipBack", 0, 0.5, "linear")
         elseif aReleased and not canRestart and buildTarget == 'android' then
             getBack = true
