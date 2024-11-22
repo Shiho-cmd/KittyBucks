@@ -36,11 +36,11 @@ function onUpdate(elapsed)
     elseif keyboardJustPressed("RIGHT") then
         setProperty("sock.alpha", getProperty("sock.alpha") + mais)
         setProperty("cam.alpha", getProperty("cam.alpha") + mais)
-    elseif keyboardPressed("LEFT") then
+    --[[elseif keyboardPressed("LEFT") then
         setProperty("sock.alpha", getProperty("sock.alpha") - menos)
         setProperty("cam.alpha", getProperty("cam.alpha") - menos)
     elseif keyboardPressed("RIGHT") then
         setProperty("sock.alpha", getProperty("sock.alpha") + mais)
-        setProperty("cam.alpha", getProperty("cam.alpha") + mais)
+        setProperty("cam.alpha", getProperty("cam.alpha") + mais)]]
     end
 end

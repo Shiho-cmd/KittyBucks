@@ -17,28 +17,28 @@ local frases = {
     {'"The water\'s broken :["', 23}, -- 3
     {'"If you want to rob a bank, you gotta do some planning before you rob a bank"', 77}, -- 4
     {'"Don\'t be a coconut"', 20}, -- 5
-    {'"Hello i\'m the EVIL pause menu message! MUAHAHA!!"', 50}, -- 6
+    {'Hello i\'m the EVIL pause menu message! MUAHAHA!!', 50}, -- 6
     {'"There\'s only one beer left"', 28}, -- 7
     {'"Rollin\' marijuana, that\'s a cheap vacation"', 44}, -- 8
     {'"Don\'t drop the blunt and disrespect the weed"', 56}, -- 9
     {'"Livin\' off borrowed time, the clock ticks faster"', 60}, -- 10
     {'"More cheese than Doritos, Cheetos or Fritos"', 45}, -- 11
-    {'"This mod has a Snoop Dogg Seal of Approval™"', 45}, -- 12
+    {'This mod has a Snoop Dogg Seal of Approval™', 45}, -- 12
     {'𓀖𓀗 𓀘 𓀙 𓀚 𓀛 𓀜 𓀝 𓀞 𓀟 𓀠 𓀡 𓀢 𓀣 𓀤 𓀥 𓀦 𓀧 𓀨 𓀩 𓀪 𓀫 𓀬𓀭 𓀮 𓀯 𓀰', 52}, -- 13 -- isso nem funciona lol -- amigos do Ukiyo mandaram essas
-    {'"Also try Terraria!"', 20}, -- 14
-    {'"Also try Minecraft!"', 22}, -- 15
+    {'Also try Terraria!', 20}, -- 14
+    {'Also try Minecraft!', 22}, -- 15
     {'"28 STABS!"', 11}, -- 16
     {'"For real life??"', 17}, -- 17 -- eu que escrevi essas B) (Shiho)
     {'"Oh biscuits..."', 16}, -- 18
     {'"I FUCKING LOVE AIR-CONDITIONING!!!"', 36}, -- 19
-    {'"This mod is sponsored by Raid Shadow Legends!"', 47}, -- 20
+    {'This mod is sponsored by Raid Shadow Legends!', 47}, -- 20
     {'"DAMN DANIEL BACK AT IT AGAIN WITH THE WHITE VANS!!!"', 53}, -- 21
     {'ma balls itch.', 14}, -- 22
     {'"Lemonade... Lemonade... Lemonade... Lemonade... Le-"', 53}, -- 23
     {'"God I love the limited 3D they use for this game. It\'s so charming"', 67}, -- 24
     {'"I\'m kind of a Pokemon!"', 25}, -- 25
     {'"Tornado penis."', 16}, -- 26
-    {'"Hello Kitty banger mod"', 24}, -- 27
+    {'Hello Kitty banger mod', 24}, -- 27
     {'"num seio"', 10}, -- 28 -- amigos meus (Shiho) mandaram essas
     {'"Aos oprimidos é permitido uma vez a cada poucos anos decidir quais representantes específicos da classe opressora devem representá-los e reprimi-los."', 151}, -- 29
     {'Are you going to play seriously now?', 36}, -- 30 -- sugestões da Liz
@@ -55,11 +55,15 @@ local spc = 0
 
 local ogX = -1550
 
+local volte = false
+local velocidade = nil
+
 function parseJson(file)
     return callMethodFromClass('tjson.TJSON', 'parse', {getTextFromFile(file)})
 end
 
 local parsed = parseJson('data/stuff.json')
+local nameShit = parseJson('characters/'..dadName..'.json')
 
 function onCreate()
 
@@ -75,7 +79,7 @@ function onCreate()
         setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
     end
 
-    local var ShaderName = 'gray'
+    --[[local var ShaderName = 'gray'
     if shadersEnabled then  
         initLuaShader(ShaderName)
         makeLuaSprite('camShader', nil)
@@ -83,7 +87,11 @@ function onCreate()
         setSpriteShader('camShader', ShaderName)
     else
         ShaderName = 'none'
-    end
+    end]]
+
+    saveFile("mods/KittyBucks/data/playbackRateSave.txt", playbackRate, true)
+
+    velocidade = getTextFromFile("data/playbackRateSave.txt")
     
     makeLuaSprite("escu")
     makeGraphic("escu", screenWidth, screenHeight, '000000')
@@ -92,9 +100,9 @@ function onCreate()
     setProperty("escu.alpha", 0)
     setProperty("escu.visible", false)
 
-    makeLuaText("resu", the[1], 0, 0.0, 0.0)
-    makeLuaText("resta", the[2], 0, 0.0, 0.0)
-    makeLuaText("exit", the[3], 0, 0.0, 0.0)
+    makeLuaText("resu", the[1], 0, -310, 0.0)
+    makeLuaText("resta", the[2], 0, -400, 0.0)
+    makeLuaText("exit", the[3], 0, -380, 0.0)
     makeLuaText("seta", ">", 0, 0.0, 0.0)
     makeLuaText("setaa", "<", 0, 0.0, 0.0)
     setObjectCamera("resu", 'other')
@@ -107,18 +115,18 @@ function onCreate()
     addLuaText("exit")
     addLuaText("seta")
     addLuaText("setaa")
-    setTextSize("resu", 50)
-    setTextSize("resta", 50)
-    setTextSize("exit", 50)
-    setTextSize("seta", 50)
-    setTextSize("setaa", 50)
-    screenCenter("resu", 'x')
-    setProperty("resu.y", getGraphicMidpointY("escu") - divi)
-    screenCenter("resta")
-    screenCenter("exit", 'x')
-    setProperty("exit.y", getGraphicMidpointY("escu") + divi - 50)
+    setTextSize("resu", 65)
+    setTextSize("resta", 65)
+    setTextSize("exit", 65)
+    setTextSize("seta", 65)
+    setTextSize("setaa", 65)
+    screenCenter("resta", 'y')
+    setProperty("resu.y", getGraphicMidpointY("escu") - 120)
+    --[[screenCenter("resu", 'x')
+    screenCenter("exit", 'x')]]
+    setProperty("exit.y", getGraphicMidpointY("escu") + 60)
 
-    makeLuaText("noWay", "- PAUSED -", 0, 0.0, 100)
+    makeLuaText("noWay", "- PAUSED -", 0, 0.0, 50)
     setObjectCamera("noWay", 'other')
     setTextSize("noWay", 70)
     screenCenter("noWay", 'x')
@@ -134,17 +142,46 @@ function onCreate()
     setObjectCamera("balls", 'other')
     addLuaSprite("balls", false)
 
+    makeLuaSprite('BGmoving','pause_score',0,0);
+    setObjectCamera('BGmoving','other');
+    setProperty("BGmoving.visible", false)
+    addLuaSprite('BGmoving', false);
+
+    makeLuaSprite("char", 'pause_'..nameShit.pauseImageName, screenWidth, 0)
+    setObjectCamera("char", 'other')
+    scaleObject("char", 0.55, 0.55)
+    setProperty("char.angle", 90)
+    screenCenter("char", 'y')
+    addLuaSprite("char", true)
+
+    setTextFont("resu", "drunkenhourDEMO.otf")
+    setTextBorder("resu", 0, "FFFFFF")
+    setTextFont("resta", "drunkenhourDEMO.otf")
+    setTextBorder("resta", 0, "FFFFFF")
+    setTextFont("exit", "drunkenhourDEMO.otf")
+    setTextBorder("exit", 0, "FFFFFF")
+    setTextFont("seta", "drunkenhourDEMO.otf")
+    setTextBorder("seta", 0, "FFFFFF")
+    setTextFont("setaa", "drunkenhourDEMO.otf")
+    setTextBorder("setaa", 0, "FFFFFF")
+    setTextFont("noWay", "drunkenhourDEMO.otf")
+    setTextBorder("noWay", 0, "FFFFFF")
+
     if songName == 'KittyJam' and difficultyName == 'erect' then
         makeLuaText("compo", songName..' ('..difficultyName..')'.." by: "..parsed.composer[2]..' | Pause Theme by: LizNaithy'..' | Art by: '..parsed.artist[2]..' | Chart and Coding by: '..parsed.coder, 0, -1965, -20)
         setObjectCamera("compo", 'other')
         addLuaText("compo")
         setTextSize("compo", 25)
+        --[[setTextFont("compo", "drunkenhourDEMO.otf")
+        setTextBorder("compo", 0, "FFFFFF")]]
         ogX = -1965
     else
         makeLuaText("compo", songName..' ('..difficultyName..')'.." by: "..parsed.composer[1]..' | Pause Theme by: LizNaithy'..' | Art by: '..parsed.artist[1]..' | Chart and Coding by: '..parsed.coder, 0, -1550, -20)
         setObjectCamera("compo", 'other')
         addLuaText("compo")
         setTextSize("compo", 25)
+        --[[setTextFont("compo", "drunkenhourDEMO.otf")
+        setTextBorder("compo", 0, "FFFFFF")]]
         ogX = -1550
     end
 end
@@ -180,6 +217,8 @@ function onUpdate(elapsed)
     setProperty("balls.visible", false)
     setProperty("morri.visible", false)
     setProperty("noWay.visible", false)
+    setProperty("BGmoving.visible", false)
+    setProperty("char.visible", false)
 
     if songName == 'credits' then
         setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Credits Menu')
@@ -191,6 +230,18 @@ function onUpdate(elapsed)
         spc = 34
     elseif relax > 20 then
         spc = 33
+    end
+end
+
+function onUpdatePost(elapsed)
+    
+    if volte then
+        setProperty("playbackRate", playbackRate + 0.01)
+    end
+
+    if playbackRate >= 1 then
+        setProperty("playbackRate", velocidade)
+        volte = false
     end
 end
 
@@ -206,11 +257,16 @@ function onCustomSubstateCreatePost(name)
 
         playSound("pause/pause-theme", 0, 'bah')
         soundFadeIn("bah", 5, 0, 0.2)
-        playAnim("boyfriend", "singDOWNmiss", true)
+        --playAnim("boyfriend", "singDOWNmiss", true)
 
         doTweenY("lol", "compo", 0, 0.5, "quartOut")
         doTweenY("xdd", "balls", 694.6, 0.5, "quartOut")
         doTweenY("xd", "barr", 0, 0.5, "quartOut")
+        doTweenX("resuX", "resu", 190, 1, "quartOut")
+        doTweenX("restaX", "resta", 100, 1, "quartOut")
+        doTweenX("exitX", "exit", 80, 1, "quartOut")
+        doTweenX("charX", "char", 800, 1, "quartOut")
+        doTweenAngle("charAngle", "char", 10, 1, "quartOut")
 
         --runTimer("beat", 0.85, 0)
         runTimer("boom", 0.5)
@@ -225,6 +281,8 @@ function onCustomSubstateCreatePost(name)
         setObjectCamera("morri", 'other')
         addLuaText("morri")
         setTextSize("morri", 25)
+        --[[setTextFont("morri", "drunkenhourDEMO.otf")
+        setTextBorder("morri", 0, "FFFFFF")]]
         doTweenY("lololol", "morri", 694.6, 0.5, "quartOut")
 
         if difficultyName == 'erect' then
@@ -251,12 +309,24 @@ function onCustomSubstateUpdatePost(name, elapsed)
         setProperty("balls.visible", true)
         setProperty("balls.visible", true)
         setProperty("noWay.visible", true)
+        setProperty("BGmoving.visible", true)
+        setProperty("char.visible", true)
         setProperty("buttonA.alpha", 0.5)
         setProperty("buttonD.alpha", 0.5)
         setProperty("buttonU.alpha", 0.5)
 
         setProperty("compo.x", getProperty("compo.x") + 1)
         setProperty("morri.x", getProperty("morri.x") - 1)
+
+        setProperty('BGmoving.x',getProperty('BGmoving.x') - 1);
+        setProperty('BGmoving.y',getProperty('BGmoving.y') - screenHeight/screenWidth);
+        if getProperty('BGmoving.x') <= -screenWidth + 1 then
+            setProperty('BGmoving.x',0);
+        end
+
+        if getProperty('BGmoving.y') <= -screenHeight + 1 then
+            setProperty('BGmoving.y',0);
+        end
         
         if getProperty("compo.x") == screenWidth then
             setProperty("compo.x", ogX)
@@ -277,27 +347,36 @@ function onCustomSubstateUpdatePost(name, elapsed)
         if pos == 0 then
             setProperty("seta.x", getProperty("resu.x") - 50)
             setProperty("seta.y", getProperty("resu.y"))
-            setProperty("setaa.x", getProperty("resu.x") + 190)
+            setProperty("setaa.x", getProperty("resu.x") + 265)
             setProperty("setaa.y", getProperty("resu.y"))
             setProperty("resta.alpha", 0.5)
             setProperty("exit.alpha", 0.5)
             setProperty("resu.alpha", 1)
+            setTextColor("resu", "FFFFFF")
+            setTextColor("resta", "000000")
+            setTextColor("exit", "000000")
         elseif pos == 1 then
             setProperty("seta.x", getProperty("resta.x") - 50)
             screenCenter("seta", 'y')
-            setProperty("setaa.x", getProperty("resta.x") + 365)
+            setProperty("setaa.x", getProperty("resta.x") + 460)
             screenCenter("setaa", 'y')
             setProperty("resu.alpha", 0.5)
             setProperty("exit.alpha", 0.5)
             setProperty("resta.alpha", 1)
+            setTextColor("resu", "000000")
+            setTextColor("resta", "FFFFFF")
+            setTextColor("exit", "000000")
         elseif pos == 2 then
             setProperty("seta.x", getProperty("exit.x") - 50)
             setProperty("seta.y", getProperty("exit.y"))
-            setProperty("setaa.x", getProperty("exit.x") + 365)
+            setProperty("setaa.x", getProperty("exit.x") + 515)
             setProperty("setaa.y", getProperty("exit.y"))
             setProperty("resta.alpha", 0.5)
             setProperty("resu.alpha", 0.5)
             setProperty("exit.alpha", 1)
+            setTextColor("resu", "000000")
+            setTextColor("resta", "000000")
+            setTextColor("exit", "FFFFFF")
         elseif pos > 2 then
             pos = 0
         elseif pos < 0 then
@@ -313,13 +392,14 @@ function onCustomSubstateUpdatePost(name, elapsed)
             playSound("scrollMenu", 0.5, 'tick')
             runTimer("reset", 0.1)
         end
+    end
 
-        if shadersEnabled then
+       --[=[ if shadersEnabled then
             runHaxeCode([[                    
                 FlxG.game.setFilters([new ShaderFilter(game.getLuaObject('camShader').shader)]);
             ]])
         setShaderFloat('camShader', 'iTime', os.clock())
-    end
+    end]=]
 
         if keyboardJustPressed("ENTER") and pos == 0 and difficultyName == 'erect' or keyboardJustPressed("SPACE") and pos == 0 and difficultyName == 'erect' or gamepadJustPressed(1, "A") and pos == 0 and difficultyName == 'erect' then
             closeCustomSubstate()
@@ -335,14 +415,18 @@ function onCustomSubstateUpdatePost(name, elapsed)
             setProperty("balls.visible", false)
             setProperty("morri.visible", false)
             setProperty("noWay.visible", false)
-            runHaxeCode([[
+            setProperty("BGmoving.visible", false)
+            setProperty("char.visible", false)
+            --[=[runHaxeCode([[
                 FlxG.game.setFilters([]);
-            ]])
+            ]])]=]
             setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName..' Erect')
             setProperty("barr.y", -20)
             setProperty("compo.y", -20)
             setProperty("balls.y", 740)
             setProperty("morri.y", 740)
+            setProperty("playbackRate", 0.1)
+            volte = true
         elseif keyboardJustPressed("ENTER") and pos == 0 or keyboardJustPressed("SPACE") and pos == 0 or gamepadJustPressed(1, "A") and pos == 0 then
             closeCustomSubstate()
             stopSound("bah")
@@ -357,21 +441,25 @@ function onCustomSubstateUpdatePost(name, elapsed)
             setProperty("balls.visible", false)
             setProperty("morri.visible", false)
             setProperty("noWay.visible", false)
-            runHaxeCode([[
+            setProperty("BGmoving.visible", false)
+            setProperty("char.visible", false)
+            --[=[runHaxeCode([[
                 FlxG.game.setFilters([]);
-            ]])
+            ]])]=]
             setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
             setProperty("barr.y", -20)
             setProperty("compo.y", -20)
             setProperty("balls.y", 740)
             setProperty("morri.y", 740)
+            setProperty("playbackRate", 0.1)
+            volte = true
         elseif keyJustPressed('accept') and pos == 1 then
             restartSong(false)
         elseif keyJustPressed('accept') and pos == 2 then
             exitSong(false)
         end
     end
-end
+--end
 
 function onSoundFinished(tag)
     
@@ -382,12 +470,13 @@ end
 
 function onDestroy()
     setPropertyFromClass("openfl.Lib", "application.window.title", 'Friday Night Funkin\': Psych Engine')
-    if shadersEnabled then
+end
+    --[=[if shadersEnabled then
         runHaxeCode([[
             FlxG.game.setFilters([]);
         ]])
     end
-end
+end]=]
 
 function onCountdownStarted()
 

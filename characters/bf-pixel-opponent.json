@@ -120,5 +120,6 @@
 	],
 	"sing_duration": 4,
 	"scale": 6.8,
-	"_editor_isPlayer": false
+	"_editor_isPlayer": false,
+	"pauseImageName": "cinna"
 }
