@@ -61,7 +61,7 @@ function onCreate()
 
     itsShiny = getRandomBool(shinyChance)
 
-    --debugPrint(shinyChance)
+    debugPrint(difficulty)
 
     if buildTarget == 'android' then
         precacheImage("virtualpad")
@@ -341,6 +341,10 @@ local leftReleased = nil
 local rightReleased = nil
 local bReleased = nil
 function onUpdate(elapsed)
+
+    if keyboardJustPressed("SIX") then
+        loadSong('credits-but-cool', 0)
+    end
 
     if shadersEnabled then
     setShaderFloat('back', 'frequency', 8)

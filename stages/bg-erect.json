@@ -1,6 +1,7 @@
 {
 	"directory": "",
 	"defaultZoom": 0.52,
+	"ogZoom": 0.79,
 	"stageUI": "",
 
 	"boyfriend": [810, 50],

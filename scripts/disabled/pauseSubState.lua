@@ -236,11 +236,11 @@ end
 function onUpdatePost(elapsed)
     
     if volte then
-        setProperty("playbackRate", playbackRate + 0.01)
+        setProperty("playbackRate", playbackRate + 0.025)
     end
 
-    if playbackRate >= 1 then
-        setProperty("playbackRate", velocidade)
+    if playbackRate >= tonumber(velocidade) then
+        setProperty("playbackRate", tonumber(velocidade))
         volte = false
     end
 end
@@ -451,7 +451,7 @@ function onCustomSubstateUpdatePost(name, elapsed)
             setProperty("compo.y", -20)
             setProperty("balls.y", 740)
             setProperty("morri.y", 740)
-            setProperty("playbackRate", 0.1)
+            setProperty("playbackRate", 0.15)
             volte = true
         elseif keyJustPressed('accept') and pos == 1 then
             restartSong(false)

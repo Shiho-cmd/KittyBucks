@@ -3,24 +3,19 @@
 	"difficulties": "buck",
 	"hideFreeplay": false,
 	"weekBackground": "stage",
-	"weekBefore": "tutorial",
 	"freeplayColor": [
 		146,
 		113,
 		253
 	],
+	"weekBefore": "tutorial",
 	"startUnlocked": true,
-	"hideStoryMode": true,
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
 	"songs": [
-		[
-			"SuperNova",
-			"face",
-			[
-				146,
-				113,
-				253
-			]
-		],
 		[
 			"SexoDURO",
 			"face",
@@ -29,13 +24,18 @@
 				113,
 				253
 			]
+		],
+		[
+			"SuperNova",
+			"dad",
+			[
+				146,
+				113,
+				253
+			]
 		]
 	],
-	"weekCharacters": [
-		"dad",
-		"bf",
-		"gf"
-	],
-	"hiddenUntilUnlocked": false,
-	"weekName": "Custom Week"
+	"hideStoryMode": true,
+	"weekName": "Custom Week",
+	"hiddenUntilUnlocked": false
 }

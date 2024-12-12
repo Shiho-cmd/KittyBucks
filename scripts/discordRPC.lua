@@ -5,39 +5,14 @@ function parseJson(file)
     return callMethodFromClass('tjson.TJSON', 'parse', {getTextFromFile(file)})
 end
 
-local parsed = parseJson('data/stuff.json')
+local parsed = parseJson('data/'..songName..'/songData-'..difficultyName..'.json')
 
-local miniIcon = 'mini-icon-kitty'
+local min = parsed.rpcTime[1]
+local sec = parsed.rpcTime[2]
+local miniIcon = parsed.rpcMiniIcon
+local id = parsed.rpcID
 
 function onCreate()
-
-    if songName == 'KittyJam' and difficultyName == 'buck' then
-        min = parsed.kittyjam[1]
-        sec = parsed.kittyjam[2]
-        miniIcon = 'mini-icon-kitty'
-    else
-        min = parsed.kittyjamErect[1]
-        sec = parsed.kittyjamErect[2]
-        miniIcon = 'mini-icon-kitty'
-    end
-
-    if songName == 'SuperNova' then
-        min = parsed.supernova[1]
-        sec = parsed.supernova[2]
-        miniIcon = 'mini-icon-placeholder'
-    end
-
-    if songName == 'credits' then
-        min = parsed.credits[1]
-        sec = parsed.credits[2]
-        miniIcon = 'mini-icon-placeholder'
-    end
-
-    if songName == 'SexoDURO' then
-        min = parsed.sexoduro[1]
-        sec = parsed.sexoduro[2]
-        miniIcon = 'mini-icon-placeholder'
-    end
     
     makeLuaText("socorro")
     addLuaText("socorro")
@@ -56,7 +31,7 @@ end
 
 function onUpdate(elapsed)
 
-    changeDiscordClientID('1246615253203288165')
+    changeDiscordClientID(id)
     changeDiscordPresence(getTextString("presence"), getTextString("socorro"), miniIcon)
 end
 
@@ -85,11 +60,6 @@ function onTimerCompleted(tag)
     end
 end
 
-function onDestroy()
-    
-    changeDiscordClientID('863222024192262205')
-end
-
 function onUpdatePost()
 
     if songName == 'credits' then
@@ -97,4 +67,15 @@ function onUpdatePost()
     else
         setTextString('socorro', min .. ':' .. sec..' Left')
     end
+
+    if sec < 10 then
+        setTextString('socorro', min .. ':' .. "0"..sec..' Left')
+    else
+        setTextString('socorro', min .. ':' .. sec..' Left')
+    end
+end
+
+function onDestroy()
+    
+    changeDiscordClientID('863222024192262205')
 end

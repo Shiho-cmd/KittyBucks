@@ -19,5 +19,26 @@
 		"type": "bool",
 		"description": "avisa caso exista alguma função nos scripts que são obsoletas e podem ser trocadas por alguma função melhor", //Description shown on the mod settings menu
 		"value": true //This is the default value
+	},
+	{
+		"save": "butt",
+		"name": "Butões de debug", //Name shown on the mod settings menu
+		"type": "bool",
+		"description": "algumas funções iradas aí pra usar durante a música (todos eles são listados no começo da música caso queria ver de novo apenas aperte ESPAÇO e as instruções aparecem de novo)", //Description shown on the mod settings menu
+		"value": true //This is the default value
+	},
+	{
+		"save": "info",
+		"name": "Informações de nerd", //Name shown on the mod settings menu
+		"type": "bool",
+		"description": "mostra coisas na hud do jogo como o step atual ou a batida coisas assim", //Description shown on the mod settings menu
+		"value": false //This is the default value
+	},
+	{
+		"save": "livre",
+		"name": "Câmera Livre", //Name shown on the mod settings menu
+		"type": "bool",
+		"description": "permite que você movimente a câmera do jogo livremente por aí com W, A, S, D e dê zoom in e zoom out com I e O (os butões de debug precisam estar ativados pra isso funcionar)", //Description shown on the mod settings menu
+		"value": false //This is the default value
 	}
 ]
