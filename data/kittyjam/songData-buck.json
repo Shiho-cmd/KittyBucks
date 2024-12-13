@@ -1,14 +1,15 @@
 {
     "rpcID": "1316587707945848842",
     "rpcMiniIcon": "mini-icon-kitty",
+    "rpcMiniIconPause": "mini-icon-kitty-pause",
     "rpcTime": [1, 33],
 
     "composer": "LizNaithy",
     "artist": "Natzy",
     "coder": "Shiho",
     "charter": "Shiho",
-
     "pauseCover": "kitty",
+    "pauseTxtPos": -1550,
 
     "beaten": true
 }

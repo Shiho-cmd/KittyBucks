@@ -76,10 +76,5 @@
 	],
 	"sing_duration": 6.1,
 	"scale": 1,
-	"_editor_isPlayer": true,
-	"gameOverName": "CYC",
-	"gameOverImage": "cyc_rip",
-	"gameOverNameX": 805,
-	"gameOverNameY": 535,
-	"yearThing": 2023
+	"_editor_isPlayer": true
 }

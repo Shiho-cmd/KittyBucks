@@ -5,7 +5,7 @@ function parseJson(file)
     return callMethodFromClass('tjson.TJSON', 'parse', {getTextFromFile(file)})
 end
 
-local parsed = parseJson('data/'..songName..'/songData-'..difficultyName..'.json')
+local parsed = parseJson('data/'..songPath..'/songData-'..difficultyName..'.json')
 
 local min = parsed.rpcTime[1]
 local sec = parsed.rpcTime[2]
@@ -18,7 +18,7 @@ function onCreate()
     addLuaText("socorro")
     setProperty("socorro.visible", false)
 
-    if songName == 'credits' then
+    if songPath == 'credits' then
         makeLuaText("presence", 'In the credits menu')
         addLuaText("presence")
         setProperty("presence.visible", false)
@@ -33,6 +33,14 @@ function onUpdate(elapsed)
 
     changeDiscordClientID(id)
     changeDiscordPresence(getTextString("presence"), getTextString("socorro"), miniIcon)
+
+    if songPath == 'credits' then
+        setTextString("socorro", "")
+    elseif sec < 10 then
+        setTextString('socorro', min .. ':' .. "0"..sec..' Left')
+    else
+        setTextString('socorro', min .. ':' .. sec..' Left')
+    end
 end
 
 function onSongStart()
@@ -57,21 +65,6 @@ function onTimerCompleted(tag)
                 return
             end
         end
-    end
-end
-
-function onUpdatePost()
-
-    if songName == 'credits' then
-        setTextString("socorro", "")
-    else
-        setTextString('socorro', min .. ':' .. sec..' Left')
-    end
-
-    if sec < 10 then
-        setTextString('socorro', min .. ':' .. "0"..sec..' Left')
-    else
-        setTextString('socorro', min .. ':' .. sec..' Left')
     end
 end
 

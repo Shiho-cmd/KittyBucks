@@ -87,19 +87,8 @@ function onUpdate(elapsed)
     elseif keyboardPressed("D") and getModSetting("butt") and getModSetting("livre") then
         camX = camX + 10
         triggerEvent("Camera Follow Pos", camX, camY) -- move a camera pra cima
-    elseif keyboardJustPressed("SPACE") and getModSetting("butt") then
-        debugPrint([[
-        butões de debug:
-] - aumenta a velocidade (se segurar SHIFT irá aumentar menos 0.05 ao invés de 0.1)
-[ - diminui a velocidade (se segurar SHIFT irá diminuir menos 0.05 ao invés de 0.1)
-1 - mostra todos os scripts rodando
-2 - esconde a hud
-I - dá zoom in (se a opção de câmera livre tiver ativada)
-O - dá zoom out (se a opção de câmera livre tiver ativada)
-W, A, S, D - movimenta a câmera (se a opção de câmera livre tiver ativada)
-BACKSPACE - reseta velocidade, zoom e câmera
-ESPAÇO - mostra essa mensagem de instrução novamente
-        ]])
+    elseif keyboardJustPressed("L") and getModSetting("butt") then
+        debugPrint(getTextString("socorro"))
     end
 
     if playbackRate < 0.1 then

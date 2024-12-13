@@ -1,14 +1,15 @@
 {
     "rpcID": "1246615253203288165",
     "rpcMiniIcon": "mini-icon-placeholder",
+    "rpcMiniIconPause": "mini-icon-placeholder",
     "rpcTime": [2, 32],
 
     "composer": "LizNaithy",
     "artist": "Bluck and Natzy",
     "coder": "Shiho",
     "charter": "Shiho",
-
     "pauseCover": "melody",
+    "pauseTxtPos": -1710,
 
     "beaten": true
 }

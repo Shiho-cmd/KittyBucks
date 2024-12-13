@@ -118,10 +118,5 @@
 		-60
 	],
 	"sing_duration": 4,
-	"scale": 6,
-	"gameOverName": "Boyfriend",
-	"gameOverImage": "kuromi_rip",
-	"gameOverNameX": 770,
-	"gameOverNameY": 535,
-	"yearThing": 2020
+	"scale": 6
 }

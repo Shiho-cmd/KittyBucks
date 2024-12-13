@@ -10,7 +10,9 @@ function parseJson(file)
     return callMethodFromClass('tjson.TJSON', 'parse', {getTextFromFile(file)})
 end
 
-local parsed = parseJson('characters/'..boyfriendName..'.json')
+local parsed = parseJson('characters/'..boyfriendName..'_DATA.json')
+local rpc = parseJson('data/'..songPath..'/songData-'..difficultyName..'.json')
+local minIcon = rpc.rpcMiniIconPause
 
 function onCreate()
 
@@ -113,6 +115,8 @@ function onCreate()
     addLuaText("piss")
     addLuaText("nome")
     addLuaText("retry")
+
+    setVar("inGameOver", false)
 end
 
 function onGameOver()
@@ -123,7 +127,10 @@ end
 function onUpdate(elapsed)
     
     if getHealth() <= 0.0001 and not practice then
+        setTextString('socorro', 'Game Over')
+        changeDiscordPresence(getTextString("presence"), getTextString("socorro"), minIcon)
         openCustomSubstate('gayover', true)
+        setVar("inGameOver", true)
     end
 
     if instakillOnMiss and misses == 1 then

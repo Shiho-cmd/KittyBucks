@@ -338,7 +338,7 @@ function onUpdate(elapsed)
     setProperty("camGame.visible", false)
 
     if keyboardPressed("SIX") and keyboardPressed("NINE") then
-        loadSong('credits-but-cool', 0)
+        loadSong('ultimate-koopa', 0)
     end
 
     if shadersEnabled then

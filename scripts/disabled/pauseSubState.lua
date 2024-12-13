@@ -53,8 +53,6 @@ local special = false
 local relax = 0 -- um dia eu descubro como fazer isso funfar
 local spc = 0
 
-local ogX = -1550
-
 local volte = false
 local velocidade = nil
 
@@ -63,11 +61,13 @@ function parseJson(file)
 end
 
 local parsed = parseJson('data/stuff.json')
-local nameShit = parseJson('characters/'..dadName..'.json')
+local rpc = parseJson('data/'..songPath..'/songData-'..difficultyName..'.json')
+local minIcon = rpc.rpcMiniIconPause
+local data = parseJson('data/'..songPath..'/songData-'..difficultyName..'.json')
 
 function onCreate()
 
-    if songName == 'credits' then
+    if songPath == 'credits' then
         setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Credits Menu')
     else
         setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
@@ -147,7 +147,7 @@ function onCreate()
     setProperty("BGmoving.visible", false)
     addLuaSprite('BGmoving', false);
 
-    makeLuaSprite("char", 'pause_'..nameShit.pauseImageName, screenWidth, 0)
+    makeLuaSprite("char", 'pause_'..data.pauseCover, screenWidth, 0)
     setObjectCamera("char", 'other')
     scaleObject("char", 0.55, 0.55)
     setProperty("char.angle", 90)
@@ -167,23 +167,14 @@ function onCreate()
     setTextFont("noWay", "drunkenhourDEMO.otf")
     setTextBorder("noWay", 0, "FFFFFF")
 
-    if songName == 'KittyJam' and difficultyName == 'erect' then
-        makeLuaText("compo", songName..' ('..difficultyName..')'.." by: "..parsed.composer[2]..' | Pause Theme by: LizNaithy'..' | Art by: '..parsed.artist[2]..' | Chart and Coding by: '..parsed.coder, 0, -1965, -20)
-        setObjectCamera("compo", 'other')
-        addLuaText("compo")
-        setTextSize("compo", 25)
-        --[[setTextFont("compo", "drunkenhourDEMO.otf")
-        setTextBorder("compo", 0, "FFFFFF")]]
-        ogX = -1965
-    else
-        makeLuaText("compo", songName..' ('..difficultyName..')'.." by: "..parsed.composer[1]..' | Pause Theme by: LizNaithy'..' | Art by: '..parsed.artist[1]..' | Chart and Coding by: '..parsed.coder, 0, -1550, -20)
-        setObjectCamera("compo", 'other')
-        addLuaText("compo")
-        setTextSize("compo", 25)
-        --[[setTextFont("compo", "drunkenhourDEMO.otf")
-        setTextBorder("compo", 0, "FFFFFF")]]
-        ogX = -1550
-    end
+    makeLuaText("compo", songName..' ('..difficultyName..')'.." by: "..data.composer..' | Pause Theme by: LizNaithy'..' | Art by: '..data.artist..' | Chart and Coding by: Shiho', 0, data.pauseTxtPos, -20)
+    setObjectCamera("compo", 'other')
+    addLuaText("compo")
+    setTextSize("compo", 25)
+    --[[setTextFont("compo", "drunkenhourDEMO.otf")
+    setTextBorder("compo", 0, "FFFFFF")]]
+
+    setVar("paused", false)
 end
 
 function onTimerCompleted(tag)
@@ -220,7 +211,7 @@ function onUpdate(elapsed)
     setProperty("BGmoving.visible", false)
     setProperty("char.visible", false)
 
-    if songName == 'credits' then
+    if songPath == 'credits' then
         setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Credits Menu')
     end
     
@@ -239,16 +230,24 @@ function onUpdatePost(elapsed)
         setProperty("playbackRate", playbackRate + 0.025)
     end
 
-    if playbackRate >= tonumber(velocidade) then
+    if playbackRate >= tonumber(velocidade) and volte then
         setProperty("playbackRate", tonumber(velocidade))
         volte = false
     end
 end
 
 function onPause()
-    
+
     openCustomSubstate('pauseShit', true);
     return Function_Stop;
+end
+
+function onCustomSubstateUpdate(name, elapsed)
+    
+    if name == 'pauseShit' then
+        setTextString('socorro', 'PAUSED')
+        changeDiscordPresence(getTextString("presence"), getTextString("socorro"), minIcon)
+    end
 end
 
 function onCustomSubstateCreatePost(name)
@@ -329,7 +328,7 @@ function onCustomSubstateUpdatePost(name, elapsed)
         end
         
         if getProperty("compo.x") == screenWidth then
-            setProperty("compo.x", ogX)
+            setProperty("compo.x", data.pauseTxtPos)
         end
         
         if getProperty("morri.x") == -450 and getTextString("morri") == frases[2][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[3][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[5][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[7][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[14][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[15][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[16][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[17][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[18][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[22][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[25][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[26][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[28][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[27][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[31][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[32][1] then -- 🤮
@@ -401,7 +400,7 @@ function onCustomSubstateUpdatePost(name, elapsed)
         setShaderFloat('camShader', 'iTime', os.clock())
     end]=]
 
-        if keyboardJustPressed("ENTER") and pos == 0 and difficultyName == 'erect' or keyboardJustPressed("SPACE") and pos == 0 and difficultyName == 'erect' or gamepadJustPressed(1, "A") and pos == 0 and difficultyName == 'erect' then
+        if keyJustPressed('accept') and pos == 0 and difficultyName == 'erect' and not getVar("inGameOver") then
             closeCustomSubstate()
             stopSound("bah")
             setProperty("escu.visible", false)
@@ -427,7 +426,8 @@ function onCustomSubstateUpdatePost(name, elapsed)
             setProperty("morri.y", 740)
             setProperty("playbackRate", 0.1)
             volte = true
-        elseif keyboardJustPressed("ENTER") and pos == 0 or keyboardJustPressed("SPACE") and pos == 0 or gamepadJustPressed(1, "A") and pos == 0 then
+            setVar("paused", false)
+        elseif keyJustPressed('accept') and pos == 0 and not getVar("inGameOver") then
             closeCustomSubstate()
             stopSound("bah")
             setProperty("escu.visible", false)
@@ -453,6 +453,7 @@ function onCustomSubstateUpdatePost(name, elapsed)
             setProperty("morri.y", 740)
             setProperty("playbackRate", 0.15)
             volte = true
+            setVar("paused", false)
         elseif keyJustPressed('accept') and pos == 1 then
             restartSong(false)
         elseif keyJustPressed('accept') and pos == 2 then
@@ -480,7 +481,7 @@ end]=]
 
 function onCountdownStarted()
 
-    if songName == 'credits' then
+    if songPath == 'credits' then
         setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Credits Menu')
     else
         setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
@@ -500,19 +501,19 @@ end
 
 function onSectionHit()
 
-    if curSection == 24 and songName == 'KittyJam' and difficultyName == 'buck' then
+    if curSection == 24 and songPath == 'kittyjam' and difficultyName == 'buck' then
         special = true
-    elseif curSection == 32 and songName == 'KittyJam' and difficultyName == 'buck' then
+    elseif curSection == 32 and songPath == 'kittyjam' and difficultyName == 'buck' then
         special = false
-    elseif curSection == 48 and songName == 'KittyJam' and difficultyName == 'buck' then
+    elseif curSection == 48 and songPath == 'kittyjam' and difficultyName == 'buck' then
         special = true
-    elseif curSection == 64 and songName == 'KittyJam' and difficultyName == 'buck' then
+    elseif curSection == 64 and songPath == 'kittyjam' and difficultyName == 'buck' then
         special = false
-    elseif curSection == 36 and songName == 'KittyJam' and difficultyName == 'erect' then
+    elseif curSection == 36 and songPath == 'kittyjam' and difficultyName == 'erect' then
         special = true
-    elseif curSection == 54 and songName == 'KittyJam' and difficultyName == 'erect' then
+    elseif curSection == 54 and songPath == 'kittyjam' and difficultyName == 'erect' then
         special = false
-    elseif curSection == 117 and songName == 'KittyJam' and difficultyName == 'erect' then
+    elseif curSection == 117 and songPath == 'kittyjam' and difficultyName == 'erect' then
         special = true
     end
 end

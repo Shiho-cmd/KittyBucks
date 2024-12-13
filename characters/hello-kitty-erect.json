@@ -76,6 +76,5 @@
 	],
 	"sing_duration": 4,
 	"scale": 1.2,
-	"_editor_isPlayer": false,
-	"pauseImageName": "kitty"
+	"_editor_isPlayer": false
 }
