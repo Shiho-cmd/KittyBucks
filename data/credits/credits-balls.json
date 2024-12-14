@@ -887,7 +887,7 @@
 		"song": "credits",
 		"arrowSkin": "noteSkins/NOTE_assets",
 		"needsVoices": false,
-		"stage": "none",
+		"stage": "creditsSubState",
 		"bpm": 200,
 		"speed": 3.5
 	}

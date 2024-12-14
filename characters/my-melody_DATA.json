@@ -1,6 +1,8 @@
 {
     "gameOverName": "My Melody",
 	"gameOverImage": "melody_rip",
+	"explosionX": 720,
+	"explosionY": 210,
 	"gameOverNameX": 725,
 	"gameOverNameY": 535,
 	"yearThing": 1975

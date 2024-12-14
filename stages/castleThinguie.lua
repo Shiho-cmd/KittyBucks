@@ -1,13 +1,18 @@
+luaDebugMode = getModSetting("debug")
+luaDeprecatedWarnings = getModSetting("deprecated")
+
 local hit = false
+local path = 'backgrounds/siiva/'
+local pathEvent = 'backgrounds/siiva/events/'
 
 function onCreate()
 
     setProperty('camGame.bgColor', getColorFromHex('000000'))
 
-    precacheImage("castle")
-    precacheImage("bowserthing")
+    precacheImage("backgrounds/siiva/castle")
+    precacheImage("backgrounds/siiva/events/bowserthing")
 
-    makeAnimatedLuaSprite("bg", 'castle', 0, 0)
+    makeAnimatedLuaSprite("bg", path..'castle', 0, 0)
     addAnimationByPrefix("bg", "loop", "idk", 12, true)
     setObjectCamera("bg", 'hud')
     scaleObject("bg", 3, 3)
@@ -15,7 +20,7 @@ function onCreate()
     addLuaSprite("bg", false)
     setProperty("bg.alpha", 0)
 
-    makeAnimatedLuaSprite("bow", 'bowserthing', 0, 0)
+    makeAnimatedLuaSprite("bow", pathEvent..'bowserthing', 0, 0)
     addAnimationByPrefix("bow", "trans", "funny", 24, false)
     setObjectCamera("bow", 'other')
     scaleObject("bow", 3, 3)

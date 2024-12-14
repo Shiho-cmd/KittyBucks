@@ -50,7 +50,7 @@ function onCountdownStarted() {
 	var i = 0;
 	for (strum in game.strumLineNotes.members) {
 		var cover = new FlxSprite(strum.x, strum.y);
-		cover.frames = Paths.getSparrowAtlas('holdCoverShader');
+		cover.frames = Paths.getSparrowAtlas('noteSplashes/holdCover/holdCoverShader');
 		cover.cameras = [game.camHUD];
 		cover.antialiasing = ClientPrefs.data.antialiasing;
 		cover.animation.addByPrefix('start', 'holdCoverStart', 24, false);

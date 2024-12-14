@@ -1,13 +1,15 @@
 luaDebugMode = getModSetting("debug")
 luaDeprecatedWarnings = getModSetting("deprecated")
 
+local path = 'backgrounds/void/'
+
 function onCreate()
 
-    precacheImage("backgrounds/void/PBJT")
+    precacheImage(path.."PBJT")
 
     setProperty('camGame.bgColor', getColorFromHex('FFFFFF'))
     makeLuaSprite("banana", '', 500, 470)
-    loadGraphic("banana", "backgrounds/void/PBJT", 202, 200)
+    loadGraphic("banana", path.."PBJT", 202, 200)
     addAnimation("banana", "danceLeft", {0, 1, 2, 3}, 12, false)
     addAnimation("banana", "danceRight", {2, 3, 5, 4}, 12, false)
     addAnimation("banana", "loop", {0, 1, 2, 3, 5, 4, 6, 7}, 12, true)

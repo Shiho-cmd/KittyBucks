@@ -1,15 +1,15 @@
 {
     "rpcID": "1246615253203288165",
     "rpcMiniIcon": "mini-icon-kitty",
+    "rpcMiniIconPause": "mini-icon-placeholder",
     "rpcTime": [2, 54],
 
-    "composer": "UKiYO (Feat. LizNaithy)",
-    "artist": "Natzy and LizNaithy",
+    "composer": "LizNaithy",
+    "artist": "Natzy",
     "coder": "Shiho",
     "charter": "Shiho",
-    "pauseCover": "kitty",
+    "pauseCover": "cover_kittyjam",
     "pauseTxtPos": -1550,
 
-    "beaten": true,
-    "perfect": true
+    "beaten": true
 }

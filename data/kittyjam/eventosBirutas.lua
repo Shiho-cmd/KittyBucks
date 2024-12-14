@@ -2,6 +2,8 @@ lastNote = {0, ""}
 luaDebugMode = getModSetting("debug")
 luaDeprecatedWarnings = getModSetting("deprecated")
 
+local pathEvent = 'backgrounds/void/events/'
+
 function onCreate()
 
     makeLuaSprite('escuro', '', 0, 0)
@@ -9,12 +11,12 @@ function onCreate()
     setObjectCamera('escuro', 'other')
     addLuaSprite('escuro', false)
 
-    makeLuaSprite('celula', 'galaxy_pocket', 330, 420) --330 420
+    makeLuaSprite('celula', pathEvent..'galaxy_pocket', 330, 420) --330 420
     addLuaSprite('celula', false)
     scaleObject('celula', 0.2, 0.2) --0.2
     setProperty('celula.alpha', 0)
 
-    makeAnimatedLuaSprite("spek", 'speakingEpicThing', 270, 360) -- 270 360
+    makeAnimatedLuaSprite("spek", pathEvent..'speakingEpicThing', 270, 360) -- 270 360
     addAnimationByPrefix("spek", "speaking", "funny", 7, true)
     scaleObject("spek", 0.6, 0.6)
     setProperty("spek.visible", false)
@@ -23,7 +25,7 @@ function onCreate()
     setProperty('camHUD.alpha', 0)
         
     if not lowQuality then
-        makeAnimatedLuaSprite('gif', 'speedlol')
+        makeAnimatedLuaSprite('gif', pathEvent..'speedlol')
         addAnimationByPrefix('gif', 'lesgo', 'yo', 12, true)
         screenCenter('gif')
         setObjectCamera('gif', 'hud')
@@ -31,7 +33,7 @@ function onCreate()
         setProperty('gif.alpha', 0.000001)
         precacheImage("speedlol")
             
-        makeAnimatedLuaSprite('explo', 'kaboom', 0, 0)
+        makeAnimatedLuaSprite('explo', pathEvent..'kaboom', 0, 0)
         addAnimationByPrefix('explo', 'bah', 'boom', 12, false)
         setObjectCamera('explo', 'other')
         addLuaSprite('explo', false)
@@ -98,9 +100,9 @@ function onUpdate(elapsed)
         elseif curStep == 1148 then
             setProperty("spek.visible", false)
         elseif curStep == 1153 then
+            setProperty("camGame.visible", false)
             setProperty('explo.visible', true)
             playAnim('explo', 'bah')
-            setProperty("camGame.alpha", 0)
         end
     end
 end
@@ -116,9 +118,9 @@ function onStepHit()
         elseif curStep == 1914 then
             setProperty("spek.visible", false)
         elseif curStep == 1917 then
+            setProperty("camGame.visible", false)
             setProperty('explo.visible', true)
             playAnim('explo', 'bah')
-            setProperty("camGame.alpha", 0)
         end      
     end
 end

@@ -49,7 +49,7 @@ function onCreate()
     setObjectOrder("bruh", getObjectOrder("boyfriendGroup"))
     addLuaSprite("bruh", false)
 
-    makeAnimatedLuaSprite("lol", 'Explosion', 650, 210)
+    makeAnimatedLuaSprite("lol", 'gameOver/Explosion', parsed.explosionX, parsed.explosionY)
     scaleObject("lol", 1.3, 1.3)
     addAnimationByPrefix("lol", "explodiu", "boom", 12, false)
     setProperty("lol.alpha", 0)
@@ -86,14 +86,6 @@ function onCreate()
     setProperty("ex.alpha", 0)
     addLuaText("ex")
 
-    --[[makeLuaSprite('cool')
-    loadGraphic('cool', 'reallyCool', 1136, 640)
-    addAnimation('cool', 'trans', {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50}, 24, false)
-    scaleObject('cool', 1.13, 1.13)
-    setObjectCamera('cool', 'other')
-    setProperty("cool.alpha", 0)
-    addLuaSprite('cool', true)]]
-
     makeLuaText("ano", parsed.yearThing.." - "..curYear, 0, 700, 600)
     makeLuaText("piss", "Rest In Piss", 0, 670, 470)
     makeLuaText("nome", parsed.gameOverName, 0, parsed.gameOverNameX, parsed.gameOverNameY)
@@ -126,7 +118,7 @@ end
 
 function onUpdate(elapsed)
     
-    if getHealth() <= 0.0001 and not practice then
+    if getHealth() <= 0.0001 and not practice and songName ~= 'RANDOM' then
         setTextString('socorro', 'Game Over')
         changeDiscordPresence(getTextString("presence"), getTextString("socorro"), minIcon)
         openCustomSubstate('gayover', true)

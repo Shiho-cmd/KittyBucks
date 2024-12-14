@@ -1,6 +1,8 @@
 {
     "gameOverName": "Kuromi",
 	"gameOverImage": "kuromi_rip_old",
+	"explosionX": 700,
+	"explosionY": 180,
 	"gameOverNameX": 770,
 	"gameOverNameY": 535,
 	"yearThing": 2005

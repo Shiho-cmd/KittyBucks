@@ -1,29 +1,48 @@
 {
-    // minutos e segundos das músicas pro rpc do discord
-    "kittyjam": [1, 33],
-    "kittyjamErect": [2, 54],
-    "supernova": [2, 32],
-    "credits": [0, 45],
-    "sexoduro": [1, 50],
-
     // rgb das notas
     "purple": ["F634B5", "FFFFFF", "7A255C"],
     "black": ["52465E", "FFFFFF", "2D1C3F"],
-
-    // coisos dos créditos
-    // Nome, texto pituco, texto grande, cor, links(pode ser mais de 1)
-    "shihoCre": ["Shiho", "\"WATCH FRIENDLOCKE\"", "I charted and coded that's it B) \n y'all can't let me have much free time \n or else i'll end up making this type of stuff \n (sick ass menus)", "B4E3FD", "https://xdshiho.tumblr.com", "https://bsky.app/profile/xdshiho.bsky.social"],
-    "lizCre": ["LizNaithy", "\"Is The Queen\"", "lorem ipsum dolor sit amet", "902C2B", "https://linktr.ee/LizNaithy"],
-    "ukiyoCre": ["UKiYO", "\"o golpe ta aí, cai quem quer\"", "lorem ipsum dolor sit amet", "00FF03", "https://linktr.ee/ukiyoestrela", "https://open.spotify.com/intl-pt/artist/6xT42SxRBhAtsFcjSDCBz1?si=KLHFo4BHRkq71YAzNTffew&nd=1&dlsi=e919bdf67504435e"],
-    "natzyCre": ["Natzy", "lorem ipsum dolor sit amet", "lorem ipsum dolor sit amet", "E97DFF", "https://bsky.app/profile/n4tzy69.bsky.social", "https://twitter.com/CherryMix14"],
 
     // bpm de músicas que não são jogaveis pra efeitos especiais envolvendo ritmo nessas areas
     "creditsBPM": 128,
     "pauseBPM": 85,
 
-    // créditos pro menu de pausa
-    "composer": ["LizNaithy", "UKiYO (Feat. LizNaithy)"], // kittyjam normal e kittyjam erect
-    "artist": ["Natzy", "Natzy and LizNaithy"], // kittyjam normal e kittyjam erect
-    "coder": "Shiho",
-    "charter": "Shiho"
+    // frases do menu de pause
+    "frases": [
+        ["\"I CAN'T STOP EATING SUSHI MAN!!!\"", -570], // 1 // sugestões do Ukiyo
+        ["\"Are you two the same?\"", -450], // 2
+        ["\"The water's broken :[\"", -450], // 3
+        ["\"If you want to rob a bank, you gotta do some planning before you rob a bank\"", -1200], // 4
+        ["\"Don't be a coconut\"", -450], // 5
+        ["Hello i\"m the EVIL pause menu message! MUAHAHA!!", -1100], // 6
+        ["\"There's only one beer left\"", -450], // 7
+        ["\"Rollin' marijuana, that's a cheap vacation\"", -1100], // 8
+        ["\"Don't drop the blunt and disrespect the weed\"", -1100], // 9
+        ["\"Livin' off borrowed time, the clock ticks faster\"", -1100], // 10
+        ["\"More cheese than Doritos, Cheetos or Fritos\"", -1100], // 11
+        ["This mod has a Snoop Dogg Seal of Approval™", -1100], // 12
+        ["𓀖𓀗 𓀘 𓀙 𓀚 𓀛 𓀜 𓀝 𓀞 𓀟 𓀠 𓀡 𓀢 𓀣 𓀤 𓀥 𓀦 𓀧 𓀨 𓀩 𓀪 𓀫 𓀬𓀭 𓀮 𓀯 𓀰", -1100], // 13 // isso nem funciona lol // amigos do Ukiyo mandaram essas
+        ["Also try Terraria!", -450], // 14
+        ["Also try Minecraft!", -450], // 15
+        ["\"28 STABS!\"", -450], // 16
+        ["\"For real life??\"", -450], // 17 // eu que escrevi essas B) (Shiho)
+        ["\"Oh biscuits...\"", -450], // 18
+        ["\"I FUCKING LOVE AIR-CONDITIONING!!!\"", -570], // 19
+        ["This mod is sponsored by Raid Shadow Legends!", -1100], // 20
+        ["\"DAMN DANIEL BACK AT IT AGAIN WITH THE WHITE VANS!!!\"", -1100], // 21
+        ["ma balls itch.", -450], // 22
+        ["\"Lemonade... Lemonade... Lemonade... Lemonade... Le-\"", -1100], // 23
+        ["\"God I love the limited 3D they use for this game. It's so charming\"", -1100], // 24
+        ["\"I'm kind of a Pokemon!\"", -450], // 25
+        ["\"Tornado penis.\"", -450], // 26
+        ["Hello Kitty banger mod", -450], // 27
+        ["\"num seio\"", -450], // 28 // amigos meus (Shiho) mandaram essas
+        ["\"Aos oprimidos é permitido uma vez a cada poucos anos decidir quais representantes específicos da classe opressora devem representá-los e reprimi-los.\"", -2280], // 29
+        ["Are you going to play seriously now?", -570], // 30 // sugestões da Liz
+        ["I love eating grass", -450], // 31
+        ["Did the pizza arrive?? :D", -450], // 32
+        ["It's ok to give up man, just relax and come back later ;)", -1100], // 33 // sugestões da Natzy
+        ["WHY DID YOU PAUSE?!?! THIS IS THE BEST PART!!!!", -1100], // 34 // frases especiais
+        ["Seriously? You're going to restart because you missed one note??? -_-", -1200] // 35
+    ]
 }

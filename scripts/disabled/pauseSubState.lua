@@ -11,44 +11,6 @@ local the = {
 local pos = 0
 local divi = 100
 
-local frases = {
-    {'"I CAN\'T STOP EATING SUSHI MAN!!!"', 34}, -- 1 -- sugestões do Ukiyo
-    {'"Are you two the same?"', 23}, -- 2
-    {'"The water\'s broken :["', 23}, -- 3
-    {'"If you want to rob a bank, you gotta do some planning before you rob a bank"', 77}, -- 4
-    {'"Don\'t be a coconut"', 20}, -- 5
-    {'Hello i\'m the EVIL pause menu message! MUAHAHA!!', 50}, -- 6
-    {'"There\'s only one beer left"', 28}, -- 7
-    {'"Rollin\' marijuana, that\'s a cheap vacation"', 44}, -- 8
-    {'"Don\'t drop the blunt and disrespect the weed"', 56}, -- 9
-    {'"Livin\' off borrowed time, the clock ticks faster"', 60}, -- 10
-    {'"More cheese than Doritos, Cheetos or Fritos"', 45}, -- 11
-    {'This mod has a Snoop Dogg Seal of Approval™', 45}, -- 12
-    {'𓀖𓀗 𓀘 𓀙 𓀚 𓀛 𓀜 𓀝 𓀞 𓀟 𓀠 𓀡 𓀢 𓀣 𓀤 𓀥 𓀦 𓀧 𓀨 𓀩 𓀪 𓀫 𓀬𓀭 𓀮 𓀯 𓀰', 52}, -- 13 -- isso nem funciona lol -- amigos do Ukiyo mandaram essas
-    {'Also try Terraria!', 20}, -- 14
-    {'Also try Minecraft!', 22}, -- 15
-    {'"28 STABS!"', 11}, -- 16
-    {'"For real life??"', 17}, -- 17 -- eu que escrevi essas B) (Shiho)
-    {'"Oh biscuits..."', 16}, -- 18
-    {'"I FUCKING LOVE AIR-CONDITIONING!!!"', 36}, -- 19
-    {'This mod is sponsored by Raid Shadow Legends!', 47}, -- 20
-    {'"DAMN DANIEL BACK AT IT AGAIN WITH THE WHITE VANS!!!"', 53}, -- 21
-    {'ma balls itch.', 14}, -- 22
-    {'"Lemonade... Lemonade... Lemonade... Lemonade... Le-"', 53}, -- 23
-    {'"God I love the limited 3D they use for this game. It\'s so charming"', 67}, -- 24
-    {'"I\'m kind of a Pokemon!"', 25}, -- 25
-    {'"Tornado penis."', 16}, -- 26
-    {'Hello Kitty banger mod', 24}, -- 27
-    {'"num seio"', 10}, -- 28 -- amigos meus (Shiho) mandaram essas
-    {'"Aos oprimidos é permitido uma vez a cada poucos anos decidir quais representantes específicos da classe opressora devem representá-los e reprimi-los."', 151}, -- 29
-    {'Are you going to play seriously now?', 36}, -- 30 -- sugestões da Liz
-    {'I love eating grass', 19}, -- 31
-    {'Did the pizza arrive?? :D', 25}, -- 32
-    {'It\'s ok to give up man, just relax and come back later ;)', 57}, -- 33 -- sugestões da Natzy
-    {'WHY DID YOU PAUSE?!?! THIS IS THE BEST PART!!!!', 47}, -- 34 -- frases especiais
-    {'Seriously? You\'re going to restart because you missed one note??? -_-', 69} -- 35
-}
-
 local special = false
 local relax = 0 -- um dia eu descubro como fazer isso funfar
 local spc = 0
@@ -65,7 +27,25 @@ local rpc = parseJson('data/'..songPath..'/songData-'..difficultyName..'.json')
 local minIcon = rpc.rpcMiniIconPause
 local data = parseJson('data/'..songPath..'/songData-'..difficultyName..'.json')
 
+local thingsON = nil
+
 function onCreate()
+
+    if instakillOnMiss and practice and botPlay then
+        thingsON = 'INSTAKILL ON MISS > PRACTICE MODE > BOTPLAY'
+    elseif instakillOnMiss and practice then
+        thingsON = 'INSTAKILL ON MISS > PRACTICE MODE'
+    elseif instakillOnMiss and botPlay then
+        thingsON = 'INSTAKILL ON MISS > BOTPLAY'
+    elseif instakillOnMiss then
+        thingsON = 'INSTAKILL ON MISS'
+    elseif practice and botPlay then
+        thingsON = 'PRACTICE MODE > BOTPLAY'
+    elseif practice then
+        thingsON = 'PRACTICE MODE'
+    elseif botPlay then
+        thingsON = 'BOTPLAY'
+    end
 
     if songPath == 'credits' then
         setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Credits Menu')
@@ -142,12 +122,12 @@ function onCreate()
     setObjectCamera("balls", 'other')
     addLuaSprite("balls", false)
 
-    makeLuaSprite('BGmoving','pause_score',0,0);
+    makeLuaSprite('BGmoving','pause/pause_score',0,0);
     setObjectCamera('BGmoving','other');
     setProperty("BGmoving.visible", false)
     addLuaSprite('BGmoving', false);
 
-    makeLuaSprite("char", 'pause_'..data.pauseCover, screenWidth, 0)
+    makeLuaSprite("char", 'pause/covers/'..data.pauseCover, screenWidth, 0)
     setObjectCamera("char", 'other')
     scaleObject("char", 0.55, 0.55)
     setProperty("char.angle", 90)
@@ -171,10 +151,31 @@ function onCreate()
     setObjectCamera("compo", 'other')
     addLuaText("compo")
     setTextSize("compo", 25)
-    --[[setTextFont("compo", "drunkenhourDEMO.otf")
-    setTextBorder("compo", 0, "FFFFFF")]]
 
-    setVar("paused", false)
+    setProperty("escu.visible", false)
+    setProperty("resu.visible", false)
+    setProperty("resta.visible", false)
+    setProperty("exit.visible", false)
+    setProperty("seta.visible", false)
+    setProperty("setaa.visible", false)
+    setProperty("compo.visible", false)
+    setProperty("barr.visible", false)
+    setProperty("balls.visible", false)
+    setProperty("morri.visible", false)
+    setProperty("noWay.visible", false)
+    setProperty("BGmoving.visible", false)
+    setProperty("char.visible", false)
+
+    if thingsON ~= nil then
+        makeLuaText("check", 'Gameplay modifiers: \n'..thingsON, 0, 0.0, 630)
+        setTextSize("check", 30)
+        screenCenter("check", 'x')
+        setObjectCamera("check", 'other')
+        addLuaText("check")
+        setTextFont("check", "drunkenhourDEMO.otf")
+        setTextBorder("check", 0.5, "000000")
+        setProperty("check.visible", false)
+    end
 end
 
 function onTimerCompleted(tag)
@@ -196,20 +197,6 @@ function onTimerCompleted(tag)
 end
 
 function onUpdate(elapsed)
-
-    setProperty("escu.visible", false)
-    setProperty("resu.visible", false)
-    setProperty("resta.visible", false)
-    setProperty("exit.visible", false)
-    setProperty("seta.visible", false)
-    setProperty("setaa.visible", false)
-    setProperty("compo.visible", false)
-    setProperty("barr.visible", false)
-    setProperty("balls.visible", false)
-    setProperty("morri.visible", false)
-    setProperty("noWay.visible", false)
-    setProperty("BGmoving.visible", false)
-    setProperty("char.visible", false)
 
     if songPath == 'credits' then
         setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Credits Menu')
@@ -254,6 +241,27 @@ function onCustomSubstateCreatePost(name)
     
     if name == 'pauseShit' then
 
+        doTweenAlpha("ven", "escu", 0.5, 0.5, "linear")
+        setProperty("escu.visible", true)
+        setProperty("resu.visible", true)
+        setProperty("resta.visible", true)
+        setProperty("exit.visible", true)
+        setProperty("seta.visible", true)
+        setProperty("setaa.visible", true)
+        setProperty("compo.visible", true)
+        setProperty("barr.visible", true)
+        setProperty("balls.visible", true)
+        setProperty("balls.visible", true)
+        setProperty("noWay.visible", true)
+        setProperty("BGmoving.visible", true)
+        setProperty("char.visible", true)
+        setProperty("check.visible", true)
+        setProperty("buttonA.alpha", 0.5)
+        setProperty("buttonD.alpha", 0.5)
+        setProperty("buttonU.alpha", 0.5)
+
+        random = getRandomInt(0, 33)
+
         playSound("pause/pause-theme", 0, 'bah')
         soundFadeIn("bah", 5, 0, 0.2)
         --playAnim("boyfriend", "singDOWNmiss", true)
@@ -271,9 +279,9 @@ function onCustomSubstateCreatePost(name)
         runTimer("boom", 0.5)
 
         if special or misses == 1 or relax > 20 then
-            curFrase = frases[spc][1]
+            curFrase = parsed.frases[spc][1]
         else
-            curFrase = frases[getRandomInt(0, 33)][1]
+            curFrase = parsed.frases[random][1]
         end
 
         makeLuaText("morri", curFrase, 0, 1300, 740)
@@ -296,24 +304,6 @@ function onCustomSubstateUpdatePost(name, elapsed)
     
     if name == 'pauseShit' then
 
-        doTweenAlpha("ven", "escu", 0.5, 0.5, "linear")
-        setProperty("escu.visible", true)
-        setProperty("resu.visible", true)
-        setProperty("resta.visible", true)
-        setProperty("exit.visible", true)
-        setProperty("seta.visible", true)
-        setProperty("setaa.visible", true)
-        setProperty("compo.visible", true)
-        setProperty("barr.visible", true)
-        setProperty("balls.visible", true)
-        setProperty("balls.visible", true)
-        setProperty("noWay.visible", true)
-        setProperty("BGmoving.visible", true)
-        setProperty("char.visible", true)
-        setProperty("buttonA.alpha", 0.5)
-        setProperty("buttonD.alpha", 0.5)
-        setProperty("buttonU.alpha", 0.5)
-
         setProperty("compo.x", getProperty("compo.x") + 1)
         setProperty("morri.x", getProperty("morri.x") - 1)
 
@@ -331,15 +321,7 @@ function onCustomSubstateUpdatePost(name, elapsed)
             setProperty("compo.x", data.pauseTxtPos)
         end
         
-        if getProperty("morri.x") == -450 and getTextString("morri") == frases[2][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[3][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[5][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[7][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[14][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[15][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[16][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[17][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[18][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[22][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[25][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[26][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[28][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[27][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[31][1] or getProperty("morri.x") == -450 and getTextString("morri") == frases[32][1] then -- 🤮
-            setProperty("morri.x", 1300)
-        elseif getProperty("morri.x") == -1100 and getTextString("morri") == frases[33][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[24][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[6][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[7][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[8][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[9][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[10][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[11][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[12][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[13][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[20][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[21][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[23][1] or getProperty("morri.x") == -1100 and getTextString("morri") == frases[34][1] then -- 🤮🤮
-            setProperty("morri.x", 1300)
-        elseif getProperty("morri.x") == -570 and getTextString("morri") == frases[30][1] or getProperty("morri.x") == -570 and getTextString("morri") == frases[19][1] then
-            setProperty("morri.x", 1300)
-        elseif getProperty("morri.x") == -1200 and getTextString("morri") == frases[4][1] or getProperty("morri.x") == -1200 and getTextString("morri") == frases[35][1] then
-            setProperty("morri.x", 1300)
-        elseif getProperty("morri.x") == -2280 and getTextString("morri") == frases[29][1] then
+        if getProperty("morri.x") == parsed.frases[random][2] then
             setProperty("morri.x", 1300)
         end
 
@@ -416,6 +398,7 @@ function onCustomSubstateUpdatePost(name, elapsed)
             setProperty("noWay.visible", false)
             setProperty("BGmoving.visible", false)
             setProperty("char.visible", false)
+            setProperty("check.visible", false)
             --[=[runHaxeCode([[
                 FlxG.game.setFilters([]);
             ]])]=]
@@ -426,7 +409,6 @@ function onCustomSubstateUpdatePost(name, elapsed)
             setProperty("morri.y", 740)
             setProperty("playbackRate", 0.1)
             volte = true
-            setVar("paused", false)
         elseif keyJustPressed('accept') and pos == 0 and not getVar("inGameOver") then
             closeCustomSubstate()
             stopSound("bah")
@@ -443,6 +425,7 @@ function onCustomSubstateUpdatePost(name, elapsed)
             setProperty("noWay.visible", false)
             setProperty("BGmoving.visible", false)
             setProperty("char.visible", false)
+            setProperty("check.visible", false)
             --[=[runHaxeCode([[
                 FlxG.game.setFilters([]);
             ]])]=]
@@ -453,7 +436,6 @@ function onCustomSubstateUpdatePost(name, elapsed)
             setProperty("morri.y", 740)
             setProperty("playbackRate", 0.15)
             volte = true
-            setVar("paused", false)
         elseif keyJustPressed('accept') and pos == 1 then
             restartSong(false)
         elseif keyJustPressed('accept') and pos == 2 then

@@ -1,19 +1,21 @@
 {
     "rpcID": "1246615253203288165",
     "rpcMiniIcon": "none",
+    "rpcMiniIconPause": "none",
     "rpcTime": [2, 13],
 
-    "composer": "SiIvaGunner",
-    "artist": "Moawling",
+    "composer": "LizNaithy",
+    "artist": "Natzy, LizNaithy, UKiYO, Bluck, Shiho",
     "coder": "Shiho",
     "charter": "Shiho",
     "pauseTxtPos": -1620,
-    "pauseCover": "siiva",
+    "pauseCover": "cover_kittyjam",
 
     "beaten": true,
 
-    "shihoCre": ["Shiho", "\"WATCH FRIENDLOCKE\"", "I charted and coded that's it B) \n y'all can't let me have much free time \n or else i'll end up making this type of stuff \n (sick ass menus)", "B4E3FD", "https://xdshiho.tumblr.com", "https://bsky.app/profile/xdshiho.bsky.social"],
-    "lizCre": ["LizNaithy", "\"Is The Queen\"", "Hi, I'm Liz!\nI created all the songs for this mod and worked on some of the chromatics as well.\nI also made the BG for \"KittyJam.\"\n\nI'm open to collaborating on mods as a music producer or assistant. Feel free to DM me on Twitter! XD\n\nOlá Vsilva obrigada por jogar <3", "902C2B", "https://linktr.ee/LizNaithy", "https://x.com/naithyliz"],
+    "shihoCre": ["Shiho", "\"WATCH FRIENDLOCKE\"", "Sup, i'm Shiho!!!11\ni did the charting, coding, some sprite animation and a little bit of the art\ni'm really tired!!!!!!!111\n(hope u enjoyed the mod B))", "B4E3FD", "https://xdshiho.tumblr.com", "https://bsky.app/profile/xdshiho.bsky.social"],
+    "lizCre": ["LizNaithy", "\"Is The Queen\"", "Hi, I'm Liz!\nI created all the songs for this mod and worked on some of the chromatics as well.\nI also made the BG for\n\"KittyJam Erect.\"\n\nI'm open to collaborating on mods as a music producer or assistant. Feel free to DM me on Twitter! XD\n\nOlá Vsilva obrigada por jogar <3", "902C2B", "https://linktr.ee/LizNaithy", "https://x.com/naithyliz"],
     "ukiyoCre": ["UKiYO", "\"o golpe ta aí, cai quem quer\"", "Howdy, i'm Ukiyo! I'm the main producer behind KittyJam's ERECT remix!\n(also i made my sprites for the credits, how cool is that?!)\n\nLISTEN TO MY MUSIC PLEASE I HAVE CHILDREN TO FEED D:", "00FF03", "https://linktr.ee/ukiyoestrela", "https://open.spotify.com/intl-pt/artist/6xT42SxRBhAtsFcjSDCBz1?si=KLHFo4BHRkq71YAzNTffew&nd=1&dlsi=e919bdf67504435e"],
-    "natzyCre": ["Natzy", "lorem ipsum dolor sit amet", "lorem ipsum dolor sit amet", "E97DFF", "https://bsky.app/profile/n4tzy69.bsky.social", "https://twitter.com/CherryMix14"]
+    "natzyCre": ["Natzy", "lorem ipsum dolor sit amet", "lorem ipsum dolor sit amet", "E97DFF", "https://bsky.app/profile/n4tzy69.bsky.social", "https://twitter.com/CherryMix14"],
+    "bluckCre": ["Bluck", "lorem ipsum dolor sit amet", "lorem ipsum dolor sit amet", "DAE249", "https://x.com/bluck_2"]
 }
