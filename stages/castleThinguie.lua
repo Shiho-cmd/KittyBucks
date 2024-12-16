@@ -28,6 +28,16 @@ function onCreate()
     addLuaSprite("bow", false)
     setProperty("bow.visible", false)
 
+    runHaxeCode([[
+        import flixel.addons.display.FlxBackdrop;
+        import flixel.addons.display.FlxGridOverlay;
+        
+        var grid:FlxBackdrop = new FlxBackdrop(FlxGridOverlay.createGrid(80, 80, 160, 160, true, 0x50000000, 0x0));
+        grid.velocity.set(40, 40);
+        grid.cameras = [game.camHUD];
+        add(grid);
+    ]])
+
     setObjectCamera("boyfriendGroup", 'hud')
     setObjectOrder("boyfriendGroup", 99)
     setCharacterX("boyfriend", 620)
