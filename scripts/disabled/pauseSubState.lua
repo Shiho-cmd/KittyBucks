@@ -300,15 +300,21 @@ function onCustomSubstateCreatePost(name)
     end
 end
 
+local aah = 1
+
 function onCustomSubstateUpdatePost(name, elapsed)
     
     if name == 'pauseShit' then
 
+        if not flashingLights then
+            aah = 2
+        end
+
         setProperty("compo.x", getProperty("compo.x") + 1)
         setProperty("morri.x", getProperty("morri.x") - 1)
 
-        setProperty('BGmoving.x',getProperty('BGmoving.x') - 1);
-        setProperty('BGmoving.y',getProperty('BGmoving.y') - screenHeight/screenWidth);
+        setProperty('BGmoving.x',getProperty('BGmoving.x') - 1 / aah);
+        setProperty('BGmoving.y',getProperty('BGmoving.y') - screenHeight/screenWidth / aah);
         if getProperty('BGmoving.x') <= -screenWidth + 1 then
             setProperty('BGmoving.x',0);
         end
@@ -364,11 +370,11 @@ function onCustomSubstateUpdatePost(name, elapsed)
             pos = 2
         end
 
-        if keyboardJustPressed("S") or keyboardJustPressed("DOWN") or gamepadJustPressed(1, "DPAD_DOWN") or gamepadJustPressed(1, "LEFT_STICK_DIGITAL_DOWN") or downJustPressed and buildTarget == 'windows' then
+        if keyboardJustPressed("S") or keyboardJustPressed("DOWN") or anyGamepadJustPressed("DPAD_DOWN") or anyGamepadJustPressed("LEFT_STICK_DIGITAL_DOWN") or downJustPressed and buildTarget == 'windows' then
             pos = pos + 1
             playSound("scrollMenu", 0.5, 'tick')
             runTimer("reset", 0.1)
-        elseif keyboardJustPressed("W") or keyboardJustPressed("UP") or gamepadJustPressed(1, "DPAD_UP") or gamepadJustPressed(1, "LEFT_STICK_DIGITAL_UP") or upJustPressed and buildTarget == 'windows' then
+        elseif keyboardJustPressed("W") or keyboardJustPressed("UP") or anyGamepadJustPressed("DPAD_UP") or anyGamepadJustPressed("LEFT_STICK_DIGITAL_UP") or upJustPressed and buildTarget == 'windows' then
             pos = pos - 1
             playSound("scrollMenu", 0.5, 'tick')
             runTimer("reset", 0.1)
