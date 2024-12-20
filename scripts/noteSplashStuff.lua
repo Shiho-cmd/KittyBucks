@@ -19,7 +19,6 @@ function onCreate()
     setProperty("splash-left.alpha", splashAlpha)
     setProperty("splash-down.alpha", splashAlpha)
     setProperty("splash-up.alpha", splashAlpha)
-
     setProperty("splash-right.visible", false)
     setProperty("splash-left.visible", false)
     setProperty("splash-down.visible", false)
@@ -29,6 +28,11 @@ function onCreate()
     addLuaSprite("splash-left", true)
     addLuaSprite("splash-down", true)
     addLuaSprite("splash-up", true)
+
+    setProperty("splash-right.visible", false)
+    setProperty("splash-left.visible", false)
+    setProperty("splash-down.visible", false)
+    setProperty("splash-up.visible", false)
 
     if middlescroll then
         setProperty("splash-up.x", 905)

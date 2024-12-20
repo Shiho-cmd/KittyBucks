@@ -6,18 +6,18 @@
 				0
 			],
 			"loop": false,
-			"fps": 10,
+			"fps": 13,
 			"anim": "idle",
 			"indices": [],
 			"name": "idle"
 		},
 		{
 			"offsets": [
-				-90,
-				-91
+				0,
+				0
 			],
 			"loop": false,
-			"fps": 24,
+			"fps": 12,
 			"anim": "singDOWN",
 			"indices": [],
 			"name": "down"
@@ -28,40 +28,40 @@
 				0
 			],
 			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
+			"fps": 12,
+			"anim": "singUP",
 			"indices": [],
-			"name": "left"
+			"name": "up"
 		},
 		{
 			"offsets": [
-				-80,
-				-41
+				0,
+				0
 			],
 			"loop": false,
-			"fps": 24,
+			"fps": 12,
 			"anim": "singRIGHT",
 			"indices": [],
 			"name": "right"
 		},
 		{
 			"offsets": [
-				-92,
-				-70
+				0,
+				0
 			],
 			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
+			"fps": 12,
+			"anim": "singLEFT",
 			"indices": [],
-			"name": "up"
+			"name": "left"
 		}
 	],
 	"vocals_file": "hello-kitty",
 	"no_antialiasing": false,
-	"image": "characters/kitty-paceholder",
+	"image": "characters/OlaGata",
 	"position": [
-		-70,
-		230
+		-180,
+		160
 	],
 	"healthicon": "kitty",
 	"flip_x": false,
@@ -71,11 +71,10 @@
 		174
 	],
 	"camera_position": [
-		10,
-		-10
+		-80,
+		-20
 	],
 	"sing_duration": 4,
-	"scale": 1.1,
-	"_editor_isPlayer": false,
-	"pauseImageName": "kitty"
+	"scale": 1,
+	"_editor_isPlayer": false
 }

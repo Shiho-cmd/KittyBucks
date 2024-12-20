@@ -2,23 +2,17 @@
 <!--
 Created with Free texture packer v0.6.7 http://free-tex-packer.com
 -->
-<TextureAtlas imagePath="OlaGata.png" width="1479" height="1567">
-  <SubTexture name="right0001" x="0" y="0"  width="304" height="388" frameX="-482" frameY="-181" frameWidth="1280" frameHeight="720"/>
-  <SubTexture name="down0001" x="304" y="0"  width="300" height="383" frameX="-479" frameY="-189" frameWidth="1280" frameHeight="720"/>
-  <SubTexture name="down0002" x="604" y="0"  width="296" height="406" frameX="-479" frameY="-166" frameWidth="1280" frameHeight="720"/>
-  <SubTexture name="left0002" x="304" y="383"  width="296" height="387" frameX="-493" frameY="-181" frameWidth="1280" frameHeight="720"/>
-  <SubTexture name="idle0001" x="0" y="388"  width="295" height="388" frameX="-487" frameY="-180" frameWidth="1280" frameHeight="720"/>
-  <SubTexture name="left0003" x="900" y="0"  width="290" height="397" frameX="-493" frameY="-171" frameWidth="1280" frameHeight="720"/>
-  <SubTexture name="up0002" x="1190" y="0"  width="289" height="415" frameX="-492" frameY="-157" frameWidth="1280" frameHeight="720"/>
-  <SubTexture name="idle0003" x="900" y="397"  width="285" height="395" frameX="-486" frameY="-173" frameWidth="1280" frameHeight="720"/>
-  <SubTexture name="up0001" x="600" y="415"  width="284" height="438" frameX="-494" frameY="-134" frameWidth="1280" frameHeight="720"/>
-  <SubTexture name="right0003" x="295" y="770"  width="281" height="396" frameX="-491" frameY="-174" frameWidth="1280" frameHeight="720"/>
-  <SubTexture name="idle0002" x="0" y="776"  width="281" height="388" frameX="-491" frameY="-180" frameWidth="1280" frameHeight="720"/>
-  <SubTexture name="left0001" x="0" y="1164"  width="279" height="403" frameX="-489" frameY="-165" frameWidth="1280" frameHeight="720"/>
-  <SubTexture name="down0003" x="604" y="0"  width="296" height="406" frameX="-479" frameY="-166" frameWidth="1280" frameHeight="720"/>
-  <SubTexture name="idle0004" x="900" y="397"  width="285" height="395" frameX="-486" frameY="-173" frameWidth="1280" frameHeight="720"/>
-  <SubTexture name="left0004" x="900" y="0"  width="290" height="397" frameX="-493" frameY="-171" frameWidth="1280" frameHeight="720"/>
-  <SubTexture name="right0002" x="0" y="0"  width="304" height="388" frameX="-482" frameY="-181" frameWidth="1280" frameHeight="720"/>
-  <SubTexture name="right0004" x="295" y="770"  width="281" height="396" frameX="-491" frameY="-174" frameWidth="1280" frameHeight="720"/>
-  <SubTexture name="up0003" x="1190" y="0"  width="289" height="415" frameX="-492" frameY="-157" frameWidth="1280" frameHeight="720"/>
+<TextureAtlas imagePath="OlaGata.png" width="1949" height="824">
+  <SubTexture name="down0002" x="0" y="0"  width="279" height="409" frameX="-256" frameY="-189" frameWidth="768" frameHeight="768"/>
+  <SubTexture name="idle0004" x="279" y="0"  width="279" height="409" frameX="-256" frameY="-189" frameWidth="768" frameHeight="768"/>
+  <SubTexture name="left0002" x="558" y="0"  width="279" height="409" frameX="-256" frameY="-189" frameWidth="768" frameHeight="768"/>
+  <SubTexture name="right0002" x="837" y="0"  width="279" height="409" frameX="-256" frameY="-189" frameWidth="768" frameHeight="768"/>
+  <SubTexture name="up0002" x="1116" y="0"  width="279" height="409" frameX="-256" frameY="-189" frameWidth="768" frameHeight="768"/>
+  <SubTexture name="idle0001" x="1395" y="0"  width="279" height="392" frameX="-257" frameY="-207" frameWidth="768" frameHeight="768"/>
+  <SubTexture name="left0001" x="1674" y="0"  width="275" height="399" frameX="-254" frameY="-199" frameWidth="768" frameHeight="768"/>
+  <SubTexture name="up0001" x="1395" y="392"  width="274" height="410" frameX="-267" frameY="-189" frameWidth="768" frameHeight="768"/>
+  <SubTexture name="right0001" x="0" y="409"  width="272" height="415" frameX="-256" frameY="-184" frameWidth="768" frameHeight="768"/>
+  <SubTexture name="idle0003" x="272" y="409"  width="270" height="402" frameX="-266" frameY="-197" frameWidth="768" frameHeight="768"/>
+  <SubTexture name="idle0002" x="542" y="409"  width="264" height="396" frameX="-270" frameY="-203" frameWidth="768" frameHeight="768"/>
+  <SubTexture name="down0001" x="806" y="409"  width="263" height="406" frameX="-269" frameY="-193" frameWidth="768" frameHeight="768"/>
 </TextureAtlas>

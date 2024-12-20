@@ -12,99 +12,114 @@
 			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
-				27,
-				-18
+				0,
+				0
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 12,
-			"name": "left0",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-8,
-				-22
-			],
-			"anim": "singDOWN",
-			"fps": 12,
-			"name": "down0",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-6,
-				-11
-			],
-			"anim": "singUP",
-			"fps": 12,
-			"name": "up0",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				1,
-				-14
-			],
 			"anim": "singRIGHT",
-			"fps": 12,
-			"name": "right0",
-			"indices": []
+			"indices": [],
+			"name": "right0"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				-102,
-				-124
+				0,
+				0
 			],
-			"anim": "singLEFTmiss",
+			"loop": false,
 			"fps": 12,
-			"name": "leftMiss",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left0"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				-70,
-				-146
+				0,
+				0
 			],
-			"anim": "singDOWNmiss",
+			"loop": false,
 			"fps": 12,
-			"name": "downMiss",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down0"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				-132,
-				-156
+				8,
+				-48
 			],
+			"indices": [],
+			"fps": 12,
 			"anim": "singUPmiss",
-			"fps": 12,
-			"name": "upMiss",
-			"indices": []
+			"loop": false,
+			"name": "upMiss"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				-60,
-				-130
+				-94,
+				-78
 			],
-			"anim": "singRIGHTmiss",
+			"indices": [],
 			"fps": 12,
-			"name": "rightMiss",
-			"indices": []
+			"anim": "singRIGHTmiss",
+			"loop": false,
+			"name": "rightMiss"
+		},
+		{
+			"offsets": [
+				60,
+				-104
+			],
+			"indices": [],
+			"fps": 12,
+			"anim": "singLEFTmiss",
+			"loop": false,
+			"name": "leftMiss"
+		},
+		{
+			"offsets": [
+				-20,
+				-103
+			],
+			"indices": [],
+			"fps": 12,
+			"anim": "singDOWNmiss",
+			"loop": false,
+			"name": "downMiss"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [
+				3,
+				4,
+				5
+			],
+			"fps": 12,
+			"anim": "singUP-loop",
+			"loop": true,
+			"name": "up0"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 12,
+			"anim": "singUP",
+			"loop": false,
+			"name": "up0"
 		}
 	],
 	"vocals_file": "kuromi",
 	"no_antialiasing": false,
-	"image": "characters/kuromi_new",
+	"image": "characters/CUromi",
 	"position": [
-		-150,
+		-170,
 		80
 	],
 	"healthicon": "kuromi",
@@ -115,10 +130,10 @@
 		103
 	],
 	"camera_position": [
-		60,
-		-20
+		-10,
+		60
 	],
 	"sing_duration": 4,
-	"scale": 1.1,
+	"scale": 1,
 	"_editor_isPlayer": true
 }
