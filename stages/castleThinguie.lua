@@ -28,6 +28,7 @@ function onCreate()
     addLuaSprite("bow", false)
     setProperty("bow.visible", false)
 
+if flashingLights then
     runHaxeCode([[
         import flixel.addons.display.FlxBackdrop;
         import flixel.addons.display.FlxGridOverlay;
@@ -37,6 +38,17 @@ function onCreate()
         grid.cameras = [game.camHUD];
         add(grid);
     ]])
+else
+    runHaxeCode([[
+        import flixel.addons.display.FlxBackdrop;
+        import flixel.addons.display.FlxGridOverlay;
+        
+        var grid:FlxBackdrop = new FlxBackdrop(FlxGridOverlay.createGrid(80, 80, 160, 160, true, 0x50000000, 0x0));
+        grid.velocity.set(20, 20);
+        grid.cameras = [game.camHUD];
+        add(grid);
+    ]])
+end
 
     setObjectCamera("boyfriendGroup", 'hud')
     setObjectOrder("boyfriendGroup", 99)
@@ -45,6 +57,7 @@ function onCreate()
     setProperty("boyfriendGroup.alpha", 0)
     
     setProperty("dadGroup.visible", false)
+end
 end
 
 function onSongStart()

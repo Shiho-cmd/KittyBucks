@@ -2,7 +2,7 @@
 <!--
 Created with Free texture packer v0.6.7 http://free-tex-packer.com
 -->
-<TextureAtlas imagePath="kuromi_new.png" width="2409" height="1837">
+<TextureAtlas imagePath="CUERETO.png" width="2409" height="1837">
   <SubTexture name="rightMiss0001" x="0" y="0"  width="541" height="298" frameX="-196" frameY="-321" frameWidth="768" frameHeight="768"/>
   <SubTexture name="rightMiss0002" x="541" y="0"  width="497" height="333" frameX="-219" frameY="-281" frameWidth="768" frameHeight="768"/>
   <SubTexture name="up0001" x="0" y="298"  width="380" height="495" frameX="-179" frameY="-164" frameWidth="768" frameHeight="768"/>

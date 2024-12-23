@@ -2,79 +2,79 @@
 	"animations": [
 		{
 			"offsets": [
-				10,
+				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
-			"anim": "idle",
 			"indices": [],
+			"fps": 12,
+			"anim": "idle",
+			"loop": false,
 			"name": "idle"
 		},
 		{
 			"offsets": [
-				-50,
-				39
+				0,
+				0
 			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
 			"indices": [],
-			"name": "up"
-		},
-		{
-			"offsets": [
-				-21,
-				-22
-			],
+			"fps": 12,
+			"anim": "singLEFT",
 			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
 			"name": "left"
 		},
 		{
 			"offsets": [
-				77,
-				-21
+				0,
+				0
 			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
 			"indices": [],
-			"name": "right"
+			"fps": 12,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "down"
 		},
 		{
 			"offsets": [
-				30,
-				-36
+				0,
+				0
 			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN",
 			"indices": [],
-			"name": "down"
+			"fps": 12,
+			"anim": "singUP",
+			"loop": false,
+			"name": "up"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 12,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "right"
 		}
 	],
-	"vocals_file": "cyc",
+	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/cyyc",
+	"image": "characters/cwhyc",
 	"position": [
-		50,
-		-10
+		0,
+		0
 	],
 	"healthicon": "zitz",
-	"flip_x": false,
+	"flip_x": true,
 	"healthbar_colors": [
-		72,
-		83,
-		116
+		161,
+		161,
+		161
 	],
 	"camera_position": [
-		110,
-		-30
+		0,
+		0
 	],
-	"sing_duration": 6.1,
+	"sing_duration": 4,
 	"scale": 1,
 	"_editor_isPlayer": true
 }
