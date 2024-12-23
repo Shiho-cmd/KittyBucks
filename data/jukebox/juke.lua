@@ -54,13 +54,13 @@ function onUpdate(elapsed)
         playSound('jukebox/'..curSong, 1, 'mus')
         curSongName = getTextFromFile("sounds/jukebox/"..curSong..'.txt') 
         debugPrint('Tocando: '..curSongName)
-    elseif curSong > 5 then
+    elseif curSong > 6 then
         curSong = 1
         playSound('jukebox/'..curSong, 1, 'mus')
         curSongName = getTextFromFile("sounds/jukebox/"..curSong..'.txt') 
         debugPrint('Tocando: '..curSongName)
     elseif curSong < 1 then
-        curSong = 5
+        curSong = 6
         playSound('jukebox/'..curSong, 1, 'mus')
         curSongName = getTextFromFile("sounds/jukebox/"..curSong..'.txt') 
         debugPrint('Tocando: '..curSongName)
@@ -88,7 +88,7 @@ end
 
 function onSoundFinished(tag)
     
-    if tag == 'mus' and not playlist then
+    if tag == 'mus' then
         playSound('jukebox/'..curSong, 1, 'mus')
     end
 end
