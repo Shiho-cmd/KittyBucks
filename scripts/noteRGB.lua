@@ -6,16 +6,16 @@ function parseJson(file)
     return callMethodFromClass('tjson.TJSON', 'parse', {getTextFromFile(file)})
 end
 
-local parsed = parseJson('data/stuff.json')
+local parsed = parseJson('data/'..songPath..'/songData-'..difficultyName..'.json')
 
 --bf rgb
-local bfRGBNr = { parsed.purple[1], parsed.black[1], parsed.purple[1], parsed.black[1] }
-local bfRGBNg = { parsed.purple[2], parsed.black[2], parsed.purple[2], parsed.black[2] }
-local bfRGBNb = { parsed.purple[3], parsed.black[3], parsed.purple[3], parsed.black[3] }
+local bfRGBNr = { parsed.leftNoteRGB[1], parsed.downNoteRGB[1], parsed.upNoteRGB[1], parsed.rightNoteRGB[1] }
+local bfRGBNg = { parsed.leftNoteRGB[2], parsed.downNoteRGB[2], parsed.upNoteRGB[2], parsed.rightNoteRGB[2] }
+local bfRGBNb = { parsed.leftNoteRGB[3], parsed.downNoteRGB[3], parsed.upNoteRGB[3], parsed.rightNoteRGB[3] }
 -- dad rgb
-local dadRGBNr = { parsed.purple[1], parsed.black[1], parsed.purple[1], parsed.black[1] }
-local dadRGBNg = { parsed.purple[2], parsed.black[2], parsed.purple[2], parsed.black[2] }
-local dadRGBNb = { parsed.purple[3], parsed.black[3], parsed.purple[3], parsed.black[3] }
+local dadRGBNr = { parsed.leftNoteRGB[1], parsed.downNoteRGB[1], parsed.upNoteRGB[1], parsed.rightNoteRGB[1] }
+local dadRGBNg = { parsed.leftNoteRGB[2], parsed.downNoteRGB[2], parsed.upNoteRGB[2], parsed.rightNoteRGB[2] }
+local dadRGBNb = { parsed.leftNoteRGB[3], parsed.downNoteRGB[3], parsed.upNoteRGB[3], parsed.rightNoteRGB[3] }
 
 -- note   
 function onSpawnNote(id, nd, nt, sus)

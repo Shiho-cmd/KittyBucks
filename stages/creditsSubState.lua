@@ -60,6 +60,7 @@ function onCreate()
     itsShiny = getRandomBool(shinyChance)
 
     if buildTarget == 'android' then
+        
         precacheImage("virtualpad")
 
         makeLuaSprite("buttonB", '', 855, 570)
@@ -92,6 +93,7 @@ function onCreate()
         setProperty("buttonR.alpha", 0.5)
         addLuaSprite("buttonR", true)
     end
+    
 
     --precacheeeeeeeeee
     precacheImage("credits/stickers/charter", false)
@@ -133,6 +135,12 @@ function onCreate()
     addLuaText("coiso2")
     setTextSize("coiso2", 35)
     setProperty("coiso2.visible", false)
+
+    makeLuaText("mostresla", "BUCETAAAAAAAAAAA", 0, 0.0, 200)
+    setObjectCamera("mostresla", 'other')
+    setTextBorder("mostresla", 100, "000000")
+    setProperty("mostresla.alpha", 0)
+    addLuaText("mostresla")
 
     --bg
     makeLuaSprite("back", 'menuDesat', 0, 0)
@@ -401,9 +409,11 @@ local bPressed = nil
 local leftReleased = nil
 local rightReleased = nil
 local bReleased = nil
+local check = nil
 
 local volume = 1
 local volume2 = 0
+local numPodeNaoMan = false
 
 local mouse = true
 
@@ -417,9 +427,9 @@ function onUpdate(elapsed)
     setProperty("healthBar.visible", false)
     setProperty("camGame.visible", false)
 
-    if keyboardPressed("SIX") and keyboardPressed("NINE") then
+    --[[if getCurrentOrientation() == 'LandscapeLeft' then
         loadSong('ultimate-koopa', 0)
-    end
+    end]]
 
     if isAchievementUnlocked("funny") then
         longTxtSiiva = parsed.siivaCre[5]
@@ -446,6 +456,47 @@ function onUpdate(elapsed)
     leftJustPressed = getMouseX('camOther') > getProperty('buttonL.x') and getMouseY('camOther') > getProperty('buttonL.y') and getMouseX('camOther') < getProperty('buttonL.x') + getProperty('buttonL.width') and getMouseY('camOther') < getProperty('buttonL.y') + getProperty('buttonL.height') and mouseClicked()
     rightJustPressed = getMouseX('camOther') > getProperty('buttonR.x') and getMouseY('camOther') > getProperty('buttonR.y') and getMouseX('camOther') < getProperty('buttonR.x') + getProperty('buttonR.width') and getMouseY('camOther') < getProperty('buttonR.y') + getProperty('buttonR.height') and mouseClicked()
     bJustPressed = getMouseX('camOther') > getProperty('buttonB.x') and getMouseY('camOther') > getProperty('buttonB.y') and getMouseX('camOther') < getProperty('buttonB.x') + getProperty('buttonB.width') and getMouseY('camOther') < getProperty('buttonB.y') + getProperty('buttonB.height') and mouseClicked()
+    end
+
+    checkArt = getMouseX('camOther') > getProperty('stickerArt.x') and getMouseY('camOther') > getProperty('stickerArt.y') and getMouseX('camOther') < getProperty('stickerArt.x') + getProperty('stickerArt.width') and getMouseY('camOther') < getProperty('stickerArt.y') + getProperty('stickerArt.height')
+    checkDir = getMouseX('camOther') > getProperty('stickerDir.x') and getMouseY('camOther') > getProperty('stickerDir.y') and getMouseX('camOther') < getProperty('stickerDir.x') + getProperty('stickerDir.width') and getMouseY('camOther') < getProperty('stickerDir.y') + getProperty('stickerDir.height') and getProperty("stickerDir.visible")
+    checkPro = getMouseX('camOther') > getProperty('stickerPro.x') and getMouseY('camOther') > getProperty('stickerPro.y') and getMouseX('camOther') < getProperty('stickerPro.x') + getProperty('stickerPro.width') and getMouseY('camOther') < getProperty('stickerPro.y') + getProperty('stickerPro.height') and getProperty("stickerPro.visible")
+    checkCha = getMouseX('camOther') > getProperty('stickerCha.x') and getMouseY('camOther') > getProperty('stickerCha.y') and getMouseX('camOther') < getProperty('stickerCha.x') + getProperty('stickerCha.width') and getMouseY('camOther') < getProperty('stickerCha.y') + getProperty('stickerCha.height') and getProperty("stickerCha.visible")
+    checkAni = getMouseX('camOther') > getProperty('stickerAni.x') and getMouseY('camOther') > getProperty('stickerAni.y') and getMouseX('camOther') < getProperty('stickerAni.x') + getProperty('stickerAni.width') and getMouseY('camOther') < getProperty('stickerAni.y') + getProperty('stickerAni.height') and getProperty("stickerAni.visible")
+    checkCom = getMouseX('camOther') > getProperty('stickerCom.x') and getMouseY('camOther') > getProperty('stickerCom.y') and getMouseX('camOther') < getProperty('stickerCom.x') + getProperty('stickerCom.width') and getMouseY('camOther') < getProperty('stickerCom.y') + getProperty('stickerCom.height') and getProperty("stickerCom.visible")
+
+    if checkArt then
+        setTextString("mostresla", "Artist")
+        setProperty("mostresla.x", getMouseX("other"))
+        setProperty("mostresla.y", getMouseY("other") + 35)
+        doTweenAlpha("putaRapariga", "mostresla", 1, 0.1, "linear")
+    elseif checkDir then
+        setTextString("mostresla", "Director")
+        setProperty("mostresla.x", getMouseX("other"))
+        setProperty("mostresla.y", getMouseY("other") + 35)
+        doTweenAlpha("putaRapariga", "mostresla", 1, 0.1, "linear")
+    elseif checkPro then
+        setTextString("mostresla", "Programmer")
+        setProperty("mostresla.x", getMouseX("other"))
+        setProperty("mostresla.y", getMouseY("other") + 35)
+        doTweenAlpha("putaRapariga", "mostresla", 1, 0.1, "linear")
+    elseif checkCha then
+        setTextString("mostresla", "Charter")
+        setProperty("mostresla.x", getMouseX("other"))
+        setProperty("mostresla.y", getMouseY("other") + 35)
+        doTweenAlpha("putaRapariga", "mostresla", 1, 0.1, "linear")
+    elseif checkAni then
+        setTextString("mostresla", "Animator")
+        setProperty("mostresla.x", getMouseX("other"))
+        setProperty("mostresla.y", getMouseY("other") + 35)
+        doTweenAlpha("putaRapariga", "mostresla", 1, 0.1, "linear")
+    elseif checkCom then
+        setTextString("mostresla", "Composer")
+        setProperty("mostresla.x", getMouseX("other"))
+        setProperty("mostresla.y", getMouseY("other") + 35)
+        doTweenAlpha("putaRapariga", "mostresla", 1, 0.1, "linear")
+    else
+        doTweenAlpha("putaRapariga", "mostresla", 0, 0.1, "linear")
     end
 
     if pos == 5 and section == 0 then -- shiho
@@ -526,8 +577,9 @@ function onUpdate(elapsed)
         setProperty("stickerCha.visible", false)
         setProperty("stickerCom.visible", true)
         setProperty("stickerArt.visible", true)
-        setProperty("stickerDir.visible", false)
+        setProperty("stickerDir.visible", true)
         setProperty("stickerAni.visible", false)
+        setProperty("stickerDir.x", 855)
         doTweenColor("corYay", "back", color, 0.5, "linear")
         setTextString("name", creditsName)
         setTextString("shortTxt", creditsShortTxt)
@@ -604,6 +656,7 @@ function onUpdate(elapsed)
         setProperty("pinGit.visible", false)
         setProperty("pinSiiva.visible", false)
         setProperty("pinEC.visible", false)
+        setProperty("stickerDir.x", 1050)
         setProperty("pinSparkle.x", -999)
         setProperty("pinSparkle.y", -999)
         setProperty("stuff.x", 0)
@@ -834,23 +887,23 @@ function onUpdate(elapsed)
         setProperty("luz.alpha", 0)
     end
 
-    if keyboardJustPressed("D") and not cut and section == 0 or keyboardJustPressed("RIGHT") and not cut and section == 0 then
+    if keyJustPressed('ui_right') and not cut and section == 0 then
         pos = pos + 1
         stopSound("rag")
         playAnim("ukiyo", "idle", true)
         setProperty("select.visible", false)
         setPropertyFromClass("flixel.FlxG", "mouse.visible", true)
-    elseif keyboardJustPressed("A") and not cut and section == 0 or keyboardJustPressed("LEFT") and not cut and section == 0 then
+    elseif keyJustPressed('ui_left') and not cut and section == 0 then
         pos = pos - 1
         stopSound("rag")
         playAnim("ukiyo", "idle", true)
         setProperty("select.visible", false)
         setPropertyFromClass("flixel.FlxG", "mouse.visible", true)
 
-    elseif keyboardJustPressed("D") and not cut and section == 1 or keyboardJustPressed("RIGHT") and not cut and section == 1 then
+    elseif keyJustPressed('ui_right') and not cut and section == 1 then
         pos2 = pos2 + 1
         setPropertyFromClass("flixel.FlxG", "mouse.visible", true)
-    elseif keyboardJustPressed("A") and not cut and section == 1 or keyboardJustPressed("LEFT") and not cut and section == 1 then
+    elseif keyJustPressed('ui_left') and not cut and section == 1 then
         pos2 = pos2 - 1
         setPropertyFromClass("flixel.FlxG", "mouse.visible", true)
         
@@ -896,23 +949,30 @@ function onUpdate(elapsed)
         playAnim("buttonB", "pressed", true)
     end
 
-    if keyboardJustPressed("S") and not cut and section == 0 or keyboardJustPressed("DOWN") and not cut and section == 0 or anyGamepadJustPressed("DPAD_DOWN") and not cut and section == 0 or anyGamepadJustPressed("LEFT_STICK_DIGITAL_DOWN") and not cut and section == 0 then
+    if section == 0 and not numPodeNaoMan then
         volume = 0
         volume2 = 1
+    elseif section == 1 and not numPodeNaoMan then
+        volume = 1
+        volume2 = 0
+    else
+        volume = 0
+        volume2 = 0
+    end
+
+    if keyJustPressed('ui_down') and not cut and section == 0 then
         stopSound("rag")
         playAnim("ukiyo", "idle", true)
         setProperty("select.visible", false)
         playSound("credits/warp", 1, 'warp')
         doTweenY("bruhbruh", "camOther", -screenHeight, 0.35, "quartIn")
         doTweenY("hurbhurb", "camHUD", -screenHeight, 0.35, "quartIn")
-        soundFadeOut("music", 1, 0)
-    elseif keyboardJustPressed("W") and not cut and section == 1 or keyboardJustPressed("UP") and not cut and section == 1 or anyGamepadJustPressed("DPAD_UP") and not cut and section == 1 or anyGamepadJustPressed("LEFT_STICK_DIGITAL_UP") and not cut and section == 1 then
-        volume = 1
-        volume2 = 0
+        soundFadeOut("music", volume2, 0)
+    elseif keyJustPressed('ui_up') and not cut and section == 1 or anyGamepadJustPressed("DPAD_UP") and not cut and section == 1 or anyGamepadJustPressed("LEFT_STICK_DIGITAL_UP") and not cut and section == 1 then
         playSound("credits/warp", 1, 'praw')
         doTweenY("bruhbruh", "camOther", screenHeight, 0.35, "quartIn")
         doTweenY("hurbhurb", "camHUD", screenHeight, 0.35, "quartIn")
-        soundFadeOut("musicMuffled", 1, 0)
+        soundFadeOut("musicMuffled", volume, 0)
     end
 
     if getMouseX('camOther') > getProperty('box.x') and getMouseY('camOther') > getProperty('box.y') and getMouseX('camOther') < getProperty('box.x') + getProperty('box.width') and getMouseY('camOther') < getProperty('box.y') + getProperty('box.height') and mouseReleased() and getProperty("box.visible") and not cut or slctPos == 0 and getProperty("box.visible") and getProperty("select.visible") and anyGamepadJustPressed("A") and not cut then
@@ -978,7 +1038,9 @@ function onTimerCompleted(tag, loops, loopsLeft)
         setPropertyFromClass("flixel.FlxG", "mouse.visible", mouse)
         runTimer("morse", 300)
     elseif tag == 'morse' then
+        numPodeNaoMan = true
         soundFadeOut("music", 0.5, 0)
+        soundFadeOut("musicMuffled", 0.5, 0)
         playSound("credits/stickers/shhh/nada_pra_ver_aqui", 1, 'code')
     elseif tag == 'PENIS' then
         itsShiny = false
@@ -1016,13 +1078,17 @@ function onSoundFinished(tag)
         
     for i = 1, #theSticker do
         if tag == 'music' then
-            playSound("credits/thank_you_for_playing", volume, 'music')
+            playSound("credits/thank_you_for_playing", volume2, 'music')
         elseif tag == 'musicMuffled' then
-            playSound("credits/thank_you_for_muffle_everything_omg_help", volume2, 'musicMuffled')
+            playSound("credits/thank_you_for_muffle_everything_omg_help", volume, 'musicMuffled')
         elseif tag == 'rag' then
             playAnim("ukiyo", "idle", true)
-        elseif tag == 'code' then
+        elseif tag == 'code' and section == 0 then
+            numPodeNaoMan = false
             soundFadeIn("music", 2, 0, 1)
+        elseif tag == 'code' and section == 1 then
+            numPodeNaoMan = false
+            soundFadeIn("musicMuffled", 2, 0, 1)
         elseif tag == 'warp' then
             section = 1
             setProperty("camOther.y", 0)
@@ -1039,7 +1105,7 @@ function onSoundFinished(tag)
             setProperty(the[pos]..".visible", false)
             setProperty(theSticker[i]..".visible", false)
             setProperty("box.visible", false)
-            soundFadeIn("musicMuffled", 1, 0, 1)
+            soundFadeIn("musicMuffled", 1, 0, volume2)
         elseif tag == 'praw' then
             section = 0
             setProperty("camOther.y", 0)
@@ -1055,7 +1121,7 @@ function onSoundFinished(tag)
             setProperty("luz.visible", true)
             setProperty("stuff.visible", true)
             setProperty("shortTxt.visible", true)
-            soundFadeIn("music", 1, 0, 1)
+            soundFadeIn("music", 1, 0, volume)
         end
     end
 end

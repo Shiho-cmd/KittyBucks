@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+i write it by hand thumbsup
+-->
+<TextureAtlas imagePath="battleATLAS.png" width="1015" height="622">
+  <SubTexture name="fight0001" x="653" y="377" width="362" height="39"/>
+  <SubTexture name="run0001" x="653" y="418" width="362" height="39"/>
+  <SubTexture name="stressBarLow0001" x="0" y="0" width="362" height="48"/>
+  <SubTexture name="stressBarNotLow0001" x="0" y="45" width="362" height="48"/>
+  <SubTexture name="stressBarMedium0001" x="0" y="90" width="362" height="48"/>
+  <SubTexture name="stressBarHigh0001" x="0" y="135" width="362" height="48"/>
+  <SubTexture name="stressBarMegaHigh0001" x="0" y="180" width="362" height="48"/>
+</TextureAtlas>

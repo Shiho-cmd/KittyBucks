@@ -4,7 +4,7 @@ function onSongStart()
 
     if chance and songName ~= 'KittyJam' then
         setPropertyFromClass("openfl.Lib", "application.window.title", 'RECEBENDO A PORRA ARITMETICA')
-        startVideo("aahhh")
+        startVideo("aahhh", false)
 
         unlockAchievement("fertilizado")
         openCustomSubstate("qualquerMerda", true)

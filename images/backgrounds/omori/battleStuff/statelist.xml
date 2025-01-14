@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="statelist.png">
+	<SubTexture name="neutral0000"   x="26" y="3" width="81" height="18"/>
+	<SubTexture name="happy0000"     x="40" y="75" width="49" height="17"/>
+	<SubTexture name="ecstatic0000"  x="28" y="98" width="79" height="19"/>
+	<SubTexture name="manic0000"     x="36" y="123" width="63" height="19"/>
+	<SubTexture name="sad0000"       x="41" y="148" width="50" height="17"/>
+	<SubTexture name="depressed0000" x="21" y="173" width="89" height="15"/>
+	<SubTexture name="miserable0000" x="20" y="195" width="92" height="17"/>
+	<SubTexture name="angry0000"     x="40" y="220" width="53" height="16"/>
+	<SubTexture name="enraged0000"   x="30" y="243" width="74" height="17"/>
+	<SubTexture name="furious0000"   x="33" y="266" width="68" height="17"/>
+	<SubTexture name="afraid0000"    x="31" y="289" width="71" height="18"/>
+	<SubTexture name="stressed0000"  x="22" y="50" width="92" height="18"/>
+</TextureAtlas>

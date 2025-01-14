@@ -1,0 +1,20 @@
+{
+    "rpcID": "1316587707945848842",
+    "rpcMiniIcon": "mini-icon-kitty",
+    "rpcMiniIconPause": "mini-icon-kitty-pause",
+    "rpcTime": [1, 33],
+
+    "composer": "LizNaithy",
+    "artist": "Natzy",
+    "coder": "Shiho",
+    "charter": "Shiho",
+    "pauseCover": "cover_kittyjam",
+    "pauseTxtPos": -1550,
+    
+    "leftNoteRGB": ["FFD382", "FFFFFF", "C87A4A"],
+    "downNoteRGB": ["FF8A8C", "FFFFFF", "B73B66"],
+    "upNoteRGB": ["7BF8FF", "FFFFFF", "64A6DC"],
+    "rightNoteRGB": ["83EBA4", "FFFFFF", "71AD49"],
+
+    "beaten": true
+}

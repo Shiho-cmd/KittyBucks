@@ -1,0 +1,1 @@
+getMouseX('camOther') > getProperty('stickerCom.x') and getMouseY('camOther') > getProperty('stickerCom.y') and getMouseX('camOther') < getProperty('stickerCom.x') + getProperty('stickerCom.width') and getMouseY('camOther') < getProperty('stickerCom.y') + getProperty('stickerCom.height')

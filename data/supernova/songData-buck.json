@@ -1,5 +1,5 @@
 {
-    "rpcID": "1246615253203288165",
+    "rpcID": "1328793685021954150",
     "rpcMiniIcon": "mini-icon-placeholder",
     "rpcMiniIconPause": "mini-icon-placeholder",
     "rpcTime": [2, 32],
@@ -8,8 +8,13 @@
     "artist": "Bluck and Natzy",
     "coder": "Shiho",
     "charter": "Shiho",
-    "pauseCover": "cover_supernova_placeholder",
+    "pauseCover": "cover_supernova",
     "pauseTxtPos": -1710,
 
-    "beaten": true
+    "beaten": true,
+
+    "leftNoteRGB": ["F634B5", "FFFFFF", "7A255C"],
+    "downNoteRGB": ["52465E", "FFFFFF", "2D1C3F"],
+    "upNoteRGB": ["F634B5", "FFFFFF", "7A255C"],
+    "rightNoteRGB": ["52465E", "FFFFFF", "2D1C3F"]
 }

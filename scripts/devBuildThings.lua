@@ -12,6 +12,8 @@ function onCreate()
     setProperty("wtrmrk.alpha", 0.5)
     setObjectCamera("wtrmrk", 'other')
     addLuaText("wtrmrk")
+    
+    --setPropertyFromClass('flixel.FlxG', 'stage.window.textInputEnabled', true)
 
     if getModSetting("info") then
     makeLuaText("debug", "", 0, 0.0, 15)

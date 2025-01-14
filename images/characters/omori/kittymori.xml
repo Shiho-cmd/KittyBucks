@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+-->
+<TextureAtlas imagePath="kittymori.png" width="2085" height="538">
+  <SubTexture name="manic0003" x="0" y="0"  width="164" height="179" frameX="-0" frameY="-8" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="ecstatic0001" x="164" y="0"  width="163" height="179" frameX="-0" frameY="-8" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="manic0002" x="327" y="0"  width="162" height="180" frameX="-1" frameY="-7" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="manic0001" x="0" y="179"  width="162" height="179" frameX="-1" frameY="-8" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="angry0002" x="162" y="179"  width="160" height="180" frameX="-2" frameY="-7" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="dead0002" x="0" y="358"  width="160" height="180" frameX="-2" frameY="-7" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="depressed0002" x="489" y="0"  width="160" height="180" frameX="-2" frameY="-7" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="ecstatic0002" x="649" y="0"  width="160" height="180" frameX="-2" frameY="-7" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="enraged0002" x="809" y="0"  width="160" height="180" frameX="-2" frameY="-7" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="furious0002" x="969" y="0"  width="160" height="180" frameX="-2" frameY="-7" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="happy0002" x="1129" y="0"  width="160" height="180" frameX="-2" frameY="-7" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="neutral0002" x="1289" y="0"  width="160" height="180" frameX="-2" frameY="-7" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="sad0002" x="1449" y="0"  width="160" height="180" frameX="-2" frameY="-7" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="miserable0002" x="1609" y="0"  width="160" height="159" frameX="-2" frameY="-28" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="angry0001" x="1769" y="0"  width="159" height="179" frameX="-2" frameY="-8" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="dead0001" x="1609" y="159"  width="159" height="179" frameX="-2" frameY="-8" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="depressed0001" x="322" y="180"  width="159" height="179" frameX="-2" frameY="-8" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="enraged0001" x="481" y="180"  width="159" height="179" frameX="-2" frameY="-8" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="furious0001" x="640" y="180"  width="159" height="179" frameX="-2" frameY="-8" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="happy0001" x="799" y="180"  width="159" height="179" frameX="-2" frameY="-8" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="neutral0001" x="958" y="180"  width="159" height="179" frameX="-2" frameY="-8" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="sad0001" x="1117" y="180"  width="159" height="179" frameX="-2" frameY="-8" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="miserable0001" x="1276" y="180"  width="159" height="159" frameX="-2" frameY="-28" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="angry0003" x="1435" y="180"  width="158" height="179" frameX="-3" frameY="-8" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="dead0003" x="1276" y="339"  width="158" height="179" frameX="-3" frameY="-8" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="depressed0003" x="160" y="359"  width="158" height="179" frameX="-3" frameY="-8" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="enraged0003" x="318" y="359"  width="158" height="179" frameX="-3" frameY="-8" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="furious0003" x="476" y="359"  width="158" height="179" frameX="-3" frameY="-8" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="happy0003" x="634" y="359"  width="158" height="179" frameX="-3" frameY="-8" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="neutral0003" x="792" y="359"  width="158" height="179" frameX="-3" frameY="-8" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="sad0003" x="950" y="359"  width="158" height="179" frameX="-3" frameY="-8" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="miserable0003" x="1108" y="359"  width="158" height="159" frameX="-3" frameY="-28" frameWidth="164" frameHeight="188"/>
+  <SubTexture name="ecstatic0003" x="1928" y="0"  width="157" height="179" frameX="-3" frameY="-8" frameWidth="164" frameHeight="188"/>
+</TextureAtlas>

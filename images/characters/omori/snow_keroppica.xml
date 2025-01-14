@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+-->
+<TextureAtlas imagePath="snow_keroppica.png" width="2191" height="173">
+  <SubTexture name="happy0001" x="0" y="0"  width="129" height="173" frameX="-5" frameY="-5" frameWidth="137" frameHeight="182"/>
+  <SubTexture name="happy0002" x="129" y="0"  width="127" height="173" frameX="-5" frameY="-5" frameWidth="137" frameHeight="182"/>
+  <SubTexture name="happy0003" x="256" y="0"  width="127" height="173" frameX="-7" frameY="-5" frameWidth="137" frameHeight="182"/>
+  <SubTexture name="angry0002" x="383" y="0"  width="125" height="173" frameX="-7" frameY="-5" frameWidth="137" frameHeight="182"/>
+  <SubTexture name="angry0003" x="508" y="0"  width="125" height="173" frameX="-7" frameY="-5" frameWidth="137" frameHeight="182"/>
+  <SubTexture name="sad0002" x="633" y="0"  width="125" height="173" frameX="-7" frameY="-5" frameWidth="137" frameHeight="182"/>
+  <SubTexture name="sad0003" x="758" y="0"  width="125" height="173" frameX="-7" frameY="-5" frameWidth="137" frameHeight="182"/>
+  <SubTexture name="angry0001" x="883" y="0"  width="123" height="173" frameX="-9" frameY="-5" frameWidth="137" frameHeight="182"/>
+  <SubTexture name="sad0001" x="1006" y="0"  width="123" height="173" frameX="-9" frameY="-5" frameWidth="137" frameHeight="182"/>
+  <SubTexture name="defeat0001" x="1129" y="0"  width="118" height="168" frameX="-11" frameY="-9" frameWidth="137" frameHeight="182"/>
+  <SubTexture name="hurt0001" x="1247" y="0"  width="118" height="168" frameX="-11" frameY="-9" frameWidth="137" frameHeight="182"/>
+  <SubTexture name="neutral0001" x="1365" y="0"  width="118" height="168" frameX="-11" frameY="-9" frameWidth="137" frameHeight="182"/>
+  <SubTexture name="defeat0003" x="1483" y="0"  width="118" height="166" frameX="-11" frameY="-8" frameWidth="137" frameHeight="182"/>
+  <SubTexture name="hurt0003" x="1601" y="0"  width="118" height="166" frameX="-11" frameY="-8" frameWidth="137" frameHeight="182"/>
+  <SubTexture name="neutral0003" x="1719" y="0"  width="118" height="166" frameX="-11" frameY="-8" frameWidth="137" frameHeight="182"/>
+  <SubTexture name="defeat0002" x="1837" y="0"  width="118" height="165" frameX="-11" frameY="-9" frameWidth="137" frameHeight="182"/>
+  <SubTexture name="hurt0002" x="1955" y="0"  width="118" height="165" frameX="-11" frameY="-9" frameWidth="137" frameHeight="182"/>
+  <SubTexture name="neutral0002" x="2073" y="0"  width="118" height="165" frameX="-11" frameY="-9" frameWidth="137" frameHeight="182"/>
+</TextureAtlas>

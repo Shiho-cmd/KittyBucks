@@ -5,6 +5,9 @@
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 12,
+			"anim": "idle",
 			"indices": [
 				0,
 				1,
@@ -12,75 +15,72 @@
 				3,
 				5
 			],
-			"fps": 12,
-			"anim": "idle",
-			"loop": false,
 			"name": "idle"
 		},
 		{
 			"offsets": [
-				0,
-				0
+				2,
+				28
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 12,
 			"anim": "singLEFT",
-			"loop": false,
+			"indices": [],
 			"name": "left"
 		},
 		{
 			"offsets": [
-				0,
+				-10,
 				0
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 12,
 			"anim": "singDOWN",
-			"loop": false,
+			"indices": [],
 			"name": "down"
 		},
 		{
 			"offsets": [
-				0,
-				0
+				-12,
+				30
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 12,
 			"anim": "singUP",
-			"loop": false,
+			"indices": [],
 			"name": "up"
 		},
 		{
 			"offsets": [
-				0,
-				0
+				-23,
+				25
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 12,
 			"anim": "singRIGHT",
-			"loop": false,
+			"indices": [],
 			"name": "right"
 		}
 	],
-	"vocals_file": "",
+	"vocals_file": "hello-kitty-erect",
 	"no_antialiasing": false,
 	"image": "characters/OlaERETA",
 	"position": [
-		0,
-		0
+		-490,
+		180
 	],
 	"healthicon": "kitty",
 	"flip_x": false,
 	"healthbar_colors": [
-		161,
-		161,
-		161
+		142,
+		101,
+		174
 	],
 	"camera_position": [
-		0,
-		0
+		-240,
+		-140
 	],
 	"sing_duration": 4,
-	"scale": 1,
+	"scale": 1.3,
 	"_editor_isPlayer": false
 }

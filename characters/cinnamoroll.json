@@ -1,10 +1,14 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"anim": "idle",
+			"fps": 12,
+			"name": "idle",
 			"indices": [
 				1,
 				2,
@@ -12,68 +16,64 @@
 				4,
 				5,
 				6
-			],
-			"fps": 12,
-			"anim": "idle",
-			"loop": false,
-			"name": "idle"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
-				0,
-				0
+				6,
+				14
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "left"
+			"fps": 12,
+			"name": "left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
-				0,
-				0
+				17,
+				-25
 			],
+			"anim": "singDOWN",
+			"fps": 12,
+			"name": "idle",
 			"indices": [
 				7,
 				8,
 				9,
 				10
-			],
-			"fps": 12,
-			"anim": "singDOWN",
-			"loop": false,
-			"name": "idle"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
-				0,
-				0
+				-23,
+				10
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singUP",
-			"loop": false,
-			"name": "up"
+			"fps": 12,
+			"name": "up",
+			"indices": []
 		},
 		{
-			"offsets": [
-				0,
-				0
-			],
-			"indices": [],
-			"fps": 12,
-			"anim": "singRIGHT",
 			"loop": false,
-			"name": "right"
+			"offsets": [
+				12,
+				-31
+			],
+			"anim": "singRIGHT",
+			"fps": 12,
+			"name": "right",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
-	"no_antialiasing": false,
+	"no_antialiasing": true,
 	"image": "characters/cinnema",
 	"position": [
-		0,
-		0
+		-450,
+		200
 	],
 	"healthicon": "face",
 	"flip_x": false,
@@ -83,10 +83,10 @@
 		161
 	],
 	"camera_position": [
-		0,
-		0
+		-340,
+		-170
 	],
 	"sing_duration": 4,
-	"scale": 1,
+	"scale": 1.4,
 	"_editor_isPlayer": false
 }

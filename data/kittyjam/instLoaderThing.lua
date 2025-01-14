@@ -21,7 +21,7 @@ function onSongStart()
         playMusic('instrumentals/'..songName..'/Inst-'..difficultyName, 1, false)
     else
         setPropertyFromClass("openfl.Lib", "application.window.title", 'RECEBENDO A PORRA ARITMETICA')
-        startVideo("aahhh")
+        startVideo("aahhh", false)
 
         unlockAchievement("fertilizado")
         openCustomSubstate("qualquerMerda", true)
