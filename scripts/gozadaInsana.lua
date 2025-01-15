@@ -1,8 +1,14 @@
-local chance = getRandomBool(1)
+local chance = getRandomBool(50)
+
+function parseJson(file)
+    return callMethodFromClass('tjson.TJSON', 'parse', {getTextFromFile(file)})
+end
+
+local parsed = parseJson('data/baldiSave.json')
 
 function onSongStart()
 
-    if chance and songName ~= 'KittyJam' then
+    if chance and songName ~= 'KittyJam' and parsed.podeGozar then
         setPropertyFromClass("openfl.Lib", "application.window.title", 'RECEBENDO A PORRA ARITMETICA')
         startVideo("aahhh", false)
 
@@ -15,6 +21,7 @@ function onCustomSubstateCreate(name)
     
     if name == 'qualquerMerda' then
         runTimer("gozou", 11)
+        saveFile("mods/KittyBucks/data/baldiSave.json", "{\n\"podeGozar\": false\n}", true)
     end
 end
 

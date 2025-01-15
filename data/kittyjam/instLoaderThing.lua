@@ -1,7 +1,13 @@
 luaDebugMode = getModSetting("debug")
 luaDeprecatedWarnings = getModSetting("deprecated")
 
-local chance = getRandomBool(1)
+local chance = getRandomBool(50)
+
+function parseJson(file)
+    return callMethodFromClass('tjson.TJSON', 'parse', {getTextFromFile(file)})
+end
+
+local parsed = parseJson('data/baldiSave.json')
 
 function onCountdownStarted()
     
@@ -16,10 +22,11 @@ end
 
 function onSongStart()
 
-    if not chance then
+    if not chance and not parsed.podeGozar then
         playSound('instrumentals/'..songName..'/Inst-'..difficultyName, 0, 'vala')
         playMusic('instrumentals/'..songName..'/Inst-'..difficultyName, 1, false)
-    else
+    elseif chance and parsed.podeGozar then
+        saveFile("mods/KittyBucks/data/baldiSave.json", "{\n\"podeGozar\": false\n}", true)
         setPropertyFromClass("openfl.Lib", "application.window.title", 'RECEBENDO A PORRA ARITMETICA')
         startVideo("aahhh", false)
 
