@@ -15,6 +15,8 @@ function parseJson(file)
 end
 
 local parsed = parseJson('data/'..songName..'/songData-'..difficultyName..'.json')
+local siivaSave = parseJson('data/credits/siivaSave.json')
+local omoriSave = parseJson('data/credits/omoriSave.json')
 
 local creditsName = parsed.shihoCre[1]
 local creditsShortTxt = parsed.shihoCre[2]
@@ -37,7 +39,17 @@ local itsShiny = nil
 
 local section = 0
 
-local longTxtSiiva = parsed.siivaCre[2]
+local nameSiiva = parsed.misterySiiva[1]
+local longTxtSiiva = parsed.misterySiiva[2]
+local colorSiiva = parsed.misterySiiva[3]
+local linkSiiva = nil
+local nameOmori = parsed.misteryOmori[1]
+local longTxtOmori = parsed.misteryOmori[2]
+local colorOmori = parsed.misteryOmori[3]
+local linkOmori = nil
+
+local shihoBooped = false
+local ukiyoBooped = false
 
 function onCreate()
 
@@ -427,13 +439,19 @@ function onUpdate(elapsed)
     setProperty("healthBar.visible", false)
     setProperty("camGame.visible", false)
 
-    --[[if getCurrentOrientation() == 'LandscapeLeft' then
-        loadSong('ultimate-koopa', 0)
+    --[[if isAchievementUnlocked("funny") then
+        longTxtSiiva = parsed.siivaCre[2]
     end]]
 
-    if isAchievementUnlocked("funny") then
-        longTxtSiiva = parsed.siivaCre[5]
+    if keyboardPressed("SIX") and keyboardPressed("NINE") then
+        loadSong('ultimate-koopa', difficulty)
     end
+
+    if shihoBooped and ukiyoBooped then
+        setAchievementScore("boop", 2, false)
+    end
+
+
 
     if buildTarget == 'android' then
         mouse = false
@@ -458,7 +476,7 @@ function onUpdate(elapsed)
     bJustPressed = getMouseX('camOther') > getProperty('buttonB.x') and getMouseY('camOther') > getProperty('buttonB.y') and getMouseX('camOther') < getProperty('buttonB.x') + getProperty('buttonB.width') and getMouseY('camOther') < getProperty('buttonB.y') + getProperty('buttonB.height') and mouseClicked()
     end
 
-    checkArt = getMouseX('camOther') > getProperty('stickerArt.x') and getMouseY('camOther') > getProperty('stickerArt.y') and getMouseX('camOther') < getProperty('stickerArt.x') + getProperty('stickerArt.width') and getMouseY('camOther') < getProperty('stickerArt.y') + getProperty('stickerArt.height')
+    checkArt = getMouseX('camOther') > getProperty('stickerArt.x') and getMouseY('camOther') > getProperty('stickerArt.y') and getMouseX('camOther') < getProperty('stickerArt.x') + getProperty('stickerArt.width') and getMouseY('camOther') < getProperty('stickerArt.y') + getProperty('stickerArt.height') and getProperty("stickerArt.visible")
     checkDir = getMouseX('camOther') > getProperty('stickerDir.x') and getMouseY('camOther') > getProperty('stickerDir.y') and getMouseX('camOther') < getProperty('stickerDir.x') + getProperty('stickerDir.width') and getMouseY('camOther') < getProperty('stickerDir.y') + getProperty('stickerDir.height') and getProperty("stickerDir.visible")
     checkPro = getMouseX('camOther') > getProperty('stickerPro.x') and getMouseY('camOther') > getProperty('stickerPro.y') and getMouseX('camOther') < getProperty('stickerPro.x') + getProperty('stickerPro.width') and getMouseY('camOther') < getProperty('stickerPro.y') + getProperty('stickerPro.height') and getProperty("stickerPro.visible")
     checkCha = getMouseX('camOther') > getProperty('stickerCha.x') and getMouseY('camOther') > getProperty('stickerCha.y') and getMouseX('camOther') < getProperty('stickerCha.x') + getProperty('stickerCha.width') and getMouseY('camOther') < getProperty('stickerCha.y') + getProperty('stickerCha.height') and getProperty("stickerCha.visible")
@@ -729,6 +747,35 @@ function onUpdate(elapsed)
     end
 
     if pos2 == 1 and section == 1 then
+        creditsName = parsed.seventenCre[1]
+        creditsLongTxt = parsed.seventenCre[2]
+        color = parsed.seventenCre[3]
+        link = parsed.seventenCre[4]
+        setProperty("boxLogo2.visible", false)
+        setProperty("stuff.visible", true)
+        setProperty("stuff.x", -60)
+        setProperty("shortTxt.visible", false)
+        setProperty("tumb.visible", false)
+        setProperty("tree.visible", false)
+        setProperty("sky.visible", false)
+        setProperty("twi.visible", false)
+        setProperty("spo.visible", false)
+        setProperty("you.visible", false)
+        setProperty("bana.visible", true)
+        setProperty("pinGit.visible", true)
+        setProperty("pinSiiva.visible", false)
+        setProperty("pinEC.visible", false)
+        setProperty("pinSparkle.x", 1100)
+        setProperty("pinSparkle.y", 120)
+        doTweenColor("corYay", "back", color, 0.5, "linear")
+        setTextString("name", creditsName)
+        setTextString("longTxt", creditsLongTxt)
+        setTextWidth("longTxt", 600)
+        screenCenter("name", 'x')
+        screenCenter("shortTxt", 'x')
+        screenCenter("longTxt", 'y')
+        screenCenter("longTxt")
+    elseif pos2 == 2 and section == 1 then
         creditsName = parsed.gitCre[1]
         creditsLongTxt = parsed.gitCre[2]
         color = parsed.gitCre[3]
@@ -756,43 +803,13 @@ function onUpdate(elapsed)
         screenCenter("shortTxt", 'x')
         screenCenter("longTxt", 'y')
         screenCenter("longTxt")
-    elseif pos2 == 2 and section == 1 then
-        creditsName = parsed.siivaCre[1]
-        creditsLongTxt = longTxtSiiva
-        color = parsed.siivaCre[3]
-        link = parsed.siivaCre[4]
-        setProperty("boxLogo2.visible", false)
-        setProperty("stuff.visible", true)
-        setProperty("stuff.x", -50)
-        setProperty("stuff.scale.x", 1)
-        setProperty("shortTxt.visible", false)
-        setProperty("tumb.visible", false)
-        setProperty("tree.visible", false)
-        setProperty("sky.visible", false)
-        setProperty("twi.visible", false)
-        setProperty("spo.visible", false)
-        setProperty("you.visible", true)
-        setProperty("bana.visible", false)
-        setProperty("pinGit.visible", false)
-        setProperty("pinSiiva.visible", true)
-        setProperty("pinEC.visible", false)
-        setProperty("pinSparkle.x", 1100)
-        setProperty("pinSparkle.y", 145)
-        doTweenColor("corYay", "back", color, 0.5, "linear")
-        setTextString("name", creditsName)
-        setTextString("longTxt", creditsLongTxt)
-        setTextWidth("longTxt", 600)
-        screenCenter("name", 'x')
-        screenCenter("shortTxt", 'x')
-        screenCenter("longTxt", 'y')
-        screenCenter("longTxt")
     elseif pos2 == 3 and section == 1 then
         creditsName = parsed.scriptCre[1]
         creditsLongTxt = parsed.scriptCre[2]
         color = parsed.scriptCre[3]
-        link = parsed.scriptCre[4]
+        link = nil
         setProperty("boxLogo2.visible", false)
-        setProperty("stuff.visible", true)
+        setProperty("stuff.visible", false)
         setProperty("stuff.x", -50)
         setProperty("stuff.scale.x", 1)
         setProperty("shortTxt.visible", false)
@@ -802,7 +819,7 @@ function onUpdate(elapsed)
         setProperty("twi.visible", false)
         setProperty("spo.visible", false)
         setProperty("you.visible", false)
-        setProperty("bana.visible", true)
+        setProperty("bana.visible", false)
         setProperty("pinGit.visible", false)
         setProperty("pinSiiva.visible", false)
         setProperty("pinEC.visible", true)
@@ -816,10 +833,72 @@ function onUpdate(elapsed)
         screenCenter("shortTxt", 'x')
         screenCenter("longTxt", 'y')
         screenCenter("longTxt")
-    elseif pos2 > 3 and section == 1 then
+    elseif pos2 == 4 and section == 1 then
+        creditsName = nameSiiva
+        creditsLongTxt = longTxtSiiva
+        color = colorSiiva
+        link = linkSiiva
+        setProperty("boxLogo2.visible", false)
+        setProperty("stuff.visible", siivaSave.pin)
+        setProperty("stuff.x", -50)
+        setProperty("stuff.scale.x", 1)
+        setProperty("shortTxt.visible", false)
+        setProperty("tumb.visible", false)
+        setProperty("tree.visible", false)
+        setProperty("sky.visible", false)
+        setProperty("twi.visible", false)
+        setProperty("spo.visible", false)
+        setProperty("you.visible", siivaSave.pin)
+        setProperty("bana.visible", false)
+        setProperty("pinGit.visible", false)
+        setProperty("pinSiiva.visible", siivaSave.pin)
+        setProperty("pinEC.visible", false)
+        --setProperty("pinSparkle.x", 1100)
+        setProperty("pinSparkle.x", siivaSave.sparkleX)
+        setProperty("pinSparkle.y", 145)
+        doTweenColor("corYay", "back", color, 0.5, "linear")
+        setTextString("name", creditsName)
+        setTextString("longTxt", creditsLongTxt)
+        setTextWidth("longTxt", 600)
+        screenCenter("name", 'x')
+        screenCenter("shortTxt", 'x')
+        screenCenter("longTxt", 'y')
+        screenCenter("longTxt")
+    elseif pos2 == 5 and section == 1 then
+        creditsName = nameOmori
+        creditsLongTxt = longTxtOmori
+        color = colorOmori
+        link = linkOmori
+        setProperty("boxLogo2.visible", false)
+        setProperty("stuff.visible", omoriSave.pin)
+        setProperty("stuff.x", -50)
+        setProperty("stuff.scale.x", 1)
+        setProperty("shortTxt.visible", false)
+        setProperty("tumb.visible", false)
+        setProperty("tree.visible", false)
+        setProperty("sky.visible", false)
+        setProperty("twi.visible", false)
+        setProperty("spo.visible", false)
+        setProperty("you.visible", false)
+        setProperty("bana.visible", false)
+        setProperty("pinGit.visible", false)
+        setProperty("pinSiiva.visible", omoriSave.pin)
+        setProperty("pinEC.visible", false)
+        --setProperty("pinSparkle.x", 1100)
+        setProperty("pinSparkle.x", omoriSave.sparkleX)
+        setProperty("pinSparkle.y", 145)
+        doTweenColor("corYay", "back", color, 0.5, "linear")
+        setTextString("name", creditsName)
+        setTextString("longTxt", creditsLongTxt)
+        setTextWidth("longTxt", 600)
+        screenCenter("name", 'x')
+        screenCenter("shortTxt", 'x')
+        screenCenter("longTxt", 'y')
+        screenCenter("longTxt")
+    elseif pos2 > 5 and section == 1 then
         pos2 = 1
     elseif pos2 < 1 and section == 1 then
-        pos2 = 3
+        pos2 = 5
     end
 
     if slctPos == 1 then
@@ -980,9 +1059,12 @@ function onUpdate(elapsed)
         doTweenX("boom", "shi.scale", 1.3, 0.5, "elasticOut")
         doTweenY("moob", "shi.scale", 0.8, 0.5, "elasticOut")
         runTimer("xd", 0.1)
+        shihoBooped = true
+        setAchievementScore("obama", getAchievementScore("obama") + 1, false)
     elseif getMouseX('camOther') > getProperty('ukiyo.x') and getMouseY('camOther') > getProperty('ukiyo.y') and getMouseX('camOther') < getProperty('ukiyo.x') + getProperty('ukiyo.width') and getMouseY('camOther') < getProperty('ukiyo.y') + getProperty('ukiyo.height') and mouseReleased() and getProperty("ukiyo.visible") and not cut or slctPos == 0 and not getProperty("box.visible") and getProperty("select.visible") and anyGamepadJustPressed("A") and not cut then
         playSound("credits/ragdoll", 1, 'rag')
         playAnim("ukiyo", "eat", true)
+        ukiyoBooped = true
     elseif getMouseX('camOther') > getProperty('boxLogo.x') and getMouseY('camOther') > getProperty('boxLogo.y') and getMouseX('camOther') < getProperty('boxLogo.x') + getProperty('boxLogo.width') and getMouseY('camOther') < getProperty('boxLogo.y') + getProperty('boxLogo.height') and mouseReleased() and not cut or slctPos == 1 and getProperty("select.visible", true) and anyGamepadJustPressed("A") and not cut then
         callMethodFromClass('backend.CoolUtil', 'browserLoad', {link})
     end

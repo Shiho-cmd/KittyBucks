@@ -147,7 +147,7 @@ function onCreate()
     setTextFont("noWay", "drunkenhourDEMO.otf")
     setTextBorder("noWay", 0, "FFFFFF")
 
-    makeLuaText("compo", songName..' ('..string.upper(difficultyName)..')'.." by: "..data.composer..' | Pause Theme by: LizNaithy'..' | Art by: '..data.artist..' | Chart and Coding by: Shiho', 0, data.pauseTxtPos, -20)
+    makeLuaText("compo", songName..' ('..string.upper(difficultyName)..')'.." by: "..data.composer..' | Pause Theme by: LizNaithy'..' | Art by: '..data.artist..' | Chart and Coding by: '..data.coder, 0, data.pauseTxtPos, -20)
     setObjectCamera("compo", 'other')
     addLuaText("compo")
     setTextSize("compo", 25)

@@ -58,7 +58,6 @@ end
     
     setProperty("dadGroup.visible", false)
 end
-end
 
 function onSongStart()
     

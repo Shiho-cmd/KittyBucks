@@ -1,5 +1,37 @@
 [
     {
+        "save": "boop",
+		"name": "Boop",
+		"description": "Click on Ukiyo and Shiho in the credits menu",
+		"maxScore": 2,
+		"maxDecimals": 0,
+		"hidden": false
+    },
+    {
+        "save": "fc",
+		"name": "pensar num nome depois",
+		"description": "FC all songs in the mod",
+		"maxScore": 4,
+		"maxDecimals": 0,
+		"hidden": false
+    },
+    {
+        "save": "truefc",
+		"name": "pensar num nome depois",
+		"description": "FC all main and secret songs in the mod",
+		"maxScore": 5,
+		"maxDecimals": 0,
+		"hidden": false
+    },
+	{
+        "save": "obama",
+		"name": "Agreção domiciliar",
+		"description": "quebre a cara da shiho 1000 vezes",
+		"maxScore": 1000,
+		"maxDecimals": 0,
+		"hidden": false
+    },
+    {
         "save": "fertilizado",
 		"name": "Prenho",
 		"description": "RECEBA O LEITE MATEMÁTICO",

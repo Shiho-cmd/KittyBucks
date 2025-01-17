@@ -11,8 +11,7 @@
     "pauseCover": "cover_kittyjam_erect",
     "pauseTxtPos": -1965,
 
-    "beaten": true,
-    "perfect": true,
+    "fczado": false,
 
     "leftNoteRGB": ["F634B5", "FFFFFF", "7A255C"],
     "downNoteRGB": ["52465E", "FFFFFF", "2D1C3F"],
