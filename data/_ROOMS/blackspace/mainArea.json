@@ -1,0 +1,15 @@
+{
+    // player
+   "kittySpawn": [618, 334],
+
+    // obj
+    "tapete": [512, 264],
+    "laptop": [520, 241],
+    "portaMago": [1015, 531],
+    "portaKeroppi": [404, 142],
+    "fio": [702, -47],
+
+    "laptopHB": [537, 272],
+    "portalMagHB": [0, 0],
+    "portalKeroppiHB": [0, 0]
+}

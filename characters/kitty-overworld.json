@@ -1,0 +1,198 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 0,
+			"anim": "idle",
+			"indices": [
+				2,
+				2
+			],
+			"name": "walk_down"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 0,
+			"anim": "idle-down",
+			"indices": [
+				2,
+				2
+			],
+			"name": "walk_down"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 0,
+			"anim": "idle-left",
+			"indices": [
+				2,
+				2
+			],
+			"name": "walk_left"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 0,
+			"anim": "idle-right",
+			"indices": [
+				2,
+				2
+			],
+			"name": "walk_right"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 0,
+			"anim": "idle-up",
+			"indices": [
+				2,
+				2
+			],
+			"name": "walk_up"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": true,
+			"fps": 5,
+			"anim": "walk-down",
+			"indices": [
+				1,
+				2,
+				3,
+				2
+			],
+			"name": "walk_down"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": true,
+			"fps": 5,
+			"anim": "walk-left",
+			"indices": [
+				1,
+				2,
+				3,
+				2
+			],
+			"name": "walk_left"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": true,
+			"fps": 5,
+			"anim": "walk-right",
+			"indices": [
+				1,
+				2,
+				3,
+				2
+			],
+			"name": "walk_right"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": true,
+			"fps": 5,
+			"anim": "walk-up",
+			"indices": [
+				1,
+				2,
+				3,
+				2
+			],
+			"name": "walk_up"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				7,
+				7,
+				7,
+				7,
+				7,
+				7,
+				7,
+				7,
+				7,
+				7,
+				7,
+				7,
+				7,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13
+			],
+			"fps": 5,
+			"anim": "stab",
+			"loop": false,
+			"name": "stab"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": true,
+	"image": "characters/omori/kitty_overworld",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "face",
+	"flip_x": true,
+	"healthbar_colors": [
+		161,
+		161,
+		161
+	],
+	"camera_position": [
+		-70,
+		70
+	],
+	"sing_duration": 4,
+	"scale": 2,
+	"_editor_isPlayer": true
+}

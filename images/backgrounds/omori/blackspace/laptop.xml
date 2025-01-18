@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+-->
+<TextureAtlas imagePath="laptop.png" width="72" height="44">
+  <SubTexture name="static0001" x="0" y="0"  width="36" height="44" frameX="-14" frameY="-10" frameWidth="64" frameHeight="64"/>
+  <SubTexture name="static0002" x="36" y="0"  width="36" height="44" frameX="-14" frameY="-10" frameWidth="64" frameHeight="64"/>
+  <SubTexture name="static0003" x="0" y="0"  width="36" height="44" frameX="-14" frameY="-10" frameWidth="64" frameHeight="64"/>
+  <SubTexture name="static0004" x="36" y="0"  width="36" height="44" frameX="-14" frameY="-10" frameWidth="64" frameHeight="64"/>
+</TextureAtlas>

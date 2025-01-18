@@ -1,6 +1,6 @@
 {
 	"song": {
-		"player1": "bf-pixel",
+		"player1": "kitty-overworld",
 		"gfVersion": "gf",
 		"notes": [
 			{
@@ -602,7 +602,7 @@
 		"player2": "gf-pixel",
 		"song": "bruh",
 		"needsVoices": false,
-		"stage": "teste",
+		"stage": "blackspace",
 		"speed": 2.3,
 		"bpm": 135
 	}

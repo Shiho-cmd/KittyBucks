@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-i write it by hand thumbsup
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
 -->
-<TextureAtlas imagePath="kitty_overworld.png" width="82" height="125">
-  <SubTexture name="idleDown0001" x="32" y="0" width="18" height="29"/>
-  <SubTexture name="walkDown0001" x="0" y="0" width="18" height="29"/>
-  <SubTexture name="walkDown0002" x="32" y="0" width="18" height="29"/>
-  <SubTexture name="walkDown0003" x="64" y="0" width="18" height="29"/>
-  <SubTexture name="walkDown0004" x="32" y="0" width="18" height="29"/>
-  <SubTexture name="idleLeft0001" x="34" y="33" width="13" height="28"/>
-  <SubTexture name="walkLeft0001" x="2" y="33" width="13" height="28"/>
-  <SubTexture name="walkLeft0002" x="34" y="33" width="13" height="28"/>
-  <SubTexture name="walkLeft0003" x="66" y="33" width="13" height="28"/>
-  <SubTexture name="walkLeft0004" x="34" y="33" width="13" height="28"/>
-  <SubTexture name="idleRight0001" x="35" y="65" width="13" height="28"/>
-  <SubTexture name="walkRight0001" x="3" y="65" width="13" height="28"/>
-  <SubTexture name="walkRight0002" x="35" y="65" width="13" height="28"/>
-  <SubTexture name="walkRight0003" x="67" y="65" width="13" height="28"/>
-  <SubTexture name="walkRight0004" x="35" y="65" width="13" height="28"/>
-  <SubTexture name="idleUp0001" x="32" y="96" width="18" height="29"/>
-  <SubTexture name="walkUp0001" x="0" y="96" width="18" height="29"/>
-  <SubTexture name="walkUp0002" x="32" y="96" width="18" height="29"/>
-  <SubTexture name="walkUp0003" x="64" y="96" width="18" height="29"/>
-  <SubTexture name="walkUp0004" x="32" y="96" width="18" height="29"/>
+<TextureAtlas imagePath="kitty_overworld.png" width="247" height="57">
+  <SubTexture name="stab0008" x="0" y="0"  width="24" height="28" frameX="-0" frameY="-1" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="stab0009" x="24" y="0"  width="23" height="28" frameX="-2" frameY="-1" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="stab0006" x="47" y="0"  width="21" height="28" frameX="-3" frameY="-1" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="stab0007" x="68" y="0"  width="21" height="28" frameX="-3" frameY="-1" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="walk_down0001" x="89" y="0"  width="18" height="29" frameX="-6" frameY="-0" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="walk_down0003" x="0" y="28"  width="18" height="29" frameX="-8" frameY="-0" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="walk_up0001" x="18" y="28"  width="18" height="29" frameX="-6" frameY="-0" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="walk_up0003" x="36" y="28"  width="18" height="29" frameX="-8" frameY="-0" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="stab0001" x="54" y="28"  width="18" height="28" frameX="-7" frameY="-1" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="stab0002" x="72" y="28"  width="16" height="28" frameX="-8" frameY="-1" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="stab0004" x="107" y="0"  width="18" height="28" frameX="-6" frameY="-1" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="stab0005" x="125" y="0"  width="18" height="28" frameX="-6" frameY="-1" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="walk_up0002" x="143" y="0"  width="18" height="28" frameX="-7" frameY="-1" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="stab00010" x="161" y="0"  width="18" height="25" frameX="-7" frameY="-4" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="stab00011" x="179" y="0"  width="18" height="22" frameX="-7" frameY="-7" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="stab00012" x="197" y="0"  width="18" height="14" frameX="-7" frameY="-14" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="stab00013" x="215" y="0"  width="18" height="12" frameX="-7" frameY="-16" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="stab0003" x="233" y="0"  width="14" height="28" frameX="-9" frameY="-1" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="walk_left0001" x="215" y="12"  width="13" height="28" frameX="-9" frameY="-1" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="walk_left0003" x="197" y="14"  width="13" height="28" frameX="-9" frameY="-1" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="walk_right0001" x="179" y="22"  width="13" height="28" frameX="-9" frameY="-1" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="walk_right0003" x="161" y="25"  width="13" height="28" frameX="-9" frameY="-1" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="walk_left0002" x="107" y="28"  width="13" height="27" frameX="-9" frameY="-2" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="walk_right0002" x="88" y="29"  width="13" height="27" frameX="-9" frameY="-2" frameWidth="26" frameHeight="29"/>
+  <SubTexture name="walk_down0002" x="54" y="28"  width="18" height="28" frameX="-7" frameY="-1" frameWidth="26" frameHeight="29"/>
 </TextureAtlas>
