@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+i write it by hand thumbsup
+-->
+<TextureAtlas imagePath="txtBox.png" width="226" height="223">
+  <SubTexture name="chonky0001" x="0" y="0" width="226" height="96"/>
+  <SubTexture name="normal0001" x="0" y="97" width="226" height="64"/>
+  <SubTexture name="options0001" x="0" y="162" width="138" height="61"/>
+</TextureAtlas>

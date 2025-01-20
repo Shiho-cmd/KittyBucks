@@ -1,3 +1,6 @@
 {
-    "tutorial": ["Use the Arrow Keys to move around, Z to interact, X to run and C to open the menu/cancel", "Have Fun!", ""]
+    "tutorial": ["Use the Arrow Keys to move around, Z to interact, X to run and C to open the menu/cancel", "Have Fun!", ""],
+    "mago": ["A black door casts a weird light.\nYou feel a little nostalgic...", "What would you like to do?", ""],
+    "defaultOptions": "OPEN THE DOOR\nDO NOTHING",
+    "stare": ["You stared at the door.", ""]
 }
