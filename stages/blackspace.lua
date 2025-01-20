@@ -21,6 +21,8 @@ local curDialogueName = nil
 local onDialogue = false
 local escolhendo = false
 
+local sounds = {'[BA]stat_down', '[sfx]battle_ekg_beep', 'BA_battle_encounter_1', 'BA_CRITICAL_HIT', 'BA_heal_juice', 'BA_Heart_Heal', 'BA_miss', 'BA_release_energy', 'BA_run', 'BA_stat_up', 'GEN_stab', 'laptop_logoff', 'SE_dig', 'se_evil2', 'SE_horror', 'se_impact_double', 'SE_New_Skill', 'SE_Push', 'SE_spooks', 'Skill2', 'sys_blackletter1', 'sys_blackletter2', 'sys_buzzer', 'sys_cancel', 'SYS_move', 'SYS_select', 'SYS_text', 'SE_Laptop'}
+
 function onStartCountdown()
     
     triggerEvent("Camera Follow Pos", getGraphicMidpointX("boyfriend") + 18, getGraphicMidpointY("boyfriend") - 700)
@@ -35,6 +37,13 @@ end
 
 function onCreate()
 
+    removeLuaScript("mods/KittyBucks/scripts/disabled/pauseSubState.lua")
+    removeLuaScript("mods/KittyBucks/scripts/itsBingover.lua")
+    removeLuaScript("mods/KittyBucks/scripts/gozadaInsana.lua")
+    removeLuaScript("mods/KittyBucks/scripts/noteRGB.lua")
+    removeLuaScript("mods/KittyBucks/scripts/buildTargetReal.lua")
+    removeLuaScript("mods/KittyBucks/scripts/noteSplashStuff.lua")
+    removeHScript("mods/KittyBucks/scripts/haxeShit.hx")
     setProperty("camGame.alpha", 0.0001)
     setProperty("camOther.alpha", 0.0001)
 
@@ -44,6 +53,10 @@ function onCreate()
     precacheSound("omori/se/sys_blackletter2")
     precacheSound("omori/se/SYS_select")
     precacheSound("omori/se/SYS_move")
+    precacheSound("omori/se/SE_Laptop")
+    precacheSound("omori/se/laptop_logoff")
+
+    setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Welcome to Black Space')
 
     setProperty('camGame.bgColor', getColorFromHex('000000'))
 
@@ -155,6 +168,28 @@ function onCreate()
     addLuaSprite("hand", false)
     doTweenX("loopInsano", "hand", getProperty("hand.x") - 5, 1, "quartInOut")
 
+    makeLuaSprite("mouse", 'backgrounds/omori/blackspace/cursor', 0, 0)
+    scaleObject("mouse", 1.3, 1.3)
+    setObjectCamera("mouse", 'hud')
+    setProperty("mouse.alpha", 0.00001)
+    addLuaSprite("mouse", true)
+
+    makeLuaSprite("lapBG", 'backgrounds/omori/blackspace/laptopBG', 0, 0)
+    setObjectCamera("lapBG", 'hud')
+    scaleObject("lapBG", 1.5, 1.5)
+    screenCenter("lapBG")
+    setProperty("lapBG.alpha", 0.00001)
+    addLuaSprite("lapBG", false)
+
+    makeLuaText("horario", "", 0, mainArea.relogio[1], mainArea.relogio[2])
+    setObjectCamera("horario", 'hud')
+    setTextFont("horario", "flipnote-hatena-font.ttf")
+    setTextBorder("horario", 0, "000000")
+    setTextSize("horario", 41)
+    setTextColor("horario", "000000")
+    setProperty("horario.alpha", 0.00001)
+    addLuaText("horario")
+
     createHitbox()
 end
 
@@ -177,6 +212,27 @@ function createHitbox()
     setProperty("magoHB.alpha", 0)
     addLuaSprite("magoHB", false)
     updateHitbox("magoHB")
+
+    makeLuaSprite("robloHB", nil, mainArea.robloxHB[1], mainArea.robloxHB[2])
+    makeGraphic("robloHB", 96, 96, 'FFFFFF')
+    setProperty("robloHB.alpha", 0.00001)
+    setObjectCamera("robloHB", 'hud')
+    addLuaSprite("robloHB", false)
+    updateHitbox("robloHB")
+
+    makeLuaSprite("shihoHB", nil, mainArea.trashHB[1], mainArea.trashHB[2])
+    makeGraphic("shihoHB", 73, 85, 'FFFFFF')
+    setProperty("shihoHB.alpha", 0.00001)
+    setObjectCamera("shihoHB", 'hud')
+    addLuaSprite("shihoHB", false)
+    updateHitbox("shihoHB")
+
+    makeLuaSprite("logHB", nil, mainArea.logoffHB[1], mainArea.logoffHB[2])
+    makeGraphic("logHB", 136, 30, 'FF0000')
+    setProperty("logHB.alpha", 0)
+    setObjectCamera("logHB", 'hud')
+    addLuaSprite("logHB", false)
+    updateHitbox("logHB")
 
     makeLuaSprite("playerHB", nil, getGraphicMidpointX("boyfriend") + 10, getGraphicMidpointY("boyfriend") + 16)
     makeGraphic("playerHB", 20, 25, '0000FF')
@@ -213,7 +269,24 @@ local walkSpeed = 4
 
 local optPos = 1
 
+local onLaptop = false
+
+--local sla = os.date ('%p')
+
 function onUpdate(elapsed)
+
+    setProperty("mouse.x", getMouseX("hud"))
+    setProperty("mouse.y", getMouseY("hud"))
+
+    setTextString("horario", os.date ('%H')..":"..os.date ('%M'))
+
+    if onLaptop then
+        robloxJustPressed = getMouseX('camOther') > getProperty('robloHB.x') and getMouseY('camOther') > getProperty('robloHB.y') and getMouseX('camOther') < getProperty('robloHB.x') + getProperty('robloHB.width') and getMouseY('camOther') < getProperty('robloHB.y') + getProperty('robloHB.height') and mouseClicked()
+        trashJustPressed = getMouseX('camOther') > getProperty('shihoHB.x') and getMouseY('camOther') > getProperty('shihoHB.y') and getMouseX('camOther') < getProperty('shihoHB.x') + getProperty('shihoHB.width') and getMouseY('camOther') < getProperty('shihoHB.y') + getProperty('shihoHB.height') and mouseClicked()
+        logoffJustPressed = getMouseX('camOther') > getProperty('logHB.x') and getMouseY('camOther') > getProperty('logHB.y') and getMouseX('camOther') < getProperty('logHB.x') + getProperty('logHB.width') and getMouseY('camOther') < getProperty('logHB.y') + getProperty('logHB.height') and mouseClicked()
+        robloxMouseOver = getMouseX('camOther') > getProperty('robloHB.x') and getMouseY('camOther') > getProperty('robloHB.y') and getMouseX('camOther') < getProperty('robloHB.x') + getProperty('robloHB.width') and getMouseY('camOther') < getProperty('robloHB.y') + getProperty('robloHB.height')
+        trashMouseOver = getMouseX('camOther') > getProperty('shihoHB.x') and getMouseY('camOther') > getProperty('shihoHB.y') and getMouseX('camOther') < getProperty('shihoHB.x') + getProperty('shihoHB.width') and getMouseY('camOther') < getProperty('shihoHB.y') + getProperty('shihoHB.height')
+    end
 
     if cutOver then
         triggerEvent("Camera Follow Pos", getGraphicMidpointX("boyfriend") + 18, getGraphicMidpointY("boyfriend"))
@@ -327,7 +400,36 @@ function onUpdate(elapsed)
         if doorMagoColiUp and looking == 'up' then
             clicavel = false
             doTweenAlpha("dava", "camGame", 0.00001, 1, "linear")
+        elseif lapColiUp and looking == 'up' then
+            clicavel = false
+            doTweenAlpha("laper", "camGame", 0.00001, 1, "linear")
+            playSound("omori/se/SE_Laptop", 1, 'lapON')
+            doTweenAlpha("apareceuMeu", "lapBG", 1, 1, "linear")
+            doTweenAlpha("deiMeuCu", "horario", 1, 1, "linear")
         end
+    end
+
+    if onLaptop and robloxMouseOver then
+        setProperty("robloHB.alpha", 0.5)
+    elseif onLaptop and trashMouseOver then
+        setProperty("shihoHB.alpha", 0.5)
+    else
+        setProperty("shihoHB.alpha", 0.00001)
+        setProperty("robloHB.alpha", 0.00001)
+    end
+
+    if onLaptop and trashJustPressed then
+        playSound('omori/se/'..sounds[getRandomInt(1, #sounds)], 1, 'randomSound')
+    elseif onLaptop and robloxJustPressed then
+        onLaptop = false
+        loadSong('roblox-sexo-selvagem-(the-song)', -1)
+    elseif onLaptop and logoffJustPressed or keyboardJustPressed("C") and onLaptop then
+        onLaptop = false
+        playSound("omori/se/laptop_logoff", 1, 'lapOFF')
+        doTweenAlpha("cumInMaAss", "lapBG", 0.00001, 1, "linear")
+        doTweenAlpha("damnDaniel", "horario", 0.00001, 1, "linear")
+        doTweenAlpha("ruuwrhrb", "camGame", 1, 1, "linear")
+        setProperty("mouse.alpha", 0.0001)
     end
 
     if keyboardPressed("X") then
@@ -399,15 +501,15 @@ function onUpdate(elapsed)
 
 
     if keyboardJustPressed("A") then
-        setProperty("magoHB.x", getProperty("magoHB.x") - quanto)
+        setProperty("logHB.x", getProperty("logHB.x") - quanto)
     elseif keyboardJustPressed("D") then
-        setProperty("magoHB.x", getProperty("magoHB.x") + quanto)
+        setProperty("logHB.x", getProperty("logHB.x") + quanto)
     elseif keyboardJustPressed("W") then
-        setProperty("magoHB.y", getProperty("magoHB.y") - quanto)
+        setProperty("logHB.y", getProperty("logHB.y") - quanto)
     elseif keyboardJustPressed("S") then
-        setProperty("magoHB.y", getProperty("magoHB.y") + quanto)
+        setProperty("logHB.y", getProperty("logHB.y") + quanto)
     elseif keyboardJustPressed("SPACE") then
-        saveFile('mods/KittyBucks/data/_ROOMS/blackspace/mainArea.json', '{\n    // player\n   "kittySpawn": [1104, 1068],\n\n    // obj\n    "tapete": ['..getProperty("tapa.x")..', '..getProperty("tapa.y")..'],\n    "laptop": ['..getProperty("lap.x")..', '..getProperty("lap.y")..'],\n    "portaMago": ['..getProperty("door-mago.x")..', '..getProperty("door-mago.y")..'],\n    "portaKeroppi": ['..getProperty("door-snow.x")..', '..getProperty("door-snow.y")..'],\n    "fio": ['..getProperty("fio.x")..', '..getProperty("fio.y")..'],\n\n    "laptopHB": ['..getProperty("ht.x")..', '..getProperty("ht.y")..'],\n    "portaMagoHB": ['..getProperty("magoHB.x")..', '..getProperty("magoHB.y")..'],\n    "portaKeroppiHB": ['..getProperty("snowHB.x")..', '..getProperty("snowHB.y")..']\n}', true)
+        saveFile('mods/KittyBucks/data/_ROOMS/blackspace/mainArea.json', '{\n    // player\n   "kittySpawn": [1104, 1068],\n\n    // obj\n    "tapete": ['..getProperty("tapa.x")..', '..getProperty("tapa.y")..'],\n    "laptop": ['..getProperty("lap.x")..', '..getProperty("lap.y")..'],\n    "portaMago": ['..getProperty("door-mago.x")..', '..getProperty("door-mago.y")..'],\n    "portaKeroppi": ['..getProperty("door-snow.x")..', '..getProperty("door-snow.y")..'],\n    "fio": ['..getProperty("fio.x")..', '..getProperty("fio.y")..'],\n    "relogio": ['..getProperty("horario.x")..', '..getProperty("horario.y")..'],\n\n    "laptopHB": ['..getProperty("ht.x")..', '..getProperty("ht.y")..'],\n    "portaMagoHB": ['..getProperty("magoHB.x")..', '..getProperty("magoHB.y")..'],\n    "portaKeroppiHB": ['..getProperty("snowHB.x")..', '..getProperty("snowHB.y")..'],\n    "robloxHB": ['..getProperty("robloHB.x")..', '..getProperty("robloHB.y")..'],\n    "trashHB": ['..getProperty("shihoHB.x")..', '..getProperty("shihoHB.y")..'],\n    "logoffHB": ['..getProperty("logHB.x")..', '..getProperty("logHB.y")..']\n}', true)
         debugPrint('Arquivo salvo')
     end
 
@@ -521,6 +623,7 @@ function onTweenCompleted(tag, vars)
         runTimer('escreve', txtVelo, string.len(curDialogueName[curDialogue])+1)
     elseif tag == 's' then
         clicavel = true
+        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Black Space')
     elseif tag == 'loopInsano' then
         doTweenX("insanoLoop", "hand", getProperty("hand.x") + 5, 0.5, "quartInOut")
     elseif tag == 'insanoLoop' then
@@ -538,5 +641,8 @@ function onTweenCompleted(tag, vars)
     elseif tag == 'byebye' then
         playAnim("door-mago", "close")
         runTimer("portaFechuda", 1)
+    elseif tag == 'deiMeuCu' then
+        setProperty("mouse.alpha", 1)
+        onLaptop = true
     end
 end

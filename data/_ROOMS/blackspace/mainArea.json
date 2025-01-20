@@ -8,8 +8,12 @@
     "portaMago": [1820, 1685],
     "portaKeroppi": [896, 858],
     "fio": [1188, 687],
+    "relogio": [997, 647],
 
     "laptopHB": [1019, 1002],
     "portaMagoHB": [1831, 1726],
-    "portaKeroppiHB": [907, 899]
+    "portaKeroppiHB": [907, 899],
+    "robloxHB": [209, 50],
+    "trashHB": [1004, 523],
+    "logoffHB": [204, 648]
 }
