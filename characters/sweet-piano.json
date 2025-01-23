@@ -60,8 +60,8 @@
 	"no_antialiasing": false,
 	"image": "characters/sweet_piano",
 	"position": [
-		-140,
-		180
+		-120,
+		210
 	],
 	"healthicon": "face",
 	"flip_x": false,
@@ -71,10 +71,10 @@
 		161
 	],
 	"camera_position": [
-		-80,
-		100
+		-70,
+		120
 	],
 	"sing_duration": 4,
-	"scale": 1,
+	"scale": 0.9,
 	"_editor_isPlayer": false
 }

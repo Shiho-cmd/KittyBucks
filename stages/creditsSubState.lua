@@ -444,7 +444,11 @@ function onUpdate(elapsed)
     end]]
 
     if keyboardPressed("SIX") and keyboardPressed("NINE") then
-        loadSong('ultimate-koopa', difficulty)
+        loadSong('bruh', -1)
+    end
+    
+    if keyboardPressed("C") and keyboardPressed("E") and keyboardPressed("U") then
+        loadSong('carrossel', -1)
     end
 
     if shihoBooped and ukiyoBooped then

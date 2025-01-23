@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+-->
+<TextureAtlas imagePath="noteSplashes-star.png" width="3327" height="430">
+  <SubTexture name="splash star blue 10007" x="0" y="0"  width="486" height="430" frameX="-0" frameY="-0" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star blue 10008" x="486" y="0"  width="486" height="430" frameX="-0" frameY="-0" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star blue 10006" x="972" y="0"  width="480" height="424" frameX="-3" frameY="-3" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star blue 10005" x="1452" y="0"  width="468" height="404" frameX="-10" frameY="-15" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star blue 10004" x="1920" y="0"  width="460" height="398" frameX="-14" frameY="-18" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star blue 10003" x="2380" y="0"  width="428" height="372" frameX="-30" frameY="-32" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star blue 10002" x="2808" y="0"  width="360" height="315" frameX="-64" frameY="-66" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star blue 10001" x="3168" y="0"  width="159" height="134" frameX="-169" frameY="-174" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star green 10001" x="3168" y="0"  width="159" height="134" frameX="-169" frameY="-174" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star purple 10001" x="3168" y="0"  width="159" height="134" frameX="-169" frameY="-174" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star red 10001" x="3168" y="0"  width="159" height="134" frameX="-169" frameY="-174" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star green 10002" x="2808" y="0"  width="360" height="315" frameX="-64" frameY="-66" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star purple 10002" x="2808" y="0"  width="360" height="315" frameX="-64" frameY="-66" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star red 10002" x="2808" y="0"  width="360" height="315" frameX="-64" frameY="-66" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star green 10003" x="2380" y="0"  width="428" height="372" frameX="-30" frameY="-32" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star purple 10003" x="2380" y="0"  width="428" height="372" frameX="-30" frameY="-32" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star red 10003" x="2380" y="0"  width="428" height="372" frameX="-30" frameY="-32" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star green 10004" x="1920" y="0"  width="460" height="398" frameX="-14" frameY="-18" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star purple 10004" x="1920" y="0"  width="460" height="398" frameX="-14" frameY="-18" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star red 10004" x="1920" y="0"  width="460" height="398" frameX="-14" frameY="-18" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star green 10005" x="1452" y="0"  width="468" height="404" frameX="-10" frameY="-15" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star purple 10005" x="1452" y="0"  width="468" height="404" frameX="-10" frameY="-15" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star red 10005" x="1452" y="0"  width="468" height="404" frameX="-10" frameY="-15" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star green 10006" x="972" y="0"  width="480" height="424" frameX="-3" frameY="-3" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star purple 10006" x="972" y="0"  width="480" height="424" frameX="-3" frameY="-3" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star red 10006" x="972" y="0"  width="480" height="424" frameX="-3" frameY="-3" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star green 10007" x="0" y="0"  width="486" height="430" frameX="-0" frameY="-0" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star purple 10007" x="0" y="0"  width="486" height="430" frameX="-0" frameY="-0" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star red 10007" x="0" y="0"  width="486" height="430" frameX="-0" frameY="-0" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star green 10008" x="486" y="0"  width="486" height="430" frameX="-0" frameY="-0" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star purple 10008" x="486" y="0"  width="486" height="430" frameX="-0" frameY="-0" frameWidth="486" frameHeight="430"/>
+  <SubTexture name="splash star red 10008" x="486" y="0"  width="486" height="430" frameX="-0" frameY="-0" frameWidth="486" frameHeight="430"/>
+</TextureAtlas>

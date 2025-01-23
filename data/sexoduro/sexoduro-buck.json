@@ -6241,9 +6241,9 @@
 			}
 		],
 		"gfVersion": "gf",
-		"splashSkin": "noteSplashes/noteSplashes-sparkles",
+		"splashSkin": "noteSplashes/noteSplashes-star",
 		"song": "SexoDURO",
-		"arrowSkin": "",
+		"arrowSkin": "noteSkins/NOTE_assets",
 		"needsVoices": true,
 		"stage": "void-pbjt",
 		"bpm": 140,

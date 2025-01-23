@@ -1,19 +1,24 @@
 function onCreate()
     
-    makeAnimatedLuaSprite("splash-right", 'noteSplashes/noteSplashes-sparkles-black', 365, -25)
-    makeAnimatedLuaSprite("splash-left", 'noteSplashes/noteSplashes-sparkles-pink', 28, -25)
-    makeAnimatedLuaSprite("splash-down", 'noteSplashes/noteSplashes-sparkles-black', 140, -25)
-    makeAnimatedLuaSprite("splash-up", 'noteSplashes/noteSplashes-sparkles-pink', 253, -25)
+    makeAnimatedLuaSprite("splash-right", 'noteSplashes/noteSplashes-star-colored', 307, -66)
+    makeAnimatedLuaSprite("splash-left", 'noteSplashes/noteSplashes-star-colored', -26, -66)
+    makeAnimatedLuaSprite("splash-down", 'noteSplashes/noteSplashes-star-colored', 86, -66)
+    makeAnimatedLuaSprite("splash-up", 'noteSplashes/noteSplashes-star-colored', 199, -66)
     
-    addAnimationByPrefix("splash-right", "splashed", "splash sparkles red ", 22, false)
-    addAnimationByPrefix("splash-left", "splashed", "splash sparkles purple ", 22, false)
-    addAnimationByPrefix("splash-down", "splashed", "splash sparkles blue ", 22, false)
-    addAnimationByPrefix("splash-up", "splashed", "splash sparkles green ", 22, false)
+    addAnimationByPrefix("splash-right", "splashed", "black", 22, false)
+    addAnimationByPrefix("splash-left", "splashed", "pink", 22, false)
+    addAnimationByPrefix("splash-down", "splashed", "black", 22, false)
+    addAnimationByPrefix("splash-up", "splashed", "pink", 22, false)
 
     setObjectCamera("splash-right", 'hud')
     setObjectCamera("splash-left", 'hud')
     setObjectCamera("splash-down", 'hud')
     setObjectCamera("splash-up", 'hud')
+
+    scaleObject("splash-right", 0.7, 0.7)
+    scaleObject("splash-left", 0.7, 0.7)
+    scaleObject("splash-down", 0.7, 0.7)
+    scaleObject("splash-up", 0.7, 0.7)
 
     setProperty("splash-right.alpha", splashAlpha)
     setProperty("splash-left.alpha", splashAlpha)
@@ -35,33 +40,37 @@ function onCreate()
     setProperty("splash-up.visible", false)
 
     if middlescroll then
-        setProperty("splash-up.x", 905)
-        setProperty("splash-right.x", 1020)
-        setProperty("splash-left.x", 14)
-        setProperty("splash-down.x", 127)
+        setProperty("splash-up.x", 854)
+        setProperty("splash-right.x", 961)
+        setProperty("splash-left.x", -36)
+        setProperty("splash-down.x", 75)
         setProperty("splash-up.alpha", splashAlpha / 2)
         setProperty("splash-right.alpha", splashAlpha / 2)
         setProperty("splash-down.alpha", splashAlpha / 2)
         setProperty("splash-left.alpha", splashAlpha / 2)
     end
+    
+    if downscroll then
+        setProperty("splash-up.y", 454)
+        setProperty("splash-right.y", 454)
+        setProperty("splash-left.y", 454)
+        setProperty("splash-down.y", 454)
+    end
 end
 
 function onSongStart()
     
-    -- the splashes glitch when the y position becomes a postive number for some weird reason so the splashes are disabled for downscroll sorry downscroll users
-    if not downscroll then
-        setProperty("splash-right.visible", true)
-        setProperty("splash-left.visible", true)
-        setProperty("splash-down.visible", true)
-        setProperty("splash-up.visible", true)
-    end
+    setProperty("splash-right.visible", true)
+    setProperty("splash-left.visible", true)
+    setProperty("splash-down.visible", true)
+    setProperty("splash-up.visible", true)
 end
 
 function opponentNoteHit(membersIndex, noteData, noteType, isSustainNote)
     
     if noteData == 3 and not isSustainNote then
         playAnim("splash-right", "splashed", true)
-        setObjectOrder("splash-right", 99)
+        setObjectOrder("splash-right", 99)     
     elseif noteData == 0 and not isSustainNote then
         playAnim("splash-left", "splashed", true)
         setObjectOrder("splash-left", 99)
@@ -73,3 +82,22 @@ function opponentNoteHit(membersIndex, noteData, noteType, isSustainNote)
         setObjectOrder("splash-up", 99)
     end
 end
+
+--[[[local quanto = 1
+
+function onUpdate(elapsed)
+    
+    if keyboardJustPressed("A") then
+        setProperty("splash-right.x", getProperty("splash-right.x") - quanto)
+    elseif keyboardJustPressed("D") then
+        setProperty("splash-right.x", getProperty("splash-right.x") + quanto)
+    elseif keyboardJustPressed("SPACE") then
+        debugPrint(getProperty("splash-right.x")..' '..getProperty("splash-up.y"))
+    end
+
+    if keyboardPressed("SHIFT") then
+        quanto = 10
+    else
+        quanto = 1
+    end
+end]]

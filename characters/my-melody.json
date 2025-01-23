@@ -60,10 +60,10 @@
 				4,
 				-15
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWNmiss",
-			"loop": false,
+			"indices": [],
 			"name": "down"
 		},
 		{
@@ -71,10 +71,10 @@
 				-19,
 				18
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUPmiss",
-			"loop": false,
+			"indices": [],
 			"name": "up"
 		},
 		{
@@ -82,10 +82,10 @@
 				24,
 				0
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFTmiss",
-			"loop": false,
+			"indices": [],
 			"name": "right"
 		},
 		{
@@ -93,10 +93,10 @@
 				-13,
 				-4
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHTmiss",
-			"loop": false,
+			"indices": [],
 			"name": "left"
 		}
 	],
@@ -104,7 +104,7 @@
 	"no_antialiasing": false,
 	"image": "characters/my_melody",
 	"position": [
-		90,
+		80,
 		320
 	],
 	"healthicon": "face",
@@ -115,8 +115,8 @@
 		161
 	],
 	"camera_position": [
-		0,
-		50
+		-10,
+		60
 	],
 	"sing_duration": 4,
 	"scale": 1,

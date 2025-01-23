@@ -1,6 +1,6 @@
 {
 	"song": {
-		"player1": "liz",
+		"player1": "kuromi",
 		"player2": "hello-kitty",
 		"events": [
 			[
@@ -4042,11 +4042,11 @@
 			}
 		],
 		"gfVersion": "gf",
-		"splashSkin": "noteSplashes/noteSplashes-sparkles",
+		"splashSkin": "noteSplashes/noteSplashes-star",
 		"song": "KittyJam",
 		"stage": "void",
 		"needsVoices": true,
-		"arrowSkin": "",
+		"arrowSkin": "noteSkins/NOTE_assets",
 		"bpm": 185,
 		"speed": 2.9,
 		"artist": null

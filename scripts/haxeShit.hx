@@ -55,6 +55,12 @@ function onCreate(){
         }
 }
 
+function onUpdate(){
+	for(note in game.grpNoteSplashes){
+		note.scale.set(0.7, 0.7);
+	 }
+}
+
 // hold cover stuff yayayayay (eu não programei isso se eu achar a pessoa pra dar os créditos eu boto aqui)
 function onCountdownStarted() {
 	var m = (ClientPrefs.data.downScroll ? -1 : 1);
