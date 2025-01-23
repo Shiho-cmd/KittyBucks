@@ -406,6 +406,7 @@ function onCustomSubstateUpdatePost(name, elapsed)
             setProperty("BGmoving.alpha", 0.00001)
             setProperty("char.alpha", 0.00001)
             setProperty("check.alpha", 0.00001)
+            setProperty("noWay.x", -999)
             --[=[runHaxeCode([[
                 FlxG.game.setFilters([]);
             ]])]=]
