@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+-->
+<TextureAtlas imagePath="uboa.png" width="585" height="806">
+  <SubTexture name="idle0002" x="0" y="0"  width="293" height="404" frameX="-2" frameY="-2" frameWidth="295" frameHeight="408"/>
+  <SubTexture name="idle0003" x="293" y="0"  width="292" height="406" frameX="-0" frameY="-2" frameWidth="295" frameHeight="408"/>
+  <SubTexture name="idle0001" x="0" y="404"  width="290" height="402" frameX="-4" frameY="-0" frameWidth="295" frameHeight="408"/>
+</TextureAtlas>

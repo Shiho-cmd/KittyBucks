@@ -57,7 +57,7 @@ function onCreate(){
 
 function onUpdate(){
 	for(note in game.grpNoteSplashes){
-		note.scale.set(0.7, 0.7);
+		note.scale.set(0.5, 0.5);
 	 }
 }
 

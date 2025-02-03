@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+-->
+<TextureAtlas imagePath="yumekitty.png" width="4600" height="690">
+  <SubTexture name="down0001" x="0" y="0"  width="920" height="230" frameX="-0" frameY="-0" frameWidth="920" frameHeight="230"/>
+  <SubTexture name="down0002" x="920" y="0"  width="920" height="230" frameX="-0" frameY="-0" frameWidth="920" frameHeight="230"/>
+  <SubTexture name="idle0001" x="1840" y="0"  width="920" height="230" frameX="-0" frameY="-0" frameWidth="920" frameHeight="230"/>
+  <SubTexture name="idle0002" x="2760" y="0"  width="920" height="230" frameX="-0" frameY="-0" frameWidth="920" frameHeight="230"/>
+  <SubTexture name="idle0003" x="3680" y="0"  width="920" height="230" frameX="-0" frameY="-0" frameWidth="920" frameHeight="230"/>
+  <SubTexture name="left0001" x="0" y="230"  width="920" height="230" frameX="-0" frameY="-0" frameWidth="920" frameHeight="230"/>
+  <SubTexture name="left0002" x="920" y="230"  width="920" height="230" frameX="-0" frameY="-0" frameWidth="920" frameHeight="230"/>
+  <SubTexture name="right0001" x="1840" y="230"  width="920" height="230" frameX="-0" frameY="-0" frameWidth="920" frameHeight="230"/>
+  <SubTexture name="right0002" x="2760" y="230"  width="920" height="230" frameX="-0" frameY="-0" frameWidth="920" frameHeight="230"/>
+  <SubTexture name="up0001" x="3680" y="230"  width="920" height="230" frameX="-0" frameY="-0" frameWidth="920" frameHeight="230"/>
+  <SubTexture name="up0002" x="0" y="460"  width="920" height="230" frameX="-0" frameY="-0" frameWidth="920" frameHeight="230"/>
+</TextureAtlas>

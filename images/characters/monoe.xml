@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+-->
+<TextureAtlas imagePath="monoe.png" width="1293" height="826">
+  <SubTexture name="idle0003" x="0" y="0"  width="150" height="280" frameX="-0" frameY="-0" frameWidth="154" frameHeight="283"/>
+  <SubTexture name="up0003" x="150" y="0"  width="150" height="280" frameX="-0" frameY="-1" frameWidth="154" frameHeight="283"/>
+  <SubTexture name="idle0002" x="300" y="0"  width="149" height="275" frameX="-0" frameY="-4" frameWidth="154" frameHeight="283"/>
+  <SubTexture name="up0002" x="449" y="0"  width="149" height="275" frameX="-0" frameY="-5" frameWidth="154" frameHeight="283"/>
+  <SubTexture name="down0001" x="598" y="0"  width="142" height="246" frameX="-12" frameY="-34" frameWidth="154" frameHeight="283"/>
+  <SubTexture name="right0002" x="740" y="0"  width="140" height="272" frameX="-14" frameY="-8" frameWidth="154" frameHeight="283"/>
+  <SubTexture name="laugh0001" x="598" y="246"  width="139" height="272" frameX="-5" frameY="-8" frameWidth="154" frameHeight="283"/>
+  <SubTexture name="left0002" x="300" y="275"  width="139" height="267" frameX="-1" frameY="-16" frameWidth="154" frameHeight="283"/>
+  <SubTexture name="right0003" x="439" y="275"  width="138" height="275" frameX="-11" frameY="-5" frameWidth="154" frameHeight="283"/>
+  <SubTexture name="left0001" x="0" y="280"  width="138" height="274" frameX="-3" frameY="-8" frameWidth="154" frameHeight="283"/>
+  <SubTexture name="up0001" x="138" y="280"  width="138" height="274" frameX="-6" frameY="-6" frameWidth="154" frameHeight="283"/>
+  <SubTexture name="idle0001" x="276" y="542"  width="138" height="272" frameX="-6" frameY="-7" frameWidth="154" frameHeight="283"/>
+  <SubTexture name="left0003" x="0" y="554"  width="138" height="272" frameX="-3" frameY="-10" frameWidth="154" frameHeight="283"/>
+  <SubTexture name="laugh0002" x="138" y="554"  width="138" height="270" frameX="-6" frameY="-10" frameWidth="154" frameHeight="283"/>
+  <SubTexture name="right0001" x="880" y="0"  width="138" height="263" frameX="-10" frameY="-17" frameWidth="154" frameHeight="283"/>
+  <SubTexture name="down0003" x="1018" y="0"  width="138" height="249" frameX="-13" frameY="-31" frameWidth="154" frameHeight="283"/>
+  <SubTexture name="down0002" x="1156" y="0"  width="137" height="245" frameX="-15" frameY="-35" frameWidth="154" frameHeight="283"/>
+</TextureAtlas>

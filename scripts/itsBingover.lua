@@ -10,7 +10,7 @@ function parseJson(file)
     return callMethodFromClass('tjson.TJSON', 'parse', {getTextFromFile(file)})
 end
 
-local parsed = parseJson('characters/'..boyfriendName..'_DATA.json')
+local parsed = parseJson('characters/data/'..boyfriendName..'_DATA.json')
 local rpc = parseJson('data/'..songPath..'/songData-'..difficultyName..'.json')
 local minIcon = rpc.rpcMiniIconPause
 
