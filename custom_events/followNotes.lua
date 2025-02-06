@@ -34,10 +34,17 @@ end
 
 function onUpdate()
 
-    bfCamX = getMidpointX("boyfriend") - 100 + bfShit.camera_position[1] - stageShit.camera_boyfriend[1]
-    bfCamY = getMidpointY("boyfriend") - 100 + bfShit.camera_position[2] + stageShit.camera_boyfriend[2]
-    dadCamX = getMidpointX("dad") + 150 + dadShit.camera_position[1] + stageShit.camera_opponent[1]
-    dadCamY = getMidpointY("dad") - 100 + dadShit.camera_position[2] + stageShit.camera_opponent[2]
+    if boyfriendName == 'kuromi-erect' then
+        bfCamX = getMidpointX("boyfriend") - 400 + bfShit.camera_position[1] - stageShit.camera_boyfriend[1]
+        bfCamY = getMidpointY("boyfriend") - 100 + bfShit.camera_position[2] + stageShit.camera_boyfriend[2]
+        dadCamX = getMidpointX("dad") + 150 + dadShit.camera_position[1] + stageShit.camera_opponent[1]
+        dadCamY = getMidpointY("dad") - 100 + dadShit.camera_position[2] + stageShit.camera_opponent[2]
+    else
+        bfCamX = getMidpointX("boyfriend") - 100 + bfShit.camera_position[1] - stageShit.camera_boyfriend[1]
+        bfCamY = getMidpointY("boyfriend") - 100 + bfShit.camera_position[2] + stageShit.camera_boyfriend[2]
+        dadCamX = getMidpointX("dad") + 150 + dadShit.camera_position[1] + stageShit.camera_opponent[1]
+        dadCamY = getMidpointY("dad") - 100 + dadShit.camera_position[2] + stageShit.camera_opponent[2]
+    end
 
 	if del > 0 then
 		del = del - 1

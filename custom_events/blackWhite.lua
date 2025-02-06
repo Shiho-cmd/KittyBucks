@@ -27,8 +27,6 @@ function onEvent(eventName, value1, value2, strumTime)
     
     if eventName == 'blackWhite' then
         if value1 == 'on' then
-            removeLuaScript("characters/my-melody")
-            removeLuaScript("characters/cyc")
             doTweenAlpha("uh", "br", 1, 0.5, "linear")
             doTweenColor("hu", "boyfriend", "000000", 0.5, "linear")
             doTweenColor("huh", "dad", "000000", 0.5, "linear")
@@ -40,8 +38,6 @@ function onEvent(eventName, value1, value2, strumTime)
             doTweenY('1', 'cima', -120, 0.5, 'quartOut')
             doTweenY('2', 'baixo', 640, 0.5, 'quartOut')
         elseif value1 == 'off' then
-            addLuaScript("characters/my-melody")
-            addLuaScript("characters/cyc")
             doTweenAlpha("uh", "br", 0, 0.5, "linear")
             doTweenColor("hu", "boyfriend", "FFFFFF", 0.5, "linear")
             doTweenColor("huh", "dad", "FFFFFF", 0.5, "linear")

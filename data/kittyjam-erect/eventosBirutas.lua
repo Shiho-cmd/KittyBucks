@@ -25,13 +25,7 @@ function onCreate()
     setProperty('camHUD.alpha', 0)
         
     if not lowQuality then
-        makeAnimatedLuaSprite('gif', pathEvent..'speedlol')
-        addAnimationByPrefix('gif', 'lesgo', 'yo', 12, true)
-        screenCenter('gif')
-        setObjectCamera('gif', 'hud')
-        addLuaSprite('gif', true)
-        setProperty('gif.alpha', 0.000001)
-        precacheImage("speedlol")
+        precacheImage("kaboom")
             
         makeAnimatedLuaSprite('explo', pathEvent..'kaboom', 0, 0)
         addAnimationByPrefix('explo', 'bah', 'boom', 12, false)
@@ -39,7 +33,6 @@ function onCreate()
         addLuaSprite('explo', false)
         scaleObject('explo', 2.2, 2.2)
         setProperty('explo.visible', false)
-        precacheImage("kaboom")
     end
 end
 
@@ -64,29 +57,27 @@ end
 function onSongStart()
     
     doTweenAlpha('vai', 'escuro', 0, 10, 'linear')
-    triggerEvent('Camera Follow Pos', 660, 500)
+    triggerEvent('Camera Follow Pos', 660, -1000)
     setProperty('cameraSpeed', 99)
+    scaleObject('celula', 0.25, 0.25)
+    setProperty("celula.x", 270)
+    setProperty("celula.y", 310)
+    setProperty("spek.x", 230)
+    setProperty("spek.y", 250)
 end
 
 function onStepHit()
     
-    if curStep == 640 then
-        doTweenAlpha('f', 'gif', 1, 20, 'linear')
-        triggerEvent('Camera Follow Pos', 660, 500)
-    elseif curStep == 759 then
-        doTweenAlpha('f', 'gif', 0, 0.5, 'linear')
-        triggerEvent('Camera Follow Pos', '', '')
-    elseif curStep == 1040 then
+    if curStep == 1818 then
         doTweenAlpha('fhdh', 'celula', 1, 0.7, 'linear')
-        doTweenY('fknc', 'celula', 490, 0.7, 'quartOut')
-        setProperty("camHUD.alpha", 0)
-    elseif curStep == 1065 then
+        doTweenY('fknc', 'celula', 380, 0.7, 'quartOut')
+    elseif curStep == 1839 then
         setProperty("spek.visible", true)
-    elseif curStep == 1148 then
+    elseif curStep == 1914 then
         setProperty("spek.visible", false)
-    elseif curStep == 1153 then
+    elseif curStep == 1917 then
         setProperty("camGame.visible", false)
         setProperty('explo.visible', true)
-        playAnim('explo', 'bah')
+        playAnim('explo', 'bah')      
     end
 end
