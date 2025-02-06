@@ -1,7 +1,0 @@
-o coiso irado que faz os caba preto e fundo branco
-
-value 1: on pra ligar off pra desligar
-value 2: MATAR a barra de vida, ícones e 
-texto de score
-("pode :3" pra MATAR ou "num pode mais >:(" 
-pra voltar ao normar)

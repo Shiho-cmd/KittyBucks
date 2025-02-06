@@ -1,0 +1,5 @@
+beat poggers irado do balacobaco
+
+value 1: quantas vezes pra vir o beat (por exemplo 1 pra ser a toda batida 2 a cada duas batidas e assim por diante)
+
+value 2: intensidade (Câmera do jogo), intensidade (HUD) (exemplo: 0.015, 0.03 | deixe vazio pra usar a intensidade padrão)

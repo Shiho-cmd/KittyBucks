@@ -6,119 +6,119 @@
 				0
 			],
 			"loop": false,
-			"fps": 12,
+			"fps": 24,
 			"anim": "idle",
 			"indices": [],
 			"name": "idle"
 		},
 		{
 			"offsets": [
-				70,
-				0
+				5,
+				-31
 			],
 			"loop": false,
-			"fps": 12,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
-		},
-		{
-			"offsets": [
-				10,
-				-21
-			],
-			"loop": false,
-			"fps": 12,
+			"fps": 24,
 			"anim": "singDOWN",
 			"indices": [],
 			"name": "down"
 		},
 		{
 			"offsets": [
-				6,
-				-2
+				-53,
+				33
 			],
 			"loop": false,
-			"fps": 12,
+			"fps": 24,
 			"anim": "singUP",
 			"indices": [],
 			"name": "up"
 		},
 		{
 			"offsets": [
-				-1,
-				2
+				-32,
+				-24
 			],
-			"loop": false,
-			"fps": 12,
+			"indices": [],
+			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
-		},
-		{
-			"offsets": [
-				70,
-				0
-			],
-			"indices": [],
-			"fps": 12,
-			"anim": "singLEFTmiss",
 			"loop": false,
 			"name": "left"
 		},
 		{
 			"offsets": [
-				10,
-				-21
+				66,
+				-20
 			],
 			"indices": [],
-			"fps": 12,
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "right"
+		},
+		{
+			"offsets": [
+				5,
+				-31
+			],
+			"indices": [],
+			"fps": 24,
 			"anim": "singDOWNmiss",
 			"loop": false,
 			"name": "down"
 		},
 		{
 			"offsets": [
-				6,
-				-2
+				-53,
+				33
 			],
 			"indices": [],
-			"fps": 12,
+			"fps": 24,
 			"anim": "singUPmiss",
 			"loop": false,
 			"name": "up"
 		},
 		{
 			"offsets": [
-				-1,
-				2
+				-32,
+				-24
 			],
 			"indices": [],
-			"fps": 12,
+			"fps": 24,
 			"anim": "singRIGHTmiss",
+			"loop": false,
+			"name": "left"
+		},
+		{
+			"offsets": [
+				66,
+				-20
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFTmiss",
 			"loop": false,
 			"name": "right"
 		}
 	],
 	"vocals_file": "cyc",
 	"no_antialiasing": false,
-	"image": "characters/cwhyc",
+	"image": "characters/cyyc",
 	"position": [
-		-430,
-		160
+		-10,
+		40
 	],
 	"healthicon": "zitz",
-	"flip_x": true,
+	"flip_x": false,
 	"healthbar_colors": [
 		72,
 		83,
-		116
+		136
 	],
 	"camera_position": [
-		250,
-		-230
+		-20,
+		-80
 	],
 	"sing_duration": 4,
-	"scale": 1.4,
+	"scale": 1,
 	"_editor_isPlayer": true
 }

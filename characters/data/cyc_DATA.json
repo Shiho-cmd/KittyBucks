@@ -1,9 +1,11 @@
 {
 	"gameOverName": "CYC",
 	"gameOverImage": "cyc_rip",
-	"explosionX": 770,
+	"explosionX": 760,
 	"explosionY": 0,
 	"gameOverNameX": 805,
 	"gameOverNameY": 535,
+	"cameraPosX": 590,
+	"cameraPosY": 520,
 	"yearThing": 2023
 }

@@ -37,13 +37,13 @@ end
 
 function onCreate()
 
-    removeLuaScript("mods/KittyBucks/scripts/disabled/pauseSubState.lua")
-    removeLuaScript("mods/KittyBucks/scripts/itsBingover.lua")
-    removeLuaScript("mods/KittyBucks/scripts/gozadaInsana.lua")
-    removeLuaScript("mods/KittyBucks/scripts/noteRGB.lua")
-    removeLuaScript("mods/KittyBucks/scripts/buildTargetReal.lua")
-    removeLuaScript("mods/KittyBucks/scripts/noteSplashStuff.lua")
-    removeHScript("mods/KittyBucks/scripts/haxeShit.hx")
+    removeLuaScript(currentModDirectory.."/scripts/disabled/pauseSubState.lua")
+    removeLuaScript(currentModDirectory.."/scripts/disabled/itsBingover.lua")
+    removeLuaScript(currentModDirectory.."/scripts/gozadaInsana.lua")
+    removeLuaScript(currentModDirectory.."/scripts/noteRGB.lua")
+    --removeLuaScript("mods/KittyBucks/scripts/buildTargetReal.lua")
+    removeLuaScript(currentModDirectory.."/scripts/noteSplashStuff.lua")
+    --removeHScript(currentModDirectory.."/scripts/haxeShit.hx")
     setProperty("camGame.alpha", 0.0001)
     setProperty("camOther.alpha", 0.0001)
 
@@ -55,6 +55,7 @@ function onCreate()
     precacheSound("omori/se/SYS_move")
     precacheSound("omori/se/SE_Laptop")
     precacheSound("omori/se/laptop_logoff")
+    precacheSound("omori/se/jermascare")
 
     setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Welcome to Black Space')
 
@@ -103,12 +104,12 @@ function onCreate()
     scaleObject("door-mago", 2, 2)
     addLuaSprite("door-mago")
 
-    makeAnimatedLuaSprite("door-snow", 'backgrounds/omori/blackspace/door', mainArea.portaKeroppi[1], mainArea.portaKeroppi[2])
-    addAnimationByPrefix("door-snow", "open", "daFunnyDoor", 3, false)
-    addAnimationByIndices("door-snow", "close", "daFunnyDoor", '6,5,4,3,2,1', 5, false)
-    addAnimationByIndices("door-snow", "idle", "daFunnyDoor", '1', 5, false)
-    scaleObject("door-snow", 2, 2)
-    addLuaSprite("door-snow")
+    makeAnimatedLuaSprite("door-yume", 'backgrounds/omori/blackspace/door', mainArea.portaYume[1], mainArea.portaYume[2])
+    addAnimationByPrefix("door-yume", "open", "daFunnyDoor", 3, false)
+    addAnimationByIndices("door-yume", "close", "daFunnyDoor", '6,5,4,3,2,1', 5, false)
+    addAnimationByIndices("door-yume", "idle", "daFunnyDoor", '1', 5, false)
+    scaleObject("door-yume", 2, 2)
+    addLuaSprite("door-yume")
 
     makeLuaSprite("fio", 'backgrounds/omori/blackspace/wire', mainArea.fio[1], mainArea.fio[2])
     scaleObject("fio", 2, 2)
@@ -122,7 +123,7 @@ function onCreate()
     addLuaText("tuto")
 
     makeAnimatedLuaSprite("closeup", 'backgrounds/omori/blackspace/doors_closeup', 0, 0)
-    addAnimationByPrefix("closeup", "snow", "cold", 3, true)
+    addAnimationByPrefix("closeup", "yume", "cold", 3, true)
     addAnimationByIndices("closeup", "mago", "mago", '1,2,3,2', 3, true)
     setObjectCamera("closeup", 'hud')
     scaleObject("closeup", 1.5, 1.5)
@@ -190,6 +191,12 @@ function onCreate()
     setProperty("horario.alpha", 0.00001)
     addLuaText("horario")
 
+    makeLuaSprite("jerma", 'Screenshot_45', 0, 0)
+    setObjectCamera("jerma", 'other')
+    screenCenter("jerma")
+    setProperty("jerma.alpha", 0.00001)
+    addLuaSprite("jerma", true)
+
     createHitbox()
 end
 
@@ -201,11 +208,11 @@ function createHitbox()
     addLuaSprite("ht", false)
     updateHitbox("ht")
 
-    makeLuaSprite("snowHB", nil, mainArea.portaKeroppiHB[1], mainArea.portaKeroppiHB[2])
-    makeGraphic("snowHB", 41, 25, 'FF0000')
-    setProperty("snowHB.alpha", 0)
-    addLuaSprite("snowHB", false)
-    updateHitbox("snowHB")
+    makeLuaSprite("yumeHB", nil, mainArea.portaYumeHB[1], mainArea.portaYumeHB[2])
+    makeGraphic("yumeHB", 41, 25, 'FF0000')
+    setProperty("yumeHB.alpha", 0)
+    addLuaSprite("yumeHB", false)
+    updateHitbox("yumeHB")
 
     makeLuaSprite("magoHB", nil, mainArea.portaMagoHB[1], mainArea.portaMagoHB[2])
     makeGraphic("magoHB", 41, 25, 'FF0000')
@@ -249,20 +256,20 @@ local moveRight = true
 local moveLeft = true
 local looking = 'down'
 
-local objHB = {'ht', 'snowHB', 'magoHB'}
-local obj = {'lap', 'door-snow', 'door-mago'}
+local objHB = {'ht', 'yumeHB', 'magoHB'}
+local obj = {'lap', 'door-yume', 'door-mago'}
 
 local lapColiDown = nil
-local doorSnowColiDown = nil
+local doorYumeColiDown = nil
 local doorMagoColiDown = nil
 local lapColiUp = nil
-local doorSnowColiUp = nil
+local doorYumeColiUp = nil
 local doorMagoColiUp = nil
 local lapColiLeft = nil
-local doorSnowColiLeft = nil
+local doorYumeColiLeft = nil
 local doorMagoColiLeft = nil
 local lapColiRight = nil
-local doorSnowColiRight = nil
+local doorYumeColiRight = nil
 local doorMagoColiRight = nil
 
 local walkSpeed = 4
@@ -270,10 +277,17 @@ local walkSpeed = 4
 local optPos = 1
 
 local onLaptop = false
+local songToLoad = nil
 
 --local sla = os.date ('%p')
 
 function onUpdate(elapsed)
+
+    if getProperty("boyfriend.x") == 68 and getProperty("boyfriend.y") == 68 then
+        setProperty("jerma.alpha", 1)
+        doTweenAlpha("wornorjn", "jerma", 0.00001, 0.5, "linear")
+        playSound("omori/se/jermascare", 1, 'jumpma')
+    end
 
     setProperty("mouse.x", getMouseX("hud"))
     setProperty("mouse.y", getMouseY("hud"))
@@ -345,31 +359,31 @@ function onUpdate(elapsed)
     end
 
     lapColiDown = objectsOverlap("playerHB", "ht") and getProperty("playerHB.y") < getProperty("ht.y")
-    doorSnowColiDown = objectsOverlap("playerHB", "snowHB") and getProperty("playerHB.y") < getProperty("snowHB.y")
+    doorYumeColiDown = objectsOverlap("playerHB", "yumeHB") and getProperty("playerHB.y") < getProperty("yumeHB.y")
     doorMagoColiDown = objectsOverlap("playerHB", "magoHB") and getProperty("playerHB.y") < getProperty("magoHB.y")
 
     lapColiUp = objectsOverlap("playerHB", "ht") and getProperty("playerHB.y") > getProperty("ht.y")
-    doorSnowColiUp = objectsOverlap("playerHB", "snowHB") and getProperty("playerHB.y") > getProperty("snowHB.y")
+    doorYumeColiUp = objectsOverlap("playerHB", "yumeHB") and getProperty("playerHB.y") > getProperty("yumeHB.y")
     doorMagoColiUp = objectsOverlap("playerHB", "magoHB") and getProperty("playerHB.y") > getProperty("magoHB.y")
 
     lapColiLeft = objectsOverlap("playerHB", "ht") and getProperty("playerHB.x") > getProperty("ht.x")
-    doorSnowColiLeft = objectsOverlap("playerHB", "snowHB") and getProperty("playerHB.x") > getProperty("snowHB.x")
+    doorYumeColiLeft = objectsOverlap("playerHB", "yumeHB") and getProperty("playerHB.x") > getProperty("yumeHB.x")
     doorMagoColiLeft = objectsOverlap("playerHB", "magoHB") and getProperty("playerHB.x") > getProperty("magoHB.x")
 
     lapColiRight = objectsOverlap("playerHB", "ht") and getProperty("playerHB.x") < getProperty("ht.x")
-    doorSnowColiRight = objectsOverlap("playerHB", "snowHB") and getProperty("playerHB.x") < getProperty("snowHB.x")
+    doorYumeColiRight = objectsOverlap("playerHB", "yumeHB") and getProperty("playerHB.x") < getProperty("yumeHB.x")
     doorMagoColiRight = objectsOverlap("playerHB", "magoHB") and getProperty("playerHB.x") < getProperty("magoHB.x")
 
-    if lapColiDown and looking == 'down' or doorSnowColiDown and looking == 'down' or doorMagoColiDown and looking == 'down' then
+    if lapColiDown and looking == 'down' or doorYumeColiDown and looking == 'down' or doorMagoColiDown and looking == 'down' then
         moveDown = false
         playAnim("boyfriend", "idle-down")
-    elseif lapColiUp and looking == 'up' or doorSnowColiUp and looking == 'up' or doorMagoColiUp and looking == 'up' then
+    elseif lapColiUp and looking == 'up' or doorYumeColiUp and looking == 'up' or doorMagoColiUp and looking == 'up' then
         moveUp = false
         playAnim("boyfriend", "idle-up")
-    elseif lapColiRight and looking == 'right' or doorSnowColiRight and looking == 'right' or doorMagoColiRight and looking == 'right' then
+    elseif lapColiRight and looking == 'right' or doorYumeColiRight and looking == 'right' or doorMagoColiRight and looking == 'right' then
         moveRight = false
         playAnim("boyfriend", "idle-right")
-    elseif lapColiLeft and looking == 'left' or doorSnowColiLeft and looking == 'left' or doorMagoColiLeft and looking == 'left' then
+    elseif lapColiLeft and looking == 'left' or doorYumeColiLeft and looking == 'left' or doorMagoColiLeft and looking == 'left' then
         moveLeft = false
         playAnim("boyfriend", "idle-left")
     else
@@ -400,6 +414,9 @@ function onUpdate(elapsed)
         if doorMagoColiUp and looking == 'up' then
             clicavel = false
             doTweenAlpha("dava", "camGame", 0.00001, 1, "linear")
+        elseif doorYumeColiUp and looking == 'up' then
+            clicavel = false
+            doTweenAlpha("yumer", "camGame", 0.00001, 1, "linear")
         elseif lapColiUp and looking == 'up' then
             clicavel = false
             doTweenAlpha("laper", "camGame", 0.00001, 1, "linear")
@@ -422,7 +439,7 @@ function onUpdate(elapsed)
         playSound('omori/se/'..sounds[getRandomInt(1, #sounds)], 1, 'randomSound')
     elseif onLaptop and robloxJustPressed then
         onLaptop = false
-        loadSong('roblox-sexo-selvagem-(the-song)', -1)
+        loadSong('friends', -1)
     elseif onLaptop and logoffJustPressed or keyboardJustPressed("C") and onLaptop then
         onLaptop = false
         playSound("omori/se/laptop_logoff", 1, 'lapOFF')
@@ -443,7 +460,7 @@ function onUpdate(elapsed)
         doTweenY("s", "boxx.scale", 0.1, 0.2, "linear")
         doTweenAlpha("a", "boxx", 0.00001, 0.2, "linear")
         setProperty("hand.alpha", 0.00001)
-    elseif curDialogue == 2 and onDialogue and curDialogueName == mainAreaDialogue.mago then
+    elseif curDialogue == 2 and onDialogue and curDialogueName == mainAreaDialogue.mago or curDialogue == 2 and onDialogue and curDialogueName == mainAreaDialogue.yume then
         onDialogue = false
         setProperty("opt.x", 720)
         setProperty("opt.y", screenHeight - 290)
@@ -509,7 +526,7 @@ function onUpdate(elapsed)
     elseif keyboardJustPressed("S") then
         setProperty("logHB.y", getProperty("logHB.y") + quanto)
     elseif keyboardJustPressed("SPACE") then
-        saveFile('mods/KittyBucks/data/_ROOMS/blackspace/mainArea.json', '{\n    // player\n   "kittySpawn": [1104, 1068],\n\n    // obj\n    "tapete": ['..getProperty("tapa.x")..', '..getProperty("tapa.y")..'],\n    "laptop": ['..getProperty("lap.x")..', '..getProperty("lap.y")..'],\n    "portaMago": ['..getProperty("door-mago.x")..', '..getProperty("door-mago.y")..'],\n    "portaKeroppi": ['..getProperty("door-snow.x")..', '..getProperty("door-snow.y")..'],\n    "fio": ['..getProperty("fio.x")..', '..getProperty("fio.y")..'],\n    "relogio": ['..getProperty("horario.x")..', '..getProperty("horario.y")..'],\n\n    "laptopHB": ['..getProperty("ht.x")..', '..getProperty("ht.y")..'],\n    "portaMagoHB": ['..getProperty("magoHB.x")..', '..getProperty("magoHB.y")..'],\n    "portaKeroppiHB": ['..getProperty("snowHB.x")..', '..getProperty("snowHB.y")..'],\n    "robloxHB": ['..getProperty("robloHB.x")..', '..getProperty("robloHB.y")..'],\n    "trashHB": ['..getProperty("shihoHB.x")..', '..getProperty("shihoHB.y")..'],\n    "logoffHB": ['..getProperty("logHB.x")..', '..getProperty("logHB.y")..']\n}', true)
+        saveFile('mods/KittyBucks/data/_ROOMS/blackspace/mainArea.json', '{\n    // player\n   "kittySpawn": [1104, 1068],\n\n    // obj\n    "tapete": ['..getProperty("tapa.x")..', '..getProperty("tapa.y")..'],\n    "laptop": ['..getProperty("lap.x")..', '..getProperty("lap.y")..'],\n    "portaMago": ['..getProperty("door-mago.x")..', '..getProperty("door-mago.y")..'],\n    "portaYume": ['..getProperty("door-yume.x")..', '..getProperty("door-yume.y")..'],\n    "fio": ['..getProperty("fio.x")..', '..getProperty("fio.y")..'],\n    "relogio": ['..getProperty("horario.x")..', '..getProperty("horario.y")..'],\n\n    "laptopHB": ['..getProperty("ht.x")..', '..getProperty("ht.y")..'],\n    "portaMagoHB": ['..getProperty("magoHB.x")..', '..getProperty("magoHB.y")..'],\n    "portaYumeHB": ['..getProperty("yumeHB.x")..', '..getProperty("yumeHB.y")..'],\n    "robloxHB": ['..getProperty("robloHB.x")..', '..getProperty("robloHB.y")..'],\n    "trashHB": ['..getProperty("shihoHB.x")..', '..getProperty("shihoHB.y")..'],\n    "logoffHB": ['..getProperty("logHB.x")..', '..getProperty("logHB.y")..']\n}', true)
         debugPrint('Arquivo salvo')
     end
 
@@ -583,6 +600,8 @@ function onTimerCompleted(tag, loops, loopsLeft)
         doTweenY("t", "boxx.scale", 2, 0.2, "linear")
         doTweenAlpha("e", "boxx", 1, 0.2, "linear")
     elseif tag == 'diaDava' then
+        songToLoad = 'MAGO'
+        curDoor = 'door-mago'
         playAnim("boxx", "default", true)
         scaleObject("boxx", 2.5, 0.1, false)
         doTweenY("tesao", "boxx.scale", 2.5, 0.2, "linear")
@@ -600,10 +619,30 @@ function onTimerCompleted(tag, loops, loopsLeft)
         curDialogueName = mainAreaDialogue.mago
         onDialogue = true
         runTimer('escreve', txtVelo, string.len(curDialogueName[curDialogue])+1)
+    elseif tag == 'diaYumer' then
+        songToLoad = 'fever-dream'
+        curDoor = 'door-yume'
+        playAnim("boxx", "default", true)
+        scaleObject("boxx", 2.5, 0.1, false)
+        doTweenY("tesao", "boxx.scale", 2.5, 0.2, "linear")
+        doTweenAlpha("e", "boxx", 1, 0.2, "linear")
+        setTextWidth("tuto", 500)
+        setProperty("boxx.x", 350)
+        setProperty("boxx.y", screenHeight - 150)
+        setProperty("tuto.x", 370)
+        setProperty("tuto.y", screenHeight - 150)
+        setProperty("hand.alpha", 1)
+        doTweenX("loopInsano", "hand", 860, 0.01, "linear")
+        doTweenX("insanoLoop", "hand", 860, 0.01, "linear")
+        setProperty("hand.y", screenHeight - 50)
+        curDialogue = 1
+        curDialogueName = mainAreaDialogue.yume
+        onDialogue = true
+        runTimer('escreve', txtVelo, string.len(curDialogueName[curDialogue])+1)
     elseif tag == 'portaAbrida' then
         doTweenAlpha("byebye", "boyfriend", 0, 1, "linear")
     elseif tag == 'portaFechuda' then
-        loadSong('MAGO', -1)
+        loadSong(songToLoad, -1)
     end
 end
 
@@ -612,9 +651,15 @@ function onTweenCompleted(tag, vars)
     if tag == 'bahMeu' then
         removeLuaSprite("intro")
     elseif tag == 'dava' then
+        playAnim("closeup", "mago")
         doTweenAlpha("naCozinha", "closeup", 1, 1, "linear")
+    elseif tag == 'yumer' then
+        playAnim("closeup", "yume")
+        doTweenAlpha("nickels", "closeup", 1, 1, "linear")
     elseif tag == 'naCozinha' then
         runTimer("diaDava", 1)
+    elseif tag == 'nickels' then
+        runTimer("diaYumer", 1)
     elseif tag == 't' then
         onDialogue = true
         curDialogueName = mainAreaDialogue.tutorial
@@ -636,10 +681,10 @@ function onTweenCompleted(tag, vars)
     elseif tag == 'ruuwrhrb' then
         clicavel = true
     elseif tag == 'oruuwrhrb' then
-        playAnim("door-mago", "open")
+        playAnim(curDoor, "open")
         runTimer("portaAbrida", 1)
     elseif tag == 'byebye' then
-        playAnim("door-mago", "close")
+        playAnim(curDoor, "close")
         runTimer("portaFechuda", 1)
     elseif tag == 'deiMeuCu' then
         setProperty("mouse.alpha", 1)

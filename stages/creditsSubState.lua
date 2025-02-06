@@ -198,6 +198,7 @@ function onCreate()
 
     makeLuaSprite("shi", nil, 150, 250)
     loadGraphic("shi", "credits/the/shiho", 266, 239)
+    addAnimation("shi", "idle", {0, 1}, 12, true)
     addAnimation("shi", "idleShiny", {2, 3}, 12, true)
     makeLuaSprite("sparkles", nil, 80, 175)
     loadGraphic("sparkles", "credits/shinySparkles", 151, 151)
@@ -206,7 +207,6 @@ function onCreate()
     scaleObject("sparkles", 2.5, 2.5)
     setProperty("sparkles.alpha", 0)
     addLuaSprite("sparkles", true)
-    addAnimation("shi", "idle", {0, 1}, 12, true)
 
     setObjectCamera("shi", 'other')
     addLuaSprite("shi", false)
@@ -466,7 +466,7 @@ function onUpdate(elapsed)
     setShaderFloat('back', 'wamplitude', 0.05)
     end
 
-    if itsShiny and pos == 3 then
+    if itsShiny and pos == 5 then
         playSound("credits/shiny", 1)
         setProperty("sparkles.alpha", 1)
         playAnim("shi", "idleShiny", true)

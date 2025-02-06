@@ -22,6 +22,10 @@ function onCreate()
         makeLuaText("presence", 'In the credits menu')
         addLuaText("presence")
         setProperty("presence.visible", false)
+    elseif songPath == 'bruh' then
+        makeLuaText("presence", 'In Black Space')
+        addLuaText("presence")
+        setProperty("presence.visible", false)
     else
         makeLuaText("presence", 'Playing: '..songName..' '..'('..difficultyName..')')
         addLuaText("presence")
@@ -34,7 +38,7 @@ function onUpdate(elapsed)
     changeDiscordClientID(id)
     changeDiscordPresence(getTextString("presence"), getTextString("socorro"), miniIcon)
 
-    if songPath == 'credits' then
+    if songPath == 'credits' or songPath == 'bruh' then
         setTextString("socorro", "")
     elseif sec < 10 then
         setTextString('socorro', min .. ':' .. "0"..sec..' Left')

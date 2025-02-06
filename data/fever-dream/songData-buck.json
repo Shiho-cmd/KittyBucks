@@ -1,0 +1,20 @@
+{
+    "rpcID": "1336385690979667968",
+    "rpcMiniIcon": "mini-icon-monoe",
+    "rpcMiniIconPause": "mini-icon-uboa",
+    "rpcTime": [1, 33],
+
+    "composer": "UKiYO",
+    "artist": "Shiho",
+    "coder": "Shiho",
+    "charter": "Shiho",
+    "pauseCover": "cover_fever_dream",
+    "pauseTxtPos": -1550,
+
+    "fczado": true,
+
+    "leftNoteRGB": ["F634B5", "FFFFFF", "7A255C"],
+    "downNoteRGB": ["52465E", "FFFFFF", "2D1C3F"],
+    "upNoteRGB": ["F634B5", "FFFFFF", "7A255C"],
+    "rightNoteRGB": ["52465E", "FFFFFF", "2D1C3F"]
+}

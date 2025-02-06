@@ -1,9 +1,9 @@
 function onCreate()
     
-    makeAnimatedLuaSprite("splash-right", 'noteSplashes/noteSplashes-star-colored', 307, -66)
-    makeAnimatedLuaSprite("splash-left", 'noteSplashes/noteSplashes-star-colored', -26, -66)
-    makeAnimatedLuaSprite("splash-down", 'noteSplashes/noteSplashes-star-colored', 86, -66)
-    makeAnimatedLuaSprite("splash-up", 'noteSplashes/noteSplashes-star-colored', 199, -66)
+    makeAnimatedLuaSprite("splash-right", 'noteSplashes/noteSplashes-star-colored', -999, -999)
+    makeAnimatedLuaSprite("splash-left", 'noteSplashes/noteSplashes-star-colored', -999, -999)
+    makeAnimatedLuaSprite("splash-down", 'noteSplashes/noteSplashes-star-colored', -999, -999)
+    makeAnimatedLuaSprite("splash-up", 'noteSplashes/noteSplashes-star-colored', -999, -999)
     
     addAnimationByPrefix("splash-right", "splashed", "black", 22, false)
     addAnimationByPrefix("splash-left", "splashed", "pink", 22, false)
@@ -24,46 +24,23 @@ function onCreate()
     setProperty("splash-left.alpha", splashAlpha)
     setProperty("splash-down.alpha", splashAlpha)
     setProperty("splash-up.alpha", splashAlpha)
-    setProperty("splash-right.visible", false)
-    setProperty("splash-left.visible", false)
-    setProperty("splash-down.visible", false)
-    setProperty("splash-up.visible", false)
     
     addLuaSprite("splash-right", true)
     addLuaSprite("splash-left", true)
     addLuaSprite("splash-down", true)
     addLuaSprite("splash-up", true)
-
-    setProperty("splash-right.visible", false)
-    setProperty("splash-left.visible", false)
-    setProperty("splash-down.visible", false)
-    setProperty("splash-up.visible", false)
-
-    if middlescroll then
-        setProperty("splash-up.x", 854)
-        setProperty("splash-right.x", 961)
-        setProperty("splash-left.x", -36)
-        setProperty("splash-down.x", 75)
-        setProperty("splash-up.alpha", splashAlpha / 2)
-        setProperty("splash-right.alpha", splashAlpha / 2)
-        setProperty("splash-down.alpha", splashAlpha / 2)
-        setProperty("splash-left.alpha", splashAlpha / 2)
-    end
-    
-    if downscroll then
-        setProperty("splash-up.y", 454)
-        setProperty("splash-right.y", 454)
-        setProperty("splash-left.y", 454)
-        setProperty("splash-down.y", 454)
-    end
 end
 
 function onSongStart()
     
-    setProperty("splash-right.visible", true)
-    setProperty("splash-left.visible", true)
-    setProperty("splash-down.visible", true)
-    setProperty("splash-up.visible", true)
+    setProperty("splash-left.x", defaultOpponentStrumX0 - 70)
+    setProperty("splash-left.y", defaultOpponentStrumY0 - 70)
+    setProperty("splash-down.x", defaultOpponentStrumX1 - 70)
+    setProperty("splash-down.y", defaultOpponentStrumY1 - 70)
+    setProperty("splash-up.x", defaultOpponentStrumX2 - 70)
+    setProperty("splash-up.y", defaultOpponentStrumY2 - 70)
+    setProperty("splash-right.x", defaultOpponentStrumX3 - 70)
+    setProperty("splash-right.y", defaultOpponentStrumY3 - 70)
 end
 
 function opponentNoteHit(membersIndex, noteData, noteType, isSustainNote)
@@ -83,16 +60,20 @@ function opponentNoteHit(membersIndex, noteData, noteType, isSustainNote)
     end
 end
 
---[[[local quanto = 1
+local quanto = 1
 
 function onUpdate(elapsed)
     
     if keyboardJustPressed("A") then
-        setProperty("splash-right.x", getProperty("splash-right.x") - quanto)
+        setProperty("splash-left.x", getProperty("splash-left.x") - quanto)
     elseif keyboardJustPressed("D") then
-        setProperty("splash-right.x", getProperty("splash-right.x") + quanto)
+        setProperty("splash-left.x", getProperty("splash-left.x") + quanto)
+    elseif keyboardJustPressed("S") then
+        setProperty("splash-left.y", getProperty("splash-left.y") - quanto)
+    elseif keyboardJustPressed("W") then
+        setProperty("splash-left.y", getProperty("splash-left.y") + quanto)
     elseif keyboardJustPressed("SPACE") then
-        debugPrint(getProperty("splash-right.x")..' '..getProperty("splash-up.y"))
+        debugPrint(getProperty("splash-left.x")..' '..getProperty("splash-left.y"))
     end
 
     if keyboardPressed("SHIFT") then
@@ -100,4 +81,4 @@ function onUpdate(elapsed)
     else
         quanto = 1
     end
-end]]
+end

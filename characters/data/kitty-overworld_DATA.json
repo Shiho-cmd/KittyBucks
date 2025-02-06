@@ -5,5 +5,7 @@
 	"explosionY": 0,
 	"gameOverNameX": 725,
 	"gameOverNameY": 535,
+	"cameraPosX": 630,
+	"cameraPosY": 370,
 	"yearThing": 2020
 }

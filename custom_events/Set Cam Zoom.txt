@@ -1,4 +1,4 @@
 zooooooooooooom jruvdu
 
-value 1: valor, câmera
-value 2: velocidade, ease
+value 1: quanto de zoom (exemplo: 1.2)
+value 2: velocidade, ease (exemplo: 1, quartInOut)

@@ -1,5 +1,5 @@
-coisa irada da camera seguir as notas oh yeah radical B)
+coisa irada da câmera seguir as notas oh yeah radical B)
 
 value 1: on liga off desliga
-value 2: offset, x opp, y opp, x player, y player
-(lembra que é tudo separado por , caba)
+
+value 2: intensidade (padrão 20 (cê precisa escrever algum número aqui porque o código de deixar vazio pro padrão se recusa a funfar por algum motivo))

@@ -1,9 +1,7 @@
-num tankava mais ter que programar tweens
-entao fiz foi logo um evento foda-se lol
+MAIS AVANÇADO NÃO RECOMENDO
 
-tem que usar , pra separar as coisas no value 2 viu
+todos os tweens num script
 
-value 1: 
-nome do tween (x, y, alpha, zoom, color, angle)
-value 2:
-tag, variavel, valor, duracao, ease
+value 1: nome do tween (x, y, alpha, zoom, color, angle)
+
+value 2: tag, variável, valor, duração, ease

@@ -1,13 +1,14 @@
 local songs = {
-    'KittyJam',
-    'SuperNova',
-    'SexoDURO'
+    'kityjam',
+    'sexoduro',
+    'the-guy',
+    'supernova'
 }
 
-function onCountdownStarted()
+function onStartCountdown()
     
     if difficultyName == 'buck' then
-        loadSong(songs[getRandomInt(1, 3)], difficulty)
+        loadSong(songs[getRandomInt(1, #songs)], difficulty)
     else
         loadSong(songs[1], 1)
     end

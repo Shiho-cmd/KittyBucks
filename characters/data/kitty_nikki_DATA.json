@@ -5,5 +5,7 @@
 	"explosionY": 70,
 	"gameOverNameX": 770,
 	"gameOverNameY": 535,
+	"cameraPosX": 630,
+	"cameraPosY": 370,
 	"yearThing": 2005
 }

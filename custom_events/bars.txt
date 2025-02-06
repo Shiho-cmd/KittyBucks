@@ -1,5 +1,5 @@
 barras iradas
 
 value 1: on pra ativar off pra desativar
-value 2: velocidade, ease (tem que ser separado com
-uma virgula exemplo: "1, linear")
+
+value 2: velocidade, ease (exemplo: 1, quartOut)

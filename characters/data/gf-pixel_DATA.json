@@ -5,5 +5,7 @@
 	"explosionY": 210,
 	"gameOverNameX": 805,
 	"gameOverNameY": 535,
+	"cameraPosX": 0,
+	"cameraPosY": 0,
 	"yearThing": 2023
 }

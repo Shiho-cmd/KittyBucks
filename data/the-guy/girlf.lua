@@ -1,5 +1,6 @@
 --Orignal script by ItsCapp, don't steal, its dumb.
 	--major overhaul by TheConcealedCow
+	-- edited by Shiho (added support for char json and stuff like that)
 		--updates:
 			--[[
 			-completely rewrote the entire script
@@ -130,6 +131,9 @@ function onCreate()
 	end
 	scaleObject(tagForChar, xScale, yScale);
 	addLuaSprite(tagForChar, inFront);
+
+	setObjectOrder("bruh", getObjectOrder(tagForChar));
+
 	createAnimCases()
 	extraAnimCases()
 end

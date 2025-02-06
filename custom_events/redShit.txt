@@ -1,0 +1,5 @@
+efeito vermei do mal ou coisa assim
+
+value 1: on pra ativar off pra desativar
+
+value 2: usar transição? (s pra usar n pra num usar)

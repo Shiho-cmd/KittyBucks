@@ -1,4 +1,0 @@
-exatamente o que isso aí faz
-
-value 1: caminho do arquivo pra ser editado (absoluto)
-value 2: novo texto

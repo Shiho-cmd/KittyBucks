@@ -1,10 +1,12 @@
 {
-	"gameOverName": "Boyfriend",
+	"gameOverName": "Boyfriend & Girlfriend",
 	"gameOverImage": "bf_rip",
-	"explosionX": 0,
-	"explosionY": 0,
-	"gameOverNameX": 725,
+	"explosionX": 610,
+	"explosionY": 120,
+	"gameOverNameX": 570,
 	"gameOverNameY": 535,
+	"cameraPosX": 740,
+	"cameraPosY": 430,
 	"yearThing": 2020,
 
 	"healthHex": "4B93B2"
