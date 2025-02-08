@@ -1,0 +1,63 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 24,
+			"name": "3idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [50, 9],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "jonerdown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-10, 50],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "jonerup",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [107, -18],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "jonerleft",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [11, -50],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "jonerright",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [6, 14],
+			"anim": "kill",
+			"fps": 24,
+			"name": "johntransiiton",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/joner3",
+	"position": [-340, 460],
+	"healthicon": "jon",
+	"flip_x": true,
+	"healthbar_colors": [218, 234, 148],
+	"camera_position": [0, 0],
+	"sing_duration": 6.1,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

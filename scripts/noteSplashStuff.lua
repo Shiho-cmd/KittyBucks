@@ -60,7 +60,7 @@ function opponentNoteHit(membersIndex, noteData, noteType, isSustainNote)
     end
 end
 
-local quanto = 1
+--[[local quanto = 1
 
 function onUpdate(elapsed)
     
@@ -81,4 +81,4 @@ function onUpdate(elapsed)
     else
         quanto = 1
     end
-end
+end]]

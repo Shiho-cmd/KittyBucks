@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="joner3.png">
+	<!-- Created with Adobe Flash CS6 version 12.0.0.481 -->
+	<!-- http://www.adobe.com/products/flash.html -->
+	<SubTexture name="3idle0000" x="10" y="10" width="421" height="465"/>
+	<SubTexture name="3idle0001" x="10" y="10" width="421" height="465"/>
+	<SubTexture name="3idle0002" x="10" y="10" width="421" height="465"/>
+	<SubTexture name="3idle0003" x="10" y="10" width="421" height="465"/>
+	<SubTexture name="3idle0004" x="461" y="10" width="421" height="465"/>
+	<SubTexture name="3idle0005" x="461" y="10" width="421" height="465"/>
+	<SubTexture name="3idle0006" x="461" y="10" width="421" height="465"/>
+	<SubTexture name="3idle0007" x="461" y="10" width="421" height="465"/>
+	<SubTexture name="3idle0008" x="912" y="10" width="421" height="465"/>
+	<SubTexture name="3idle0009" x="912" y="10" width="421" height="465"/>
+	<SubTexture name="3idle0010" x="912" y="10" width="421" height="465"/>
+	<SubTexture name="3idle0011" x="912" y="10" width="421" height="465"/>
+	<SubTexture name="johntransiiton0000" x="1363" y="10" width="871" height="496"/>
+	<SubTexture name="johntransiiton0001" x="1363" y="10" width="871" height="496"/>
+	<SubTexture name="johntransiiton0002" x="2264" y="10" width="871" height="496"/>
+	<SubTexture name="johntransiiton0003" x="2264" y="10" width="871" height="496"/>
+	<SubTexture name="johntransiiton0004" x="3165" y="10" width="871" height="496"/>
+	<SubTexture name="johntransiiton0005" x="3165" y="10" width="871" height="496"/>
+	<SubTexture name="johntransiiton0006" x="10" y="536" width="871" height="496"/>
+	<SubTexture name="johntransiiton0007" x="10" y="536" width="871" height="496"/>
+	<SubTexture name="johntransiiton0008" x="911" y="536" width="871" height="496"/>
+	<SubTexture name="johntransiiton0009" x="911" y="536" width="871" height="496"/>
+	<SubTexture name="johntransiiton0010" x="1812" y="536" width="871" height="496"/>
+	<SubTexture name="johntransiiton0011" x="2713" y="536" width="871" height="496"/>
+	<SubTexture name="johntransiiton0012" x="10" y="1062" width="871" height="496"/>
+	<SubTexture name="johntransiiton0013" x="911" y="1062" width="871" height="496"/>
+	<SubTexture name="johntransiiton0014" x="1812" y="1062" width="871" height="496"/>
+	<SubTexture name="johntransiiton0015" x="2713" y="1062" width="871" height="496"/>
+	<SubTexture name="johntransiiton0016" x="10" y="1588" width="871" height="496"/>
+	<SubTexture name="johntransiiton0017" x="10" y="1588" width="871" height="496"/>
+	<SubTexture name="johntransiiton0018" x="911" y="1588" width="871" height="496"/>
+	<SubTexture name="johntransiiton0019" x="911" y="1588" width="871" height="496"/>
+	<SubTexture name="johntransiiton0020" x="911" y="1588" width="871" height="496"/>
+	<SubTexture name="johntransiiton0021" x="911" y="1588" width="871" height="496"/>
+	<SubTexture name="johntransiiton0022" x="1812" y="1588" width="871" height="496"/>
+	<SubTexture name="johntransiiton0023" x="1812" y="1588" width="871" height="496"/>
+	<SubTexture name="johntransiiton0024" x="1812" y="1588" width="871" height="496"/>
+	<SubTexture name="johntransiiton0025" x="1812" y="1588" width="871" height="496"/>
+	<SubTexture name="jonerdown0000" x="2713" y="1588" width="489" height="497"/>
+	<SubTexture name="jonerdown0001" x="2713" y="1588" width="489" height="497"/>
+	<SubTexture name="jonerdown0002" x="3232" y="1588" width="489" height="497"/>
+	<SubTexture name="jonerdown0003" x="3232" y="1588" width="489" height="497"/>
+	<SubTexture name="jonerdown0004" x="10" y="2115" width="489" height="497"/>
+	<SubTexture name="jonerdown0005" x="10" y="2115" width="489" height="497"/>
+	<SubTexture name="jonerleft0000" x="529" y="2115" width="521" height="467"/>
+	<SubTexture name="jonerleft0001" x="529" y="2115" width="521" height="467"/>
+	<SubTexture name="jonerleft0002" x="1080" y="2115" width="521" height="467"/>
+	<SubTexture name="jonerleft0003" x="1080" y="2115" width="521" height="467"/>
+	<SubTexture name="jonerleft0004" x="1631" y="2115" width="521" height="467"/>
+	<SubTexture name="jonerleft0005" x="1631" y="2115" width="521" height="467"/>
+	<SubTexture name="jonerright0000" x="2182" y="2115" width="527" height="420"/>
+	<SubTexture name="jonerright0001" x="2182" y="2115" width="527" height="420"/>
+	<SubTexture name="jonerright0002" x="2739" y="2115" width="527" height="420"/>
+	<SubTexture name="jonerright0003" x="2739" y="2115" width="527" height="420"/>
+	<SubTexture name="jonerright0004" x="3296" y="2115" width="527" height="420"/>
+	<SubTexture name="jonerright0005" x="3296" y="2115" width="527" height="420"/>
+	<SubTexture name="jonerup0000" x="10" y="2642" width="429" height="543"/>
+	<SubTexture name="jonerup0001" x="10" y="2642" width="429" height="543"/>
+	<SubTexture name="jonerup0002" x="469" y="2642" width="429" height="543"/>
+	<SubTexture name="jonerup0003" x="469" y="2642" width="429" height="543"/>
+	<SubTexture name="jonerup0004" x="928" y="2642" width="429" height="543"/>
+	<SubTexture name="jonerup0005" x="928" y="2642" width="429" height="543"/>
+</TextureAtlas>

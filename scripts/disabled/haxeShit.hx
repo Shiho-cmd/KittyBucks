@@ -30,11 +30,11 @@ function onCountdownTick(tick:Countdown, counter:Int)
         }
     }
 
-function onUpdate(){
-	for(note in game.grpNoteSplashes){
-		note.scale.set(0.5, 0.5);
-	 }
-}
+//function onUpdate(){
+	//for(note in game.grpNoteSplashes){
+		//note.scale.set(0.5, 0.5);
+	 //}
+//}
 
 // hold cover stuff yayayayay (eu não programei isso se eu achar a pessoa pra dar os créditos eu boto aqui)
 function onCountdownStarted() {

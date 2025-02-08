@@ -23,6 +23,9 @@ if getPropertyFromGroup('notes', id, 'mustPress') == true then
     setPropertyFromGroup('notes', id, 'rgbShader.r', getColorFromHex(bfRGBNr[getPropertyFromGroup('notes', id, 'noteData')+1]))
     setPropertyFromGroup('notes', id, 'rgbShader.g', getColorFromHex(bfRGBNg[getPropertyFromGroup('notes', id, 'noteData')+1]))      
     setPropertyFromGroup('notes', id, 'rgbShader.b', getColorFromHex(bfRGBNb[getPropertyFromGroup('notes', id, 'noteData')+1]))
+    setPropertyFromGroup('notes', id, 'noteSplashData.r', getColorFromHex(bfRGBNr[getPropertyFromGroup('notes', id, 'noteData')+1]))
+    setPropertyFromGroup('notes', id, 'noteSplashData.g', getColorFromHex(bfRGBNg[getPropertyFromGroup('notes', id, 'noteData')+1]))
+    setPropertyFromGroup('notes', id, 'noteSplashData.b', getColorFromHex(bfRGBNb[getPropertyFromGroup('notes', id, 'noteData')+1]))
 else
     setPropertyFromGroup('notes', id, 'rgbShader.r', getColorFromHex(dadRGBNr[getPropertyFromGroup('notes', id, 'noteData')+1]))
     setPropertyFromGroup('notes', id, 'rgbShader.g', getColorFromHex(dadRGBNg[getPropertyFromGroup('notes', id, 'noteData')+1]))

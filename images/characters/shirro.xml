@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+-->
+<TextureAtlas imagePath="shirro.png" width="2675" height="1198">
+  <SubTexture name="down0001" x="0" y="0"  width="326" height="188" frameX="-20" frameY="-176" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="down0002" x="326" y="0"  width="320" height="203" frameX="-32" frameY="-170" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="miss0001" x="0" y="188"  width="278" height="278" frameX="-1" frameY="-53" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="left0001" x="646" y="0"  width="249" height="324" frameX="-22" frameY="-21" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="left0002" x="278" y="203"  width="244" height="327" frameX="-19" frameY="-17" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="right0001" x="0" y="466"  width="206" height="332" frameX="-48" frameY="-11" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="right0002" x="895" y="0"  width="206" height="331" frameX="-51" frameY="-13" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="up0001" x="522" y="324"  width="200" height="340" frameX="-26" frameY="-4" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="idle0004" x="722" y="324"  width="171" height="331" frameX="-59" frameY="-13" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="mongusDown0001" x="206" y="530"  width="198" height="331" frameX="-32" frameY="-13" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="mongusDown0002" x="0" y="798"  width="198" height="331" frameX="-32" frameY="-13" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="mongusLeft0001" x="1101" y="0"  width="198" height="331" frameX="-32" frameY="-13" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="mongusLeft0002" x="1299" y="0"  width="198" height="331" frameX="-32" frameY="-13" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="mongusRight0001" x="1497" y="0"  width="198" height="331" frameX="-32" frameY="-13" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="mongusRight0002" x="1695" y="0"  width="198" height="331" frameX="-32" frameY="-13" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="mongusUp0001" x="1893" y="0"  width="198" height="331" frameX="-32" frameY="-13" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="mongusUp0002" x="2091" y="0"  width="198" height="331" frameX="-32" frameY="-13" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="up0002" x="2289" y="0"  width="198" height="331" frameX="-32" frameY="-13" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="ho0001" x="2487" y="0"  width="188" height="339" frameX="-39" frameY="-4" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="ho0002" x="893" y="331"  width="184" height="334" frameX="-44" frameY="-9" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="idle0003" x="722" y="655"  width="170" height="338" frameX="-59" frameY="-6" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="idle0001" x="404" y="664"  width="181" height="332" frameX="-54" frameY="-12" frameWidth="352" frameHeight="374"/>
+  <SubTexture name="idle0002" x="198" y="861"  width="175" height="337" frameX="-57" frameY="-7" frameWidth="352" frameHeight="374"/>
+</TextureAtlas>
