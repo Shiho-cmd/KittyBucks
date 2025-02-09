@@ -13,7 +13,7 @@ luaDebugMode = true
 
 local txtVelo = 0.04
 
-local clicavel = false
+local clicavel = true
 local cutClicavel = false
 local cutOver = false
 local curDialogue = 1
@@ -22,16 +22,21 @@ local onDialogue = false
 local escolhendo = false
 
 local sounds = {'[BA]stat_down', '[sfx]battle_ekg_beep', 'BA_battle_encounter_1', 'BA_CRITICAL_HIT', 'BA_heal_juice', 'BA_Heart_Heal', 'BA_miss', 'BA_release_energy', 'BA_run', 'BA_stat_up', 'GEN_stab', 'laptop_logoff', 'SE_dig', 'se_evil2', 'SE_horror', 'se_impact_double', 'SE_New_Skill', 'SE_Push', 'SE_spooks', 'Skill2', 'sys_blackletter1', 'sys_blackletter2', 'sys_buzzer', 'sys_cancel', 'SYS_move', 'SYS_select', 'SYS_text', 'SE_Laptop'}
+local seenCuterscner = true
 
 function onStartCountdown()
     
-    triggerEvent("Camera Follow Pos", getGraphicMidpointX("boyfriend") + 18, getGraphicMidpointY("boyfriend") - 700)
     setProperty("dadGroup.visible", false)
     setProperty("botplayTxt.visible", false)
     setProperty("scoreTxt.visible", false)
     setProperty("healthBar.visible", false)
     setProperty("iconP1.visible", false)
     setProperty("iconP2.visible", false)
+    saveFile("mods/KittyBucks/data/friends/cameFromBS.json", "{\n    \"itDid\": true\n}", true)
+
+    if not seenCuterscner then
+        triggerEvent("Camera Follow Pos", getGraphicMidpointX("boyfriend") + 18, getGraphicMidpointY("boyfriend") - 700)
+    end
     return Function_Stop;
 end
 
@@ -44,8 +49,6 @@ function onCreate()
     --removeLuaScript("mods/KittyBucks/scripts/buildTargetReal.lua")
     removeLuaScript(currentModDirectory.."/scripts/noteSplashStuff.lua")
     --removeHScript(currentModDirectory.."/scripts/haxeShit.hx")
-    setProperty("camGame.alpha", 0.0001)
-    setProperty("camOther.alpha", 0.0001)
 
     precacheSound("omori/bgm/bs_entrance")
     precacheSound("omori/se/GEN_stab")
@@ -57,8 +60,6 @@ function onCreate()
     precacheSound("omori/se/laptop_logoff")
     precacheSound("omori/se/jermascare")
 
-    setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Welcome to Black Space')
-
     setProperty('camGame.bgColor', getColorFromHex('000000'))
 
     setCharacterX("boyfriend", mainArea.kittySpawn[1])
@@ -68,59 +69,48 @@ function onCreate()
     setObjectCamera('bor', 'other')
     scaleObject('bor', 0.67, 0.67)
     screenCenter('bor')
-    addLuaSprite('bor', false)
 
     makeLuaSprite("aviso", 'backgrounds/omori/blackspace/warning', 0, 0)
     setObjectCamera("aviso", 'hud')
     scaleObject("aviso", 1.5, 1.5)
     screenCenter("aviso", 'xy')
     setProperty("aviso.alpha", 0.0001)
-    addLuaSprite("aviso", true)
 
     makeAnimatedLuaSprite("intro", 'backgrounds/omori/blackspace/welcum', 0, 0)
-    addAnimationByPrefix("intro", "kit", "kitty", 2, true)
     addAnimationByPrefix("intro", "wel", "welcome", 3, true)
+    addAnimationByPrefix("intro", "kit", "kitty", 2, true)
     setObjectCamera("intro", 'hud')
     scaleObject("intro", 1.5, 1.5)
     screenCenter("intro", 'xy')
     setProperty("intro.alpha", 0.0001)
-    addLuaSprite("intro", true)
-    doTweenAlpha("start", "intro", 1, 1.5, "linear")
-    playSound("omori/se/sys_blackletter1", 1, 'fadeIn')
 
     makeLuaSprite("tapa", 'backgrounds/omori/blackspace/tapete', mainArea.tapete[1], mainArea.tapete[2])
     scaleObject("tapa", 2, 2)
-    addLuaSprite("tapa", false)
 
     makeAnimatedLuaSprite("lap", 'backgrounds/omori/blackspace/laptop', mainArea.laptop[1], mainArea.laptop[2])
     addAnimationByPrefix("lap", "idle", "static", 10, true)
     scaleObject("lap", 1, 1)
-    addLuaSprite("lap")
 
     makeAnimatedLuaSprite("door-mago", 'backgrounds/omori/blackspace/door', mainArea.portaMago[1], mainArea.portaMago[2])
+    addAnimationByIndices("door-mago", "idle", "daFunnyDoor", '1', 0, false)
     addAnimationByPrefix("door-mago", "open", "daFunnyDoor", 7, false)
     addAnimationByIndices("door-mago", "close", "daFunnyDoor", '6,5,4,3,2,1', 7, false)
-    addAnimationByIndices("door-mago", "idle", "daFunnyDoor", '1', 0, false)
     scaleObject("door-mago", 2, 2)
-    addLuaSprite("door-mago")
 
     makeAnimatedLuaSprite("door-yume", 'backgrounds/omori/blackspace/door', mainArea.portaYume[1], mainArea.portaYume[2])
+    addAnimationByIndices("door-yume", "idle", "daFunnyDoor", '1', 5, false)
     addAnimationByPrefix("door-yume", "open", "daFunnyDoor", 3, false)
     addAnimationByIndices("door-yume", "close", "daFunnyDoor", '6,5,4,3,2,1', 5, false)
-    addAnimationByIndices("door-yume", "idle", "daFunnyDoor", '1', 5, false)
     scaleObject("door-yume", 2, 2)
-    addLuaSprite("door-yume")
 
     makeLuaSprite("fio", 'backgrounds/omori/blackspace/wire', mainArea.fio[1], mainArea.fio[2])
     scaleObject("fio", 2, 2)
-    addLuaSprite("fio", true)
 
     makeLuaText("tuto", '', 450, 400, screenHeight - 213)
     setTextFont("tuto", "omori.ttf")
     setTextSize("tuto", 35)
     setTextAlignment("tuto", 'left')
     setObjectCamera("tuto", 'hud')
-    addLuaText("tuto")
 
     makeAnimatedLuaSprite("closeup", 'backgrounds/omori/blackspace/doors_closeup', 0, 0)
     addAnimationByPrefix("closeup", "yume", "cold", 3, true)
@@ -129,29 +119,25 @@ function onCreate()
     scaleObject("closeup", 1.5, 1.5)
     screenCenter("closeup", 'xy')
     setProperty("closeup.alpha", 0.00001)
-    addLuaSprite("closeup", false)
 
     makeLuaText("xddd", '', 0, 0.0, 0)
     setTextFont("xddd", "omori.ttf")
     setTextSize("xddd", 35)
     screenCenter("xddd", 'x')
     setObjectCamera("xddd", 'other')
-    addLuaText("xddd")
 
     makeAnimatedLuaSprite("boxx", 'backgrounds/omori/blackspace/txtBox', 380, screenHeight - 250)
-    addAnimationByPrefix("boxx", "default", "normal", 0, false)
     addAnimationByPrefix("boxx", "chonky", "chonky", 0, false)
+    addAnimationByPrefix("boxx", "default", "normal", 0, false)
     setObjectCamera("boxx", 'hud')
     scaleObject("boxx", 2.5, 2)
     setProperty("boxx.alpha", 0.00001)
-    addLuaSprite("boxx", false)
 
     makeAnimatedLuaSprite("boxOpt", 'backgrounds/omori/blackspace/txtBox', 640, screenHeight - 310)
     addAnimationByPrefix("boxOpt", "opt", "options", 0, false)
     setObjectCamera("boxOpt", 'hud')
     scaleObject("boxOpt", 2, 2)
     setProperty("boxOpt.alpha", 0.00001)
-    addLuaSprite("boxOpt", false)
 
     makeLuaText("opt", mainAreaDialogue.defaultOptions, 0, 540, screenHeight - 310)
     setTextFont("opt", "omori.ttf")
@@ -160,27 +146,22 @@ function onCreate()
     setTextAlignment("opt", 'left')
     setObjectCamera("opt", 'hud')
     setProperty("opt.alpha", 0.00001)
-    addLuaText("opt")
     
     makeLuaSprite("hand", 'backgrounds/omori/blackspace/moes', 810, screenHeight - 90)
     scaleObject("hand", 1.3, 1.3)
     setObjectCamera("hand", 'hud')
     setProperty("hand.alpha", 0.00001)
-    addLuaSprite("hand", false)
-    doTweenX("loopInsano", "hand", getProperty("hand.x") - 5, 1, "quartInOut")
 
     makeLuaSprite("mouse", 'backgrounds/omori/blackspace/cursor', 0, 0)
     scaleObject("mouse", 1.3, 1.3)
     setObjectCamera("mouse", 'hud')
     setProperty("mouse.alpha", 0.00001)
-    addLuaSprite("mouse", true)
 
     makeLuaSprite("lapBG", 'backgrounds/omori/blackspace/laptopBG', 0, 0)
     setObjectCamera("lapBG", 'hud')
     scaleObject("lapBG", 1.5, 1.5)
     screenCenter("lapBG")
     setProperty("lapBG.alpha", 0.00001)
-    addLuaSprite("lapBG", false)
 
     makeLuaText("horario", "", 0, mainArea.relogio[1], mainArea.relogio[2])
     setObjectCamera("horario", 'hud')
@@ -189,15 +170,59 @@ function onCreate()
     setTextSize("horario", 41)
     setTextColor("horario", "000000")
     setProperty("horario.alpha", 0.00001)
-    addLuaText("horario")
 
     makeLuaSprite("jerma", 'Screenshot_45', 0, 0)
     setObjectCamera("jerma", 'other')
     screenCenter("jerma")
     setProperty("jerma.alpha", 0.00001)
-    addLuaSprite("jerma", true)
 
+    -- layers
+    -- other
+    addLuaSprite("jerma", true)
+    addLuaSprite('bor', false)
+
+    -- hud
+    addLuaSprite("mouse", true)
+    addLuaSprite("intro", true)
+    addLuaSprite("aviso", true)
+    addLuaSprite("lapBG", false)
+    addLuaSprite("closeup", false)
+    addLuaSprite("boxOpt", false)
+    addLuaSprite("boxx", false)
+    addLuaSprite("hand", false)
+
+    -- game
+    addLuaSprite("fio", true)
+    addLuaSprite("door-yume", false)
+    addLuaSprite("door-mago", false)
+    addLuaSprite("tapa", false)
+    addLuaSprite("lap", false)
+
+    -- text layers
+    -- other
+    addLuaText("xddd")
+
+    -- hud
+    addLuaText("tuto")
+    addLuaText("opt")
+    addLuaText("horario")
+
+
+    doTweenX("loopInsano", "hand", getProperty("hand.x") - 5, 1, "quartInOut")
     createHitbox()
+
+    if not seenCuterscner then
+        clicavel = false
+        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Welcome to Black Space')
+        setProperty("camGame.alpha", 0.0001)
+        setProperty("camOther.alpha", 0.0001)
+        doTweenAlpha("start", "intro", 1, 1.5, "linear")
+        playSound("omori/se/sys_blackletter1", 1, 'fadeIn')
+    else
+        cutOver = true
+        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Black Space')
+        playSound("omori/bgm/bs_entrance", 1, 'bgm')
+    end
 end
 
 function createHitbox()
@@ -279,6 +304,8 @@ local optPos = 1
 local onLaptop = false
 local songToLoad = nil
 
+local moveAnim = 'walk'
+
 --local sla = os.date ('%p')
 
 function onUpdate(elapsed)
@@ -313,7 +340,7 @@ function onUpdate(elapsed)
         if getProperty("playerHB.y") < getProperty(objHB[i]..".y") then
             setObjectOrder(obj[i], 99)
         else
-            setObjectOrder(obj[i], 6)
+            setObjectOrder(obj[i], 9)
         end
     end
 
@@ -326,31 +353,39 @@ function onUpdate(elapsed)
     elseif getProperty("boyfriend.y") < 0 then
         setProperty("boyfriend.y", 3000)
     end
+
+    if keyboardPressed("X") then
+        walkSpeed = 6
+        moveAnim = 'run'
+    else
+        walkSpeed = 2
+        moveAnim = 'walk'
+    end
     
     if clicavel then
         if keyboardJustPressed('ESCAPE') then
             clicavel = false
             playAnim("boyfriend", "stab", true)
         elseif keyboardPressed("DOWN") and moveDown then
-            playAnim("boyfriend", "walk-down")
+            playAnim("boyfriend", moveAnim.."-down")
             setProperty("boyfriend.y", getProperty("boyfriend.y") + walkSpeed)
             looking = 'down'
         elseif keyboardReleased("DOWN") then
             playAnim("boyfriend", "idle-down")
         elseif keyboardPressed("UP") and moveUp then
-            playAnim("boyfriend", "walk-up")
+            playAnim("boyfriend", moveAnim.."-up")
             setProperty("boyfriend.y", getProperty("boyfriend.y") - walkSpeed)
             looking = 'up'
         elseif keyboardReleased("UP") then
             playAnim("boyfriend", "idle-up")
         elseif keyboardPressed("RIGHT") and moveRight then
-            playAnim("boyfriend", "walk-right")
+            playAnim("boyfriend", moveAnim.."-right")
             setProperty("boyfriend.x", getProperty("boyfriend.x") + walkSpeed)
             looking = 'right'
         elseif keyboardReleased("RIGHT") then
             playAnim("boyfriend", "idle-right")
         elseif keyboardPressed("LEFT") and moveLeft then
-            playAnim("boyfriend", "walk-left")
+            playAnim("boyfriend", moveAnim.."-left")
             setProperty("boyfriend.x", getProperty("boyfriend.x") - walkSpeed)
             looking = 'left'
         elseif keyboardReleased("LEFT") then
@@ -447,12 +482,6 @@ function onUpdate(elapsed)
         doTweenAlpha("damnDaniel", "horario", 0.00001, 1, "linear")
         doTweenAlpha("ruuwrhrb", "camGame", 1, 1, "linear")
         setProperty("mouse.alpha", 0.0001)
-    end
-
-    if keyboardPressed("X") then
-        walkSpeed = 4
-    else
-        walkSpeed = 2
     end
 
     if curDialogue == 3 and onDialogue and curDialogueName == mainAreaDialogue.tutorial then
@@ -570,6 +599,7 @@ function onTimerCompleted(tag, loops, loopsLeft)
         setProperty("camOther.alpha", 0)
         runTimer("agoraVaza", 2)
     elseif tag == 'agoraVaza' then
+        saveFile("mods/KittyBucks/data/friends/cameFromBS.json", "{\n    \"itDid\": false\n}", true)
         exitSong(false)
     elseif tag == 'opa' then
         playSound("omori/se/sys_blackletter2", 1, 'fadeOut')

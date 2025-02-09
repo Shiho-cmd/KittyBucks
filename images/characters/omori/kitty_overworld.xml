@@ -1,31 +1,60 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-Created with Free texture packer v0.6.7 http://free-tex-packer.com
--->
-<TextureAtlas imagePath="kitty_overworld.png" width="247" height="57">
-  <SubTexture name="stab0008" x="0" y="0"  width="24" height="28" frameX="-0" frameY="-1" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="stab0009" x="24" y="0"  width="23" height="28" frameX="-2" frameY="-1" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="stab0006" x="47" y="0"  width="21" height="28" frameX="-3" frameY="-1" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="stab0007" x="68" y="0"  width="21" height="28" frameX="-3" frameY="-1" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="walk_down0001" x="89" y="0"  width="18" height="29" frameX="-6" frameY="-0" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="walk_down0003" x="0" y="28"  width="18" height="29" frameX="-8" frameY="-0" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="walk_up0001" x="18" y="28"  width="18" height="29" frameX="-6" frameY="-0" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="walk_up0003" x="36" y="28"  width="18" height="29" frameX="-8" frameY="-0" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="stab0001" x="54" y="28"  width="18" height="28" frameX="-7" frameY="-1" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="stab0002" x="72" y="28"  width="16" height="28" frameX="-8" frameY="-1" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="stab0004" x="107" y="0"  width="18" height="28" frameX="-6" frameY="-1" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="stab0005" x="125" y="0"  width="18" height="28" frameX="-6" frameY="-1" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="walk_up0002" x="143" y="0"  width="18" height="28" frameX="-7" frameY="-1" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="stab00010" x="161" y="0"  width="18" height="25" frameX="-7" frameY="-4" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="stab00011" x="179" y="0"  width="18" height="22" frameX="-7" frameY="-7" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="stab00012" x="197" y="0"  width="18" height="14" frameX="-7" frameY="-14" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="stab00013" x="215" y="0"  width="18" height="12" frameX="-7" frameY="-16" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="stab0003" x="233" y="0"  width="14" height="28" frameX="-9" frameY="-1" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="walk_left0001" x="215" y="12"  width="13" height="28" frameX="-9" frameY="-1" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="walk_left0003" x="197" y="14"  width="13" height="28" frameX="-9" frameY="-1" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="walk_right0001" x="179" y="22"  width="13" height="28" frameX="-9" frameY="-1" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="walk_right0003" x="161" y="25"  width="13" height="28" frameX="-9" frameY="-1" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="walk_left0002" x="107" y="28"  width="13" height="27" frameX="-9" frameY="-2" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="walk_right0002" x="88" y="29"  width="13" height="27" frameX="-9" frameY="-2" frameWidth="26" frameHeight="29"/>
-  <SubTexture name="walk_down0002" x="54" y="28"  width="18" height="28" frameX="-7" frameY="-1" frameWidth="26" frameHeight="29"/>
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="kitty_overworld.png">
+<SubTexture name="run_right0000" x="24" y="35" width="21" height="34" frameX="-9" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_right0001" x="45" y="35" width="19" height="34" frameX="-11" frameY="-4" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_right0002" x="72" y="0" width="21" height="34" frameX="-9" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_right0003" x="93" y="0" width="23" height="34" frameX="-7" frameY="-2" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_right0004" x="93" y="34" width="21" height="34" frameX="-9" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_right0005" x="45" y="35" width="19" height="34" frameX="-11" frameY="-4" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_right0006" x="72" y="34" width="21" height="34" frameX="-9" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_right0007" x="0" y="70" width="23" height="34" frameX="-7" frameY="-2" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_left0000" x="23" y="70" width="21" height="34" frameX="-6" frameY="-2" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_left0001" x="44" y="70" width="19" height="34" frameX="-6" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_left0002" x="63" y="70" width="21" height="34" frameX="-6" frameY="-2" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_left0003" x="84" y="70" width="23" height="34" frameX="-6" frameY="-1" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_left0004" x="116" y="0" width="21" height="34" frameX="-6" frameY="-2" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_left0005" x="44" y="70" width="19" height="34" frameX="-6" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_left0006" x="116" y="34" width="21" height="34" frameX="-6" frameY="-2" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_left0007" x="137" y="0" width="23" height="34" frameX="-6" frameY="-1" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_up0000" x="0" y="104" width="24" height="34" frameX="-6" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_up0001" x="24" y="104" width="24" height="34" frameX="-6" frameY="-4" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_up0002" x="48" y="104" width="24" height="34" frameX="-6" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_up0003" x="72" y="104" width="24" height="34" frameX="-6" frameY="-2" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_up0004" x="96" y="104" width="24" height="34" frameX="-6" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_up0005" x="120" y="104" width="24" height="34" frameX="-6" frameY="-4" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_up0006" x="160" y="0" width="24" height="34" frameX="-6" frameY="-4" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_up0007" x="160" y="34" width="24" height="34" frameX="-6" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_down0000" x="0" y="172" width="24" height="33" frameX="-6" frameY="-4" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_down0001" x="24" y="172" width="24" height="33" frameX="-6" frameY="-5" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_down0002" x="48" y="172" width="24" height="33" frameX="-7" frameY="-4" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_down0003" x="160" y="68" width="24" height="34" frameX="-7" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_down0004" x="48" y="172" width="24" height="33" frameX="-7" frameY="-4" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_down0005" x="24" y="172" width="24" height="33" frameX="-6" frameY="-5" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_down0006" x="72" y="172" width="24" height="33" frameX="-6" frameY="-4" frameWidth="28" frameHeight="33" />
+<SubTexture name="run_down0007" x="160" y="102" width="24" height="34" frameX="-6" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="stab0000" x="208" y="0" width="24" height="18" frameX="-7" frameY="-18" frameWidth="28" frameHeight="33" />
+<SubTexture name="stab0001" x="163" y="172" width="24" height="20" frameX="-7" frameY="-16" frameWidth="28" frameHeight="33" />
+<SubTexture name="stab0002" x="139" y="172" width="24" height="28" frameX="-7" frameY="-9" frameWidth="28" frameHeight="33" />
+<SubTexture name="stab0003" x="115" y="172" width="24" height="31" frameX="-7" frameY="-6" frameWidth="28" frameHeight="33" />
+<SubTexture name="stab0004" x="0" y="138" width="29" height="34" frameX="-2" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="stab0005" x="29" y="138" width="30" height="34" frameX="0" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="stab0006" x="59" y="138" width="27" height="34" frameX="-3" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="stab0007" x="86" y="138" width="27" height="34" frameX="-3" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="stab0008" x="113" y="138" width="24" height="34" frameX="-6" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="stab0009" x="137" y="138" width="24" height="34" frameX="-6" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="stab0010" x="137" y="34" width="20" height="34" frameX="-9" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="stab0011" x="137" y="68" width="22" height="34" frameX="-8" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="stab0012" x="184" y="0" width="24" height="34" frameX="-7" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="walk_up0000" x="0" y="0" width="24" height="35" frameX="-8" frameY="-2" frameWidth="28" frameHeight="33" />
+<SubTexture name="walk_up0001" x="184" y="34" width="24" height="34" frameX="-7" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="walk_up0002" x="24" y="0" width="24" height="35" frameX="-6" frameY="-2" frameWidth="28" frameHeight="33" />
+<SubTexture name="walk_right0000" x="184" y="68" width="19" height="34" frameX="-9" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="walk_right0001" x="161" y="138" width="19" height="33" frameX="-9" frameY="-4" frameWidth="28" frameHeight="33" />
+<SubTexture name="walk_right0002" x="184" y="102" width="19" height="34" frameX="-9" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="walk_left0000" x="184" y="136" width="19" height="34" frameX="-9" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="walk_left0001" x="96" y="172" width="19" height="33" frameX="-9" frameY="-4" frameWidth="28" frameHeight="33" />
+<SubTexture name="walk_left0002" x="116" y="68" width="19" height="34" frameX="-9" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="walk_down0000" x="48" y="0" width="24" height="35" frameX="-8" frameY="-2" frameWidth="28" frameHeight="33" />
+<SubTexture name="walk_down0001" x="184" y="0" width="24" height="34" frameX="-7" frameY="-3" frameWidth="28" frameHeight="33" />
+<SubTexture name="walk_down0002" x="0" y="35" width="24" height="35" frameX="-6" frameY="-2" frameWidth="28" frameHeight="33" />
 </TextureAtlas>

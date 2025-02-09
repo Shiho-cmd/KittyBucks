@@ -1,7 +1,10 @@
 local distortion = 0.01
 local pode = false
+local voltarProBS = false
 
 function onCreate()
+
+    saveFile("mods/KittyBucks/weeks/robloqui.json", '{\n\n	"songs": [\n		[\n			"Friends",\n			"face",\n			[\n				146,\n				113,\n				253\n			]\n		]\n	],\n	"hiddenUntilUnlocked": false,\n	"hideFreeplay": false,\n	"weekBackground": "stage",\n	"difficulties": "buck",\n	"weekCharacters": [\n		"dad",\n		"bf",\n		"gf"\n	],\n	"storyName": "Your New Week",\n	"weekName": "Custom Week",\n	"freeplayColor": [\n		146,\n		113,\n		253\n	],\n	"hideStoryMode": true,\n	"weekBefore": "tutorial",\n	"startUnlocked": true\n}', true)
 
     local var ShaderName = 'melt'
 
@@ -57,6 +60,11 @@ function onSpawnNote(membersIndex, noteData, noteType, isSustainNote, strumTime)
 end
 
 function onDestroy()
+    
+    if voltarProBS then
+        loadSong('bruh', -1)
+    end
+
     if shadersEnabled then
         runHaxeCode([[
             FlxG.game.setFilters([]);

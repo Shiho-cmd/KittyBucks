@@ -1,197 +1,126 @@
 {
 	"animations": [
 		{
-			"offsets": [
-				0,
-				0
-			],
-			"loop": false,
+			"offsets": [0, 0],
+			"indices": [1],
 			"fps": 0,
 			"anim": "idle",
-			"indices": [
-				2,
-				2
-			],
+			"loop": false,
 			"name": "walk_down"
 		},
 		{
-			"offsets": [
-				0,
-				0
-			],
-			"loop": false,
+			"offsets": [0, 0],
+			"indices": [1],
 			"fps": 0,
 			"anim": "idle-down",
-			"indices": [
-				2,
-				2
-			],
+			"loop": false,
 			"name": "walk_down"
 		},
 		{
-			"offsets": [
-				0,
-				0
-			],
-			"loop": false,
+			"offsets": [0, 0],
+			"indices": [1],
 			"fps": 0,
 			"anim": "idle-left",
-			"indices": [
-				2,
-				2
-			],
+			"loop": false,
 			"name": "walk_left"
 		},
 		{
-			"offsets": [
-				0,
-				0
-			],
-			"loop": false,
+			"offsets": [0, 0],
+			"indices": [1],
 			"fps": 0,
 			"anim": "idle-right",
-			"indices": [
-				2,
-				2
-			],
+			"loop": false,
 			"name": "walk_right"
 		},
 		{
-			"offsets": [
-				0,
-				0
-			],
-			"loop": false,
+			"offsets": [0, 0],
+			"indices": [1],
 			"fps": 0,
 			"anim": "idle-up",
-			"indices": [
-				2,
-				2
-			],
+			"loop": false,
 			"name": "walk_up"
 		},
 		{
-			"offsets": [
-				0,
-				0
-			],
-			"loop": true,
+			"offsets": [0, 0],
+			"indices": [0, 1, 2, 1],
 			"fps": 5,
 			"anim": "walk-down",
-			"indices": [
-				1,
-				2,
-				3,
-				2
-			],
+			"loop": true,
 			"name": "walk_down"
 		},
 		{
-			"offsets": [
-				0,
-				0
-			],
-			"loop": true,
+			"offsets": [0, 0],
+			"indices": [0, 1, 2, 1],
 			"fps": 5,
 			"anim": "walk-left",
-			"indices": [
-				1,
-				2,
-				3,
-				2
-			],
+			"loop": true,
 			"name": "walk_left"
 		},
 		{
-			"offsets": [
-				0,
-				0
-			],
-			"loop": true,
+			"offsets": [0, 0],
+			"indices": [0, 1, 2, 1],
 			"fps": 5,
 			"anim": "walk-right",
-			"indices": [
-				1,
-				2,
-				3,
-				2
-			],
+			"loop": true,
 			"name": "walk_right"
 		},
 		{
-			"offsets": [
-				0,
-				0
-			],
-			"loop": true,
+			"offsets": [0, 0],
+			"indices": [0, 1, 2, 1],
 			"fps": 5,
 			"anim": "walk-up",
-			"indices": [
-				1,
-				2,
-				3,
-				2
-			],
+			"loop": true,
 			"name": "walk_up"
 		},
 		{
-			"offsets": [
-				0,
-				0
-			],
-			"indices": [
-				1,
-				2,
-				3,
-				4,
-				5,
-				6,
-				7,
-				7,
-				7,
-				7,
-				7,
-				7,
-				7,
-				7,
-				7,
-				7,
-				7,
-				7,
-				7,
-				7,
-				7,
-				8,
-				9,
-				10,
-				11,
-				12,
-				13
-			],
+			"offsets": [0, 0],
+			"indices": [13, 12, 11, 10, 9, 8, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 4, 3, 2, 1, 0],
 			"fps": 5,
 			"anim": "stab",
 			"loop": false,
 			"name": "stab"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [7, 6, 5, 4, 3, 2, 1, 0],
+			"fps": 12,
+			"anim": "run-down",
+			"loop": true,
+			"name": "run_down"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [7, 6, 5, 4, 3, 2, 1, 0],
+			"fps": 12,
+			"anim": "run-left",
+			"loop": true,
+			"name": "run_left"
+		},
+		{
+			"offsets": [0, 3],
+			"indices": [7, 6, 5, 4, 3, 2, 1, 0],
+			"fps": 12,
+			"anim": "run-right",
+			"loop": true,
+			"name": "run_right"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [7, 6, 5, 4, 3, 2, 1, 0],
+			"fps": 12,
+			"anim": "run-up",
+			"loop": true,
+			"name": "run_up"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": true,
 	"image": "characters/omori/kitty_overworld",
-	"position": [
-		0,
-		0
-	],
+	"position": [0, 0],
 	"healthicon": "face",
 	"flip_x": true,
-	"healthbar_colors": [
-		161,
-		161,
-		161
-	],
-	"camera_position": [
-		-70,
-		70
-	],
+	"healthbar_colors": [161, 161, 161],
+	"camera_position": [-110, 70],
 	"sing_duration": 4,
 	"scale": 2,
 	"_editor_isPlayer": true
