@@ -136,7 +136,7 @@ function onCreate()
 end
 
 function opponentNoteHit(id, dir, nt, sus)
-	if nt == noteTypeForChar then
+	if nt == noteTypeForChar or nt == 'bluck-ghost' then
 		playAnim(tagForChar, getProperty('singAnimations['..dir..']'), true); --thank you shadowMario
 		runTimer('canIdle', 0.1);
 		charCanIdle = false
