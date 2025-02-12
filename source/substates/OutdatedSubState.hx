@@ -24,14 +24,14 @@ class OutdatedSubState extends MusicBeatSubstate
 		add(bg);
 
 		warnText = new FlxText(0, 0, FlxG.width,
-			'Sup bro, looks like you\'re running an outdated version of\nPsych Engine (${MainMenuState.psychEngineVersion})\n
+			'UPDATE THE MOD NOW!!!!! THERE\'S AN UPDATE OUT!!!\nYour Version: (${MainMenuState.psychEngineVersion})\n
 			-----------------------------------------------\n
-			Press ENTER to update to the latest version ${updateVersion}\n
-			Press ESCAPE to proceed anyway.\n
-			You can disable this warning by unchecking the
-			"Check for Updates" setting in the Options Menu\n
+			NEW JUICE AND EPIC VERSION: ${updateVersion}\n
+			PRESS ENTER TO UPDATE NOWWWW!!!\n
+			Or esc to continue anyway i don\'t give a fuck lol\n
+			if u don\'t want to see this message anymore disable "Check for Updates" in the Options Menu\n
 			-----------------------------------------------\n
-			Thank you for using the Engine!',
+			Thanks for playing our silly little mod!! :]',
 			32);
 		warnText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER);
 		warnText.scrollFactor.set();

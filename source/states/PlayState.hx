@@ -2467,7 +2467,7 @@ class PlayState extends MusicBeatState
 				if (storyPlaylist.length <= 0)
 				{
 					Mods.loadTopMod();
-					FlxG.sound.playMusic(Paths.music('freakyMenu'));
+					FlxG.sound.playMusic(Paths.music('KittyBreak'));
 					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
 					canResync = false;
@@ -2510,7 +2510,7 @@ class PlayState extends MusicBeatState
 
 				canResync = false;
 				MusicBeatState.switchState(new FreeplayState());
-				FlxG.sound.playMusic(Paths.music('freakyMenu'));
+				FlxG.sound.playMusic(Paths.music('KittyBreak'));
 				changedDifficulty = false;
 			}
 			transitioning = true;

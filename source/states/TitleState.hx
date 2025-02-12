@@ -112,6 +112,7 @@ class TitleState extends MusicBeatState
 	}
 
 	var logoBl:FlxSprite;
+	var gozado:FlxSprite;
 	var gfDance:FlxSprite;
 	var danceLeft:Bool = false;
 	var titleText:FlxSprite;
@@ -183,7 +184,7 @@ class TitleState extends MusicBeatState
 		titleText.animation.play('idle');
 		titleText.updateHitbox();
 
-		blackScreen = new FlxSprite().makeGraphic(1, 1, FlxColor.BLACK);
+		blackScreen = new FlxSprite().makeGraphic(1, 1, FlxColor.WHITE);
 		blackScreen.scale.set(FlxG.width, FlxG.height);
 		blackScreen.updateHitbox();
 		credGroup.add(blackScreen);
@@ -199,11 +200,22 @@ class TitleState extends MusicBeatState
 		ngSpr.screenCenter(X);
 		ngSpr.antialiasing = ClientPrefs.data.antialiasing;
 
+		gozado = new FlxSprite(0, FlxG.height - 350);
+		gozado.visible = false;
+		gozado.frames = Paths.getSparrowAtlas('funny');
+		gozado.antialiasing = ClientPrefs.data.antialiasing;
+		gozado.animation.addByPrefix('gozou', 'gozei', 60, false);
+		gozado.animation.play('gozou');
+		gozado.scale.set(0.5, 0.5);
+		gozado.updateHitbox();
+		gozado.screenCenter(X);
+
 		add(gfDance);
 		add(logoBl); //FNF Logo
 		add(titleText); //"Press Enter to Begin" text
 		add(credGroup);
 		add(ngSpr);
+		add(gozado);
 
 		if (initialized)
 			skipIntro();
@@ -583,10 +595,13 @@ class TitleState extends MusicBeatState
 					deleteCoolText();
 					createCoolText(['KittyBucks']);
 				case 32:
-					addMoreText('YEESSSSSSS'); // credTextShit.text += '\nFunkin';
+					addMoreText('YEESSSSSSS');
+					gozado.visible = true;
+					gozado.animation.play('gozou');
 
 				case 33:
 					skipIntro();
+					gozado.visible = false;
 			}
 		}
 	}
