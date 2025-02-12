@@ -29,12 +29,14 @@ class MainMenuState extends MusicBeatState
 	var leftItem:FlxSprite;
 	var rightItem:FlxSprite;
 
+	var freeImage:FlxSprite;
+
 	//Centered/Text options
 	var optionShit:Array<String> = [
 		//'story_mode',
 		'freeplay',
 		#if MODS_ALLOWED 'mods', #end
-		'credits'
+		//'credits'
 	];
 
 	var leftOption:String = #if ACHIEVEMENTS_ALLOWED 'achievements' #else null #end;
@@ -59,6 +61,8 @@ class MainMenuState extends MusicBeatState
 		#end
 
 		persistentUpdate = persistentDraw = true;
+
+
 
 		var yScroll:Float = 0.25;
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
@@ -87,18 +91,19 @@ class MainMenuState extends MusicBeatState
 
 		for (num => option in optionShit)
 		{
-			var item:FlxSprite = createMenuItem(option, 0, (num * 140) + 90);
+			var item:FlxSprite = createMenuItem(option, 80, (num * 140));
 			item.y += (4 - optionShit.length) * 70; // Offsets for when you have anything other than 4 items
-			item.x += 100; // Offsets for when you have anything other than 4 items
-			//item.screenCenter(X);
+			//item.screenCenter(Y);
 		}
 
 		if (leftOption != null)
-			leftItem = createMenuItem(leftOption, FlxG.width - 460, 490);
+			leftItem = createMenuItem(leftOption, 50, 430);
+		    //leftItem.screenCenter(Y);
 		if (rightOption != null)
 		{
-			rightItem = createMenuItem(rightOption, FlxG.width - 60, 490);
+			rightItem = createMenuItem(rightOption, 440, 430);
 			rightItem.x -= rightItem.width;
+			//rightItem.screenCenter(Y);
 		}
 
 		var psychVer:FlxText = new FlxText(12, FlxG.height - 44, 0, "KittyBucks v" + psychEngineVersion, 12);
@@ -110,6 +115,12 @@ class MainMenuState extends MusicBeatState
 		fnfVer.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(fnfVer);
 		changeItem();
+
+		var freeImage:FlxSprite = new FlxSprite(700, 50).loadGraphic(Paths.image('GL9haLxXUAA0M7J'));
+		freeImage.antialiasing = ClientPrefs.data.antialiasing;
+		freeImage.scrollFactor.set(0, 0);
+		add(freeImage);
+		//freeImage.visible = false;
 
 		#if ACHIEVEMENTS_ALLOWED
 		// Unlocks "Freaky on a Friday Night" achievement if it's a Friday and between 18:00 PM and 23:59 PM
@@ -250,14 +261,14 @@ class MainMenuState extends MusicBeatState
 				case LEFT:
 					if(controls.UI_RIGHT_P)
 					{
-						curColumn = CENTER;
+						curColumn = RIGHT;
 						changeItem();
 					}
 
 				case RIGHT:
 					if(controls.UI_LEFT_P)
 					{
-						curColumn = CENTER;
+						curColumn = LEFT;
 						changeItem();
 					}
 			}
@@ -312,16 +323,7 @@ class MainMenuState extends MusicBeatState
 						case 'achievements':
 							MusicBeatState.switchState(new AchievementsMenuState());
 						#end
-
-						case 'credits':
-							var poop = Highscore.formatSong('credits', 1);
-							Song.loadFromJson(poop, 'credits');
-							PlayState.storyDifficulty = 1;
-							FlxG.state.persistentUpdate = false;
-							LoadingState.loadAndSwitchState(new PlayState());
-							
-							FlxG.sound.music.pause();
-							FlxG.sound.music.volume = 0;
+			
 						case 'options':
 							MusicBeatState.switchState(new OptionsState());
 							OptionsState.onPlayState = false;

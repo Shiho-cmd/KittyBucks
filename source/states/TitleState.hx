@@ -49,7 +49,7 @@ class TitleState extends MusicBeatState
 	var credTextShit:Alphabet;
 	var ngSpr:FlxSprite;
 	
-	var titleTextColors:Array<FlxColor> = [0xFF33FFFF, 0xFF3333CC];
+	var titleTextColors:Array<FlxColor> = [0xFFffd382, 0xFFff8a8c];
 	var titleTextAlphas:Array<Float> = [1, .64];
 
 	var curWacky:Array<String> = [];
@@ -121,7 +121,7 @@ class TitleState extends MusicBeatState
 	{
 		persistentUpdate = true;
 		if (!initialized && FlxG.sound.music == null)
-			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+			FlxG.sound.playMusic(Paths.music('KittyBreak'), 0);
 
 		loadJsonData();
 		#if TITLE_SCREEN_EASTER_EGG easterEggData(); #end
@@ -134,6 +134,8 @@ class TitleState extends MusicBeatState
 		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24, false);
 		logoBl.animation.play('bump');
 		logoBl.updateHitbox();
+		logoBl.screenCenter(X);
+		logoBl.screenCenter(Y);
 
 		gfDance = new FlxSprite(gfPosition.x, gfPosition.y);
 		gfDance.antialiasing = ClientPrefs.data.antialiasing;
@@ -524,7 +526,7 @@ class TitleState extends MusicBeatState
 			{
 				case 1:
 					//FlxG.sound.music.stop();
-					FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+					FlxG.sound.playMusic(Paths.music('KittyBreak'), 0);
 					FlxG.sound.music.fadeIn(4, 0, 0.7);
 				case 2:
 					createCoolText(['Psych Engine by'], 40);
@@ -534,27 +536,56 @@ class TitleState extends MusicBeatState
 				case 5:
 					deleteCoolText();
 				case 6:
-					createCoolText(['Not associated', 'with'], -40);
+					createCoolText(['KittyBucks by'], 40);
 				case 8:
-					addMoreText('newgrounds', -40);
-					ngSpr.visible = true;
+					addMoreText('Natzy', 40);
+					addMoreText('LizNaithy', 40);
+					addMoreText('UKiYO', 40);
+					addMoreText('Bluck', 40);
+					addMoreText('Shiho', 40);
 				case 9:
 					deleteCoolText();
-					ngSpr.visible = false;
 				case 10:
-					createCoolText([curWacky[0]]);
+					createCoolText(['Not associated', 'with'], -40);
+				case 11:
+					addMoreText('Your Mom', -40);
+					ngSpr.visible = true;
 				case 12:
-					addMoreText(curWacky[1]);
-				case 13:
 					deleteCoolText();
+					ngSpr.visible = false;
+				case 13:
+					createCoolText([curWacky[0]]);
 				case 14:
-					addMoreText('Friday');
+					addMoreText(curWacky[1]);
 				case 15:
-					addMoreText('Night');
+					deleteCoolText();
 				case 16:
-					addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
+					createCoolText(['uhhh']);
+				case 19:
+					addMoreText('idk what to write here...');
+				case 20:
+					deleteCoolText();
+				case 21:
+					addMoreText('how\'s life going?');
+				case 23:
+					deleteCoolText();
+				case 24:
+					createCoolText(['WAIT']);
+				case 25:
+					addMoreText('THE');
+				case 26:
+					addMoreText('DROP');
+				case 27:
+					addMoreText('IS');
+				case 28:
+					addMoreText('COMING!!!!');
+				case 29:
+					deleteCoolText();
+					createCoolText(['KittyBucks']);
+				case 32:
+					addMoreText('YEESSSSSSS'); // credTextShit.text += '\nFunkin';
 
-				case 17:
+				case 33:
 					skipIntro();
 			}
 		}
@@ -592,7 +623,7 @@ class TitleState extends MusicBeatState
 						FlxG.camera.flash(FlxColor.WHITE, 2);
 						skippedIntro = true;
 
-						FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+						FlxG.sound.playMusic(Paths.music('KittyBreak'), 0);
 						FlxG.sound.music.fadeIn(4, 0, 0.7);
 						return;
 				}
@@ -614,7 +645,7 @@ class TitleState extends MusicBeatState
 					remove(credGroup);
 					FlxG.camera.flash(FlxColor.WHITE, 3);
 					sound.onComplete = function() {
-						FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+						FlxG.sound.playMusic(Paths.music('KittyBreak'), 0);
 						FlxG.sound.music.fadeIn(4, 0, 0.7);
 						transitioning = false;
 						if(easteregg == 'PESSY')
