@@ -594,7 +594,7 @@ class TitleState extends MusicBeatState
 				case 29:
 					deleteCoolText();
 					createCoolText(['KittyBucks']);
-				case 32:
+				case 31:
 					addMoreText('YEESSSSSSS');
 					gozado.visible = true;
 					gozado.animation.play('gozou');

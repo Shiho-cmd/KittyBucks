@@ -62,13 +62,11 @@ class MainMenuState extends MusicBeatState
 
 		persistentUpdate = persistentDraw = true;
 
-
-
-		var yScroll:Float = 0.25;
+		var yScroll:Float = 0;
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
 		bg.antialiasing = ClientPrefs.data.antialiasing;
-		bg.scrollFactor.set(0, yScroll);
-		bg.setGraphicSize(Std.int(bg.width * 1.175));
+		//bg.scrollFactor.set(0, yScroll);
+		//bg.setGraphicSize(Std.int(bg.width * 1.175));
 		bg.updateHitbox();
 		bg.screenCenter();
 		add(bg);
@@ -76,14 +74,13 @@ class MainMenuState extends MusicBeatState
 		camFollow = new FlxObject(0, 0, 1, 1);
 		add(camFollow);
 
-		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
+		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
 		magenta.antialiasing = ClientPrefs.data.antialiasing;
-		magenta.scrollFactor.set(0, yScroll);
-		magenta.setGraphicSize(Std.int(magenta.width * 1.175));
+		//magenta.scrollFactor.set(0, yScroll);
+		//magenta.setGraphicSize(Std.int(magenta.width * 1.175));
 		magenta.updateHitbox();
 		magenta.screenCenter();
 		magenta.visible = false;
-		magenta.color = 0xFFfd719b;
 		add(magenta);
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
@@ -116,12 +113,6 @@ class MainMenuState extends MusicBeatState
 		add(fnfVer);
 		changeItem();
 
-		var freeImage:FlxSprite = new FlxSprite(700, 50).loadGraphic(Paths.image('GL9haLxXUAA0M7J'));
-		freeImage.antialiasing = ClientPrefs.data.antialiasing;
-		freeImage.scrollFactor.set(0, 0);
-		add(freeImage);
-		//freeImage.visible = false;
-
 		#if ACHIEVEMENTS_ALLOWED
 		// Unlocks "Freaky on a Friday Night" achievement if it's a Friday and between 18:00 PM and 23:59 PM
 		var leDate = Date.now();
@@ -141,7 +132,7 @@ class MainMenuState extends MusicBeatState
 		}
 		#end
 
-		FlxG.camera.follow(camFollow, null, 0.15);
+		//FlxG.camera.follow(camFollow, null, 0.15);
 	}
 
 	function createMenuItem(name:String, x:Float, y:Float):FlxSprite

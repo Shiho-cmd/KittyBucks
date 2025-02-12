@@ -53,12 +53,6 @@ function onCreate()
         setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
     end
 
-    if difficultyName == 'erect' then
-        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName..' Erect')
-    else
-        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
-    end
-
     --[[local var ShaderName = 'gray'
     if shadersEnabled then  
         initLuaShader(ShaderName)
@@ -293,12 +287,7 @@ function onCustomSubstateCreatePost(name)
         setTextString("morri", curFrase)
 
         doTweenY("lololol", "morri", 694.6, 0.5, "quartOut")
-
-        if difficultyName == 'erect' then
-            setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName..' Erect (PAUSED)')
-        else
-            setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName..' (PAUSED)')
-        end
+        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName..' (PAUSED)')
     end
 end
 
@@ -390,36 +379,7 @@ function onCustomSubstateUpdatePost(name, elapsed)
         setShaderFloat('camShader', 'iTime', os.clock())
     end]=]
 
-        if keyJustPressed('accept') and pos == 0 and difficultyName == 'erect' and not getVar("inGameOver") then
-            closeCustomSubstate()
-            setProperty("escu.alpha", 0.00001)
-            setProperty("resu.alpha", 0.00001)
-            setProperty("resta.alpha", 0.00001)
-            setProperty("exit.alpha", 0.00001)
-            setProperty("seta.alpha", 0.00001)
-            setProperty("setaa.alpha", 0.00001)
-            setProperty("compo.alpha", 0.00001)
-            setProperty("barr.alpha", 0.00001)
-            setProperty("balls.alpha", 0.00001)
-            setProperty("morri.alpha", 0.00001)
-            setProperty("noWay.alpha", 0.00001)
-            setProperty("BGmoving.alpha", 0.00001)
-            setProperty("char.alpha", 0.00001)
-            setProperty("check.alpha", 0.00001)
-            setProperty("noWay.x", -999)
-            --[=[runHaxeCode([[
-                FlxG.game.setFilters([]);
-            ]])]=]
-            setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName..' Erect')
-            setProperty("barr.y", -20)
-            setProperty("compo.y", -20)
-            setProperty("balls.y", 740)
-            setProperty("morri.y", 740)
-            setProperty("playbackRate", 0.1)
-            volte = true
-            pauseSound("bah")
-            cancelTween("ven")
-        elseif keyJustPressed('accept') and pos == 0 and not getVar("inGameOver") then
+        if keyJustPressed('accept') and pos == 0 and not getVar("inGameOver") then
             closeCustomSubstate()
             setProperty("escu.alpha", 0.00001)
             setProperty("resu.alpha", 0.00001)
@@ -464,7 +424,7 @@ function onSoundFinished(tag)
 end
 
 function onDestroy()
-    setPropertyFromClass("openfl.Lib", "application.window.title", 'Friday Night Funkin\': Psych Engine')
+    setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks')
 end
     --[=[if shadersEnabled then
         runHaxeCode([[
@@ -477,12 +437,6 @@ function onCountdownStarted()
 
     if songPath == 'credits' then
         setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Credits Menu')
-    else
-        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
-    end
-
-    if difficultyName == 'erect' then
-        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName..' Erect')
     else
         setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
     end

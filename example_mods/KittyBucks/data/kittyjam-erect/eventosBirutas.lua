@@ -1,8 +1,8 @@
-lastNote = {0, ""}
 luaDebugMode = getModSetting("debug")
 luaDeprecatedWarnings = getModSetting("deprecated")
 
 local pathEvent = 'backgrounds/void/events/'
+local podePular = false
 
 function onCreate()
 
@@ -10,6 +10,15 @@ function onCreate()
     makeGraphic('escuro', screenWidth, screenHeight, '000000')
     setObjectCamera('escuro', 'other')
     addLuaSprite('escuro', false)
+    setObjectOrder("escuro", getObjectOrder("barr")-1)
+
+    makeLuaText("skip", "Press SPACE to skip intro", 0, 0.0, screenHeight)
+    screenCenter("skip", 'x')
+    setTextSize("skip", 20)
+    setProperty("skip.alpha", 0.7)
+    setObjectCamera("skip", 'other')
+    addLuaText("skip")
+    setObjectOrder("skip", getObjectOrder("barr"))
 
     makeLuaSprite('celula', pathEvent..'galaxy_pocket', 330, 420) --330 420
     addLuaSprite('celula', false)
@@ -22,7 +31,7 @@ function onCreate()
     setProperty("spek.visible", false)
     addLuaSprite("spek", false)
     
-    setProperty('camHUD.alpha', 0)
+    setProperty('camHUD.alpha', 0.00001)
         
     if not lowQuality then
         precacheImage("kaboom")
@@ -56,6 +65,7 @@ end
 
 function onSongStart()
     
+    podePular = true
     doTweenAlpha('vai', 'escuro', 0, 10, 'linear')
     triggerEvent('Camera Follow Pos', 660, -1000)
     setProperty('cameraSpeed', 99)
@@ -64,6 +74,22 @@ function onSongStart()
     setProperty("celula.y", 310)
     setProperty("spek.x", 230)
     setProperty("spek.y", 250)
+    doTweenY("bumcha", "skip", screenHeight - 20, 1, "quartOut")
+end
+
+function onUpdate(elapsed)
+    
+    if keyboardJustPressed("SPACE") and podePular then
+        setSongPosition(23000)
+    end
+
+    if getSongPosition() >= 23000 and podePular then
+        podePular = false
+        doTweenY("calaca", "skip", screenHeight, 1, "quartIn")
+        doTweenAlpha('vai', 'escuro', 0, 0.01, 'linear')
+        triggerEvent('Camera Follow Pos', '', '')
+        doTweenZoom('camz', 'camGame', 0.79, 0.01, 'linear')
+    end
 end
 
 function onStepHit()
@@ -79,5 +105,12 @@ function onStepHit()
         setProperty("camGame.visible", false)
         setProperty('explo.visible', true)
         playAnim('explo', 'bah')      
+    end
+end
+
+function onTweenCompleted(tag, vars)
+    
+    if tag == 'calaca' then
+        removeLuaText("skip", true)
     end
 end
