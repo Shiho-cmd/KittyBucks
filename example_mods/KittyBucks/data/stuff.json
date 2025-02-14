@@ -21,28 +21,27 @@
         ["\"Livin' off borrowed time, the clock ticks faster\"", -1100], // 10
         ["\"More cheese than Doritos, Cheetos or Fritos\"", -1100], // 11
         ["This mod has a Snoop Dogg Seal of Approval™", -1100], // 12
-        ["𓀖𓀗 𓀘 𓀙 𓀚 𓀛 𓀜 𓀝 𓀞 𓀟 𓀠 𓀡 𓀢 𓀣 𓀤 𓀥 𓀦 𓀧 𓀨 𓀩 𓀪 𓀫 𓀬𓀭 𓀮 𓀯 𓀰", -1100], // 13 // isso nem funciona lol // amigos do Ukiyo mandaram essas
-        ["Also try Terraria!", -450], // 14
-        ["Also try Minecraft!", -450], // 15
-        ["\"28 STABS!\"", -450], // 16
-        ["\"For real life??\"", -450], // 17 // eu que escrevi essas B) (Shiho)
-        ["\"Oh biscuits...\"", -450], // 18
-        ["\"I FUCKING LOVE AIR-CONDITIONING!!!\"", -570], // 19
-        ["This mod is sponsored by Raid Shadow Legends!", -1100], // 20
-        ["\"DAMN DANIEL BACK AT IT AGAIN WITH THE WHITE VANS!!!\"", -1100], // 21
-        ["ma balls itch.", -450], // 22
-        ["\"Lemonade... Lemonade... Lemonade... Lemonade... Le-\"", -1100], // 23
-        ["\"God I love the limited 3D they use for this game. It's so charming\"", -1100], // 24
-        ["\"I'm kind of a Pokemon!\"", -450], // 25
-        ["\"Tornado penis.\"", -450], // 26
-        ["Hello Kitty banger mod", -450], // 27
-        ["\"num seio\"", -450], // 28 // amigos meus (Shiho) mandaram essas
-        ["\"Aos oprimidos é permitido uma vez a cada poucos anos decidir quais representantes específicos da classe opressora devem representá-los e reprimi-los.\"", -2280], // 29
-        ["Are you going to play seriously now?", -570], // 30 // sugestões da Liz
-        ["I love eating grass", -450], // 31
-        ["Did the pizza arrive?? :D", -450], // 32
-        ["It's ok to give up man, just relax and come back later ;)", -1100], // 33 // sugestões da Natzy
-        ["WHY DID YOU PAUSE?!?! THIS IS THE BEST PART!!!!", -1100], // 34 // frases especiais
-        ["Seriously? You're going to restart because you missed one note??? -_-", -1200] // 35
+        ["Also try Terraria!", -450], // 13
+        ["Also try Minecraft!", -450], // 14
+        ["\"28 STABS!\"", -450], // 15
+        ["\"For real life??\"", -450], // 16 // eu que escrevi essas B) (Shiho)
+        ["\"Oh biscuits...\"", -450], // 17
+        ["\"I FUCKING LOVE AIR-CONDITIONING!!!\"", -570], // 18
+        ["This mod is sponsored by Raid Shadow Legends!", -1100], // 19
+        ["\"DAMN DANIEL BACK AT IT AGAIN WITH THE WHITE VANS!!!\"", -1100], // 20
+        ["ma balls itch.", -450], // 21
+        ["\"Lemonade... Lemonade... Lemonade... Lemonade... Le-\"", -1100], // 22
+        ["\"God I love the limited 3D they use for this game. It's so charming\"", -1100], // 23
+        ["\"I'm kind of a Pokemon!\"", -450], // 24
+        ["\"Tornado penis.\"", -450], // 25
+        ["Hello Kitty banger mod", -450], // 26
+        ["\"num seio\"", -450], // 27 // amigos meus (Shiho) mandaram essas
+        ["\"Aos oprimidos é permitido uma vez a cada poucos anos decidir quais representantes específicos da classe opressora devem representá-los e reprimi-los.\"", -2280], // 28
+        ["Are you going to play seriously now?", -570], // 29 // sugestões da Liz
+        ["I love eating grass", -450], // 30
+        ["Did the pizza arrive?? :D", -450], // 31
+        ["It's ok to give up man, just relax and come back later ;)", -1100], // 32 // sugestões da Natzy
+        ["WHY DID YOU PAUSE?!?! THIS IS THE BEST PART!!!!", -1100], // 33 // frases especiais
+        ["Seriously? You're going to restart because you missed one note??? -_-", -1200] // 34
     ]
 }

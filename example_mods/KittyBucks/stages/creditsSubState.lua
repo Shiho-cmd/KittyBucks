@@ -2,12 +2,15 @@ luaDebugMode = getModSetting("debug")
 luaDeprecatedWarnings = getModSetting("deprecated")
 
 function onStartCountdown() 
-    if not allowCountdown then
-        return Function_Stop
-    end
-    if allowCountdown then
-        return Function_Continue
-    end 
+
+    --MORRAM!!!!!!!!!!!!!!!!1111111111
+    setProperty("botplayTxt.visible", false)
+    setProperty("iconP1.visible", false)
+    setProperty("iconP2.visible", false)
+    setProperty("scoreTxt.visible", false)
+    setProperty("healthBar.visible", false)
+    setProperty("camGame.visible", false)
+    return Function_Stop;
 end
 
 function parseJson(file)
@@ -51,7 +54,59 @@ local linkOmori = nil
 local shihoBooped = false
 local ukiyoBooped = false
 
+local shader = "wavy"
+
+local check = nil
+
+local volume = 1
+local volume2 = 0
+local numPodeNaoMan = false
+local updateShit = true
+
 function onCreate()
+
+    --precacheeeeeeeeee
+    precacheImage("credits/stickers/charter")
+    precacheImage("credits/stickers/artist")
+    precacheImage("credits/stickers/programmer")
+    precacheImage("credits/stickers/composer")
+    precacheImage("credits/stickers/animator")
+    precacheImage("credits/stickers/director")
+
+    precacheImage("credits/pins/eventCode")
+    precacheImage("credits/pins/github")
+    precacheImage("credits/pins/siivagunner")
+
+    precacheImage("credits/shinySparkles")
+    precacheImage("credits/thing")
+    precacheImage("credits/gradiant")
+    precacheImage("credits/pinSparkle")
+    precacheImage("credits/sectionSelect")
+
+    precacheImage("credits/logos/bluesky")
+    precacheImage("credits/logos/gamebanana")
+    precacheImage("credits/logos/linktree")
+    precacheImage("credits/logos/spotify")
+    precacheImage("credits/logos/tumblr")
+    precacheImage("credits/logos/twitter")
+    precacheImage("credits/logos/youtube")
+
+    precacheImage("credits/the/liz")
+    precacheImage("credits/the/natzy")
+    precacheImage("credits/the/shiho")
+    precacheImage("credits/the/ukiyo")
+
+    precacheImage("keroppica")
+
+    precacheSound("credits/thank_you_for_playing")
+    precacheSound("credits/thank_you_for_muffle_everything_omg_help")
+    precacheSound("credits/light_turn_on")
+    precacheSound("credits/flicker")
+    precacheSound("credits/warp")
+    precacheSound("credits/honk")
+    precacheSound("credits/ragdoll")
+    precacheSound("credits/shiny")
+    precacheSound("credits/stickers/shhh/nada_pra_ver_aqui")
 
     if getTextFromFile("data/kittyjam/save.txt") == 'essa música foi passada?: sim' and getTextFromFile("data/kittyjam/save-erect.txt") == 'essa música foi passada?: sim' and getTextFromFile("data/supernova/save.txt") == 'essa música foi passada?: sim'  and getTextFromFile("data/sexoduro/save.txt") == 'essa música foi passada?: sim' then
         modernShinyChance = true
@@ -69,54 +124,7 @@ function onCreate()
         shinyChance = 0.073
     end
 
-    itsShiny = getRandomBool(shinyChance)
-
-    if buildTarget == 'android' then
-        
-        precacheImage("virtualpad")
-
-        makeLuaSprite("buttonB", '', 855, 570)
-        loadGraphic("buttonB", "virtualPad", 132, 127)
-        addAnimation("buttonB", "pressed", {16, 17}, 10, false)
-        addAnimation("buttonB", "idle", {16}, 0, true)
-        setObjectCamera("buttonB", 'other')
-        setProperty("buttonB.alpha", 0.5)
-        setProperty("buttonB.color", FlxColor("YELLOW"))
-        setProperty("buttonB.alpha", 0.5)
-        addLuaSprite("buttonB", true)
-
-        makeLuaSprite("buttonL", '', 1000, 570)
-        loadGraphic("buttonL", "virtualPad", 132, 127)
-        addAnimation("buttonL", "pressed", {2, 1}, 10, false)
-        addAnimation("buttonL", "idle", {1}, 0, true)
-        setObjectCamera("buttonL", 'other')
-        setProperty("buttonL.alpha", 0.5)
-        setProperty("buttonL.color", 0xF634B5)
-        setProperty("buttonL.alpha", 0.5)
-        addLuaSprite("buttonL", true)
-
-        makeLuaSprite("buttonR", '', 1145, 570)
-        loadGraphic("buttonR", "virtualPad", 132, 127)
-        addAnimation("buttonR", "pressed", {11, 10}, 10, false)
-        addAnimation("buttonR", "idle", {10}, 0, true)
-        setObjectCamera("buttonR", 'other')
-        setProperty("buttonR.alpha", 0.5)
-        setProperty("buttonR.color", 0x52465E)
-        setProperty("buttonR.alpha", 0.5)
-        addLuaSprite("buttonR", true)
-    end
-    
-
-    --precacheeeeeeeeee
-    precacheImage("credits/stickers/charter", false)
-    precacheImage("credits/stickers/artist", false)
-    precacheImage("credits/stickers/programmer", false)
-    precacheImage("credits/stickers/composer", false)
-
-    precacheSound("credits/thank_you_for_playing")
-    precacheSound("credits/thank_you_for_muffle_everything_omg_help")
-    precacheSound("credits/light_turn_on")
-    precacheSound("credits/flicker")
+    itsShiny = getRandomBool(shinyChance)  
         
     --textos
     makeLuaText("name", creditsName, 0, 0.0, 69)
@@ -146,7 +154,7 @@ function onCreate()
     setObjectCamera("coiso2", 'other')
     addLuaText("coiso2")
     setTextSize("coiso2", 35)
-    setProperty("coiso2.visible", false)
+    setProperty("coiso2.alpha", 0.0001)
 
     makeLuaText("mostresla", "BUCETAAAAAAAAAAA", 0, 0.0, 200)
     setObjectCamera("mostresla", 'other')
@@ -163,7 +171,7 @@ function onCreate()
     makeLuaSprite("gra", 'credits/gradiant', 0, 0)
     setObjectCamera("gra", 'other')
     setProperty("gra.alpha", 0.5)
-    setProperty("gra.visible", false)
+    setProperty("gra.alpha", 0.0001)
     setProperty("gra.flipY", true)
     addLuaSprite("gra", false)
 
@@ -187,7 +195,7 @@ function onCreate()
     setObjectCamera("natzy", 'other')
     addLuaSprite("natzy", false)
     scaleObject("natzy", 0.7, 0.7)
-    setProperty("natzy.visible", false)
+    setProperty("natzy.alpha", 0.0001)
     doTweenY("1", "natzy.scale", 0.6, 1, "quadInOut")
     doTweenX("2", "natzy.scale", 0.8, 1, "quadInOut")
     doTweenY("11", "natzy", 145, 1, "quadInOut")
@@ -228,12 +236,10 @@ function onCreate()
     makeGraphic('barrama', screenWidth, 100, '000000')
     addLuaSprite('barrama', false)
     setObjectCamera('barrama', 'other')
-    setScrollFactor('barrama', 0, 0)
     
     makeLuaSprite('barraixo', '', 0, 650)
     makeGraphic('barraixo', screenWidth, 100, '000000')
     addLuaSprite('barraixo', false)
-    setScrollFactor('barraixo', 0, 0)
     setObjectCamera('barraixo', 'other')
 
     --logos links shits bitches idk man i'm tired it's almost 2am
@@ -244,43 +250,43 @@ function onCreate()
     makeLuaSprite("tumb", 'credits/logos/tumblr', 10, 600)
     setObjectCamera("tumb", 'other')
     scaleObject("tumb", 0.1, 0.1)
-    setProperty("tumb.visible", true)
+    setProperty("tumb.alpha", 1)
     addLuaSprite("tumb", false)
 
     makeLuaSprite("tree", 'credits/logos/linktree', 10, 601)
     setObjectCamera("tree", 'other')
     scaleObject("tree", 0.09, 0.09)
-    setProperty("tree.visible", false)
+    setProperty("tree.alpha", 0.0001)
     addLuaSprite("tree", false)
 
     makeLuaSprite("sky", 'credits/logos/bluesky', 9, 602)
     setObjectCamera("sky", 'other')
     scaleObject("sky", 0.085, 0.085)
-    setProperty("sky.visible", false)
+    setProperty("sky.alpha", 0.0001)
     addLuaSprite("sky", false)
 
     makeLuaSprite("twi", 'credits/logos/twitter', 70, 602)
     setObjectCamera("twi", 'other')
     scaleObject("twi", 0.045, 0.045)
-    setProperty("twi.visible", false)
+    setProperty("twi.alpha", 0.0001)
     addLuaSprite("twi", false)
 
     makeLuaSprite("spo", 'credits/logos/spotify', 63, 602)
     setObjectCamera("spo", 'other')
     scaleObject("spo", 0.082, 0.082)
-    setProperty("spo.visible", false)
+    setProperty("spo.alpha", 0.0001)
     addLuaSprite("spo", false)
 
     makeLuaSprite("you", 'credits/logos/youtube', 5, 605)
     scaleObject("you", 0.057, 0.057)
     setObjectCamera("you", 'other')
-    setProperty("you.visible", false)
+    setProperty("you.alpha", 0.0001)
     addLuaSprite("you", false)
 
     makeLuaSprite("bana", 'credits/logos/gamebanana', 3, 595)
     setObjectCamera("bana", 'other')
     scaleObject("bana", 0.073, 0.073)
-    setProperty("bana.visible", false)
+    setProperty("bana.alpha", 0.0001)
     addLuaSprite("bana", false)
 
     -- stickers
@@ -330,14 +336,14 @@ function onCreate()
     setObjectCamera("pinGit", 'other')
     setProperty('pinGit.antialiasing', false)
     addLuaSprite("pinGit", false)
-    setProperty("pinGit.visible", false)
+    setProperty("pinGit.alpha", 0.0001)
 
     makeLuaSprite("pinSiiva", 'credits/pins/siivagunner', 1080, 90)
     setProperty("pinSiiva.angle", 20)
     setObjectCamera("pinSiiva", 'other')
     setProperty('pinSiiva.antialiasing', false)
     addLuaSprite("pinSiiva", false)
-    setProperty("pinSiiva.visible", false)
+    setProperty("pinSiiva.alpha", 0.0001)
 
     makeLuaSprite("pinEC", 'credits/pins/eventCode', 1100, 150)
     scaleObject("pinEC", 1.7, 1.7)
@@ -345,7 +351,7 @@ function onCreate()
     setObjectCamera("pinEC", 'other')
     setProperty('pinEC.antialiasing', false)
     addLuaSprite("pinEC", false)
-    setProperty("pinEC.visible", true)
+    setProperty("pinEC.alpha", 1)
 
     makeAnimatedLuaSprite("pinSparkle", 'credits/pinSparkle', 1100, 125)
     addAnimationByPrefix("pinSparkle", "idle", "spark", 10, true)
@@ -354,7 +360,7 @@ function onCreate()
     addLuaSprite("pinSparkle", false)
 
     -- section select
-    makeAnimatedLuaSprite("sec", 'credits/sectionSelect', 0, 500)
+    makeAnimatedLuaSprite("sec", 'credits/sectionSelect', 0, 655)
     addAnimationByIndices("sec", "spe", "special", "1, 2, 3", 12, true)
     addAnimationByIndices("sec", "bucks", "kitty", "1, 2, 3", 12, true)
     addAnimationByIndices("sec", "speGay", "specialGamepad", "1, 2, 3", 12, true)
@@ -377,7 +383,7 @@ function onCreateHitbox() -- só pra ser bonitnho
     --hitbox shiho
     makeLuaSprite("box", '', 170, 260)
     makeGraphic("box", 223, 200, 'FFFFFF')
-    setProperty("box.alpha", 0)
+    setProperty("box.alpha", 0.0001)
     setProperty("box.visible", false)
     setObjectCamera("box", 'other')
     addLuaSprite("box", true)
@@ -385,25 +391,17 @@ function onCreateHitbox() -- só pra ser bonitnho
     --hitbox logo
     makeLuaSprite("boxLogo", '', 10, 601)
     makeGraphic("boxLogo", 50, 50, 'FFFFFF')
-    setProperty("boxLogo.alpha", 0)
+    setProperty("boxLogo.alpha", 0.00001)
     setObjectCamera("boxLogo", 'other')
     addLuaSprite("boxLogo", true)
 
     makeLuaSprite("boxLogo2", '', 73, 601)
     makeGraphic("boxLogo2", 50, 50, 'FFFFFF')
-    setProperty("boxLogo2.alpha", 0)
+    setProperty("boxLogo2.alpha", 0.0001)
     setProperty("boxLogo2.visible", false)
     setObjectCamera("boxLogo2", 'other')
     addLuaSprite("boxLogo2", true)
-
-    --selection box
-    makeLuaSprite("select", 'credits/selectionBox')
-    setObjectCamera("select", 'other')
-    addLuaSprite("select", true)
-    setProperty("select.visible", false)
 end
-
-local shader = "wavy"
 
 function onCreatePost()
     if shadersEnabled then
@@ -412,32 +410,7 @@ function onCreatePost()
     end
 end
 
-local leftJustPressed = nil
-local rightJustPressed = nil
-local bJustPressed = nil
-local leftPressed = nil
-local rightPressed = nil
-local bPressed = nil
-local leftReleased = nil
-local rightReleased = nil
-local bReleased = nil
-local check = nil
-
-local volume = 1
-local volume2 = 0
-local numPodeNaoMan = false
-
-local mouse = true
-
 function onUpdate(elapsed)
-
-    --MORRAM!!!!!!!!!!!!!!!!1111111111
-    setProperty("botplayTxt.visible", false)
-    setProperty("iconP1.visible", false)
-    setProperty("iconP2.visible", false)
-    setProperty("scoreTxt.visible", false)
-    setProperty("healthBar.visible", false)
-    setProperty("camGame.visible", false)
 
     --[[if isAchievementUnlocked("funny") then
         longTxtSiiva = parsed.siivaCre[2]
@@ -455,12 +428,6 @@ function onUpdate(elapsed)
         setAchievementScore("boop", 2, false)
     end
 
-
-
-    if buildTarget == 'android' then
-        mouse = false
-    end
-
     if shadersEnabled then
     setShaderFloat('back', 'frequency', 8)
     setShaderFloat('back', 'wamplitude', 0.05)
@@ -472,12 +439,6 @@ function onUpdate(elapsed)
         playAnim("shi", "idleShiny", true)
         playAnim("sparkles", "wow", true)
         runTimer("PENIS", 0.01)
-    end
-
-    if buildTarget == 'android' then
-    leftJustPressed = getMouseX('camOther') > getProperty('buttonL.x') and getMouseY('camOther') > getProperty('buttonL.y') and getMouseX('camOther') < getProperty('buttonL.x') + getProperty('buttonL.width') and getMouseY('camOther') < getProperty('buttonL.y') + getProperty('buttonL.height') and mouseClicked()
-    rightJustPressed = getMouseX('camOther') > getProperty('buttonR.x') and getMouseY('camOther') > getProperty('buttonR.y') and getMouseX('camOther') < getProperty('buttonR.x') + getProperty('buttonR.width') and getMouseY('camOther') < getProperty('buttonR.y') + getProperty('buttonR.height') and mouseClicked()
-    bJustPressed = getMouseX('camOther') > getProperty('buttonB.x') and getMouseY('camOther') > getProperty('buttonB.y') and getMouseX('camOther') < getProperty('buttonB.x') + getProperty('buttonB.width') and getMouseY('camOther') < getProperty('buttonB.y') + getProperty('buttonB.height') and mouseClicked()
     end
 
     checkArt = getMouseX('camOther') > getProperty('stickerArt.x') and getMouseY('camOther') > getProperty('stickerArt.y') and getMouseX('camOther') < getProperty('stickerArt.x') + getProperty('stickerArt.width') and getMouseY('camOther') < getProperty('stickerArt.y') + getProperty('stickerArt.height') and getProperty("stickerArt.visible")
@@ -521,30 +482,31 @@ function onUpdate(elapsed)
         doTweenAlpha("putaRapariga", "mostresla", 0, 0.1, "linear")
     end
 
-    if pos == 5 and section == 0 then -- shiho
+    if pos == 5 and section == 0 and updateShit then -- shiho
+        updateShit = false
         creditsName = parsed.shihoCre[1]
         creditsShortTxt = parsed.shihoCre[2]
         creditsLongTxt = parsed.shihoCre[3]
         color = parsed.shihoCre[4]
         link = parsed.shihoCre[5]
         link2 = parsed.shihoCre[6]
-        setProperty("shi.visible", true)
-        setProperty("ukiyo.visible", false)
-        setProperty("liz.visible", false)
-        setProperty("natzy.visible", false)
-        setProperty("pica.visible", false)
+        setProperty("shi.alpha", 1)
+        setProperty("ukiyo.alpha", 0.0001)
+        setProperty("liz.alpha", 0.0001)
+        setProperty("natzy.alpha", 0.0001)
+        setProperty("pica.alpha", 0.0001)
         setProperty("box.visible", true)
         setProperty("boxLogo2.visible", true)
-        setProperty("tumb.visible", true)
-        setProperty("tree.visible", false)
-        setProperty("sky.visible", true)
-        setProperty("twi.visible", false)
-        setProperty("spo.visible", false)
-        setProperty("you.visible", false)
-        setProperty("bana.visible", false)
-        setProperty("pinGit.visible", false)
-        setProperty("pinSiiva.visible", false)
-        setProperty("pinEC.visible", false)
+        setProperty("tumb.alpha", 1)
+        setProperty("tree.alpha", 0.0001)
+        setProperty("sky.alpha", 1)
+        setProperty("twi.alpha", 0.0001)
+        setProperty("spo.alpha", 0.0001)
+        setProperty("you.alpha", 0.0001)
+        setProperty("bana.alpha", 0.0001)
+        setProperty("pinGit.alpha", 0.0001)
+        setProperty("pinSiiva.alpha", 0.0001)
+        setProperty("pinEC.alpha", 0.0001)
         setProperty("pinSparkle.x", -999)
         setProperty("pinSparkle.y", -999)
         setProperty("stuff.x", 0)
@@ -566,30 +528,31 @@ function onUpdate(elapsed)
         screenCenter("shortTxt", 'x')
         screenCenter("longTxt", 'y')
         setProperty("longTxt.x", 650)
-    elseif pos == 2 and section == 0 then -- liz
+    elseif pos == 2 and section == 0 and updateShit then -- liz
+        updateShit = false
         creditsName = parsed.lizCre[1]
         creditsShortTxt = parsed.lizCre[2]
         creditsLongTxt = parsed.lizCre[3]
         color = parsed.lizCre[4]
         link = parsed.lizCre[5]
         link2 = parsed.lizCre[6]
-        setProperty("shi.visible", false)
-        setProperty("ukiyo.visible", false)
-        setProperty("liz.visible", true)
-        setProperty("natzy.visible", false)
-        setProperty("pica.visible", false)
+        setProperty("shi.alpha", 0.0001)
+        setProperty("ukiyo.alpha", 0.0001)
+        setProperty("liz.alpha", 1)
+        setProperty("natzy.alpha", 0.0001)
+        setProperty("pica.alpha", 0.0001)
         setProperty("box.visible", false)
         setProperty("boxLogo2.visible", true)
-        setProperty("tumb.visible", false)
-        setProperty("tree.visible", true)
-        setProperty("sky.visible", false)
-        setProperty("twi.visible", true)
-        setProperty("spo.visible", false)
-        setProperty("you.visible", false)
-        setProperty("bana.visible", false)
-        setProperty("pinGit.visible", false)
-        setProperty("pinSiiva.visible", false)
-        setProperty("pinEC.visible", false)
+        setProperty("tumb.alpha", 0.0001)
+        setProperty("tree.alpha", 1)
+        setProperty("sky.alpha", 0.0001)
+        setProperty("twi.alpha", 1)
+        setProperty("spo.alpha", 0.0001)
+        setProperty("you.alpha", 0.0001)
+        setProperty("bana.alpha", 0.0001)
+        setProperty("pinGit.alpha", 0.0001)
+        setProperty("pinSiiva.alpha", 0.0001)
+        setProperty("pinEC.alpha", 0.0001)
         setProperty("pinSparkle.x", -999)
         setProperty("pinSparkle.y", -999)
         setProperty("stuff.x", 0)
@@ -611,30 +574,31 @@ function onUpdate(elapsed)
         screenCenter("shortTxt", 'x')
         screenCenter("longTxt", 'y')
         setProperty("longTxt.x", 650)
-    elseif pos == 3 and section == 0 then -- ukiyo
+    elseif pos == 3 and section == 0 and updateShit then -- ukiyo
+        updateShit = false
         creditsName = parsed.ukiyoCre[1]
         creditsShortTxt = parsed.ukiyoCre[2]
         creditsLongTxt = parsed.ukiyoCre[3]
         color = parsed.ukiyoCre[4]
         link = parsed.ukiyoCre[5]
         link2 = parsed.ukiyoCre[6]
-        setProperty("shi.visible", false)
-        setProperty("ukiyo.visible", true)
-        setProperty("liz.visible", false)
-        setProperty("natzy.visible", false)
-        setProperty("pica.visible", false)
+        setProperty("shi.alpha", 0.0001)
+        setProperty("ukiyo.alpha", 1)
+        setProperty("liz.alpha", 0.0001)
+        setProperty("natzy.alpha", 0.0001)
+        setProperty("pica.alpha", 0.0001)
         setProperty("box.visible", false)
         setProperty("boxLogo2.visible", true)
-        setProperty("tumb.visible", false)
-        setProperty("tree.visible", true)
-        setProperty("sky.visible", false)
-        setProperty("twi.visible", false)
-        setProperty("spo.visible", true)
-        setProperty("you.visible", false)
-        setProperty("bana.visible", false)
-        setProperty("pinGit.visible", false)
-        setProperty("pinSiiva.visible", false)
-        setProperty("pinEC.visible", false)
+        setProperty("tumb.alpha", 0.0001)
+        setProperty("tree.alpha", 1)
+        setProperty("sky.alpha", 0.0001)
+        setProperty("twi.alpha", 0.0001)
+        setProperty("spo.alpha", 1)
+        setProperty("you.alpha", 0.0001)
+        setProperty("bana.alpha", 0.0001)
+        setProperty("pinGit.alpha", 0.0001)
+        setProperty("pinSiiva.alpha", 0.0001)
+        setProperty("pinEC.alpha", 0.0001)
         setProperty("pinSparkle.x", -999)
         setProperty("pinSparkle.y", -999)
         setProperty("stuff.x", 0)
@@ -654,30 +618,31 @@ function onUpdate(elapsed)
         screenCenter("shortTxt", 'x')
         screenCenter("longTxt", 'y')
         setProperty("longTxt.x", 600)
-    elseif pos == 1 and section == 0 then -- natzy
+    elseif pos == 1 and section == 0 and updateShit then -- natzy
+        updateShit = false
         creditsName = parsed.natzyCre[1]
         creditsShortTxt = parsed.natzyCre[2]
         creditsLongTxt = parsed.natzyCre[3]
         color = parsed.natzyCre[4]
         link = parsed.natzyCre[5]
         link2 = parsed.natzyCre[6]
-        setProperty("shi.visible", false)
-        setProperty("ukiyo.visible", false)
-        setProperty("liz.visible", false)
-        setProperty("natzy.visible", true)
-        setProperty("pica.visible", false)
+        setProperty("shi.alpha", 0.0001)
+        setProperty("ukiyo.alpha", 0.0001)
+        setProperty("liz.alpha", 0.0001)
+        setProperty("natzy.alpha", 1)
+        setProperty("pica.alpha", 0.0001)
         setProperty("box.visible", false)
         setProperty("boxLogo2.visible", true)
-        setProperty("tumb.visible", false)
-        setProperty("tree.visible", false)
-        setProperty("sky.visible", true)
-        setProperty("twi.visible", true)
-        setProperty("spo.visible", false)
-        setProperty("you.visible", false)
-        setProperty("bana.visible", false)
-        setProperty("pinGit.visible", false)
-        setProperty("pinSiiva.visible", false)
-        setProperty("pinEC.visible", false)
+        setProperty("tumb.alpha", 0.0001)
+        setProperty("tree.alpha", 0.0001)
+        setProperty("sky.alpha", 1)
+        setProperty("twi.alpha", 1)
+        setProperty("spo.alpha", 0.0001)
+        setProperty("you.alpha", 0.0001)
+        setProperty("bana.alpha", 0.0001)
+        setProperty("pinGit.alpha", 0.0001)
+        setProperty("pinSiiva.alpha", 0.0001)
+        setProperty("pinEC.alpha", 0.0001)
         setProperty("stickerDir.x", 1050)
         setProperty("pinSparkle.x", -999)
         setProperty("pinSparkle.y", -999)
@@ -700,29 +665,30 @@ function onUpdate(elapsed)
         screenCenter("shortTxt", 'x')
         screenCenter("longTxt", 'y')
         setProperty("longTxt.x", 650)
-    elseif pos == 4 and section == 0 then -- bluck
+    elseif pos == 4 and section == 0 and updateShit then -- bluck
+        updateShit = false
         creditsName = parsed.bluckCre[1]
         creditsShortTxt = parsed.bluckCre[2]
         creditsLongTxt = parsed.bluckCre[3]
         color = parsed.bluckCre[4]
         link = parsed.bluckCre[5]
-        setProperty("shi.visible", false)
-        setProperty("ukiyo.visible", false)
-        setProperty("liz.visible", false)
-        setProperty("natzy.visible", false)
+        setProperty("shi.alpha", 0.0001)
+        setProperty("ukiyo.alpha", 0.0001)
+        setProperty("liz.alpha", 0.0001)
+        setProperty("natzy.alpha", 0.0001)
         setProperty("box.visible", false)
-        setProperty("pica.visible", true)
+        setProperty("pica.alpha", 1)
         setProperty("boxLogo2.visible", false)
-        setProperty("tumb.visible", false)
-        setProperty("tree.visible", false)
-        setProperty("sky.visible", false)
-        setProperty("twi.visible", true)
-        setProperty("spo.visible", false)
-        setProperty("you.visible", false)
-        setProperty("bana.visible", false)
-        setProperty("pinGit.visible", false)
-        setProperty("pinSiiva.visible", false)
-        setProperty("pinEC.visible", false)
+        setProperty("tumb.alpha", 0.0001)
+        setProperty("tree.alpha", 0.0001)
+        setProperty("sky.alpha", 0.0001)
+        setProperty("twi.alpha", 1)
+        setProperty("spo.alpha", 0.0001)
+        setProperty("you.alpha", 0.0001)
+        setProperty("bana.alpha", 0.0001)
+        setProperty("pinGit.alpha", 0.0001)
+        setProperty("pinSiiva.alpha", 0.0001)
+        setProperty("pinEC.alpha", 0.0001)
         setProperty("pinSparkle.x", -999)
         setProperty("pinSparkle.y", -999)
         setProperty("stuff.x", -50)
@@ -750,7 +716,8 @@ function onUpdate(elapsed)
         pos = 5
     end
 
-    if pos2 == 1 and section == 1 then
+    if pos2 == 1 and section == 1 and updateShit then
+        updateShit = false
         creditsName = parsed.seventenCre[1]
         creditsLongTxt = parsed.seventenCre[2]
         color = parsed.seventenCre[3]
@@ -758,17 +725,17 @@ function onUpdate(elapsed)
         setProperty("boxLogo2.visible", false)
         setProperty("stuff.visible", true)
         setProperty("stuff.x", -60)
-        setProperty("shortTxt.visible", false)
-        setProperty("tumb.visible", false)
-        setProperty("tree.visible", false)
-        setProperty("sky.visible", false)
-        setProperty("twi.visible", false)
-        setProperty("spo.visible", false)
-        setProperty("you.visible", false)
-        setProperty("bana.visible", true)
-        setProperty("pinGit.visible", true)
-        setProperty("pinSiiva.visible", false)
-        setProperty("pinEC.visible", false)
+        setProperty("shortTxt.alpha", 0.0001)
+        setProperty("tumb.alpha", 0.0001)
+        setProperty("tree.alpha", 0.0001)
+        setProperty("sky.alpha", 0.0001)
+        setProperty("twi.alpha", 0.0001)
+        setProperty("spo.alpha", 0.0001)
+        setProperty("you.alpha", 0.0001)
+        setProperty("bana.alpha", 1)
+        setProperty("pinGit.alpha", 1)
+        setProperty("pinSiiva.alpha", 0.0001)
+        setProperty("pinEC.alpha", 0.0001)
         setProperty("pinSparkle.x", 1100)
         setProperty("pinSparkle.y", 120)
         doTweenColor("corYay", "back", color, 0.5, "linear")
@@ -779,24 +746,25 @@ function onUpdate(elapsed)
         screenCenter("shortTxt", 'x')
         screenCenter("longTxt", 'y')
         screenCenter("longTxt")
-    elseif pos2 == 2 and section == 1 then
+    elseif pos2 == 2 and section == 1 and updateShit then
+        updateShit = false
         creditsName = parsed.gitCre[1]
         creditsLongTxt = parsed.gitCre[2]
         color = parsed.gitCre[3]
         link = nil
         setProperty("boxLogo2.visible", false)
         setProperty("stuff.visible", false)
-        setProperty("shortTxt.visible", false)
-        setProperty("tumb.visible", false)
-        setProperty("tree.visible", false)
-        setProperty("sky.visible", false)
-        setProperty("twi.visible", false)
-        setProperty("spo.visible", false)
-        setProperty("you.visible", false)
-        setProperty("bana.visible", false)
-        setProperty("pinGit.visible", true)
-        setProperty("pinSiiva.visible", false)
-        setProperty("pinEC.visible", false)
+        setProperty("shortTxt.alpha", 0.0001)
+        setProperty("tumb.alpha", 0.0001)
+        setProperty("tree.alpha", 0.0001)
+        setProperty("sky.alpha", 0.0001)
+        setProperty("twi.alpha", 0.0001)
+        setProperty("spo.alpha", 0.0001)
+        setProperty("you.alpha", 0.0001)
+        setProperty("bana.alpha", 0.0001)
+        setProperty("pinGit.alpha", 1)
+        setProperty("pinSiiva.alpha", 0.0001)
+        setProperty("pinEC.alpha", 0.0001)
         setProperty("pinSparkle.x", 1100)
         setProperty("pinSparkle.y", 120)
         doTweenColor("corYay", "back", color, 0.5, "linear")
@@ -807,7 +775,8 @@ function onUpdate(elapsed)
         screenCenter("shortTxt", 'x')
         screenCenter("longTxt", 'y')
         screenCenter("longTxt")
-    elseif pos2 == 3 and section == 1 then
+    elseif pos2 == 3 and section == 1 and updateShit then
+        updateShit = false
         creditsName = parsed.scriptCre[1]
         creditsLongTxt = parsed.scriptCre[2]
         color = parsed.scriptCre[3]
@@ -816,17 +785,17 @@ function onUpdate(elapsed)
         setProperty("stuff.visible", false)
         setProperty("stuff.x", -50)
         setProperty("stuff.scale.x", 1)
-        setProperty("shortTxt.visible", false)
-        setProperty("tumb.visible", false)
-        setProperty("tree.visible", false)
-        setProperty("sky.visible", false)
-        setProperty("twi.visible", false)
-        setProperty("spo.visible", false)
-        setProperty("you.visible", false)
-        setProperty("bana.visible", false)
-        setProperty("pinGit.visible", false)
-        setProperty("pinSiiva.visible", false)
-        setProperty("pinEC.visible", true)
+        setProperty("shortTxt.alpha", 0.0001)
+        setProperty("tumb.alpha", 0.0001)
+        setProperty("tree.alpha", 0.0001)
+        setProperty("sky.alpha", 0.0001)
+        setProperty("twi.alpha", 0.0001)
+        setProperty("spo.alpha", 0.0001)
+        setProperty("you.alpha", 0.0001)
+        setProperty("bana.alpha", 0.0001)
+        setProperty("pinGit.alpha", 0.0001)
+        setProperty("pinSiiva.alpha", 0.0001)
+        setProperty("pinEC.alpha", 1)
         setProperty("pinSparkle.x", 1100)
         setProperty("pinSparkle.y", 140)
         doTweenColor("corYay", "back", color, 0.5, "linear")
@@ -837,7 +806,8 @@ function onUpdate(elapsed)
         screenCenter("shortTxt", 'x')
         screenCenter("longTxt", 'y')
         screenCenter("longTxt")
-    elseif pos2 == 4 and section == 1 then
+    elseif pos2 == 4 and section == 1 and updateShit then
+        updateShit = false
         creditsName = nameSiiva
         creditsLongTxt = longTxtSiiva
         color = colorSiiva
@@ -846,17 +816,17 @@ function onUpdate(elapsed)
         setProperty("stuff.visible", siivaSave.pin)
         setProperty("stuff.x", -50)
         setProperty("stuff.scale.x", 1)
-        setProperty("shortTxt.visible", false)
-        setProperty("tumb.visible", false)
-        setProperty("tree.visible", false)
-        setProperty("sky.visible", false)
-        setProperty("twi.visible", false)
-        setProperty("spo.visible", false)
+        setProperty("shortTxt.alpha", 0.0001)
+        setProperty("tumb.alpha", 0.0001)
+        setProperty("tree.alpha", 0.0001)
+        setProperty("sky.alpha", 0.0001)
+        setProperty("twi.alpha", 0.0001)
+        setProperty("spo.alpha", 0.0001)
         setProperty("you.visible", siivaSave.pin)
-        setProperty("bana.visible", false)
-        setProperty("pinGit.visible", false)
+        setProperty("bana.alpha", 0.0001)
+        setProperty("pinGit.alpha", 0.0001)
         setProperty("pinSiiva.visible", siivaSave.pin)
-        setProperty("pinEC.visible", false)
+        setProperty("pinEC.alpha", 0.0001)
         --setProperty("pinSparkle.x", 1100)
         setProperty("pinSparkle.x", siivaSave.sparkleX)
         setProperty("pinSparkle.y", 145)
@@ -868,7 +838,8 @@ function onUpdate(elapsed)
         screenCenter("shortTxt", 'x')
         screenCenter("longTxt", 'y')
         screenCenter("longTxt")
-    elseif pos2 == 5 and section == 1 then
+    elseif pos2 == 5 and section == 1 and updateShit then
+        updateShit = false
         creditsName = nameOmori
         creditsLongTxt = longTxtOmori
         color = colorOmori
@@ -877,17 +848,17 @@ function onUpdate(elapsed)
         setProperty("stuff.visible", omoriSave.pin)
         setProperty("stuff.x", -50)
         setProperty("stuff.scale.x", 1)
-        setProperty("shortTxt.visible", false)
-        setProperty("tumb.visible", false)
-        setProperty("tree.visible", false)
-        setProperty("sky.visible", false)
-        setProperty("twi.visible", false)
-        setProperty("spo.visible", false)
-        setProperty("you.visible", false)
-        setProperty("bana.visible", false)
-        setProperty("pinGit.visible", false)
+        setProperty("shortTxt.alpha", 0.0001)
+        setProperty("tumb.alpha", 0.0001)
+        setProperty("tree.alpha", 0.0001)
+        setProperty("sky.alpha", 0.0001)
+        setProperty("twi.alpha", 0.0001)
+        setProperty("spo.alpha", 0.0001)
+        setProperty("you.alpha", 0.0001)
+        setProperty("bana.alpha", 0.0001)
+        setProperty("pinGit.alpha", 0.0001)
         setProperty("pinSiiva.visible", omoriSave.pin)
-        setProperty("pinEC.visible", false)
+        setProperty("pinEC.alpha", 0.0001)
         --setProperty("pinSparkle.x", 1100)
         setProperty("pinSparkle.x", omoriSave.sparkleX)
         setProperty("pinSparkle.y", 145)
@@ -903,52 +874,6 @@ function onUpdate(elapsed)
         pos2 = 1
     elseif pos2 < 1 and section == 1 then
         pos2 = 5
-    end
-
-    if slctPos == 1 then
-        setProperty("select.y", 593)
-        setProperty("select.x", 0)
-        scaleObject("select", 0.5, 0.5)
-    elseif slctPos == 1 and pos == 4 then
-        setProperty("select.y", 593)
-        setProperty("select.x", 0)
-        scaleObject("select", 0.5, 0.5)
-    elseif slctPos == 2 and pos == 4 then
-        setProperty("select.y", 593)
-        setProperty("select.x", 63)
-        scaleObject("select", 0.5, 0.5)
-    elseif slctPos == 2 and pos == 4 then
-        setProperty("select.y", 593)
-        setProperty("select.x", 63)
-        scaleObject("select", 0.5, 0.5)
-    elseif slctPos == 2 and pos == 1 then
-        setProperty("select.y", 593)
-        setProperty("select.x", 63)
-        scaleObject("select", 0.5, 0.5)
-    elseif slctPos == 0 and pos == 5 then
-        scaleObject("select", 2.05, 2.1)
-        setProperty("select.x", 145)
-        setProperty("select.y", 245)
-    elseif slctPos == 1 and pos == 4 then
-        setProperty("select.y", 593)
-        setProperty("select.x", 0)
-        scaleObject("select", 0.5, 0.5)
-    elseif slctPos == 0 and pos == 4 then
-        scaleObject("select", 1.9, 2.28)
-        setProperty("select.x", 145)
-        setProperty("select.y", 240)
-    elseif slctPos > 2 and pos == 5 or slctPos > 2 and pos == 4 then
-        slctPos = 0
-    elseif slctPos < 0 and pos == 5 or slctPos < 0 and pos == 4 or slctPos > 1 and pos == 3 or pos == 2 or pos == 1 then
-        slctPos = 1
-    end
-
-    if section == 0 then
-        playAnim("sec", "spe")
-        setProperty("sec.y", 655)
-    elseif section == 1 then
-        playAnim("sec", "bucks")
-        setProperty("sec.y", 0)
     end
 
     if customStep == 66 and flashingLights then
@@ -971,65 +896,29 @@ function onUpdate(elapsed)
     end
 
     if keyJustPressed('ui_right') and not cut and section == 0 then
+        updateShit = true
         pos = pos + 1
         stopSound("rag")
         playAnim("ukiyo", "idle", true)
-        setProperty("select.visible", false)
-        setPropertyFromClass("flixel.FlxG", "mouse.visible", true)
+        setProperty("select.alpha", 0.0001)
     elseif keyJustPressed('ui_left') and not cut and section == 0 then
+        updateShit = true
         pos = pos - 1
         stopSound("rag")
         playAnim("ukiyo", "idle", true)
-        setProperty("select.visible", false)
-        setPropertyFromClass("flixel.FlxG", "mouse.visible", true)
+        setProperty("select.alpha", 0.0001)
 
     elseif keyJustPressed('ui_right') and not cut and section == 1 then
+        updateShit = true
         pos2 = pos2 + 1
-        setPropertyFromClass("flixel.FlxG", "mouse.visible", true)
     elseif keyJustPressed('ui_left') and not cut and section == 1 then
+        updateShit = true
         pos2 = pos2 - 1
-        setPropertyFromClass("flixel.FlxG", "mouse.visible", true)
-        
-    elseif rightJustPressed and not cut and section == 0 and buildTarget == 'android' then
-        pos = pos + 1
-        stopSound("rag")
-        playAnim("ukiyo", "idle", true)
-        setProperty("select.visible", false)
-        playAnim("buttonR", "pressed", true)
-    elseif leftJustPressed and not cut and buildTarget == 'android' and section == 0 then
-        pos = pos - 1
-        stopSound("rag")
-        playAnim("ukiyo", "idle", true)
-        setProperty("select.visible", false)
-        playAnim("buttonL", "pressed", true)
-
-    elseif anyGamepadJustPressed("RIGHT_SHOULDER") and not cut and section == 0 then
-        pos = pos + 1
-        stopSound("rag")
-        playAnim("ukiyo", "idle", true)
-        setPropertyFromClass("flixel.FlxG", "mouse.visible", false)
-    elseif anyGamepadJustPressed("LEFT_SHOULDER") and not cut and section == 0 then
-        pos = pos - 1
-        stopSound("rag")
-        playAnim("ukiyo", "idle", true)
-        setPropertyFromClass("flixel.FlxG", "mouse.visible", false)
-    elseif anyGamepadJustPressed("DPAD_RIGHT") and not cut and section == 0 or anyGamepadJustPressed("LEFT_STICK_DIGITAL_RIGHT") and not cut and section == 0 then
-        setProperty("select.visible", true)
-        slctPos = slctPos + 1
-        setPropertyFromClass("flixel.FlxG", "mouse.visible", false)
-        debugPrint(slctPos)
-    elseif anyGamepadJustPressed("DPAD_LEFT") and not cut and section == 0 or anyGamepadJustPressed("LEFT_STICK_DIGITAL_LEFT") and not cut and section == 0 then
-        slctPos = slctPos - 1
-        setPropertyFromClass("flixel.FlxG", "mouse.visible", false)
-        debugPrint(slctPos)
     end
         
     if keyJustPressed('back') then
         exitSong(false)
         setPropertyFromClass("flixel.FlxG", "mouse.visible", false)
-    elseif bJustPressed and not cut and buildTarget == 'android' then
-        exitSong(false)
-        playAnim("buttonB", "pressed", true)
     end
 
     if section == 0 and not numPodeNaoMan then
@@ -1044,36 +933,38 @@ function onUpdate(elapsed)
     end
 
     if keyJustPressed('ui_down') and not cut and section == 0 then
+        cut = true
         stopSound("rag")
         playAnim("ukiyo", "idle", true)
-        setProperty("select.visible", false)
+        setProperty("select.alpha", 0.0001)
         playSound("credits/warp", 1, 'warp')
         doTweenY("bruhbruh", "camOther", -screenHeight, 0.35, "quartIn")
         doTweenY("hurbhurb", "camHUD", -screenHeight, 0.35, "quartIn")
         soundFadeOut("music", volume2, 0)
-    elseif keyJustPressed('ui_up') and not cut and section == 1 or anyGamepadJustPressed("DPAD_UP") and not cut and section == 1 or anyGamepadJustPressed("LEFT_STICK_DIGITAL_UP") and not cut and section == 1 then
+    elseif keyJustPressed('ui_up') and not cut and section == 1 then
+        cut = true
         playSound("credits/warp", 1, 'praw')
         doTweenY("bruhbruh", "camOther", screenHeight, 0.35, "quartIn")
         doTweenY("hurbhurb", "camHUD", screenHeight, 0.35, "quartIn")
         soundFadeOut("musicMuffled", volume, 0)
     end
 
-    if getMouseX('camOther') > getProperty('box.x') and getMouseY('camOther') > getProperty('box.y') and getMouseX('camOther') < getProperty('box.x') + getProperty('box.width') and getMouseY('camOther') < getProperty('box.y') + getProperty('box.height') and mouseReleased() and getProperty("box.visible") and not cut or slctPos == 0 and getProperty("box.visible") and getProperty("select.visible") and anyGamepadJustPressed("A") and not cut then
+    if getMouseX('camOther') > getProperty('box.x') and getMouseY('camOther') > getProperty('box.y') and getMouseX('camOther') < getProperty('box.x') + getProperty('box.width') and getMouseY('camOther') < getProperty('box.y') + getProperty('box.height') and mouseReleased() and getProperty("box.visible") and not cut then
         playSound("credits/honk", 1, 'honk')
         doTweenX("boom", "shi.scale", 1.3, 0.5, "elasticOut")
         doTweenY("moob", "shi.scale", 0.8, 0.5, "elasticOut")
         runTimer("xd", 0.1)
         shihoBooped = true
         setAchievementScore("obama", getAchievementScore("obama") + 1, false)
-    elseif getMouseX('camOther') > getProperty('ukiyo.x') and getMouseY('camOther') > getProperty('ukiyo.y') and getMouseX('camOther') < getProperty('ukiyo.x') + getProperty('ukiyo.width') and getMouseY('camOther') < getProperty('ukiyo.y') + getProperty('ukiyo.height') and mouseReleased() and getProperty("ukiyo.visible") and not cut or slctPos == 0 and not getProperty("box.visible") and getProperty("select.visible") and anyGamepadJustPressed("A") and not cut then
+    elseif getMouseX('camOther') > getProperty('ukiyo.x') and getMouseY('camOther') > getProperty('ukiyo.y') and getMouseX('camOther') < getProperty('ukiyo.x') + getProperty('ukiyo.width') and getMouseY('camOther') < getProperty('ukiyo.y') + getProperty('ukiyo.height') and mouseReleased() and getProperty("ukiyo.alpha") == 1 and not cut then
         playSound("credits/ragdoll", 1, 'rag')
         playAnim("ukiyo", "eat", true)
         ukiyoBooped = true
-    elseif getMouseX('camOther') > getProperty('boxLogo.x') and getMouseY('camOther') > getProperty('boxLogo.y') and getMouseX('camOther') < getProperty('boxLogo.x') + getProperty('boxLogo.width') and getMouseY('camOther') < getProperty('boxLogo.y') + getProperty('boxLogo.height') and mouseReleased() and not cut or slctPos == 1 and getProperty("select.visible", true) and anyGamepadJustPressed("A") and not cut then
+    elseif getMouseX('camOther') > getProperty('boxLogo.x') and getMouseY('camOther') > getProperty('boxLogo.y') and getMouseX('camOther') < getProperty('boxLogo.x') + getProperty('boxLogo.width') and getMouseY('camOther') < getProperty('boxLogo.y') + getProperty('boxLogo.height') and mouseReleased() and not cut then
         callMethodFromClass('backend.CoolUtil', 'browserLoad', {link})
     end
     
-    if getMouseX('camOther') > getProperty('boxLogo2.x') and getMouseY('camOther') > getProperty('boxLogo2.y') and getMouseX('camOther') < getProperty('boxLogo2.x') + getProperty('boxLogo2.width') and getMouseY('camOther') < getProperty('boxLogo2.y') + getProperty('boxLogo2.height') and mouseReleased() and getProperty("boxLogo2.visible") or slctPos == 2 and getProperty("select.visible") and anyGamepadJustPressed("A") and not cut then
+    if getMouseX('camOther') > getProperty('boxLogo2.x') and getMouseY('camOther') > getProperty('boxLogo2.y') and getMouseX('camOther') < getProperty('boxLogo2.x') + getProperty('boxLogo2.width') and getMouseY('camOther') < getProperty('boxLogo2.y') + getProperty('boxLogo2.height') and mouseReleased() and getProperty("boxLogo2.visible") and link2 ~= nil then
         callMethodFromClass('backend.CoolUtil', 'browserLoad', {link2})
     end
 end
@@ -1083,12 +974,6 @@ function onTimerCompleted(tag, loops, loopsLeft)
     if tag == 'xd' then
         doTweenX("boom", "shi.scale", 1, 0.5, "elasticOut")
         doTweenY("moob", "shi.scale", 1, 0.5, "elasticOut")
-    elseif tag == 'resetarMeuPau' then
-        doTweenColor("malaca", "select", "C4EBFF", 0.3, "linear")
-        runTimer("pauResetado", 0.3)
-    elseif tag == 'pauResetado' then
-        doTweenColor("atu", "select", "FFFFFF", 0.3, "linear")
-        runTimer("resetarMeuPau", 0.3)
     elseif tag == 'ui' then
         playSound("credits/flicker", 1)
         runTimer("ain", 1.8)
@@ -1105,7 +990,7 @@ function onTimerCompleted(tag, loops, loopsLeft)
         playSound("credits/thank_you_for_muffle_everything_omg_help", 0, 'musicMuffled')
         soundFadeIn("music", 2, 0, 1)
         cut = false
-        setPropertyFromClass("flixel.FlxG", "mouse.visible", mouse)
+        setPropertyFromClass("flixel.FlxG", "mouse.visible", true)
         runTimer("morse", 300)
     elseif tag == 'ain' and not flashingLights then
         playSound("credits/light_turn_on", 1)
@@ -1121,7 +1006,7 @@ function onTimerCompleted(tag, loops, loopsLeft)
         playSound("credits/thank_you_for_muffle_everything_omg_help", 0, 'musicMuffled')
         soundFadeIn("music", 2, 0, 1)
         cut = false
-        setPropertyFromClass("flixel.FlxG", "mouse.visible", mouse)
+        setPropertyFromClass("flixel.FlxG", "mouse.alpha", 1)
         runTimer("morse", 300)
     elseif tag == 'morse' then
         numPodeNaoMan = true
@@ -1176,37 +1061,45 @@ function onSoundFinished(tag)
             numPodeNaoMan = false
             soundFadeIn("musicMuffled", 2, 0, 1)
         elseif tag == 'warp' then
+            updateShit = true
             section = 1
+            cut = false
+            playAnim("sec", "bucks")
+            setProperty("sec.y", 0)
             setProperty("camOther.y", 0)
             setProperty("camHUD.y", 0)
             setProperty("camOther.alpha", 0)
             setProperty("camHUD.alpha", 0)
             doTweenAlpha("omaga", "camOther", 1, 1, "linear")
             doTweenAlpha("omagah", "camHUD", 1, 1, "linear")
-            setProperty("coiso.visible", false)
-            setProperty("coiso2.visible", true)
-            setProperty("gra.visible", true)
+            setProperty("coiso.alpha", 0.0001)
+            setProperty("coiso2.alpha", 1)
+            setProperty("gra.alpha", 0.5)
             setProperty("cut.alpha", 0.5)
-            setProperty("luz.visible", false)
-            setProperty(the[pos]..".visible", false)
+            setProperty("luz.alpha", 0.0001)
+            setProperty(the[pos]..".alpha", 0.0001)
             setProperty(theSticker[i]..".visible", false)
             setProperty("box.visible", false)
             soundFadeIn("musicMuffled", 1, 0, volume2)
         elseif tag == 'praw' then
+            updateShit = true
+            cut = false
             section = 0
+            playAnim("sec", "spe")
+            setProperty("sec.y", 655)
             setProperty("camOther.y", 0)
             setProperty("camHUD.y", 0)
             setProperty("camOther.alpha", 0)
             setProperty("camHUD.alpha", 0)
             doTweenAlpha("omaga", "camOther", 1, 1, "linear")
             doTweenAlpha("omagah", "camHUD", 1, 1, "linear")
-            setProperty("coiso.visible", true)
-            setProperty("coiso2.visible", false)
-            setProperty("gra.visible", false)
+            setProperty("coiso.alpha", 1)
+            setProperty("coiso2.alpha", 0.0001)
+            setProperty("gra.alpha", 0.0001)
             setProperty("cut.alpha", 0.3)
-            setProperty("luz.visible", true)
+            setProperty("luz.alpha", 0.3)
             setProperty("stuff.visible", true)
-            setProperty("shortTxt.visible", true)
+            setProperty("shortTxt.alpha", 1)
             soundFadeIn("music", 1, 0, volume)
         end
     end

@@ -10,6 +10,9 @@ import lime.app.Application;
 import states.editors.MasterEditorMenu;
 import options.OptionsState;
 
+import flixel.addons.display.FlxBackdrop;
+import flixel.addons.display.FlxGridOverlay;
+
 import haxe.Json;
 
 enum MainMenuColumn {
@@ -29,8 +32,6 @@ class MainMenuState extends MusicBeatState
 	var leftItem:FlxSprite;
 	var rightItem:FlxSprite;
 
-	var freeImage:FlxSprite;
-
 	//Centered/Text options
 	var optionShit:Array<String> = [
 		//'story_mode',
@@ -43,6 +44,7 @@ class MainMenuState extends MusicBeatState
 	var rightOption:String = 'options';
 
 	var magenta:FlxSprite;
+	var mainThing:FlxSprite;
 	var camFollow:FlxObject;
 
 	static var showOutdatedWarning:Bool = true;
@@ -82,6 +84,16 @@ class MainMenuState extends MusicBeatState
 		magenta.screenCenter();
 		magenta.visible = false;
 		add(magenta);
+
+		var grid:FlxBackdrop = new FlxBackdrop(FlxGridOverlay.createGrid(40, 40, 80, 80, true, 0x50000000, 0x0));
+        grid.velocity.set(30, 30);
+        add(grid);
+
+		mainThing = new FlxSprite(-80).loadGraphic(Paths.image('mainMenuThing'));
+		mainThing.antialiasing = ClientPrefs.data.antialiasing;
+		mainThing.updateHitbox();
+		mainThing.screenCenter();
+		add(mainThing);
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);

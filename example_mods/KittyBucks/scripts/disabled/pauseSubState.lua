@@ -5,6 +5,7 @@ luaDeprecatedWarnings = getModSetting("deprecated")
 local the = {
     'Resume',
     'Restart song',
+    'Options',
     'Exit to menu'
 }
 
@@ -74,21 +75,25 @@ function onCreate()
 
     makeLuaText("resu", the[1], 0, -310, 0.0)
     makeLuaText("resta", the[2], 0, -400, 0.0)
-    makeLuaText("exit", the[3], 0, -380, 0.0)
+    makeLuaText("opt", the[3], 0, -310, 0.0)
+    makeLuaText("exit", the[4], 0, -410, 0.0)
     makeLuaText("seta", ">", 0, 0.0, 0.0)
     makeLuaText("setaa", "<", 0, 0.0, 0.0)
     setObjectCamera("resu", 'other')
     setObjectCamera("resta", 'other')
+    setObjectCamera("opt", 'other')
     setObjectCamera("exit", 'other')
     setObjectCamera("seta", 'other')
     setObjectCamera("setaa", 'other')
     addLuaText("resu")
     addLuaText("resta")
+    addLuaText("opt")
     addLuaText("exit")
     addLuaText("seta")
     addLuaText("setaa")
     setTextSize("resu", 65)
     setTextSize("resta", 65)
+    setTextSize("opt", 65)
     setTextSize("exit", 65)
     setTextSize("seta", 65)
     setTextSize("setaa", 65)
@@ -96,7 +101,8 @@ function onCreate()
     setProperty("resu.y", getGraphicMidpointY("escu") - 120)
     --[[screenCenter("resu", 'x')
     screenCenter("exit", 'x')]]
-    setProperty("exit.y", getGraphicMidpointY("escu") + 60)
+    setProperty("opt.y", getGraphicMidpointY("escu") + 50)
+    setProperty("exit.y", getGraphicMidpointY("escu") + 120)
 
     makeLuaText("noWay", "- PAUSED -", 0, 0.0, 50)
     setObjectCamera("noWay", 'other')
@@ -126,17 +132,19 @@ function onCreate()
     addLuaSprite("char", true)
 
     setTextFont("resu", "drunkenhourDEMO.otf")
-    setTextBorder("resu", 0, "FFFFFF")
+    setTextBorder("resu", 1, "FFFFFF")
     setTextFont("resta", "drunkenhourDEMO.otf")
-    setTextBorder("resta", 0, "FFFFFF")
+    setTextBorder("resta", 1, "FFFFFF")
+    setTextFont("opt", "drunkenhourDEMO.otf")
+    setTextBorder("opt", 1, "FFFFFF")
     setTextFont("exit", "drunkenhourDEMO.otf")
-    setTextBorder("exit", 0, "FFFFFF")
+    setTextBorder("exit", 1, "FFFFFF")
     setTextFont("seta", "drunkenhourDEMO.otf")
-    setTextBorder("seta", 0, "FFFFFF")
+    setTextBorder("seta", 1, "000000")
     setTextFont("setaa", "drunkenhourDEMO.otf")
-    setTextBorder("setaa", 0, "FFFFFF")
+    setTextBorder("setaa", 1, "000000")
     setTextFont("noWay", "drunkenhourDEMO.otf")
-    setTextBorder("noWay", 0, "FFFFFF")
+    setTextBorder("noWay", 1, "000000")
 
     makeLuaText("compo", songName..' ('..string.upper(difficultyName)..')'.." by: "..data.composer..' | Pause Theme by: LizNaithy'..' | Art by: '..data.artist..' | Chart and Coding by: '..data.coder, 0, data.pauseTxtPos, -20)
     setObjectCamera("compo", 'other')
@@ -151,6 +159,7 @@ function onCreate()
     setProperty("escu.alpha", 0.00001)
     setProperty("resu.alpha", 0.00001)
     setProperty("resta.alpha", 0.00001)
+    setProperty("opt.alpha", 0.00001)
     setProperty("exit.alpha", 0.00001)
     setProperty("seta.alpha", 0.00001)
     setProperty("setaa.alpha", 0.00001)
@@ -239,10 +248,12 @@ end]]
 function onCustomSubstateCreatePost(name)
     
     if name == 'pauseShit' then
+        random = getRandomInt(0, 34)
 
         doTweenAlpha("ven", "escu", 0.5, 0.5, "linear")
         setProperty("resu.alpha", 1)
         setProperty("resta.alpha", 1)
+        setProperty("opt.alpha", 1)
         setProperty("exit.alpha", 1)
         setProperty("seta.alpha", 1)
         setProperty("setaa.alpha", 1)
@@ -260,8 +271,6 @@ function onCustomSubstateCreatePost(name)
         setProperty("buttonU.alpha", 0.5)
         screenCenter("noWay", 'x')
 
-        random = getRandomInt(0, 33)
-
         resumeSound("bah")
         soundFadeIn("bah", 5, 0, 0.2)
         --playAnim("boyfriend", "singDOWNmiss", true)
@@ -271,6 +280,7 @@ function onCustomSubstateCreatePost(name)
         doTweenY("xd", "barr", 0, 0.5, "quartOut")
         doTweenX("resuX", "resu", 190, 1, "quartOut")
         doTweenX("restaX", "resta", 100, 1, "quartOut")
+        doTweenX("optX", "opt", 190, 1, "quartOut")
         doTweenX("exitX", "exit", 80, 1, "quartOut")
         doTweenX("charX", "char", 800, 1, "quartOut")
         doTweenAngle("charAngle", "char", 10, 1, "quartOut")
@@ -291,21 +301,15 @@ function onCustomSubstateCreatePost(name)
     end
 end
 
-local aah = 1
-
 function onCustomSubstateUpdatePost(name, elapsed)
     
     if name == 'pauseShit' then
 
-        if not flashingLights then
-            aah = 2
-        end
-
         setProperty("compo.x", getProperty("compo.x") + 1)
         setProperty("morri.x", getProperty("morri.x") - 1)
 
-        setProperty('BGmoving.x',getProperty('BGmoving.x') - 1 / aah);
-        setProperty('BGmoving.y',getProperty('BGmoving.y') - screenHeight/screenWidth / aah);
+        setProperty('BGmoving.x',getProperty('BGmoving.x') - 1);
+        setProperty('BGmoving.y',getProperty('BGmoving.y') - screenHeight/screenWidth);
         if getProperty('BGmoving.x') <= -screenWidth + 1 then
             setProperty('BGmoving.x',0);
         end
@@ -329,10 +333,16 @@ function onCustomSubstateUpdatePost(name, elapsed)
             setProperty("setaa.y", getProperty("resu.y"))
             setProperty("resta.alpha", 0.5)
             setProperty("exit.alpha", 0.5)
+            setProperty("opt.alpha", 0.5)
             setProperty("resu.alpha", 1)
             setTextColor("resu", "FFFFFF")
             setTextColor("resta", "000000")
+            setTextColor("opt", "000000")
             setTextColor("exit", "000000")
+            setTextBorder("resu", 1, "000000")
+            setTextBorder("resta", 1, "FFFFFF")
+            setTextBorder("opt", 1, "FFFFFF")
+            setTextBorder("exit", 1, "FFFFFF")
         elseif pos == 1 then
             setProperty("seta.x", getProperty("resta.x") - 50)
             screenCenter("seta", 'y')
@@ -340,11 +350,34 @@ function onCustomSubstateUpdatePost(name, elapsed)
             screenCenter("setaa", 'y')
             setProperty("resu.alpha", 0.5)
             setProperty("exit.alpha", 0.5)
+            setProperty("opt.alpha", 0.5)
             setProperty("resta.alpha", 1)
             setTextColor("resu", "000000")
             setTextColor("resta", "FFFFFF")
             setTextColor("exit", "000000")
+            setTextColor("opt", "000000")
+            setTextBorder("resu", 1, "FFFFFF")
+            setTextBorder("resta", 1, "000000")
+            setTextBorder("opt", 1, "FFFFFF")
+            setTextBorder("exit", 1, "FFFFFF")
         elseif pos == 2 then
+            setProperty("seta.x", getProperty("opt.x") - 50)
+            setProperty("seta.y", getProperty("opt.y"))
+            setProperty("setaa.x", getProperty("opt.x") + 270)
+            setProperty("setaa.y", getProperty("opt.y"))
+            setProperty("resta.alpha", 0.5)
+            setProperty("resu.alpha", 0.5)
+            setProperty("opt.alpha", 1)
+            setProperty("exit.alpha", 0.5)
+            setTextColor("resu", "000000")
+            setTextColor("resta", "000000")
+            setTextColor("exit", "000000")
+            setTextColor("opt", "FFFFFF")
+            setTextBorder("resu", 1, "FFFFFF")
+            setTextBorder("resta", 1, "FFFFFF")
+            setTextBorder("opt", 1, "000000")
+            setTextBorder("exit", 1, "FFFFFF")
+        elseif pos == 3 then
             setProperty("seta.x", getProperty("exit.x") - 50)
             setProperty("seta.y", getProperty("exit.y"))
             setProperty("setaa.x", getProperty("exit.x") + 515)
@@ -352,13 +385,19 @@ function onCustomSubstateUpdatePost(name, elapsed)
             setProperty("resta.alpha", 0.5)
             setProperty("resu.alpha", 0.5)
             setProperty("exit.alpha", 1)
+            setProperty("opt.alpha", 0.5)
             setTextColor("resu", "000000")
             setTextColor("resta", "000000")
             setTextColor("exit", "FFFFFF")
+            setTextColor("opt", "000000")
+            setTextBorder("resu", 1, "FFFFFF")
+            setTextBorder("resta", 1, "FFFFFF")
+            setTextBorder("opt", 1, "FFFFFF")
+            setTextBorder("exit", 1, "000000")
         elseif pos > 2 then
             pos = 0
         elseif pos < 0 then
-            pos = 2
+            pos = 3
         end
 
         if keyboardJustPressed("S") or keyboardJustPressed("DOWN") or anyGamepadJustPressed("DPAD_DOWN") or anyGamepadJustPressed("LEFT_STICK_DIGITAL_DOWN") or downJustPressed and buildTarget == 'windows' then
@@ -381,40 +420,52 @@ function onCustomSubstateUpdatePost(name, elapsed)
 
         if keyJustPressed('accept') and pos == 0 and not getVar("inGameOver") then
             closeCustomSubstate()
-            setProperty("escu.alpha", 0.00001)
-            setProperty("resu.alpha", 0.00001)
-            setProperty("resta.alpha", 0.00001)
-            setProperty("exit.alpha", 0.00001)
-            setProperty("seta.alpha", 0.00001)
-            setProperty("setaa.alpha", 0.00001)
-            setProperty("compo.alpha", 0.00001)
-            setProperty("barr.alpha", 0.00001)
-            setProperty("balls.alpha", 0.00001)
-            setProperty("morri.alpha", 0.00001)
-            setProperty("noWay.alpha", 0.00001)
-            setProperty("BGmoving.alpha", 0.00001)
-            setProperty("char.alpha", 0.00001)
-            setProperty("check.alpha", 0.00001)
-            setProperty("noWay.x", -999)
-            --[=[runHaxeCode([[
-                FlxG.game.setFilters([]);
-            ]])]=]
-            setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
-            setProperty("barr.y", -20)
-            setProperty("compo.y", -20)
-            setProperty("balls.y", 740)
-            setProperty("morri.y", 740)
-            setProperty("playbackRate", 0.15)
-            volte = true
-            pauseSound("bah")
-            cancelTween("ven")
         elseif keyJustPressed('accept') and pos == 1 then
             restartSong(false)
         elseif keyJustPressed('accept') and pos == 2 then
+            openOptions()
+        elseif keyJustPressed('accept') and pos == 3 then
             exitSong(false)
         end
     end
 --end
+
+function onCustomSubstateDestroy(name)
+    
+    if name == 'pauseShit' then
+        volte = true
+        setProperty("resu.x", -310)
+        setProperty("resta.x", -400)
+        setProperty("opt.x", -310)
+        setProperty("exit.x", -410)
+        setProperty("char.x", screenWidth)
+        setProperty("char.angle", 90)
+        setProperty("escu.alpha", 0.00001)
+        setProperty("resu.alpha", 0.00001)
+        setProperty("resta.alpha", 0.00001)
+        setProperty("opt.alpha", 0.00001)
+        setProperty("exit.alpha", 0.00001)
+        setProperty("seta.alpha", 0.00001)
+        setProperty("setaa.alpha", 0.00001)
+        setProperty("compo.alpha", 0.00001)
+        setProperty("barr.alpha", 0.00001)
+        setProperty("balls.alpha", 0.00001)
+        setProperty("morri.alpha", 0.00001)
+        setProperty("noWay.alpha", 0.00001)
+        setProperty("BGmoving.alpha", 0.00001)
+        setProperty("char.alpha", 0.00001)
+        setProperty("check.alpha", 0.00001)
+        setProperty("noWay.x", -999)
+        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
+        setProperty("barr.y", -20)
+        setProperty("compo.y", -20)
+        setProperty("balls.y", 740)
+        setProperty("morri.y", 740)
+        setProperty("playbackRate", 0.15)
+        pauseSound("bah")
+        cancelTween("ven")
+    end
+end
 
 function onSoundFinished(tag)
     

@@ -11,7 +11,7 @@ local wsOpp = getTextFromFile("data/the-guy/whosSingingOPP.txt")
 local playerColor = bfDATA.healthHex
 local oppColor = hkDATA.healthHex
 
-local onCutscene = false
+local onCutscene = true
 local both = false
 local bothOpp = false
 

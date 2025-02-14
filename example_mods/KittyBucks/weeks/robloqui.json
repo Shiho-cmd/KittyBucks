@@ -12,7 +12,7 @@
 		]
 	],
 	"hiddenUntilUnlocked": false,
-	"hideFreeplay": true,
+	"hideFreeplay": false,
 	"weekBackground": "stage",
 	"difficulties": "buck",
 	"weekCharacters": [

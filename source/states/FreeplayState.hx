@@ -15,6 +15,9 @@ import flixel.util.FlxDestroyUtil;
 
 import openfl.utils.Assets;
 
+import flixel.addons.display.FlxBackdrop;
+import flixel.addons.display.FlxGridOverlay;
+
 import haxe.Json;
 
 class FreeplayState extends MusicBeatState
@@ -41,6 +44,7 @@ class FreeplayState extends MusicBeatState
 	private var iconArray:Array<HealthIcon> = [];
 
 	var bg:FlxSprite;
+	var freeThing:FlxSprite;
 	var intendedColor:Int;
 
 	var missingTextBG:FlxSprite;
@@ -107,6 +111,16 @@ class FreeplayState extends MusicBeatState
 		bg.antialiasing = ClientPrefs.data.antialiasing;
 		add(bg);
 		bg.screenCenter();
+
+		var grid:FlxBackdrop = new FlxBackdrop(FlxGridOverlay.createGrid(40, 40, 80, 80, true, 0x50000000, 0x0));
+        grid.velocity.set(30, 30);
+        add(grid);
+
+		freeThing = new FlxSprite(-80).loadGraphic(Paths.image('freeplayThing'));
+		freeThing.antialiasing = ClientPrefs.data.antialiasing;
+		freeThing.updateHitbox();
+		freeThing.screenCenter();
+		add(freeThing);
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);

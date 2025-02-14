@@ -26,6 +26,7 @@ import objects.Character;
 import states.MainMenuState;
 import states.StoryMenuState;
 import states.FreeplayState;
+import options.OptionsState;
 
 import substates.PauseSubState;
 import substates.GameOverSubstate;
@@ -215,6 +216,14 @@ class FunkinLua {
 				runningScripts.push(script.scriptName);
 
 			return runningScripts;
+		});
+
+		Lua_helper.add_callback(lua, "openOptions", function() {
+			PlayState.instance.paused = true; // For lua
+			PlayState.instance.vocals.volume = 0;
+			PlayState.instance.canResync = false;
+			MusicBeatState.switchState(new OptionsState());
+			OptionsState.onPlayState = true;
 		});
 
 		addLocalCallback("setOnScripts", function(varName:String, arg:Dynamic, ?ignoreSelf:Bool = false, ?exclusions:Array<String> = null) {
