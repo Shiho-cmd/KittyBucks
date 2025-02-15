@@ -753,18 +753,21 @@ class FunkinLua {
 			PauseSubState.restartSong(skipTransition);
 			return true;
 		});
-		Lua_helper.add_callback(lua, "exitToMainMenu", function(?skipTransition:Bool = false) {
+		Lua_helper.add_callback(lua, "exitSong", function(?skipTransition:Bool = false) {
 			if(skipTransition)
 			{
 				FlxTransitionableState.skipNextTransIn = true;
 				FlxTransitionableState.skipNextTransOut = true;
 			}
 
-			MusicBeatState.switchState(new MainMenuState());
+			if(PlayState.isStoryMode)
+				MusicBeatState.switchState(new StoryMenuState());
+			else
+				MusicBeatState.switchState(new FreeplayState());
 
 			#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
-			FlxG.sound.playMusic(Paths.music('KittyBreak'));
+			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 			PlayState.changedDifficulty = false;
 			PlayState.chartingMode = false;
 			game.transitioning = true;
@@ -772,28 +775,6 @@ class FunkinLua {
 			Mods.loadTopMod();
 			return true;
 		});
-	Lua_helper.add_callback(lua, "exitSong", function(?skipTransition:Bool = false) {
-		if(skipTransition)
-		{
-			FlxTransitionableState.skipNextTransIn = true;
-			FlxTransitionableState.skipNextTransOut = true;
-		}
-
-		if(PlayState.isStoryMode)
-			MusicBeatState.switchState(new StoryMenuState());
-		else
-			MusicBeatState.switchState(new FreeplayState());
-
-		#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
-
-		FlxG.sound.playMusic(Paths.music('KittyBreak'));
-		PlayState.changedDifficulty = false;
-		PlayState.chartingMode = false;
-		game.transitioning = true;
-		FlxG.camera.followLerp = 0;
-		Mods.loadTopMod();
-		return true;
-	});
 		Lua_helper.add_callback(lua, "getSongPosition", function() {
 			return Conductor.songPosition;
 		});

@@ -2,8 +2,10 @@ package options;
 
 class GameplaySettingsSubState extends BaseOptionsMenu
 {
+	
 	public function new()
 	{
+			
 		title = Language.getPhrase('gameplay_menu', 'Gameplay Settings');
 		rpcTitle = 'Gameplay Settings Menu'; //for Discord Rich Presence
 
@@ -43,6 +45,12 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			"If checked, pressing Reset won't do anything.",
 			'noReset',
 			BOOL);
+		addOption(option);
+
+		var option:Option = new Option('Instant Game Over Restart', //Name
+			'If checked, when you lose, you can restart/exit the song with just one press instead of holding while in the game over cutscene. (only works with the custom game over!!)', //Description
+			'quickReset', //Save data variable name
+			BOOL); //Variable type
 		addOption(option);
 
 		var option:Option = new Option('Hitsound Volume',

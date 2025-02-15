@@ -1,9 +1,5 @@
 package states;
 
-import backend.WeekData;
-import backend.Highscore;
-import backend.Song;
-
 import flixel.FlxObject;
 import flixel.effects.FlxFlicker;
 import lime.app.Application;
@@ -12,8 +8,6 @@ import options.OptionsState;
 
 import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxGridOverlay;
-
-import haxe.Json;
 
 enum MainMenuColumn {
 	LEFT;
@@ -65,7 +59,7 @@ class MainMenuState extends MusicBeatState
 		persistentUpdate = persistentDraw = true;
 
 		var yScroll:Float = 0;
-		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
+		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('bg'));
 		bg.antialiasing = ClientPrefs.data.antialiasing;
 		//bg.scrollFactor.set(0, yScroll);
 		//bg.setGraphicSize(Std.int(bg.width * 1.175));
@@ -75,15 +69,6 @@ class MainMenuState extends MusicBeatState
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 		add(camFollow);
-
-		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
-		magenta.antialiasing = ClientPrefs.data.antialiasing;
-		//magenta.scrollFactor.set(0, yScroll);
-		//magenta.setGraphicSize(Std.int(magenta.width * 1.175));
-		magenta.updateHitbox();
-		magenta.screenCenter();
-		magenta.visible = false;
-		add(magenta);
 
 		var grid:FlxBackdrop = new FlxBackdrop(FlxGridOverlay.createGrid(40, 40, 80, 80, true, 0x50000000, 0x0));
         grid.velocity.set(30, 30);
@@ -286,12 +271,10 @@ class MainMenuState extends MusicBeatState
 
 			if (controls.ACCEPT || (FlxG.mouse.justPressed && allowMouse))
 			{
+				FlxG.camera.zoom += 0.025;
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				selectedSomethin = true;
 				FlxG.mouse.visible = false;
-
-				if (ClientPrefs.data.flashing)
-					FlxFlicker.flicker(magenta, 1.1, 0.15, false);
 
 				var item:FlxSprite;
 				var option:String;
@@ -326,7 +309,7 @@ class MainMenuState extends MusicBeatState
 						case 'achievements':
 							MusicBeatState.switchState(new AchievementsMenuState());
 						#end
-			
+
 						case 'options':
 							MusicBeatState.switchState(new OptionsState());
 							OptionsState.onPlayState = false;
@@ -364,6 +347,8 @@ class MainMenuState extends MusicBeatState
 			}
 			#end
 		}
+
+		FlxG.camera.zoom = FlxMath.lerp(1, FlxG.camera.zoom, Math.exp(-elapsed * 3.125 * 1 * 1));
 
 		super.update(elapsed);
 	}

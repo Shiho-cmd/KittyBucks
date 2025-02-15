@@ -171,7 +171,7 @@ class GameOverSubstate extends MusicBeatSubstate
 				else
 					MusicBeatState.switchState(new FreeplayState());
 	
-				FlxG.sound.playMusic(Paths.music('KittyBreak'));
+				FlxG.sound.playMusic(Paths.music('freakyMenu'));
 				PlayState.instance.callOnScripts('onGameOverConfirm', [false]);
 			}
 			else if (justPlayedLoop)

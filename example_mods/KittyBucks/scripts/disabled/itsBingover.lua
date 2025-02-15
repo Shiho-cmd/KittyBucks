@@ -1,7 +1,7 @@
 luaDebugMode = getModSetting("debug")
 luaDeprecatedWarnings = getModSetting("deprecated")
 
-local instant = getModSetting("quickReset")
+local instant = getPropertyFromClass('backend.ClientPrefs', 'data.quickReset')
 
 local curYear = os.date ("%Y")
 local canRestart = false

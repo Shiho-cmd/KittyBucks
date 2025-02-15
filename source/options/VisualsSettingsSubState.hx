@@ -85,6 +85,18 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 			BOOL);
 		addOption(option);
 		
+		var option:Option = new Option('Custom Pause Menu',
+			'Uncheck if you want to use the default pause menu.',
+			'pause',
+			BOOL);
+		addOption(option);
+
+		var option:Option = new Option('Custom Game Over Screen',
+			'Uncheck if you want to use the default game over screen. (NOTE: boyfriend will show up in every game over, but i think you already know that lol)',
+			'over',
+			BOOL);
+		addOption(option);
+		
 		var option:Option = new Option('Time Bar:',
 			"What should the Time Bar display?",
 			'timeBarType',
@@ -131,7 +143,7 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		#end
 		
 		var option:Option = new Option('Pause Music:',
-			"What song do you prefer for the Pause Screen?",
+			"What song do you prefer for the Pause Screen? (NOTE: that only apply to the default pause)",
 			'pauseMusic',
 			STRING,
 			['None', 'Tea Time', 'Breakfast', 'Breakfast (Pico)']);

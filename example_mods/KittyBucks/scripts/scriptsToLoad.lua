@@ -1,5 +1,5 @@
-local gameOver = getModSetting("over")
-local pause = getModSetting("pause")
+local gameOver = getPropertyFromClass('backend.ClientPrefs', 'data.over')
+local pause = getPropertyFromClass('backend.ClientPrefs', 'data.pause')
 
 function onCreate()
     
