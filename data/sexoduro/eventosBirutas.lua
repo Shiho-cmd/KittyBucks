@@ -1,5 +1,10 @@
-local podePular = false
 local shit = getModSetting("pause")
+local ass = getModSetting("over")
+local random911 = getRandomBool(0.1)
+local inCutscene = false
+
+local podePular = false
+local soundToLoad  = getTranslationPhrase('towers', 'second-tower')
 
 function onStartCountdown()
     
@@ -25,7 +30,7 @@ function onCreate()
         addLuaSprite("gang", true)
     end
 
-    makeLuaText("skip", "Press SPACE to skip intro", 0, 0.0, screenHeight)
+    makeLuaText("skip", getTranslationPhrase('skip', 'Press SPACE to skip intro'), 0, 0.0, screenHeight)
     screenCenter("skip", 'x')
     setTextSize("skip", 20)
     setProperty("skip.alpha", 0.7)
@@ -33,6 +38,43 @@ function onCreate()
     addLuaText("skip")
     if shit then
         setObjectOrder("skip", getObjectOrder("barr"))
+    end
+
+    if random911 then
+        precacheSound(soundToLoad)
+        precacheImage('backgrounds/void/events/the')
+        precacheImage('backgrounds/void/events/eht')
+        precacheImage('backgrounds/void/events/red-circle')
+        precacheImage('backgrounds/void/events/red-arrows')
+        precacheImage(getFileTranslation('backgrounds/void/events/never-forget'))
+
+        makeLuaSprite("towers", 'backgrounds/void/events/the', -300, 290)
+        scaleObject("towers", 0.3, 0.3, false)
+        addLuaSprite("towers", false)
+
+        makeLuaSprite("forgor", getFileTranslation('backgrounds/void/events/never-forget'), 0, 0)
+        setObjectCamera("forgor", 'other')
+        screenCenter("forgor")
+        scaleObject("forgor", 0.7, 0.7, false)
+        setProperty("forgor.alpha", 0.0001)
+        addLuaSprite("forgor", false)
+
+        makeLuaSprite("tower", 'backgrounds/void/events/eht', -257, 362)
+        scaleObject("tower", 0.37, 0.37, false)
+        setProperty("tower.alpha", 0.0001)
+        addLuaSprite("tower", false)
+
+        makeAnimatedLuaSprite("balls", 'backgrounds/void/events/red-circle', -250, 410)
+        addAnimationByPrefix("balls", "loop", "olhe", 24, true)
+        scaleObject("balls", 0.8, 0.8)
+        setProperty("balls.alpha", 0.0001)
+        addLuaSprite("balls", false)
+
+        makeAnimatedLuaSprite("cock", 'backgrounds/void/events/red-arrows', -250, 270)
+        addAnimationByPrefix("cock", "loop", "olha", 24, true)
+        --setBlendMode("cock", 'darken')
+        setProperty("cock.alpha", 0.0001)
+        addLuaSprite("cock", false)
     end
 
     makeLuaSprite("avi", 'backgrounds/void/events/plane', 100, -3000)
@@ -116,11 +158,71 @@ function onTweenCompleted(tag, vars)
     if tag == 'aviAngle' then
         setProperty("avi.angle", 0)
         doTweenAngle("aviAngle", "avi", -360, 1, "linear")
-    elseif tag == 'aviX' then
+    elseif tag == 'aviX' and not random911 then
         setProperty("bum.alpha", 1)
         playAnim("bum", "explodiu")
         setProperty("avi.visible", false)
+    elseif tag == 'aviX' and random911 then
+        inCutscene = true
+        setProperty("bum.alpha", 1)
+        playAnim("bum", "explodiu")
+        setProperty("avi.visible", false)
+        removeLuaSprite("towers")
+        setProperty("tower.alpha", 1)
+    elseif tag == 'willNever' and random911 then
+        exitSong(true)
     elseif tag == 'calaca' then
         removeLuaText("skip", true)
+    end
+end
+
+function onCustomSubstateCreatePost(name)
+    
+    if name == 'bah' then
+        insertToCustomSubstate('balls', 0)
+        insertToCustomSubstate('cock', 0)
+        setObjectCamera("balls", 'game')
+        setObjectCamera("cock", 'game')
+        setProperty("balls.alpha", 1)
+        setProperty("cock.alpha", 1)
+        playSound(soundToLoad, 1, 'tower-second')
+    end
+end
+
+function onUpdate(elapsed)
+    
+    if inCutscene and shit then
+        removeLuaScript("scripts/disabled/pauseSubState")
+    end
+
+    if inCutscene and ass then
+        removeLuaScript("scripts/disabled/itsBingover")
+    end
+
+    if getProperty('bum.animation.curAnim.name') == 'explodiu' and getProperty('bum.animation.curAnim.finished') and inCutscene then
+        openCustomSubstate("bah", true)
+    end
+end
+
+function onPause()
+    
+    if inCutscene then
+        return Function_Stop;
+    end
+end
+
+function onGameOverStart()
+    
+    if inCutscene then
+        return Function_Stop;
+    end
+end
+
+function onSoundFinished(tag)
+    
+    if tag == 'tower-second' then
+        setProperty("camHUD.visible", false)
+        setProperty("camGame.visible", false)
+        doTweenAlpha("willNever", "forgor", 1, 4, "linear")
     end
 end
