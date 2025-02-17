@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="maconha.png">
+<SubTexture name="birutiando0000" x="0" y="315" width="324" height="258" frameX="-16" frameY="-24" frameWidth="344" frameHeight="313" />
+<SubTexture name="birutiando0001" x="345" y="0" width="312" height="297" frameX="-28" frameY="-9" frameWidth="344" frameHeight="313" />
+<SubTexture name="birutiando0002" x="0" y="0" width="345" height="315" frameX="-1" frameY="0" frameWidth="344" frameHeight="313" />
+</TextureAtlas>

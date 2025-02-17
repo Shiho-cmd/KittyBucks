@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="peppy_portrait.png">
+<SubTexture name="idle0000" x="0" y="110" width="94" height="107" frameX="-7" frameY="-3" frameWidth="106" frameHeight="106" />
+<SubTexture name="idle0001" x="94" y="110" width="94" height="107" frameX="-7" frameY="-3" frameWidth="106" frameHeight="106" />
+<SubTexture name="idle0002" x="220" y="0" width="94" height="107" frameX="-7" frameY="-3" frameWidth="106" frameHeight="106" />
+<SubTexture name="idle0003" x="220" y="107" width="94" height="107" frameX="-7" frameY="-3" frameWidth="106" frameHeight="106" />
+<SubTexture name="idle0004" x="314" y="0" width="94" height="107" frameX="-7" frameY="-3" frameWidth="106" frameHeight="106" />
+<SubTexture name="smug0000" x="314" y="107" width="94" height="107" frameX="-7" frameY="-3" frameWidth="106" frameHeight="106" />
+<SubTexture name="annoyed0000" x="0" y="217" width="94" height="107" frameX="-7" frameY="-3" frameWidth="106" frameHeight="106" />
+<SubTexture name="sad0000" x="94" y="217" width="94" height="107" frameX="-7" frameY="-3" frameWidth="106" frameHeight="106" />
+<SubTexture name="happy0000" x="188" y="217" width="94" height="107" frameX="-7" frameY="-3" frameWidth="106" frameHeight="106" />
+<SubTexture name="meh0000" x="282" y="217" width="94" height="107" frameX="-7" frameY="-3" frameWidth="106" frameHeight="106" />
+<SubTexture name="faceless-event40000" x="0" y="0" width="110" height="110" frameX="0" frameY="0" frameWidth="106" frameHeight="106" />
+<SubTexture name="faceless-event30000" x="110" y="0" width="110" height="110" frameX="0" frameY="0" frameWidth="106" frameHeight="106" />
+<SubTexture name="faceless-event20000" x="408" y="0" width="94" height="107" frameX="-7" frameY="-3" frameWidth="106" frameHeight="106" />
+<SubTexture name="faceless-event10000" x="408" y="107" width="94" height="107" frameX="-7" frameY="-3" frameWidth="106" frameHeight="106" />
+<SubTexture name="faceless-alt0000" x="408" y="214" width="94" height="107" frameX="-7" frameY="-3" frameWidth="106" frameHeight="106" />
+<SubTexture name="goober-alt0000" x="0" y="324" width="94" height="107" frameX="-7" frameY="-3" frameWidth="106" frameHeight="106" />
+<SubTexture name="bruh-alt0000" x="94" y="324" width="94" height="107" frameX="-7" frameY="-3" frameWidth="106" frameHeight="106" />
+<SubTexture name="normal-alt0000" x="188" y="324" width="94" height="107" frameX="-7" frameY="-3" frameWidth="106" frameHeight="106" />
+<SubTexture name="faceless0000" x="282" y="324" width="94" height="107" frameX="-7" frameY="-3" frameWidth="106" frameHeight="106" />
+<SubTexture name="goober0000" x="376" y="324" width="94" height="107" frameX="-7" frameY="-3" frameWidth="106" frameHeight="106" />
+<SubTexture name="bruh0000" x="502" y="0" width="94" height="107" frameX="-7" frameY="-3" frameWidth="106" frameHeight="106" />
+<SubTexture name="normal0000" x="502" y="107" width="94" height="107" frameX="-7" frameY="-3" frameWidth="106" frameHeight="106" />
+</TextureAtlas>

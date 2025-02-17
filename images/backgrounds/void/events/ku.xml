@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="ku.png">
+<SubTexture name="talk0000" x="253" y="259" width="254" height="244" frameX="-11" frameY="-16" frameWidth="266" frameHeight="270" />
+<SubTexture name="talk0001" x="504" y="0" width="253" height="246" frameX="-8" frameY="-11" frameWidth="266" frameHeight="270" />
+<SubTexture name="talk0002" x="0" y="0" width="252" height="259" frameX="-9" frameY="-7" frameWidth="266" frameHeight="270" />
+<SubTexture name="huh0000" x="0" y="505" width="254" height="244" frameX="-11" frameY="-16" frameWidth="266" frameHeight="270" />
+<SubTexture name="huh0001" x="0" y="259" width="253" height="246" frameX="-8" frameY="-11" frameWidth="266" frameHeight="270" />
+<SubTexture name="huh0002" x="252" y="0" width="252" height="259" frameX="-9" frameY="-7" frameWidth="266" frameHeight="270" />
+</TextureAtlas>

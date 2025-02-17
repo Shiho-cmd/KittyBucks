@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="peppy_overworld.png">
+<SubTexture name="looking-left-alt0000" x="0" y="0" width="25" height="34" frameX="-1" frameY="0" frameWidth="22" frameHeight="30" />
+<SubTexture name="looking-right-alt0000" x="25" y="0" width="25" height="34" frameX="0" frameY="0" frameWidth="22" frameHeight="30" />
+<SubTexture name="looking-up-alt0000" x="50" y="0" width="26" height="34" frameX="0" frameY="0" frameWidth="22" frameHeight="30" />
+<SubTexture name="looking-down-alt0000" x="0" y="34" width="26" height="34" frameX="0" frameY="0" frameWidth="22" frameHeight="30" />
+<SubTexture name="looking-left0000" x="26" y="34" width="25" height="34" frameX="-1" frameY="0" frameWidth="22" frameHeight="30" />
+<SubTexture name="looking-right0000" x="51" y="34" width="25" height="34" frameX="0" frameY="0" frameWidth="22" frameHeight="30" />
+<SubTexture name="looking-up0000" x="76" y="0" width="26" height="34" frameX="0" frameY="0" frameWidth="22" frameHeight="30" />
+<SubTexture name="looking-down0000" x="76" y="34" width="26" height="34" frameX="0" frameY="0" frameWidth="22" frameHeight="30" />
+</TextureAtlas>
