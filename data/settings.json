@@ -43,16 +43,16 @@
 	},
 	{
 		"save": "pause",
-		"name": "Custom pause menu", //Name shown on the mod settings menu
+		"name": "Custom Pause Menu", //Name shown on the mod settings menu
 		"type": "bool",
-		"description": "Uncheck if you want to use the default pause menu", //Description shown on the mod settings menu
+		"description": "Uncheck if you want to use the default pause menu.", //Description shown on the mod settings menu
 		"value": true //This is the default value
 	},
 	{
 		"save": "over",
-		"name": "Custom Game Over screen", //Name shown on the mod settings menu
+		"name": "Custom Game Over Screen", //Name shown on the mod settings menu
 		"type": "bool",
-		"description": "Uncheck if you want to use the default game over screen (NOTE: boyfriend will show up in every game over but i think you already know that lol)", //Description shown on the mod settings menu
+		"description": "Uncheck if you want to use the default game over screen. (NOTE: boyfriend will show up in every game over, but i think you already know that lol)", //Description shown on the mod settings menu
 		"value": true //This is the default value
 	},
 	{
@@ -64,9 +64,9 @@
 	},
 	{
 		"save": "quickReset",
-		"name": "Instant Game Over restart", //Name shown on the mod settings menu
+		"name": "Instant Game Over Restart", //Name shown on the mod settings menu
 		"type": "bool",
-		"description": "If checked when you lose you can restart/exit the song with just one press instead of holding while in the game over cutscene (only works with the custom game over)", //Description shown on the mod settings menu
+		"description": "If checked, when you lose, you can restart/exit the song with just one press instead of holding while in the game over cutscene. (only works with the custom game over!!)", //Description shown on the mod settings menu
 		"value": false //This is the default value
 	}
 ]

@@ -1,10 +1,10 @@
 {
 	"name": "KittyBucks (Dev Build)",
-	"description": "Hello Kitty banger mod\n\nThe mod have some minor flashing lights if you are sensitive to that uncheck the \"Flashing Lights\" option!!! (some transitions will be just a dry cut but we don't want anyone dead lol)\n\nAlso if you have a REALLY weak pc/phone check the\n\"Low Quality\" option (big sprites and some bg elements will not load if that's checked)\n\n\n\n\nv3.1.1",
-	"restart":false,
+	"description": "Hello Kitty banger mod\n\nThe mod have some minor flashing lights if you are sensitive to that uncheck the \"Flashing Lights\" option!!! (some transitions will be just a dry cut but we don't want anyone dead lol)\n\nAlso if you have a REALLY weak pc/phone check the\n\"Low Quality\" option (big sprites and some bg elements will not load if that's checked)\n\n\n\n\nv4.2",
+	"restart": true,
 	"runsGlobally": false,
 	"color": [86, 86, 86],
 	"discordRPC": "863222024192262205",
 	"iconFramerate": 10,
-	"buildVersion": "Dev Build v4.1"
+	"buildVersion": "Dev Build v4.2"
 }

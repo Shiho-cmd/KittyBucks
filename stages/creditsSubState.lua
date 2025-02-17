@@ -65,6 +65,8 @@ local updateShit = true
 
 function onCreate()
 
+    setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Credits Menu')
+
     --precacheeeeeeeeee
     precacheImage("credits/stickers/charter")
     precacheImage("credits/stickers/artist")

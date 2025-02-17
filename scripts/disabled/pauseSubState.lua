@@ -28,6 +28,7 @@ local minIcon = rpc.rpcMiniIconPause
 local data = parseJson('data/'..songPath..'/songData-'..difficultyName..'.json')
 
 local thingsON = nil
+local shiters = getModSetting("rpc")
 
 function onCreate()
 
@@ -45,12 +46,6 @@ function onCreate()
         thingsON = 'PRACTICE MODE'
     elseif botPlay then
         thingsON = 'BOTPLAY'
-    end
-
-    if songPath == 'credits' then
-        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Credits Menu')
-    else
-        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
     end
 
     --[[local var ShaderName = 'gray'
@@ -196,10 +191,6 @@ function onTimerCompleted(tag)
 end
 
 function onUpdate(elapsed)
-
-    if songPath == 'credits' then
-        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Credits Menu')
-    end
     
     if misses == 1 then
         spc = 35
@@ -228,13 +219,13 @@ function onPause()
     return Function_Stop;
 end
 
---[[function onCustomSubstateUpdate(name, elapsed)
+function onCustomSubstateUpdate(name, elapsed)
     
-    if name == 'pauseShit' then
+    if name == 'pauseShit' and shiters then
         setTextString('socorro', 'PAUSED')
         changeDiscordPresence(getTextString("presence"), getTextString("socorro"), minIcon)
     end
-end]]
+end
 
 function onCustomSubstateCreatePost(name)
     
@@ -286,7 +277,6 @@ function onCustomSubstateCreatePost(name)
         setTextString("morri", curFrase)
 
         doTweenY("lololol", "morri", 694.6, 0.5, "quartOut")
-        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName..' (PAUSED)')
     end
 end
 
@@ -431,30 +421,6 @@ function onSoundFinished(tag)
     if tag == 'bah' then
         playSound("pause/pause-theme", 0.2, 'bah')
     end
-end
-
-function onDestroy()
-    setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks')
-end
-    --[=[if shadersEnabled then
-        runHaxeCode([[
-            FlxG.game.setFilters([]);
-        ]])
-    end
-end]=]
-
-function onCountdownStarted()
-
-    if songPath == 'credits' then
-        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Credits Menu')
-    else
-        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Playing: '..songName)
-    end
-end
-
-function onGameOver()
-    
-    setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Game Over')
 end
 
 function onSectionHit()

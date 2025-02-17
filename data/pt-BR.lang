@@ -1,0 +1,10 @@
+Português (Brasil)
+
+setting_custom_pause_menu: "Menu De Pause Customizado"
+description_custom_pause_menu: "Desmarque se quer usar o menu de pause padrão."
+setting_custom_game_over_screen: "Tela De Game Over Customizada"
+description_custom_game_over_screen: "Desmarque se quer usar a tela de game over padrão. (PS: boyfriend vai aparecer em todos os game overs, mas acho que tu já sabe disso lol)"
+setting_custom_discord_rpc: "Discord RPC Customizado"
+description_custom_discord_rpc: "Desmarque se não quer usar o Discord Rich Presence do mod."
+setting_instant_game_over_restart: "Reinício De Game Over Instantâneo"
+description_instant_game_over_restart: "Se marcado, quando você perder, você pode reiniciar ou sair da música com apens um clique ao invés de segurar enquanto estiver na cutscene do game over. (apenas funciona com o game over customizado!!)"
