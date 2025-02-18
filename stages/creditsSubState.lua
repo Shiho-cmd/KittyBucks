@@ -65,7 +65,7 @@ local updateShit = true
 
 function onCreate()
 
-    setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Credits Menu')
+    setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | '..getTranslationPhrase('win_creditos', 'Credits Menu'))
 
     --precacheeeeeeeeee
     precacheImage("credits/stickers/charter")
@@ -147,12 +147,12 @@ function onCreate()
     addLuaText("longTxt")
     setTextAlignment("longTxt", 'center')
 
-    makeLuaText("coiso", "KITTYBUCKS TEAM!!!11", 0, -420, 15)
+    makeLuaText("coiso", getTranslationPhrase('cre_time', 'KITTYBUCKS TEAM!!!11'), 0, -420, 15)
     setObjectCamera("coiso", 'other')
     addLuaText("coiso")
     setTextSize("coiso", 35)
 
-    makeLuaText("coiso2", "SPECIAL THANKS!!!11", 0, screenWidth, 665)
+    makeLuaText("coiso2", getTranslationPhrase('cre_especial', 'SPECIAL THANKS!!!11'), 0, screenWidth, 665)
     setObjectCamera("coiso2", 'other')
     addLuaText("coiso2")
     setTextSize("coiso2", 35)
@@ -449,40 +449,6 @@ function onUpdate(elapsed)
     checkCha = getMouseX('camOther') > getProperty('stickerCha.x') and getMouseY('camOther') > getProperty('stickerCha.y') and getMouseX('camOther') < getProperty('stickerCha.x') + getProperty('stickerCha.width') and getMouseY('camOther') < getProperty('stickerCha.y') + getProperty('stickerCha.height') and getProperty("stickerCha.visible")
     checkAni = getMouseX('camOther') > getProperty('stickerAni.x') and getMouseY('camOther') > getProperty('stickerAni.y') and getMouseX('camOther') < getProperty('stickerAni.x') + getProperty('stickerAni.width') and getMouseY('camOther') < getProperty('stickerAni.y') + getProperty('stickerAni.height') and getProperty("stickerAni.visible")
     checkCom = getMouseX('camOther') > getProperty('stickerCom.x') and getMouseY('camOther') > getProperty('stickerCom.y') and getMouseX('camOther') < getProperty('stickerCom.x') + getProperty('stickerCom.width') and getMouseY('camOther') < getProperty('stickerCom.y') + getProperty('stickerCom.height') and getProperty("stickerCom.visible")
-
-    if checkArt then
-        setTextString("mostresla", "Artist")
-        setProperty("mostresla.x", getMouseX("other"))
-        setProperty("mostresla.y", getMouseY("other") + 35)
-        doTweenAlpha("putaRapariga", "mostresla", 1, 0.1, "linear")
-    elseif checkDir then
-        setTextString("mostresla", "Director")
-        setProperty("mostresla.x", getMouseX("other"))
-        setProperty("mostresla.y", getMouseY("other") + 35)
-        doTweenAlpha("putaRapariga", "mostresla", 1, 0.1, "linear")
-    elseif checkPro then
-        setTextString("mostresla", "Programmer")
-        setProperty("mostresla.x", getMouseX("other"))
-        setProperty("mostresla.y", getMouseY("other") + 35)
-        doTweenAlpha("putaRapariga", "mostresla", 1, 0.1, "linear")
-    elseif checkCha then
-        setTextString("mostresla", "Charter")
-        setProperty("mostresla.x", getMouseX("other"))
-        setProperty("mostresla.y", getMouseY("other") + 35)
-        doTweenAlpha("putaRapariga", "mostresla", 1, 0.1, "linear")
-    elseif checkAni then
-        setTextString("mostresla", "Animator")
-        setProperty("mostresla.x", getMouseX("other"))
-        setProperty("mostresla.y", getMouseY("other") + 35)
-        doTweenAlpha("putaRapariga", "mostresla", 1, 0.1, "linear")
-    elseif checkCom then
-        setTextString("mostresla", "Composer")
-        setProperty("mostresla.x", getMouseX("other"))
-        setProperty("mostresla.y", getMouseY("other") + 35)
-        doTweenAlpha("putaRapariga", "mostresla", 1, 0.1, "linear")
-    else
-        doTweenAlpha("putaRapariga", "mostresla", 0, 0.1, "linear")
-    end
 
     if pos == 5 and section == 0 and updateShit then -- shiho
         updateShit = false
@@ -876,6 +842,50 @@ function onUpdate(elapsed)
         pos2 = 1
     elseif pos2 < 1 and section == 1 then
         pos2 = 5
+    end
+
+    if checkArt then
+        setTextString("mostresla", getTranslationPhrase('cre_sticker_art', 'Artist'))
+        setProperty("mostresla.x", getMouseX("other"))
+        setProperty("mostresla.y", getMouseY("other") + 35)
+        doTweenAlpha("putaRapariga", "mostresla", 1, 0.1, "linear")
+    elseif checkDir then
+        setTextString("mostresla", getTranslationPhrase('cre_sticker_dir', 'Director'))
+        setProperty("mostresla.x", getMouseX("other"))
+        setProperty("mostresla.y", getMouseY("other") + 35)
+        doTweenAlpha("putaRapariga", "mostresla", 1, 0.1, "linear")
+    elseif checkPro then
+        setTextString("mostresla", getTranslationPhrase('cre_sticker_pro', 'Programmer'))
+        setProperty("mostresla.x", getMouseX("other"))
+        setProperty("mostresla.y", getMouseY("other") + 35)
+        doTweenAlpha("putaRapariga", "mostresla", 1, 0.1, "linear")
+    elseif checkCha then
+        setTextString("mostresla", "Charter")
+        setProperty("mostresla.x", getMouseX("other"))
+        setProperty("mostresla.y", getMouseY("other") + 35)
+        doTweenAlpha("putaRapariga", "mostresla", 1, 0.1, "linear")
+    elseif checkAni and pos == 5 then
+        setTextString("mostresla", getTranslationPhrase('cre_sticker_anima', 'Animator'))
+        setProperty("mostresla.x", getMouseX("other"))
+        setProperty("mostresla.y", getMouseY("other") + 35)
+        doTweenAlpha("putaRapariga", "mostresla", 1, 0.1, "linear")
+    elseif checkAni and pos == 4 then
+        setTextString("mostresla", getTranslationPhrase('cre_sticker_animo', 'Animator'))
+        setProperty("mostresla.x", getMouseX("other"))
+        setProperty("mostresla.y", getMouseY("other") + 35)
+        doTweenAlpha("putaRapariga", "mostresla", 1, 0.1, "linear")
+    elseif checkCom and pos == 2 then
+        setTextString("mostresla", getTranslationPhrase('cre_sticker_compa', 'Composer'))
+        setProperty("mostresla.x", getMouseX("other"))
+        setProperty("mostresla.y", getMouseY("other") + 35)
+        doTweenAlpha("putaRapariga", "mostresla", 1, 0.1, "linear")
+    elseif checkCom and pos == 3 then
+        setTextString("mostresla", getTranslationPhrase('cre_sticker_compo', 'Composer'))
+        setProperty("mostresla.x", getMouseX("other"))
+        setProperty("mostresla.y", getMouseY("other") + 35)
+        doTweenAlpha("putaRapariga", "mostresla", 1, 0.1, "linear")
+    else
+        doTweenAlpha("putaRapariga", "mostresla", 0, 0.1, "linear")
     end
 
     if customStep == 66 and flashingLights then

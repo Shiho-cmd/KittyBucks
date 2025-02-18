@@ -3,7 +3,7 @@ function parseJson(file)
 end
 
 local mainArea = parseJson('data/_ROOMS/blackspace/mainArea.json')
-local mainAreaDialogue = parseJson('data/_ROOMS/blackspace/mainArea-dialogue.json')
+local mainAreaDialogue = parseJson('data/_ROOMS/blackspace/mainArea-dialogue-'..getTranslationPhrase('dia_trigger', 'EN')..'.json')
 
 local path = 'backgrounds/omori/'
 local pathBorder = 'backgrounds/omori/borders'
@@ -213,14 +213,14 @@ function onCreate()
 
     if not seenCuterscner then
         clicavel = false
-        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Welcome to Black Space')
+        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | '..getTranslationPhrase('win_bemviado', 'Welcome to Black Space'))
         setProperty("camGame.alpha", 0.0001)
         setProperty("camOther.alpha", 0.0001)
         doTweenAlpha("start", "intro", 1, 1.5, "linear")
         playSound("omori/se/sys_blackletter1", 1, 'fadeIn')
     else
         cutOver = true
-        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | Black Space')
+        setPropertyFromClass("openfl.Lib", "application.window.title", 'KittyBucks | '..getTranslationPhrase('win_bs', 'Black Space'))
         playSound("omori/bgm/bs_entrance", 1, 'bgm')
     end
 end

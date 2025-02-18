@@ -1,0 +1,10 @@
+{
+    // player
+   "kittySpawn": [1294, 1068],
+
+   // npc
+   "peppy": [0, 0],
+
+    // obj
+    "pier": [1000, 1000]
+}

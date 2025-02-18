@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="quiet-bg.png">
+<SubTexture name="waterfunny0000" x="0" y="0" width="322" height="130" frameX="0" frameY="0" frameWidth="320" frameHeight="128" />
+<SubTexture name="waterfunny0001" x="0" y="130" width="322" height="130" frameX="0" frameY="0" frameWidth="320" frameHeight="128" />
+<SubTexture name="waterfunny0002" x="322" y="0" width="322" height="130" frameX="0" frameY="0" frameWidth="320" frameHeight="128" />
+</TextureAtlas>

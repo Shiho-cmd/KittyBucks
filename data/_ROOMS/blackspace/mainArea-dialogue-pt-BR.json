@@ -1,0 +1,7 @@
+{
+    "tutorial": ["Use as setinhas pra se movimentar, Z para interagir, X para correr e C para abrir o menu/cancelar.", "Se divirta!", ""],
+    "mago": ["Uma porta preta produz uma estranha luz.\nvoce se sente um pouco nostalgica...", "O que gostaria de fazer?", ""],
+    "yume": ["Uma porta preta produz uma luz pertubardora,\nte dando um frio na espinha...\nVoce se sente sonolenta...", "O que gostaria de fazer?", ""],
+    "defaultOptions": "ABRIR A PORTA\nFAZER NADA",
+    "stare": ["Voce encarou a porta.", ""]
+}

@@ -20,11 +20,19 @@ function onCreate()
     DIREITA - Pula 5 segundos
     ESQUERDA - Volta 5 segundos
     ESPAÇO - Pausa
+    ] - Aumenta a velocidade
+    [ - Diminue a velocidade
     R - Reinicia]], 0, 0.0, 0.0)
     setObjectCamera("blah", 'other')
     setTextSize("blah", 25)
     screenCenter("blah")
     addLuaText("blah")
+
+    makeLuaText("bla", '', 0, 0.0, 0.0)
+    setObjectCamera("bla", 'other')
+    setTextSize("bla", 25)
+    screenCenter("bla", 'x')
+    addLuaText("bla")
 
     makeLuaSprite("fundo", 'menuDesat')
     setObjectCamera("fundo", 'other')
@@ -46,22 +54,22 @@ function onUpdate(elapsed)
 
     if keyboardJustPressed("UP") then
         curSong = curSong + 1
-        playSound('jukebox/'..curSong, 1, 'mus')
+        playSound('jukebox/'..curSong, 1, 'mus', true)
         curSongName = getTextFromFile("sounds/jukebox/"..curSong..'.txt')
         debugPrint('Tocando: '..curSongName)
     elseif keyboardJustPressed("DOWN") then
         curSong = curSong - 1
-        playSound('jukebox/'..curSong, 1, 'mus')
+        playSound('jukebox/'..curSong, 1, 'mus', true)
         curSongName = getTextFromFile("sounds/jukebox/"..curSong..'.txt') 
         debugPrint('Tocando: '..curSongName)
     elseif curSong > 6 then
         curSong = 1
-        playSound('jukebox/'..curSong, 1, 'mus')
+        playSound('jukebox/'..curSong, 1, 'mus', true)
         curSongName = getTextFromFile("sounds/jukebox/"..curSong..'.txt') 
         debugPrint('Tocando: '..curSongName)
     elseif curSong < 1 then
         curSong = 6
-        playSound('jukebox/'..curSong, 1, 'mus')
+        playSound('jukebox/'..curSong, 1, 'mus', true)
         curSongName = getTextFromFile("sounds/jukebox/"..curSong..'.txt') 
         debugPrint('Tocando: '..curSongName)
     elseif keyJustPressed('back') then
@@ -76,19 +84,26 @@ function onUpdate(elapsed)
         pause = pause - 1
     elseif keyboardJustPressed("RIGHT") then
         setSoundTime("mus", getSoundTime("mus") + 5000)
+        setSoundVolume("null", 0)
         debugPrint('Foram pulados 5 segundos')
     elseif keyboardJustPressed("LEFT") then
         setSoundTime("mus", getSoundTime("mus") - 5000)
+        setSoundVolume("null", 0)
         debugPrint('Foram voltados 5 segundos')
     elseif keyboardJustPressed("R") then
         setSoundTime("mus", 0)
         debugPrint('Música foi reiniciada')
+    elseif keyboardJustPressed("RBRACKET") then
+        setSoundPitch('mus', getSoundPitch('mus') + 0.05, true)
+        debugPrint('Velocidade agora está em: '..getSoundPitch('mus'))
+    elseif keyboardJustPressed("LBRACKET") then
+        setSoundPitch('mus', getSoundPitch('mus') - 0.05, true)
+        debugPrint('Velocidade agora está em: '..getSoundPitch('mus'))
     end
 end
 
-function onSoundFinished(tag)
+function onUpdatePost(elapsed)
     
-    if tag == 'mus' then
-        playSound('jukebox/'..curSong, 1, 'mus')
-    end
+    setTextString("bla", "Música: "..curSongName..' | Velocidade: '..getSoundPitch('mus')..'x')
+    screenCenter("bla", 'x')
 end

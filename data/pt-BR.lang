@@ -1,8 +1,33 @@
 Português (Brasil)
 
-towers: "segunda-torre"
-skip: "Pressione ESPAÇO para pular a intro"
+// Geral
+grl_towers: "segunda-torre"
+grl_skip: "Pressione ESPAÇO para pular a intro"
 
+// Janelas
+win_jogando: "Jogando: "
+win_creditos: "Menu de Creditos"
+win_pause: " (PAUSADO)"
+win_bemviado: "Bem-Vindo ao Espaco Negro"
+win_bs: "Espaco Negro"
+win_qa: "Area Quieta"
+
+// Dialogos
+dia_trigger: "pt-BR"
+dia_roblox: "Chega de roblox por hoje..."
+
+// Créditos
+cre_time: "TIME DO KITTYBUCKS!!!11"
+cre_especial: "AGRADECIMENTOS ESPECIAIS!!!11"
+cre_sticker_art: "Artista"
+cre_sticker_dir: "Diretora"
+cre_sticker_compa: "Compositora"
+cre_sticker_compo: "Compositor"
+cre_sticker_anima: "Animadora"
+cre_sticker_animo: "Animador"
+cre_sticker_pro: "Programadora"
+
+// Configs
 setting_custom_pause_menu: "Menu De Pause Customizado"
 description_custom_pause_menu: "Desmarque se quer usar o menu de pause padrão."
 setting_custom_game_over_screen: "Tela De Game Over Customizada"
@@ -12,4 +37,5 @@ description_custom_discord_rpc: "Desmarque se não quer usar o Discord Rich Pres
 setting_instant_game_over_restart: "Reinício De Game Over Instantâneo"
 description_instant_game_over_restart: "Se marcado, quando você perder, você pode reiniciar ou sair da música com apens um clique ao invés de segurar enquanto estiver na cutscene do game over. (apenas funciona com o game over customizado!!)"
 
+// Assets
 images/backgrounds/void/events/never-forget: "images/pt-BR/backgrounds/void/events/never-forget"

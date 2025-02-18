@@ -16,7 +16,7 @@ function onCreate()
         addLuaScript(currentModDirectory.."/scripts/disabled/discordRPC.lua")
     end
 
-    if songName ~= 'bruh' then
+    if songName ~= 'bruh' or songName ~= 'quiet' then
         addHScript(currentModDirectory.."/scripts/disabled/haxeShit.hx")
     end
 end

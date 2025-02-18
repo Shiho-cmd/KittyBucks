@@ -10,7 +10,7 @@ luaDeprecatedWarnings = getModSetting("deprecated")
 local borders = {'border_default_handheld', 'border_omori_handheld', 'border_omori_redhand_handheld', 'border_aubrey_handheld', 'border_kel_handheld', 'border_hero_handheld', 'border_mari_handheld', 'border_basil_handheld', 'border_whitespace_handheld', 'border_solidblack_handheld', 'border_solidblack_handheld'}
 local curBorder = 1
 local pode = true
-local txt = 'That\'s enough roblox for today...'
+local txt = getTranslationPhrase('dia_roblox', 'That\'s enough roblox for today...')
 local clicavel = false
 local cameFromBS = check.itDid
 
