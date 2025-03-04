@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="sprouter-portrait.png">
+<SubTexture name="sprouter-portrait XD-alt0000" x="0" y="0" width="106" height="106" frameX="0" frameY="0" frameWidth="106" frameHeight="106" />
+<SubTexture name="sprouter-portrait smug-alt0000" x="106" y="0" width="106" height="106" frameX="0" frameY="0" frameWidth="106" frameHeight="106" />
+<SubTexture name="sprouter-portrait yippie-alt0000" x="0" y="106" width="106" height="106" frameX="0" frameY="0" frameWidth="106" frameHeight="106" />
+<SubTexture name="sprouter-portrait angry-alt0000" x="106" y="106" width="106" height="106" frameX="0" frameY="0" frameWidth="106" frameHeight="106" />
+<SubTexture name="sprouter-portrait huh-alt0000" x="212" y="0" width="106" height="106" frameX="0" frameY="0" frameWidth="106" frameHeight="106" />
+<SubTexture name="sprouter-portrait sad-alt0000" x="212" y="106" width="106" height="106" frameX="0" frameY="0" frameWidth="106" frameHeight="106" />
+<SubTexture name="sprouter-portrait cedilha-alt0000" x="0" y="212" width="106" height="106" frameX="0" frameY="0" frameWidth="106" frameHeight="106" />
+<SubTexture name="sprouter-portrait happy-alt0000" x="106" y="212" width="106" height="106" frameX="0" frameY="0" frameWidth="106" frameHeight="106" />
+<SubTexture name="sprouter-portrait neutral-alt0000" x="212" y="212" width="106" height="106" frameX="0" frameY="0" frameWidth="106" frameHeight="106" />
+<SubTexture name="sprouter-portrait XD0000" x="318" y="0" width="106" height="106" frameX="0" frameY="0" frameWidth="106" frameHeight="106" />
+<SubTexture name="sprouter-portrait smug0000" x="318" y="106" width="106" height="106" frameX="0" frameY="0" frameWidth="106" frameHeight="106" />
+<SubTexture name="sprouter-portrait yippie0000" x="318" y="212" width="106" height="106" frameX="0" frameY="0" frameWidth="106" frameHeight="106" />
+<SubTexture name="sprouter-portrait angry0000" x="0" y="318" width="106" height="106" frameX="0" frameY="0" frameWidth="106" frameHeight="106" />
+<SubTexture name="sprouter-portrait huh0000" x="106" y="318" width="106" height="106" frameX="0" frameY="0" frameWidth="106" frameHeight="106" />
+<SubTexture name="sprouter-portrait sad0000" x="212" y="318" width="106" height="106" frameX="0" frameY="0" frameWidth="106" frameHeight="106" />
+<SubTexture name="sprouter-portrait cedilha0000" x="318" y="318" width="106" height="106" frameX="0" frameY="0" frameWidth="106" frameHeight="106" />
+<SubTexture name="sprouter-portrait happy0000" x="424" y="0" width="106" height="106" frameX="0" frameY="0" frameWidth="106" frameHeight="106" />
+<SubTexture name="sprouter-portrait neutral0000" x="424" y="106" width="106" height="106" frameX="0" frameY="0" frameWidth="106" frameHeight="106" />
+</TextureAtlas>

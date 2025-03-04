@@ -5,7 +5,7 @@ function parseJson(file)
 end
 
 local quietArea = parseJson('data/_ROOMS/blackspace/quietArea.json')
-local quietAreaDialogue = parseJson('data/_ROOMS/blackspace/quietArea-dialogue-'..getTranslationPhrase('dia_trigger', 'EN')..'.json')
+local quietAreaDialogue = parseJson('data/_ROOMS/blackspace/quietArea-dialogue-EN.json')
 
 local path = 'backgrounds/omori/'
 local pathBS = 'backgrounds/omori/blackspace/'
@@ -35,8 +35,8 @@ local bct = 1
 local quanto = 1
 local ativado = false
 local curTag = 1
-local tags = {'pier', 'pep', 'upHB', 'downHB', 'rightHB', 'leftHB'}
-local maxTagNum = 6
+local tags = {'pier', 'pep', 'upHB', 'downHB', 'rightHB', 'leftHB', 'sprout'}
+local maxTagNum = 7
 local shader = 'none'
 
 function onStartCountdown()
@@ -149,8 +149,15 @@ end
 
 function createNPC()
 
+    makeAnimatedLuaSprite("sprout", 'characters/omori/sprouter-overworld', quietArea.sprouter[1], quietArea.sprouter[2])
+    addAnimationByPrefix("sprout", "idle", "idle-water-alt",  5, true)
+    addAnimationByPrefix("sprout", "talk", "talk-water-alt", 5, true)
+    scaleObject("sprout", 2, 2)
+    addLuaSprite("sprout", false)
+    doTweenX("VAIIII", "sprout", 1508, 10, "quadInOut")
+
     makeAnimatedLuaSprite("pep", 'characters/omori/peppy_overworld', quietArea.peppy[1], quietArea.peppy[2])
-    addAnimationByPrefix("pep", "idle-down", "looking-down-alt", 0, false)
+    addAnimationByPrefix("pep", "idle-up", "looking-up-alt", 0, false)
     scaleObject("pep", 2, 2)
     addLuaSprite("pep", false)
 end
@@ -326,7 +333,7 @@ function onUpdate(elapsed)
         debugPrint('                                                             Posições resetadas', 'ff0000')
         playSound(pathSE.."sys_cancel", 0.5, 'reset')
     elseif keyboardPressed("CONTROL") and keyboardJustPressed("S") and ativado then
-        saveFile('mods/KittyBucks/data/_ROOMS/blackspace/quietArea.json', '{\n\n    // player\n   "kittySpawn": [1294, 1068],\n\n   // npc\n   "peppy": ['..getProperty("pep.x")..', '..getProperty("pep.y")..'],\n\n    // obj\n    "pier": [1000, 1000],\n    "upHB": ['..getProperty("upHB.x")..', '..getProperty("upHB.y")..'],\n    "downHB": ['..getProperty("downHB.x")..', '..getProperty("downHB.y")..'],\n    "rightHB": ['..getProperty("rightHB.x")..', '..getProperty("rightHB.y")..'],\n    "leftHB": ['..getProperty("leftHB.x")..', '..getProperty("leftHB.y")..']\n}', true)
+        saveFile('mods/KittyBucks/data/_ROOMS/blackspace/quietArea.json', '{\n\n    // player\n   "kittySpawn": [1294, 1068],\n\n   // npc\n   "peppy": ['..getProperty("pep.x")..', '..getProperty("pep.y")..'],\n   "sprouter": ['..getProperty("sprout.x")..', '..getProperty("sprout.y")..'],\n\n    // obj\n    "pier": ['..getProperty("pier.x")..', '..getProperty("pier.y")..'],\n\n    // hitbox\n    "upHB": ['..getProperty("upHB.x")..', '..getProperty("upHB.y")..'],\n    "downHB": ['..getProperty("downHB.x")..', '..getProperty("downHB.y")..'],\n    "rightHB": ['..getProperty("rightHB.x")..', '..getProperty("rightHB.y")..'],\n    "leftHB": ['..getProperty("leftHB.x")..', '..getProperty("leftHB.y")..']\n}', true)
         debugPrint('                                                               Arquivo salvo', '00ff00')
         playSound(pathSE.."BA_Heart_Heal", 0.3, 'saved')
     end
@@ -338,7 +345,7 @@ function onUpdate(elapsed)
     end
 
     if ativado then
-        setTextString("bucetas", "Edit mode: "..string.upper(tostring(ativado))..'\nObj selecionado: '..string.upper(tags[curTag]..'\nlooking: '..looking))
+        setTextString("bucetas", "Debug info:\nEdit mode: "..string.upper(tostring(ativado))..'\nObj selecionado: '..string.upper(tags[curTag])..'\nObj X: '..getProperty(tags[curTag]..".x")..'\nObj Y: '..getProperty(tags[curTag]..".y")..'\n\nPlayer info:\nBF X: '..getProperty("boyfriend.x")..'\nBF Y: '..getProperty("boyfriend.y")..'\n\nCamera info:\nCam X: '..getCameraFollowX()..'\nCam Y: '..getCameraFollowY())
         screenCenter("bucetas", 'y')
     else
         setTextString("bucetas", '')
@@ -388,5 +395,9 @@ function onTweenCompleted(tag, vars)
     elseif tag == 'loop2' then
         setProperty("clouds2.x", -getProperty("clouds2.width"))
         doTweenX("loop2", "clouds2", screenWidth, 10, "linear")
+    elseif tag == 'VAIIII' then
+        doTweenX("VOLTAAAA", "sprout", 1070, 10, "quadInOut")
+    elseif tag == 'VOLTAAAA' then
+        doTweenX("VAIIII", "sprout", 1508, 10, "quadInOut")
     end
 end
