@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="sprouter-closeup.png">
+<SubTexture name="XD-alt0000" x="0" y="0" width="150" height="145" frameX="0" frameY="0" frameWidth="144" frameHeight="139" />
+<SubTexture name="smug-alt0000" x="150" y="0" width="150" height="145" frameX="0" frameY="0" frameWidth="144" frameHeight="139" />
+<SubTexture name="yippie-alt0000" x="0" y="145" width="150" height="145" frameX="0" frameY="0" frameWidth="144" frameHeight="139" />
+<SubTexture name="angry-alt0000" x="150" y="145" width="150" height="145" frameX="0" frameY="0" frameWidth="144" frameHeight="139" />
+<SubTexture name="huh-alt0000" x="300" y="0" width="150" height="145" frameX="0" frameY="0" frameWidth="144" frameHeight="139" />
+<SubTexture name="sad-alt0000" x="300" y="145" width="150" height="145" frameX="0" frameY="0" frameWidth="144" frameHeight="139" />
+<SubTexture name="cedilha-alt0000" x="0" y="290" width="150" height="145" frameX="0" frameY="0" frameWidth="144" frameHeight="139" />
+<SubTexture name="happy-alt0000" x="150" y="290" width="150" height="145" frameX="0" frameY="0" frameWidth="144" frameHeight="139" />
+<SubTexture name="neutral-alt0000" x="300" y="290" width="150" height="145" frameX="0" frameY="0" frameWidth="144" frameHeight="139" />
+<SubTexture name="XD0000" x="450" y="0" width="150" height="145" frameX="0" frameY="0" frameWidth="144" frameHeight="139" />
+<SubTexture name="smug0000" x="450" y="145" width="150" height="145" frameX="0" frameY="0" frameWidth="144" frameHeight="139" />
+<SubTexture name="yippie0000" x="450" y="290" width="150" height="145" frameX="0" frameY="0" frameWidth="144" frameHeight="139" />
+<SubTexture name="angry0000" x="0" y="435" width="150" height="145" frameX="0" frameY="0" frameWidth="144" frameHeight="139" />
+<SubTexture name="huh0000" x="150" y="435" width="150" height="145" frameX="0" frameY="0" frameWidth="144" frameHeight="139" />
+<SubTexture name="sad0000" x="300" y="435" width="150" height="145" frameX="0" frameY="0" frameWidth="144" frameHeight="139" />
+<SubTexture name="cedilha0000" x="450" y="435" width="150" height="145" frameX="0" frameY="0" frameWidth="144" frameHeight="139" />
+<SubTexture name="happy0000" x="600" y="0" width="150" height="145" frameX="0" frameY="0" frameWidth="144" frameHeight="139" />
+<SubTexture name="neutral0000" x="600" y="145" width="150" height="145" frameX="0" frameY="0" frameWidth="144" frameHeight="139" />
+</TextureAtlas>

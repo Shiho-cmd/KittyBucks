@@ -23,11 +23,13 @@ local ovo = getModSetting("over")
 local clicavel = true
 local moveAnim = 'walk'
 local walkSpeed = 4
+local soundSpeed = 0.005
 local moveDown = true
 local moveUp = true
 local moveRight = true
 local moveLeft = true
 local looking = 'down'
+local the = false
 
 local win = getTranslationPhrase('win_qa', 'Quiet Area')
 
@@ -35,9 +37,11 @@ local bct = 1
 local quanto = 1
 local ativado = false
 local curTag = 1
-local tags = {'pier', 'pep', 'upHB', 'downHB', 'rightHB', 'leftHB', 'sprout'}
-local maxTagNum = 7
+local tags = {'bruhto', 'pier', 'pep', 'sprout'}
+local maxTagNum = 4
 local shader = 'none'
+
+local tagsObjsAlpha = {'pier', 'pep', 'sprout', 'wter', 'boyfriend'}
 
 function onStartCountdown()
     
@@ -59,6 +63,7 @@ function onCreate()
     precacheSound(pathBGM.."bs_calm")
     precacheSound(pathBGM.."xx_gibs_song")
     precacheSound(pathSE.."GEN_stab")
+    precacheSound(pathSE.."lemonade")
 
     removeLuaScript(currentModDirectory.."/scripts/gozadaInsana.lua")
     removeLuaScript(currentModDirectory.."/scripts/noteRGB.lua")
@@ -70,12 +75,13 @@ function onCreate()
     end
 
     playSound(pathBGM.."xx_gibs_song", 1, 'bgm', true)
+    playSound(pathSE.."lemonade", 0.5, 'lemon', true)
     setSoundPitch('bgm', 0.6)
 
     setCharacterX("boyfriend", quietArea.kittySpawn[1])
     setCharacterY("boyfriend", quietArea.kittySpawn[2])
     
-    setProperty('camGame.bgColor', getColorFromHex('FFFFFF'))
+    setProperty('camGame.bgColor', getColorFromHex('000000'))
 
     makeLuaSprite('bor', pathBorder..'border_blackspace_handheld')
     setObjectCamera('bor', 'other')
@@ -103,9 +109,13 @@ function onCreate()
     setProperty("clouds2.flipX", true)
     setProperty("clouds2.x", -getProperty("clouds2.width"))
 
-    makeAnimatedLuaSprite('pier', pathQA..'quiet-bg', quietArea.pier[1], quietArea.pier[2])
+    makeAnimatedLuaSprite('wter', pathQA..'water-overworld', quietArea.pier[1], quietArea.pier[2])
+    scaleObject("wter", 2, 2)
+    addAnimationByPrefix("wter", "idle", "loop", 5, true)
+    addLuaSprite("wter", false)
+
+    makeLuaSprite('pier', pathQA..'pier', quietArea.pier[1], quietArea.pier[2])
     scaleObject("pier", 2, 2)
-    addAnimationByPrefix("pier", "idle", "waterfunny", 5, true)
     addLuaSprite("pier", false)
 
     makeLuaText("bucetas", "", 0, 0.0, 0.0)
@@ -115,32 +125,32 @@ function onCreate()
     setTextAlignment("bucetas", 'left')
     addLuaText("bucetas")
 
-    makeAnimatedLuaSprite("refleKitty", 'characters/omori/kitty_overworld')
-    addAnimationByIndices("refleKitty", "idle-down", "walk_down", '1', 0, false)
-    addAnimationByIndices("refleKitty", "idle-up", "walk_up", '1', 0, false)
-    addAnimationByIndices("refleKitty", "idle-left", "walk_left", '1', 0, false)
-    addAnimationByIndices("refleKitty", "idle-right", "walk_right", '1', 0, false)
-    addAnimationByIndices("refleKitty", "walk-down", "walk_down", '0, 1, 2, 1', 5, true)
-    addAnimationByIndices("refleKitty", "walk-up", "walk_up", '0, 1, 2, 1', 5, true)
-    addAnimationByIndices("refleKitty", "walk-left", "walk_left", '0, 1, 2, 1', 5, true)
-    addAnimationByIndices("refleKitty", "walk-right", "walk_right", '0, 1, 2, 1', 5, true)
-    addAnimationByIndices("refleKitty", "run-down", "run_down", '7, 6, 5, 4, 3, 2, 1, 0', 12, true)
-    addAnimationByIndices("refleKitty", "run-up", "run_up", '7, 6, 5, 4, 3, 2, 1, 0', 12, true)
-    addAnimationByIndices("refleKitty", "run-left", "run_left", '7, 6, 5, 4, 3, 2, 1, 0', 12, true)
-    addAnimationByIndices("refleKitty", "run-right", "run_right", '7, 6, 5, 4, 3, 2, 1, 0', 12, true)
-    addAnimationByIndices("refleKitty", "stab", "stab", '13, 12, 11, 10, 9, 8, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 4, 3, 2, 1, 0', 5, false)
-    scaleObject("refleKitty", 2, 2)
-    setProperty("refleKitty.flipY", true)
-    setProperty("refleKitty.x", getProperty("boyfriend.x") - 14)
-    setProperty("refleKitty.y", getProperty("boyfriend.y") + 110)
-    setProperty("refleKitty.alpha", 0.5)
-    addLuaSprite("refleKitty", false)
+    makeLuaSprite("water", pathQA..'waterBack', -130, -360)
+    setScrollFactor("water", 0, 0)
+    addLuaSprite("water", true)
+    doTweenX("funny", "water", -30, 10, "linear")
+    setProperty("water.alpha", 0.00001)
+
+    makeAnimatedLuaSprite("bruhto", 'characters/omori/sprouter-closeup', 0, 326)
+    addAnimationByPrefix("bruhto", "neutral", "neutral-alt", 0, false)
+    scaleObject("bruhto", 2, 2)
+    setScrollFactor("bruhto", 0, 0)
+    addLuaSprite("bruhto", true)
+    setProperty("bruhto.x", -getProperty("bruhto.width"))
+    doTweenX("bro", "bruhto", screenWidth, 10, "quadInOut")
+    doTweenY("bros", "bruhto", 316, 10, "quadInOut")
+    setProperty("bruhto.alpha", 0.00001)
+
+    makeLuaSprite("waterF", pathQA..'waterFront', -130, -360)
+    setScrollFactor("waterF", 0, 0)
+    addLuaSprite("waterF", true)
+    doTweenX("unfunny", "waterF", -30, 15, "linear")
+    setProperty("waterF.alpha", 0.00001)
 
     if shadersEnabled then
         precacheSound(pathBGS.."amb_rain_splatty")
 
         playSound(pathBGS.."amb_rain_splatty", 1, 'rain', true)
-        setSpriteShader("refleKitty", 'water')
     end
 
     createHitbox()
@@ -155,9 +165,11 @@ function createNPC()
     scaleObject("sprout", 2, 2)
     addLuaSprite("sprout", false)
     doTweenX("VAIIII", "sprout", 1508, 10, "quadInOut")
+    setObjectOrder("sprout", getObjectOrder("pier"))
 
     makeAnimatedLuaSprite("pep", 'characters/omori/peppy_overworld', quietArea.peppy[1], quietArea.peppy[2])
     addAnimationByPrefix("pep", "idle-up", "looking-up-alt", 0, false)
+    addAnimationByPrefix("pep", "idle-left", "looking-left-alt", 0, false)
     scaleObject("pep", 2, 2)
     addLuaSprite("pep", false)
 end
@@ -195,21 +207,15 @@ function createHitbox()
     updateHitbox("leftHB")
 end
 
-local funny = 0.01
-local kittyAlpha = 0
-
 function onUpdate(elapsed)
-
-    if shadersEnabled then
-        funny = funny + 0.05
-        setShaderFloat("refleKitty", "iTime", funny)
-    end
 
     if keyboardPressed("X") then
         walkSpeed = 6
+        soundSpeed = 0.015
         moveAnim = 'run'
     else
         walkSpeed = 2
+        soundSpeed = 0.005
         moveAnim = 'walk'
     end
     
@@ -217,71 +223,67 @@ function onUpdate(elapsed)
         if keyboardJustPressed('ESCAPE') then
             clicavel = false
             playAnim("boyfriend", "stab", true)
-            playAnim("refleKitty", "stab", true)
         elseif keyboardPressed("DOWN") and moveDown then
             looking = 'down'
             playAnim("boyfriend", moveAnim.."-down")
-            playAnim("refleKitty", moveAnim.."-down")
-            kittyAlpha = kittyAlpha + 0.05
             setProperty("boyfriend.y", getProperty("boyfriend.y") + walkSpeed)
         elseif keyboardReleased("DOWN") then
             playAnim("boyfriend", "idle-down")
-            playAnim("refleKitty", "idle-down")
         elseif keyboardPressed("UP") and moveUp then
             looking = 'up'
             playAnim("boyfriend", moveAnim.."-up")
-            playAnim("refleKitty", moveAnim.."-up")
-            kittyAlpha = kittyAlpha - 0.05
             setProperty("boyfriend.y", getProperty("boyfriend.y") - walkSpeed)
         elseif keyboardReleased("UP") then
             playAnim("boyfriend", "idle-up")
-            playAnim("refleKitty", "idle-up")
         elseif keyboardPressed("RIGHT") and moveRight then
             looking = 'right'
             setSoundVolume("null", 0)
             playAnim("boyfriend", moveAnim.."-right")
-            playAnim("refleKitty", moveAnim.."-right")
             setProperty("boyfriend.x", getProperty("boyfriend.x") + walkSpeed)
+            setSoundVolume("lemon", getSoundVolume("lemon") + soundSpeed)
         elseif keyboardReleased("RIGHT") then
             playAnim("boyfriend", "idle-right")
-            playAnim("refleKitty", "idle-right")
         elseif keyboardPressed("LEFT") and moveLeft then
             looking = 'left'
             setSoundVolume("null", 0)
             playAnim("boyfriend", moveAnim.."-left")
-            playAnim("refleKitty", moveAnim.."-left")
             setProperty("boyfriend.x", getProperty("boyfriend.x") - walkSpeed)
+            setSoundVolume("lemon", getSoundVolume("lemon") - soundSpeed)
         elseif keyboardReleased("LEFT") then
             playAnim("boyfriend", "idle-left")
-            playAnim("refleKitty", "idle-left")
         end
     end
 
-    if kittyAlpha > 0.5 then
-        kittyAlpha = 0.5
-    elseif kittyAlpha < 0 then
-        kittyAlpha = 0
+    if getSoundVolume("lemon") > 1 then
+        setSoundVolume("lemon", 1)
+    elseif getSoundVolume("lemon") < 0.2 then
+        setSoundVolume("lemon", 0.2)
     end
 
     if getProperty("boyfriend.x") >= getProperty("rightHB.x") - getProperty("rightHB.width") + 20 then -- right
         playAnim("boyfriend", "idle-right")
-        playAnim("refleKitty", "idle-right")
         setProperty("boyfriend.x", getProperty("rightHB.x") - getProperty("rightHB.width") + 19)
 
     elseif getProperty("boyfriend.x") <= getProperty("leftHB.x") + getProperty("leftHB.width") - 5 then -- left
         playAnim("boyfriend", "idle-left")
-        playAnim("refleKitty", "idle-left")
         setProperty("boyfriend.x", getProperty("leftHB.x") + getProperty("leftHB.width") - 4)
         
     elseif getProperty("boyfriend.y") >= getProperty("downHB.y") - getProperty("downHB.height") + 5 then -- down
         playAnim("boyfriend", "idle-down")
-        playAnim("refleKitty", "idle-down")
         setProperty("boyfriend.y", getProperty("downHB.y") - getProperty("downHB.height") + 4)
     
     elseif getProperty("boyfriend.y") <= getProperty("upHB.y") + getProperty("upHB.height") - 30 then -- up
         playAnim("boyfriend", "idle-up")
-        playAnim("refleKitty", "idle-up")
         setProperty("boyfriend.y", getProperty("upHB.y") + getProperty("upHB.height") - 29)
+    end
+
+    if getProperty("boyfriend.y") == 1043 and keyboardJustPressed("Z") and clicavel and looking == 'up' then
+        clicavel = false
+        doTweenAlpha("pinto", "camGame", 0.00001, 1, "linear")
+    elseif keyboardJustPressed("C") and the then
+        clicavel = true
+        the = false
+        doTweenAlpha("xibiu", "camGame", 0.00001, 1, "linear")
     end
 
     setProperty("playerHB.x", getGraphicMidpointX("boyfriend") - 6)
@@ -377,6 +379,8 @@ function onTimerCompleted(tag, loops, loopsLeft)
     if tag == 'vish' then
         playSound(pathSE.."GEN_stab", 1, 'aaa')
         stopSound("bgm")
+        --[[stopSound("lemon")
+        playAnim("pep", "idle-left")]]
     elseif tag == 'morreu' then
         setProperty("camGame.alpha", 0)
         setProperty("camHUD.alpha", 0)
@@ -388,16 +392,57 @@ function onTimerCompleted(tag, loops, loopsLeft)
 end
 
 function onTweenCompleted(tag, vars)
-    
+   
+    for i = 1,#tagsObjsAlpha do
     if tag == 'loop1' then
         setProperty("clouds.x", -getProperty("clouds.width"))
         doTweenX("loop1", "clouds", screenWidth, 10, "linear")
     elseif tag == 'loop2' then
         setProperty("clouds2.x", -getProperty("clouds2.width"))
         doTweenX("loop2", "clouds2", screenWidth, 10, "linear")
+
     elseif tag == 'VAIIII' then
         doTweenX("VOLTAAAA", "sprout", 1070, 10, "quadInOut")
     elseif tag == 'VOLTAAAA' then
         doTweenX("VAIIII", "sprout", 1508, 10, "quadInOut")
+    elseif tag == 'VAIIIIi' then
+        doTweenX("VOLTAAAAa", "refleSprout", 1070, 10, "quadInOut")
+    elseif tag == 'VOLTAAAAa' then
+        doTweenX("VAIIIIi", "refleSprout", 1508, 10, "quadInOut")
+
+    elseif tag == 'funny' then
+        doTweenX("funner", "water", -130, 10, "quadInOut")
+    elseif tag == 'funner' then
+        doTweenX("funny", "water", -30, 10, "quadInOut")
+    elseif tag == 'unfunny' then
+        doTweenX("unfunner", "waterF", -130, 10, "quadInOut")
+    elseif tag == 'unfunner' then
+        doTweenX("unfunny", "waterF", -30, 15, "quadInOut")
+
+    elseif tag == 'bro' then
+        doTweenX("orb", "bruhto", -getProperty("bruhto.width"), 10, "quadInOut")
+    elseif tag == 'orb' then
+        doTweenX("bro", "bruhto", screenWidth, 10, "quadInOut")
+
+    elseif tag == 'bros' then
+        doTweenY("sorb", "bruhto", 316, 1, "quadInOut")
+    elseif tag == 'sorb' then
+        doTweenY("bros", "bruhto", 326, 1, "quadInOut")
+
+        elseif tag == 'pinto' then
+            the = true
+            setProperty(tagsObjsAlpha[i]..'.alpha', 0.0001)
+            setProperty("water.alpha", 1)
+            setProperty("waterF.alpha", 1)
+            setProperty("bruhto.alpha", 1)
+            doTweenAlpha("penis", "camGame", 1, 1, "linear")
+        elseif tag == 'xibiu' then
+            the = false
+            setProperty(tagsObjsAlpha[i]..'.alpha', 1)
+            setProperty("water.alpha", 0.00001)
+            setProperty("waterF.alpha", 0.00001)
+            setProperty("bruhto.alpha", 0.00001)
+            doTweenAlpha("vagina", "camGame", 1, 1, "linear")
+        end
     end
 end
